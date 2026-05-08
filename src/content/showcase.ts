@@ -1,6 +1,7 @@
 export const showcaseData = [
   {
     id: "project-1",
+    image: "",
     title: "E-Commerce Platform",
     category: "Web Application",
     role: "Full Stack Engineer",
@@ -13,6 +14,7 @@ export const showcaseData = [
   },
   {
     id: "project-2",
+    image: "",
     title: "Analytics Dashboard",
     category: "Data Visualization",
     role: "Frontend Engineer",
