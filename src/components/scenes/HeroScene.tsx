@@ -1,21 +1,20 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 import { heroData } from "@/content/hero";
 import { SplitText } from "@/components/ui/SplitText";
+import { useAppGlobal } from "@/components/ClientProviders";
 
-interface HeroSceneProps {
-  isReady: boolean;
-}
-
-export function HeroScene({ isReady }: HeroSceneProps) {
+export function HeroScene() {
   const containerRef = useRef<HTMLElement>(null);
+  const { isReady } = useAppGlobal();
 
-  useEffect(() => {
-    if (!isReady) return;
+  useGSAP(
+    () => {
+      if (!isReady) return;
 
-    const ctx = gsap.context(() => {
       const tl = gsap.timeline({ delay: 0.1 });
 
       // Animate the name first
@@ -45,22 +44,9 @@ export function HeroScene({ isReady }: HeroSceneProps) {
           { y: 0, opacity: 1, duration: 0.6, stagger: 0.1, ease: "power2.out" },
           "-=0.4"
         );
-    }, containerRef);
-
-    return () => ctx.revert();
-  }, [isReady]);
-
-  const personSchema = {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    name: heroData.name,
-    jobTitle: heroData.title,
-    url: "https://rohan-portfolio.vercel.app", // Placeholder
-    sameAs: [
-      "https://github.com/rohandev19",
-      // add LinkedIn etc if needed
-    ],
-  };
+    },
+    { scope: containerRef, dependencies: [isReady] }
+  );
 
   return (
     <section
@@ -68,11 +54,6 @@ export function HeroScene({ isReady }: HeroSceneProps) {
       ref={containerRef}
       className="relative min-h-screen w-full flex flex-col items-center justify-center px-4 overflow-hidden"
     >
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
-      />
-
       <div className="z-10 text-center max-w-4xl">
         <h1 className="text-5xl md:text-7xl lg:text-8xl font-black mb-4 tracking-tighter">
           <SplitText className="hero-name text-[#F8FAFC]" charClassName="char">
