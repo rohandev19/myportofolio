@@ -1,14 +1,16 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useRef, useState } from "react";
 import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 import { contactData } from "@/content/contact";
 
 export function ContactScene() {
   const containerRef = useRef<HTMLElement>(null);
+  const [formStatus, setFormStatus] = useState<"idle" | "sent">("idle");
 
-  useEffect(() => {
-    const ctx = gsap.context(() => {
+  useGSAP(
+    () => {
       gsap.fromTo(
         ".contact-reveal",
         { y: 50, opacity: 0 },
@@ -24,10 +26,27 @@ export function ContactScene() {
           },
         }
       );
-    }, containerRef);
+    },
+    { scope: containerRef }
+  );
 
-    return () => ctx.revert();
-  }, []);
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    const name = formData.get("name") as string;
+    const email = formData.get("email") as string;
+    const message = formData.get("message") as string;
+
+    // Mailto fallback — opens user's email client with pre-filled data
+    const subject = encodeURIComponent(`Portfolio Contact from ${name}`);
+    const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
+    window.open(`mailto:${contactData.email}?subject=${subject}&body=${body}`, "_self");
+
+    setFormStatus("sent");
+    form.reset();
+    setTimeout(() => setFormStatus("idle"), 4000);
+  };
 
   return (
     <section
@@ -76,7 +95,8 @@ export function ContactScene() {
 
             <form
               className="flex flex-col gap-6 relative z-10"
-              onSubmit={(e) => e.preventDefault()}
+              onSubmit={handleSubmit}
+              autoComplete="on"
             >
               <div className="flex flex-col gap-2">
                 <label htmlFor="name" className="text-sm font-medium text-[#94A3B8]">
@@ -85,6 +105,9 @@ export function ContactScene() {
                 <input
                   type="text"
                   id="name"
+                  name="name"
+                  required
+                  autoComplete="name"
                   placeholder="John Doe"
                   className="w-full bg-[#0F172A] border border-[#1E293B] rounded-lg px-4 py-3 text-[#F8FAFC] placeholder:text-[#475569] focus:outline-none focus:border-[#38BDF8] focus:ring-1 focus:ring-[#38BDF8] transition-all"
                 />
@@ -97,6 +120,9 @@ export function ContactScene() {
                 <input
                   type="email"
                   id="email"
+                  name="email"
+                  required
+                  autoComplete="email"
                   placeholder="john@example.com"
                   className="w-full bg-[#0F172A] border border-[#1E293B] rounded-lg px-4 py-3 text-[#F8FAFC] placeholder:text-[#475569] focus:outline-none focus:border-[#38BDF8] focus:ring-1 focus:ring-[#38BDF8] transition-all"
                 />
@@ -108,7 +134,10 @@ export function ContactScene() {
                 </label>
                 <textarea
                   id="message"
+                  name="message"
+                  required
                   rows={4}
+                  autoComplete="off"
                   placeholder="Tell me about your project..."
                   className="w-full bg-[#0F172A] border border-[#1E293B] rounded-lg px-4 py-3 text-[#F8FAFC] placeholder:text-[#475569] focus:outline-none focus:border-[#38BDF8] focus:ring-1 focus:ring-[#38BDF8] transition-all resize-none"
                 />
@@ -118,7 +147,7 @@ export function ContactScene() {
                 type="submit"
                 className="mt-4 w-full bg-[#38BDF8] text-[#070B14] font-bold text-lg py-4 rounded-lg hover:bg-[#818CF8] transition-colors focus:outline-none focus:ring-2 focus:ring-[#818CF8] focus:ring-offset-2 focus:ring-offset-[#070B14]"
               >
-                Send Message
+                {formStatus === "sent" ? "✓ Message Sent!" : "Send Message"}
               </button>
             </form>
           </div>
@@ -127,14 +156,7 @@ export function ContactScene() {
         {/* Footer */}
         <div className="contact-reveal pt-8 border-t border-[#1E293B] flex flex-col md:flex-row justify-between items-center gap-4 text-[#475569] text-sm">
           <p>© {new Date().getFullYear()} Rohan. All rights reserved.</p>
-          <div className="flex gap-4">
-            <a href="#" className="hover:text-[#94A3B8] transition-colors">
-              Privacy Policy
-            </a>
-            <a href="#" className="hover:text-[#94A3B8] transition-colors">
-              Terms of Service
-            </a>
-          </div>
+          <p className="text-[#334155]">Crafted with precision &amp; passion.</p>
         </div>
       </div>
     </section>
