@@ -19,7 +19,7 @@ export function TechGalaxyCanvas() {
   return (
     <div className="w-full h-[60vh] md:h-[80vh] cursor-grab active:cursor-grabbing">
       <Canvas
-        frameloop="demand"
+        frameloop="always"
         camera={{ position: [0, 0, 20], fov: 60 }}
         gl={{ powerPreference: "high-performance", antialias: false }}
       >
@@ -33,7 +33,7 @@ export function TechGalaxyCanvas() {
         <TechNodes />
 
         {/* Allow users to rotate the galaxy */}
-        <OrbitControls enableZoom={false} enablePan={false} autoRotate={false} />
+        <OrbitControls enableZoom={false} enablePan={false} autoRotate autoRotateSpeed={0.5} />
       </Canvas>
     </div>
   );
