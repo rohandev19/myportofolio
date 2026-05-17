@@ -1,24 +1,15 @@
 export const showcaseData = [
   {
     id: "project-1",
-    image: "",
-    title: "E-Commerce Platform",
-    category: "Web Application",
-    role: "Full Stack Engineer",
+    image: "", // We can add an image URL later
+    title: "Hamada Operations Platform",
+    category: "Web & Mobile System",
+    role: "Full-Stack Developer",
     impact: [
-      "Built seamless payment integration",
-      "Real-time inventory management",
-      "Achieved 100 Lighthouse Score",
+      "Offline-first mobile synchronization",
+      "Predictive vehicle maintenance",
+      "QR Code & GPS attendance tracking",
     ],
-    link: "https://example.com",
-  },
-  {
-    id: "project-2",
-    image: "",
-    title: "Analytics Dashboard",
-    category: "Data Visualization",
-    role: "Frontend Engineer",
-    impact: ["Visualized complex data sets", "Processed 1M+ data points", "Load time <1s"],
-    link: "https://github.com",
+    link: "https://operation.hamada-logistic.com",
   },
 ];
