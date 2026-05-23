@@ -7,7 +7,7 @@ import { contactData } from "@/content/contact";
 
 export function ContactScene() {
   const containerRef = useRef<HTMLElement>(null);
-  const [formStatus, setFormStatus] = useState<"idle" | "sent">("idle");
+  const [formStatus, setFormStatus] = useState<"idle" | "submitting" | "sent" | "error">("idle");
 
   useGSAP(
     () => {
@@ -30,21 +30,50 @@ export function ContactScene() {
     { scope: containerRef }
   );
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.currentTarget;
     const formData = new FormData(form);
-    const name = formData.get("name") as string;
-    const email = formData.get("email") as string;
-    const message = formData.get("message") as string;
 
-    // Mailto fallback — opens user's email client with pre-filled data
-    const subject = encodeURIComponent(`Portfolio Contact from ${name}`);
-    const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
-    window.open(`mailto:${contactData.email}?subject=${subject}&body=${body}`, "_self");
+    // Add Web3Forms access key
+    const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
 
-    setFormStatus("sent");
-    form.reset();
+    if (!accessKey) {
+      // Fallback to mailto if no access key
+      const name = formData.get("name") as string;
+      const email = formData.get("email") as string;
+      const message = formData.get("message") as string;
+      const subject = encodeURIComponent(`Portfolio Contact from ${name}`);
+      const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
+      window.open(`mailto:${contactData.email}?subject=${subject}&body=${body}`, "_self");
+      setFormStatus("sent");
+      setTimeout(() => setFormStatus("idle"), 4000);
+      return;
+    }
+
+    formData.append("access_key", accessKey);
+    setFormStatus("submitting");
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData,
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setFormStatus("sent");
+        form.reset();
+      } else {
+        console.error("Form error:", data);
+        setFormStatus("error");
+      }
+    } catch (error) {
+      console.error("Submit error:", error);
+      setFormStatus("error");
+    }
+
     setTimeout(() => setFormStatus("idle"), 4000);
   };
 
