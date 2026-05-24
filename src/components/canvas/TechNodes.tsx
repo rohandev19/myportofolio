@@ -55,6 +55,19 @@ interface NodeData {
   timeOffset: number;
 }
 
+const iconMap: Record<string, string> = {
+  React: "react",
+  Laravel: "laravel",
+  Flutter: "flutter",
+  TypeScript: "ts",
+  HTML5: "html",
+  JavaScript: "js",
+  PHP: "php",
+  MySQL: "mysql",
+  Redis: "redis",
+  Git: "git",
+};
+
 function TechNode({ node }: { node: NodeData }) {
   const meshRef = useRef<THREE.Mesh>(null);
 
@@ -67,6 +80,8 @@ function TechNode({ node }: { node: NodeData }) {
     }
   });
 
+  const iconName = iconMap[node.text];
+
   return (
     <mesh ref={meshRef} position={node.position}>
       {/* Invisible mesh to act as an anchor for the HTML label */}
@@ -74,13 +89,26 @@ function TechNode({ node }: { node: NodeData }) {
       <meshBasicMaterial visible={false} />
       <Html center distanceFactor={15}>
         <div
-          className={`px-3 py-1.5 rounded-lg whitespace-nowrap select-none ${
-            node.isPrimary
-              ? "bg-[#0F172A]/80 border border-[#38BDF8] text-[#F8FAFC] text-base font-bold shadow-[0_0_15px_rgba(56,189,248,0.3)]"
-              : "bg-[#070B14]/60 border border-[#818CF8]/50 text-[#94A3B8] text-sm"
-          } backdrop-blur-sm`}
+          className={`relative group flex flex-col items-center justify-center transition-transform hover:scale-110 ${
+            node.isPrimary ? "w-16 h-16" : "w-12 h-12"
+          }`}
         >
-          {node.text}
+          {iconName ? (
+            <img
+              src={`https://skillicons.dev/icons?i=${iconName}`}
+              alt={node.text}
+              className="w-full h-full object-contain filter drop-shadow-[0_0_10px_rgba(56,189,248,0.5)]"
+            />
+          ) : (
+            <div className="px-3 py-1.5 rounded-lg whitespace-nowrap select-none bg-[#070B14]/60 border border-[#818CF8]/50 text-[#94A3B8] text-sm backdrop-blur-sm">
+              {node.text}
+            </div>
+          )}
+
+          {/* Tooltip on hover */}
+          <span className="absolute -bottom-8 opacity-0 group-hover:opacity-100 transition-opacity bg-[#0F172A] border border-[#1E293B] text-[#F8FAFC] text-xs px-2 py-1 rounded whitespace-nowrap pointer-events-none">
+            {node.text}
+          </span>
         </div>
       </Html>
     </mesh>
