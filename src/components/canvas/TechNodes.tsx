@@ -90,7 +90,7 @@ function TechNode({ node }: { node: NodeData }) {
       <Html center distanceFactor={15}>
         <div
           className={`relative group flex flex-col items-center justify-center transition-transform hover:scale-110 ${
-            node.isPrimary ? "w-16 h-16" : "w-12 h-12"
+            node.isPrimary ? "w-24 h-24 md:w-32 md:h-32" : "w-16 h-16 md:w-20 md:h-20"
           }`}
         >
           {iconName ? (
