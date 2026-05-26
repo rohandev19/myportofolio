@@ -5,6 +5,7 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { heroData } from "@/content/hero";
 import { SplitText } from "@/components/ui/SplitText";
+import { InteractiveButton } from "../ui/InteractiveButton";
 import { useAppGlobal } from "@/components/ClientProviders";
 
 export function HeroScene() {
@@ -72,18 +73,20 @@ export function HeroScene() {
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <a
+          <InteractiveButton
+            as="a"
             href="#projects"
-            className="hero-cta opacity-0 px-8 py-3 bg-[#38BDF8] text-[#070B14] font-semibold rounded-lg hover:bg-[#818CF8] transition-colors focus:outline-none focus:ring-2 focus:ring-[#818CF8]"
+            className="hero-cta opacity-0 px-8 py-3 bg-[#38BDF8] text-[#070B14] font-semibold rounded-lg hover:bg-[#818CF8] focus:outline-none focus:ring-2 focus:ring-[#818CF8]"
           >
             {heroData.cta.primary}
-          </a>
-          <a
+          </InteractiveButton>
+          <InteractiveButton
+            as="a"
             href="#contact"
-            className="hero-cta opacity-0 px-8 py-3 bg-transparent border border-[#38BDF8] text-[#38BDF8] font-semibold rounded-lg hover:bg-[#0F172A] transition-colors focus:outline-none focus:ring-2 focus:ring-[#818CF8]"
+            className="hero-cta opacity-0 px-8 py-3 bg-transparent border border-[#38BDF8] text-[#38BDF8] font-semibold rounded-lg hover:bg-[#0F172A] focus:outline-none focus:ring-2 focus:ring-[#818CF8]"
           >
             {heroData.cta.secondary}
-          </a>
+          </InteractiveButton>
         </div>
       </div>
 

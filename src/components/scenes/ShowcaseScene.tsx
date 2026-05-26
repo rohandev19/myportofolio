@@ -1,33 +1,34 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 import { showcaseData } from "@/content/showcase";
+import { TiltCard } from "../ui/TiltCard";
 
 export function ShowcaseScene() {
   const containerRef = useRef<HTMLElement>(null);
 
-  useEffect(() => {
-    const ctx = gsap.context(() => {
+  useGSAP(
+    () => {
       gsap.fromTo(
         ".showcase-card",
-        { y: 50, opacity: 0 },
+        { y: 100, opacity: 0 },
         {
           y: 0,
           opacity: 1,
           duration: 0.8,
-          stagger: 0.15,
+          stagger: 0.2,
           ease: "power3.out",
           scrollTrigger: {
             trigger: containerRef.current,
-            start: "top 75%",
+            start: "top 70%",
           },
         }
       );
-    }, containerRef);
-
-    return () => ctx.revert();
-  }, []);
+    },
+    { scope: containerRef }
+  );
 
   return (
     <section id="projects" ref={containerRef} className="w-full py-24 px-4 md:px-8 bg-[#070B14]">
@@ -42,12 +43,12 @@ export function ShowcaseScene() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {showcaseData.map((project, idx) => (
-            <div
+            <TiltCard
               key={project.id}
-              className="showcase-card group relative bg-[#0F172A] rounded-2xl overflow-hidden border border-[#1E293B] hover:border-[#38BDF8]/50 transition-all duration-500 hover:-translate-y-2 flex flex-col h-full"
+              className="showcase-card group bg-[#0F172A] rounded-2xl border border-[#1E293B] hover:border-[#38BDF8]/50 flex flex-col h-full"
             >
               {/* Image Container / Placeholder */}
-              <div className="relative h-48 w-full bg-gradient-to-tr from-[#1E293B] to-[#0F172A] overflow-hidden">
+              <div className="relative h-48 w-full bg-gradient-to-tr from-[#1E293B] to-[#0F172A] overflow-hidden rounded-t-2xl">
                 {project.image ? (
                   // eslint-disable-next-line @next/next/no-img-element
                   <img
@@ -116,7 +117,7 @@ export function ShowcaseScene() {
                   </div>
                 </div>
               </div>
-            </div>
+            </TiltCard>
           ))}
         </div>
       </div>
