@@ -7,9 +7,11 @@ import { heroData } from "@/content/hero";
 import { SplitText } from "@/components/ui/SplitText";
 import { InteractiveButton } from "../ui/InteractiveButton";
 import { useAppGlobal } from "@/components/ClientProviders";
+import { RobotCharacter } from "../ui/RobotCharacter";
 
 export function HeroScene() {
   const containerRef = useRef<HTMLElement>(null);
+  const titleRef = useRef<HTMLHeadingElement>(null);
   const { isReady } = useAppGlobal();
 
   useGSAP(
@@ -38,12 +40,25 @@ export function HeroScene() {
           { y: 0, opacity: 1, duration: 0.6, ease: "power2.out" },
           "-=0.2"
         )
+        // Robot Drops!
+        .fromTo(
+          ".robot-container",
+          { y: -300, opacity: 0, rotate: -20 },
+          { y: 0, opacity: 1, rotate: 0, duration: 1.2, ease: "bounce.out" },
+          "-=0.2"
+        )
+        // When robot lands (bounces), tilt the text
+        .to(
+          titleRef.current,
+          { rotateZ: 3, y: 10, duration: 1.5, ease: "elastic.out(1, 0.3)" },
+          "<0.4"
+        )
         // Finally the CTA buttons
         .fromTo(
           ".hero-cta",
           { y: 20, opacity: 0 },
           { y: 0, opacity: 1, duration: 0.6, stagger: 0.1, ease: "power2.out" },
-          "-=0.4"
+          "-=0.8"
         );
     },
     { scope: containerRef, dependencies: [isReady] }
@@ -55,18 +70,28 @@ export function HeroScene() {
       ref={containerRef}
       className="relative min-h-screen w-full flex flex-col items-center justify-center px-4 overflow-hidden"
     >
-      <div className="z-10 text-center max-w-4xl">
-        <h1 className="text-5xl md:text-7xl lg:text-8xl font-black mb-4 tracking-tighter">
+      <div className="z-10 text-center max-w-4xl relative">
+        {/* Robot Element */}
+        <div className="absolute -top-16 -right-12 md:-top-20 md:-right-24 w-32 h-40 md:w-48 md:h-56 robot-container z-20 origin-top">
+          <RobotCharacter className="w-full h-full drop-shadow-[0_10px_20px_rgba(56,189,248,0.3)]" />
+        </div>
+
+        <h1 className="text-5xl md:text-7xl lg:text-8xl font-black mb-4 tracking-tighter relative z-10">
           <SplitText className="hero-name text-[#F8FAFC]" charClassName="char">
             {heroData.name}
           </SplitText>
         </h1>
 
-        <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-6 text-[#38BDF8]">
-          <SplitText className="hero-title" charClassName="char">
-            {heroData.title}
-          </SplitText>
-        </h2>
+        <div className="relative inline-block">
+          <h2
+            ref={titleRef}
+            className="text-2xl md:text-3xl lg:text-4xl font-bold mb-6 text-[#38BDF8] relative z-10 origin-left inline-block"
+          >
+            <SplitText className="hero-title" charClassName="char">
+              {heroData.title}
+            </SplitText>
+          </h2>
+        </div>
 
         <p className="hero-tagline text-lg md:text-xl text-[#94A3B8] mb-10 max-w-2xl mx-auto opacity-0">
           {heroData.tagline}
