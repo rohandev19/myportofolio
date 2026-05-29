@@ -7,7 +7,6 @@ import { heroData } from "@/content/hero";
 import { SplitText } from "@/components/ui/SplitText";
 import { InteractiveButton } from "../ui/InteractiveButton";
 import { useAppGlobal } from "@/components/ClientProviders";
-import { RobotCharacter } from "../ui/RobotCharacter";
 
 export function HeroScene() {
   const containerRef = useRef<HTMLElement>(null);
@@ -59,7 +58,21 @@ export function HeroScene() {
           { y: 20, opacity: 0 },
           { y: 0, opacity: 1, duration: 0.6, stagger: 0.1, ease: "power2.out" },
           "-=0.8"
-        );
+        )
+        .add(() => {
+          // Continuous random floating animation
+          const floatBaymax = () => {
+            gsap.to(".robot-container", {
+              x: "random(-15, 15)",
+              y: "random(-15, 15)",
+              rotate: "random(-5, 5)",
+              duration: "random(2, 4)",
+              ease: "sine.inOut",
+              onComplete: floatBaymax,
+            });
+          };
+          floatBaymax();
+        });
     },
     { scope: containerRef, dependencies: [isReady] }
   );
@@ -72,8 +85,12 @@ export function HeroScene() {
     >
       <div className="z-10 text-center max-w-4xl relative">
         {/* Robot Element */}
-        <div className="absolute -top-16 -right-12 md:-top-20 md:-right-24 w-32 h-40 md:w-48 md:h-56 robot-container z-20 origin-top">
-          <RobotCharacter className="w-full h-full drop-shadow-[0_10px_20px_rgba(56,189,248,0.3)]" />
+        <div className="absolute -top-16 -right-12 md:-top-24 md:-right-32 w-40 h-48 md:w-56 md:h-64 robot-container z-0 origin-top pointer-events-none">
+          <img
+            src="/BAYMAX.png"
+            alt="Baymax"
+            className="w-full h-full object-contain drop-shadow-[0_10px_20px_rgba(56,189,248,0.3)]"
+          />
         </div>
 
         <h1 className="text-5xl md:text-7xl lg:text-8xl font-black mb-4 tracking-tighter relative z-10">
