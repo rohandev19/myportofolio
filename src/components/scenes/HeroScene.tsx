@@ -13,7 +13,8 @@ export function HeroScene() {
   const containerRef = useRef<HTMLElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const { isReady } = useAppGlobal();
-  const [animationData, setAnimationData] = useState<unknown>(null);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const [animationData, setAnimationData] = useState<any>(null);
 
   useEffect(() => {
     fetch("/waving-baymax.json")
