@@ -80,17 +80,6 @@ export function HeroScene() {
       className="relative min-h-screen w-full flex flex-col items-center justify-center px-4 overflow-hidden"
     >
       <div className="z-10 text-center max-w-4xl relative">
-        {/* Robot Element */}
-        <div className="absolute -top-16 -right-12 md:-top-24 md:-right-32 w-40 h-48 md:w-56 md:h-64 robot-container z-0 origin-top pointer-events-none">
-          {animationData && (
-            <Lottie
-              animationData={animationData}
-              loop={true}
-              className="w-full h-full drop-shadow-[0_10px_20px_rgba(56,189,248,0.3)]"
-            />
-          )}
-        </div>
-
         <h1 className="text-5xl md:text-7xl lg:text-8xl font-black mb-4 tracking-tighter relative z-10">
           <SplitText className="hero-name text-[#F8FAFC]" charClassName="char">
             {heroData.name}
@@ -98,6 +87,16 @@ export function HeroScene() {
         </h1>
 
         <div className="relative inline-block">
+          {/* Robot Element */}
+          <div className="absolute bottom-[75%] -right-4 md:-right-8 w-24 h-28 md:w-32 md:h-36 robot-container z-20 origin-bottom pointer-events-none">
+            {animationData && (
+              <Lottie
+                animationData={animationData}
+                loop={true}
+                className="w-full h-full drop-shadow-[0_10px_20px_rgba(56,189,248,0.3)]"
+              />
+            )}
+          </div>
           <h2
             ref={titleRef}
             className="text-2xl md:text-3xl lg:text-4xl font-bold mb-6 text-[#38BDF8] relative z-10 origin-left inline-block"
