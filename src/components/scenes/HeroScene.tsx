@@ -88,7 +88,7 @@ export function HeroScene() {
 
         <div className="relative inline-block">
           {/* Robot Element */}
-          <div className="absolute bottom-[75%] -right-4 md:-right-8 w-24 h-28 md:w-32 md:h-36 robot-container z-20 origin-bottom pointer-events-none">
+          <div className="absolute bottom-[30%] -right-20 md:-right-36 lg:-right-48 w-32 h-40 md:w-48 md:h-56 robot-container -z-10 origin-bottom pointer-events-none">
             {animationData && (
               <Lottie
                 animationData={animationData}
