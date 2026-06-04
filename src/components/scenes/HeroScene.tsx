@@ -49,19 +49,7 @@ export function HeroScene() {
           { y: 0, opacity: 1, duration: 0.6, ease: "power2.out" },
           "-=0.2"
         )
-        // Robot Drops!
-        .fromTo(
-          ".robot-container",
-          { y: -300, opacity: 0, rotate: -20 },
-          { y: 0, opacity: 1, rotate: 0, duration: 1.2, ease: "bounce.out" },
-          "-=0.2"
-        )
-        // When robot lands (bounces), tilt the text
-        .to(
-          titleRef.current,
-          { rotateZ: 3, y: 10, duration: 1.5, ease: "elastic.out(1, 0.3)" },
-          "<0.4"
-        )
+
         // Finally the CTA buttons
         .fromTo(
           ".hero-cta",
@@ -87,8 +75,8 @@ export function HeroScene() {
         </h1>
 
         <div className="relative inline-block">
-          {/* Robot Element */}
-          <div className="absolute bottom-[30%] -right-20 md:-right-36 lg:-right-48 w-32 h-40 md:w-48 md:h-56 robot-container -z-10 origin-bottom pointer-events-none">
+          {/* Robot Element (Hidden for now) */}
+          <div className="hidden absolute bottom-[30%] -right-20 md:-right-36 lg:-right-48 w-32 h-40 md:w-48 md:h-56 robot-container -z-10 origin-bottom pointer-events-none">
             {animationData && (
               <Lottie
                 animationData={animationData}
