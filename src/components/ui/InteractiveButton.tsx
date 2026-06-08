@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, ReactNode } from "react";
+import { useRef, ReactNode, useState } from "react";
 import gsap from "gsap";
 
 interface InteractiveButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -23,6 +23,31 @@ export function InteractiveButton({
 }: InteractiveButtonProps) {
   const buttonRef = useRef<HTMLButtonElement & HTMLAnchorElement>(null);
   const spotlightRef = useRef<HTMLDivElement>(null);
+  const [ripples, setRipples] = useState<Array<{ id: number; x: number; y: number }>>([]);
+
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => {
+    if (!buttonRef.current) return;
+
+    const rect = buttonRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    // Add ripple
+    const ripple = { id: Date.now(), x, y };
+    setRipples((prev) => [...prev, ripple]);
+
+    // Remove ripple after animation
+    setTimeout(() => {
+      setRipples((prev) => prev.filter((r) => r.id !== ripple.id));
+    }, 600);
+
+    // Call original onClick if provided
+    if (props.onClick && as === "button") {
+      (props.onClick as (e: React.MouseEvent<HTMLButtonElement>) => void)(
+        e as React.MouseEvent<HTMLButtonElement>
+      );
+    }
+  };
 
   const handleMouseMove = (e: React.MouseEvent) => {
     if (!buttonRef.current) return;
@@ -79,6 +104,20 @@ export function InteractiveButton({
 
   const renderContent = () => (
     <>
+      {/* Ripple effects */}
+      {ripples.map((ripple) => (
+        <span
+          key={ripple.id}
+          className="absolute rounded-full bg-white/30 pointer-events-none animate-ripple"
+          style={{
+            left: ripple.x,
+            top: ripple.y,
+            width: 0,
+            height: 0,
+          }}
+        />
+      ))}
+
       {/* Spotlight */}
       <div
         ref={spotlightRef}
@@ -114,6 +153,7 @@ export function InteractiveButton({
       className={baseClasses}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
+      onClick={handleClick}
       {...props}
     >
       {renderContent()}
