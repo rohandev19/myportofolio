@@ -39,3 +39,10 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# kiro specs and tasks (internal)
+/.kiro/
+
+# test results and reports
+/test-results/
+/playwright-report/
