@@ -52,6 +52,7 @@ export function JourneyTimelineScene() {
     <section
       id="timeline"
       ref={containerRef}
+      aria-label="Career journey timeline"
       className="min-h-screen w-full py-24 px-4 md:px-8 bg-[#0F172A] relative"
     >
       <div className="max-w-4xl mx-auto">

@@ -65,6 +65,7 @@ export function HeroScene() {
     <section
       id="hero"
       ref={containerRef}
+      aria-label="Hero introduction"
       className="relative min-h-screen w-full flex flex-col items-center justify-center px-4 overflow-hidden"
     >
       <div className="z-10 text-center max-w-4xl relative">

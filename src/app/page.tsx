@@ -9,7 +9,11 @@ import { ContactScene } from "@/components/scenes/ContactScene";
 
 export default function Home() {
   return (
-    <main className="relative min-h-screen bg-[#0F172A] text-slate-50 overflow-hidden">
+    <main
+      id="main-content"
+      role="main"
+      className="relative min-h-screen bg-[#0F172A] text-slate-50 overflow-hidden"
+    >
       <Loader />
       <HeroScene />
       <AboutScene />
