@@ -109,7 +109,7 @@ function calculateScore(query: string, target: string, threshold: number): numbe
  * @param options - Optional search configuration
  * @returns Sorted array of matching results with scores
  */
-export function fuzzySearch<T extends Record<string, unknown>>(
+export function fuzzySearch<T>(
   items: T[],
   keys: (keyof T)[],
   query: string,
@@ -127,7 +127,8 @@ export function fuzzySearch<T extends Record<string, unknown>>(
     let bestKey: string = "";
 
     for (const key of keys) {
-      const value = item[key];
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const value = (item as any)[key];
       const targets: string[] = [];
 
       if (typeof value === "string") {

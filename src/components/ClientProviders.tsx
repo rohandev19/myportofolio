@@ -9,6 +9,8 @@ import { Preloader } from "./ui/Preloader";
 import { ToastContainer } from "./ui/ToastContainer";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import { CommandPalette } from "./features/command-palette";
+import { useCommandPalette } from "@/hooks/use-command-palette";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -31,6 +33,9 @@ interface ClientProvidersProps {
 export function ClientProviders({ children }: ClientProvidersProps) {
   const [isReady, setIsReady] = useState(false);
   const [showPreloader, setShowPreloader] = useState(true);
+
+  // Initialize global keyboard shortcuts for command palette
+  useCommandPalette();
 
   useEffect(() => {
     // Initialize Lenis for smooth scrolling
@@ -63,6 +68,7 @@ export function ClientProviders({ children }: ClientProvidersProps) {
       <ErrorBoundary FallbackComponent={GlobalErrorFallback}>
         <ThemeProvider>
           <ToastContainer />
+          <CommandPalette />
           {showPreloader && <Preloader onComplete={() => setShowPreloader(false)} />}
           {children}
         </ThemeProvider>
