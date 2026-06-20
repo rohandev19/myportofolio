@@ -4,6 +4,7 @@ import { useRef, useState } from "react";
 import { useFrame } from "@react-three/fiber";
 import { Html } from "@react-three/drei";
 import { techStackData } from "@/content/techstack";
+import Image from "next/image";
 import * as THREE from "three";
 
 export function TechNodes() {
@@ -94,10 +95,12 @@ function TechNode({ node }: { node: NodeData }) {
           }`}
         >
           {iconName ? (
-            <img
+            <Image
               src={`https://skillicons.dev/icons?i=${iconName}`}
               alt={node.text}
-              className="w-full h-full object-contain filter drop-shadow-[0_0_10px_rgba(56,189,248,0.5)]"
+              fill
+              sizes="(max-width: 768px) 64px, 128px"
+              className="object-contain filter drop-shadow-[0_0_10px_rgba(56,189,248,0.5)]"
             />
           ) : (
             <div className="px-3 py-1.5 rounded-lg whitespace-nowrap select-none bg-[#070B14]/60 border border-[#818CF8]/50 text-[#94A3B8] text-sm backdrop-blur-sm">
