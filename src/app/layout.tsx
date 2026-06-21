@@ -7,7 +7,9 @@ import { DotNav } from "@/components/ui/DotNav";
 import { CustomCursor } from "@/components/ui/CustomCursor";
 import { ScrollProgress } from "@/components/ui/ScrollProgress";
 import { AmbientOrbs } from "@/components/ui/AmbientOrbs";
-import { heroData } from "@/content/hero";
+
+import { constructMetadata } from "@/lib/seo/metadata";
+import { generatePersonSchema, generateWebsiteSchema } from "@/lib/seo/schema";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -19,24 +21,14 @@ const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: "Rohan | Fullstack Developer",
-  description: "Portfolio of Rohan, a Fullstack Developer specializing in modern web technologies.",
-};
+export const metadata: Metadata = constructMetadata();
 
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const personSchema = {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    name: heroData.name,
-    jobTitle: heroData.title,
-    url: "https://rohan-portfolio.vercel.app",
-    sameAs: ["https://github.com/rohandev19"],
-  };
+  const schemas = [generatePersonSchema(), generateWebsiteSchema()];
 
   return (
     <html lang="en" className="scroll-smooth">
@@ -66,7 +58,7 @@ export default function RootLayout({
       >
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas) }}
         />
         <ClientProviders>
           <AmbientOrbs />

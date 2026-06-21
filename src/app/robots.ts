@@ -1,12 +1,12 @@
-import { MetadataRoute } from 'next';
+import { MetadataRoute } from "next";
 
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = 'https://rohan-portfolio.vercel.app'; // Placeholder domain
+  const baseUrl = "https://rohandev19.github.io";
 
   return {
     rules: {
-      userAgent: '*',
-      allow: '/',
+      userAgent: "*",
+      allow: "/",
     },
     sitemap: `${baseUrl}/sitemap.xml`,
   };
