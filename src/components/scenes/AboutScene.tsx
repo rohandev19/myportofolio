@@ -5,6 +5,7 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { aboutData } from "@/content/about";
 import { InteractiveButton } from "../ui/InteractiveButton";
+import { GitHubDashboard } from "../features/github/Dashboard";
 
 export function AboutScene() {
   const containerRef = useRef<HTMLElement>(null);
@@ -99,6 +100,10 @@ export function AboutScene() {
             {/* Optional inner content for the blob like a photo or geometric pattern */}
           </div>
         </div>
+      </div>
+
+      <div className="max-w-7xl mx-auto w-full mt-20 relative z-10">
+        <GitHubDashboard />
       </div>
     </section>
   );
