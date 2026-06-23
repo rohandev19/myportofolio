@@ -2,7 +2,6 @@
 
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
 import { aboutData } from "@/content/about";
 import { InteractiveButton } from "../ui/InteractiveButton";
 import { GitHubDashboard } from "../features/github/Dashboard";
