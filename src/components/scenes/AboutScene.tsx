@@ -5,6 +5,17 @@ import gsap from "gsap";
 import { aboutData } from "@/content/about";
 import { InteractiveButton } from "../ui/InteractiveButton";
 import { GitHubDashboard } from "../features/github/Dashboard";
+import dynamic from "next/dynamic";
+
+const CodePlayground = dynamic(
+  () => import("../features/playground/CodePlayground").then((mod) => mod.CodePlayground),
+  {
+    loading: () => (
+      <div className="h-[400px] w-full bg-[#0F172A] rounded-xl border border-[var(--color-border)] animate-pulse"></div>
+    ),
+    ssr: false,
+  }
+);
 
 export function AboutScene() {
   const containerRef = useRef<HTMLElement>(null);
@@ -103,6 +114,10 @@ export function AboutScene() {
 
       <div className="max-w-7xl mx-auto w-full mt-20 relative z-10">
         <GitHubDashboard />
+      </div>
+
+      <div className="max-w-7xl mx-auto w-full mt-20 relative z-10">
+        <CodePlayground />
       </div>
     </section>
   );
