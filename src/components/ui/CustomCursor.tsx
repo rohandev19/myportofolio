@@ -89,11 +89,11 @@ export function CustomCursor() {
     <>
       <div
         ref={cursorRef}
-        className="fixed top-0 left-0 w-2 h-2 bg-[#38BDF8] rounded-full pointer-events-none z-[100] mix-blend-screen hidden md:block"
+        className="fixed top-0 left-0 w-2 h-2 bg-[#38BDF8] rounded-full pointer-events-none z-[100] hidden md:block"
       />
       <div
         ref={followerRef}
-        className="fixed top-0 left-0 w-8 h-8 border border-[#38BDF8]/50 bg-[#38BDF8]/10 rounded-full pointer-events-none z-[99] transition-opacity mix-blend-screen hidden md:block"
+        className="fixed top-0 left-0 w-8 h-8 border border-[#38BDF8]/50 bg-[#38BDF8]/10 rounded-full pointer-events-none z-[99] transition-opacity hidden md:block"
       />
     </>
   );
