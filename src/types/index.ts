@@ -33,7 +33,43 @@ export type {
 } from "./analytics.types";
 
 // Blog types
-export type { ArticleFrontmatter, ArticleMetadata, Article } from "./blog.types";
+export type {
+  ArticleFrontmatter,
+  ArticleMetadata,
+  Article,
+  TOCItem,
+  SearchFilter,
+  SearchResult,
+} from "./blog.types";
+
+// Case Study types
+export type {
+  TechCategory,
+  CaseStudyImage,
+  TechStackItem,
+  Testimonial,
+  GitHubStats,
+  CaseStudySection,
+  CaseStudy,
+  RelatedProject,
+} from "./case-study.types";
+
+// Dashboard types
+export type {
+  WebVitalName,
+  MetricRating,
+  DateRange,
+  ExportFormat,
+  WebVitalThreshold,
+  WebVitalMetric,
+  PageViewData,
+  TopPage,
+  VisitorInsight,
+  PerformanceTimelinePoint,
+  DateRangeFilter,
+  AnalyticsExportData,
+  DashboardState,
+} from "./dashboard.types";
 
 // API types
 export type {

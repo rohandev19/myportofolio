@@ -1,0 +1,133 @@
+---
+title: "Building Scalable React Applications with Next.js 15"
+description: "A deep dive into modern patterns for building performant, scalable web applications using Next.js 15, React Server Components, and the App Router."
+date: "2026-07-15"
+tags: ["Next.js", "React", "Performance", "TypeScript"]
+author: "Rohan"
+coverImage: "/images/blog/nextjs-scalable.jpg"
+coverImageAlt: "Abstract visualization of a scalable web architecture"
+category: "Web Development"
+featured: true
+draft: false
+---
+
+## Introduction
+
+Building scalable web applications requires careful consideration of architecture, performance, and developer experience. Next.js 15 brings powerful new features that make this easier than ever.
+
+In this article, we'll explore the key patterns and best practices for building production-ready applications.
+
+## Server Components: The Game Changer
+
+React Server Components (RSC) fundamentally change how we think about rendering. Instead of shipping JavaScript to the client for every component, RSC allows us to render components entirely on the server.
+
+### Benefits of Server Components
+
+- **Reduced Bundle Size**: Server components don't add to the client-side JavaScript bundle
+- **Direct Database Access**: Query your database directly without API routes
+- **Improved SEO**: Content is rendered on the server for better indexing
+- **Faster Initial Load**: Less JavaScript means faster Time to Interactive
+
+### When to Use Client Components
+
+Not everything should be a server component. Use client components when you need:
+
+1. **Interactivity** — onClick, onChange handlers
+2. **Browser APIs** — localStorage, window, navigator
+3. **State Management** — useState, useReducer, context
+4. **Effects** — useEffect for side effects
+
+## Performance Optimization Strategies
+
+### Image Optimization
+
+Next.js provides the `Image` component with built-in optimization:
+
+```tsx
+import Image from 'next/image';
+
+export function HeroImage() {
+  return (
+    <Image
+      src="/hero.webp"
+      alt="Hero banner"
+      width={1200}
+      height={630}
+      priority
+      sizes="100vw"
+    />
+  );
+}
+```
+
+### Code Splitting and Lazy Loading
+
+Use dynamic imports to split your bundle:
+
+```typescript
+import dynamic from 'next/dynamic';
+
+const HeavyChart = dynamic(() => import('./Chart'), {
+  loading: () => <ChartSkeleton />,
+  ssr: false,
+});
+```
+
+### Caching Strategies
+
+Next.js 15 provides granular caching control:
+
+```typescript
+// Revalidate every hour
+export const revalidate = 3600;
+
+// On-demand revalidation
+import { revalidateTag } from 'next/cache';
+revalidateTag('blog-posts');
+```
+
+## Data Fetching Patterns
+
+### Parallel Data Fetching
+
+Avoid waterfall requests by fetching data in parallel:
+
+```typescript
+async function Dashboard() {
+  const [stats, posts, users] = await Promise.all([
+    getStats(),
+    getPosts(),
+    getUsers(),
+  ]);
+
+  return <DashboardView stats={stats} posts={posts} users={users} />;
+}
+```
+
+### Streaming with Suspense
+
+Use Suspense boundaries for progressive loading:
+
+```tsx
+import { Suspense } from 'react';
+
+export default function Page() {
+  return (
+    <main>
+      <h1>Dashboard</h1>
+      <Suspense fallback={<StatsSkeleton />}>
+        <StatsSection />
+      </Suspense>
+      <Suspense fallback={<ChartSkeleton />}>
+        <ChartSection />
+      </Suspense>
+    </main>
+  );
+}
+```
+
+## Conclusion
+
+Next.js 15 provides an excellent foundation for building scalable applications. By leveraging Server Components, proper caching strategies, and modern data fetching patterns, you can build applications that are both fast and maintainable.
+
+The key is to start simple and optimize progressively — measure first, then optimize where it matters most.
