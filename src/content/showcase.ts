@@ -13,6 +13,7 @@ export interface Project {
   image?: string;
   link?: string;
   github?: string;
+  slug?: string;
   techStack: string[];
   featured?: boolean;
 }
@@ -29,6 +30,7 @@ export const showcaseData: Project[] = [
       "QR Code & GPS attendance tracking",
     ],
     link: "https://operation.hamada-logistic.com",
+    slug: "ecommerce-platform",
     techStack: ["Next.js", "React Native", "PostgreSQL", "Prisma"],
     featured: true,
   },

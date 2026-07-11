@@ -127,6 +127,13 @@ export function HeroScene() {
           >
             {heroData.cta.secondary}
           </InteractiveButton>
+          <InteractiveButton
+            as="a"
+            href="/blog"
+            className="hero-cta opacity-0 px-8 py-3 bg-white/5 backdrop-blur-md border border-[var(--color-accent-violet)]/40 text-[var(--color-accent-violet)] font-semibold rounded-lg hover:bg-[var(--color-accent-violet)]/10 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-[var(--color-accent-violet)]"
+          >
+            Read Blog
+          </InteractiveButton>
         </div>
       </div>
 

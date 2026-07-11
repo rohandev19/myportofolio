@@ -15,6 +15,7 @@ import type { Command } from "@/types/command-palette.types";
 export function createCommandRegistry(actions: {
   scrollToSection: (sectionId: string) => void;
   setTheme: (theme: "dark" | "light" | "system") => void;
+  navigateTo?: (path: string) => void;
 }): Command[] {
   return [
     // --- Navigation Commands ---
@@ -73,6 +74,22 @@ export function createCommandRegistry(actions: {
       category: "navigation",
       keywords: ["contact", "email", "message", "reach"],
       action: () => actions.scrollToSection("contact"),
+    },
+    {
+      id: "nav-blog",
+      label: "Go to Blog",
+      description: "Read my latest articles and thoughts",
+      category: "navigation",
+      keywords: ["blog", "articles", "writing", "posts", "read"],
+      action: () => actions.navigateTo?.("/blog"),
+    },
+    {
+      id: "nav-analytics",
+      label: "Go to Analytics",
+      description: "View website performance metrics",
+      category: "navigation",
+      keywords: ["analytics", "metrics", "dashboard", "stats", "performance"],
+      action: () => actions.navigateTo?.("/dashboard/analytics"),
     },
 
     // --- Settings Commands ---

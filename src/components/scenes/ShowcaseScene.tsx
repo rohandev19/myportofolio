@@ -13,6 +13,7 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { Flip } from "gsap/Flip";
 import Image from "next/image";
+import Link from "next/link";
 import { rgbDataURL } from "@/lib/utils/image";
 import { showcaseData, showcaseCategories, type ProjectCategory } from "@/content/showcase";
 import { TiltCard } from "../ui/TiltCard";
@@ -244,12 +245,20 @@ function ShowcaseContent() {
 
                   <div className="pt-4 border-t border-[var(--color-border)] flex justify-between items-center">
                     <div className="flex gap-4">
+                      {project.slug && (
+                        <Link
+                          href={`/projects/${project.slug}`}
+                          className="text-[var(--color-accent-blue)] font-semibold hover:text-[var(--color-text-primary)] transition-colors flex items-center gap-1 focus:outline-none"
+                        >
+                          Case Study <span>↗</span>
+                        </Link>
+                      )}
                       {project.link && (
                         <a
                           href={project.link}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-[var(--color-accent-blue)] font-semibold hover:text-[var(--color-text-primary)] transition-colors flex items-center gap-1 focus:outline-none"
+                          className={`${project.slug ? "text-[var(--color-text-secondary)]" : "text-[var(--color-accent-blue)]"} font-semibold hover:text-[var(--color-text-primary)] transition-colors flex items-center gap-1 focus:outline-none`}
                         >
                           View Site <span>↗</span>
                         </a>
