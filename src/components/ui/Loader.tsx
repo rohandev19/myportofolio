@@ -2,15 +2,13 @@
 
 import { useEffect, useState, useRef } from "react";
 import gsap from "gsap";
+import { useAppGlobal } from "@/components/ClientProviders";
 
-interface LoaderProps {
-  onComplete: () => void;
-}
-
-export function Loader({ onComplete }: LoaderProps) {
+export function Loader() {
   const [shouldShow, setShouldShow] = useState(true);
   const loaderRef = useRef<HTMLDivElement>(null);
   const textRef = useRef<HTMLDivElement>(null);
+  const { setIsReady } = useAppGlobal();
 
   useEffect(() => {
     const hasVisited = sessionStorage.getItem("visited");
@@ -19,7 +17,7 @@ export function Loader({ onComplete }: LoaderProps) {
     if (hasVisited || prefersReducedMotion) {
       // eslint-disable-next-line react-hooks/set-state-in-effect
       setShouldShow(false);
-      onComplete();
+      setIsReady(true);
       sessionStorage.setItem("visited", "true");
       return;
     }
@@ -30,7 +28,7 @@ export function Loader({ onComplete }: LoaderProps) {
       const tl = gsap.timeline({
         onComplete: () => {
           setShouldShow(false);
-          onComplete();
+          setIsReady(true);
         },
       });
 
@@ -55,7 +53,7 @@ export function Loader({ onComplete }: LoaderProps) {
     }, loaderRef);
 
     return () => ctx.revert();
-  }, [onComplete]);
+  }, [setIsReady]);
 
   if (!shouldShow) return null;
 

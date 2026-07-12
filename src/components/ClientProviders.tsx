@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, ReactNode } from "react";
+import { useEffect, ReactNode, createContext, useContext, useState } from "react";
 import Lenis from "lenis";
 import { ErrorBoundary } from "react-error-boundary";
 import { GlobalErrorFallback } from "./error-boundaries/GlobalErrorBoundary";
@@ -9,11 +9,25 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
+interface AppGlobalContextType {
+  isReady: boolean;
+  setIsReady: (val: boolean) => void;
+}
+
+const AppGlobalContext = createContext<AppGlobalContextType>({
+  isReady: false,
+  setIsReady: () => {},
+});
+
+export const useAppGlobal = () => useContext(AppGlobalContext);
+
 interface ClientProvidersProps {
   children: ReactNode;
 }
 
 export function ClientProviders({ children }: ClientProvidersProps) {
+  const [isReady, setIsReady] = useState(false);
+
   useEffect(() => {
     // Initialize Lenis for smooth scrolling
     const lenis = new Lenis({
@@ -40,5 +54,9 @@ export function ClientProviders({ children }: ClientProvidersProps) {
     };
   }, []);
 
-  return <ErrorBoundary FallbackComponent={GlobalErrorFallback}>{children}</ErrorBoundary>;
+  return (
+    <AppGlobalContext.Provider value={{ isReady, setIsReady }}>
+      <ErrorBoundary FallbackComponent={GlobalErrorFallback}>{children}</ErrorBoundary>
+    </AppGlobalContext.Provider>
+  );
 }

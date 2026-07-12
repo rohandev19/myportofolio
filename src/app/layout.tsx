@@ -4,6 +4,7 @@ import "./globals.css";
 import { ClientProviders } from "@/components/ClientProviders";
 import { SkipToContent } from "@/components/ui/SkipToContent";
 import { DotNav } from "@/components/ui/DotNav";
+import { heroData } from "@/content/hero";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -25,11 +26,24 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const personSchema = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: heroData.name,
+    jobTitle: heroData.title,
+    url: "https://rohan-portfolio.vercel.app",
+    sameAs: ["https://github.com/rohandev19"],
+  };
+
   return (
     <html lang="en" className="scroll-smooth">
       <body
         className={`${inter.variable} ${jetbrainsMono.variable} antialiased bg-[#070B14] text-[#F8FAFC]`}
       >
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
+        />
         <ClientProviders>
           <SkipToContent />
           <DotNav />
