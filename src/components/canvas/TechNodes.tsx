@@ -24,6 +24,7 @@ export function TechNodes() {
           (Math.random() - 0.5) * 5
         ),
         speed: (Math.random() * 0.02 + 0.01) * (Math.random() > 0.5 ? 1 : -1),
+        timeOffset: Math.random() * Math.PI * 2,
       };
     });
   });
@@ -51,6 +52,7 @@ interface NodeData {
   isPrimary: boolean;
   position: THREE.Vector3;
   speed: number;
+  timeOffset: number;
 }
 
 function TechNode({ node }: { node: NodeData }) {
@@ -58,7 +60,10 @@ function TechNode({ node }: { node: NodeData }) {
 
   useFrame(() => {
     if (meshRef.current) {
-      meshRef.current.position.y += Math.sin(Date.now() * 0.001 * Math.abs(node.speed)) * 0.01;
+      // Calculate absolute position rather than adding delta to prevent drifting
+      meshRef.current.position.y =
+        node.position.y +
+        Math.sin(Date.now() * 0.001 * Math.abs(node.speed) * 10 + node.timeOffset) * 0.5;
     }
   });
 
