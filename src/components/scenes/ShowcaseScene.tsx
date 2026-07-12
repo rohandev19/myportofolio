@@ -30,7 +30,7 @@ export function ShowcaseScene() {
   }, []);
 
   return (
-    <section id="showcase" ref={containerRef} className="w-full py-24 px-4 md:px-8 bg-[#070B14]">
+    <section id="projects" ref={containerRef} className="w-full py-24 px-4 md:px-8 bg-[#070B14]">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-5xl font-bold text-[#F8FAFC] mb-4">Showcase</h2>
