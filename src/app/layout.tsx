@@ -4,6 +4,8 @@ import "./globals.css";
 import { ClientProviders } from "@/components/ClientProviders";
 import { SkipToContent } from "@/components/ui/SkipToContent";
 import { DotNav } from "@/components/ui/DotNav";
+import { CustomCursor } from "@/components/ui/CustomCursor";
+import { ScrollProgress } from "@/components/ui/ScrollProgress";
 import { heroData } from "@/content/hero";
 
 const inter = Inter({
@@ -45,6 +47,8 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
         />
         <ClientProviders>
+          <ScrollProgress />
+          <CustomCursor />
           <SkipToContent />
           <DotNav />
           {children}
