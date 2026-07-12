@@ -65,7 +65,7 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
   const related = getRelatedProjects(project, allProjects, 3);
 
   return (
-    <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20">
+    <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-12 md:pt-32 md:pb-20">
       {/* Header */}
       <header className="mb-16 text-center">
         <div className="inline-block px-3 py-1 mb-6 text-xs font-semibold tracking-wider text-[var(--color-accent-cyan)] uppercase bg-[var(--color-accent-cyan)]/10 rounded-full border border-[var(--color-accent-cyan)]/20">
