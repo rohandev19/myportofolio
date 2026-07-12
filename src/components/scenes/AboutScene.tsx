@@ -1,0 +1,96 @@
+"use client";
+
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { aboutData } from "@/content/about";
+
+export function AboutScene() {
+  const containerRef = useRef<HTMLElement>(null);
+  const blobRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // Reveal animation for text content
+      gsap.fromTo(
+        ".about-text",
+        { y: 50, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          stagger: 0.2,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: "top 70%",
+          },
+        }
+      );
+
+      // Morphing blob animation (using GSAP on border radius for CSS approach)
+      // We animate the border-radius property to simulate morphing
+      gsap.to(blobRef.current, {
+        borderRadius: "40% 60% 70% 30% / 40% 50% 60% 50%",
+        duration: 4,
+        ease: "sine.inOut",
+        yoyo: true,
+        repeat: -1,
+      });
+
+      gsap.to(blobRef.current, {
+        rotation: 360,
+        duration: 20,
+        ease: "linear",
+        repeat: -1,
+      });
+    }, containerRef);
+
+    return () => ctx.revert();
+  }, []);
+
+  return (
+    <section
+      id="about"
+      ref={containerRef}
+      className="min-h-screen w-full flex items-center justify-center py-20 px-4 md:px-8 relative overflow-hidden"
+    >
+      <div className="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center z-10">
+        {/* Left Col: Text */}
+        <div className="order-2 lg:order-1 flex flex-col gap-6">
+          <h2 className="about-text text-4xl md:text-5xl font-bold text-[#F8FAFC]">About Me</h2>
+          <div className="flex flex-col gap-4 text-lg text-[#94A3B8] leading-relaxed">
+            {aboutData.paragraphs.map((p, i) => (
+              <p key={i} className="about-text">
+                {p}
+              </p>
+            ))}
+          </div>
+
+          <ul className="mt-4 flex flex-col gap-3">
+            {aboutData.highlights.map((highlight, i) => (
+              <li key={i} className="about-text flex items-center gap-3">
+                <span className="w-2 h-2 rounded-full bg-[#38BDF8]" />
+                <span className="text-[#F8FAFC] font-medium">{highlight}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Right Col: Visual Blob */}
+        <div className="order-1 lg:order-2 flex items-center justify-center relative min-h-[300px] lg:min-h-[500px]">
+          <div
+            ref={blobRef}
+            className="w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 bg-gradient-to-tr from-[#38BDF8] to-[#818CF8] opacity-80 mix-blend-screen filter blur-3xl absolute"
+            style={{ borderRadius: "60% 40% 30% 70% / 60% 30% 70% 40%" }}
+          />
+          <div
+            className="w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 bg-gradient-to-bl from-[#0F172A] to-transparent border border-[#38BDF8]/30 absolute backdrop-blur-sm"
+            style={{ borderRadius: "50%" }}
+          >
+            {/* Optional inner content for the blob like a photo or geometric pattern */}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
