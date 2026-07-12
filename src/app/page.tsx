@@ -8,6 +8,7 @@ import { JourneyTimelineScene } from "@/components/scenes/JourneyTimelineScene";
 import { TechGalaxyScene } from "@/components/scenes/TechGalaxyScene";
 import { PhilosophyScene } from "@/components/scenes/PhilosophyScene";
 import { ShowcaseScene } from "@/components/scenes/ShowcaseScene";
+import { ContactScene } from "@/components/scenes/ContactScene";
 
 export default function Home() {
   const [isReady, setIsReady] = useState(false);
@@ -23,9 +24,9 @@ export default function Home() {
           <TechGalaxyScene />
           <PhilosophyScene />
           <ShowcaseScene />
+          <ContactScene />
         </>
       )}
-      {/* Scenes will be added here in future phases */}
     </main>
   );
 }
