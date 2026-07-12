@@ -3,7 +3,6 @@
 import { useRef, useMemo, useEffect, useState } from "react";
 import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
-import { techStackData } from "@/content/techstack";
 
 export function AmbientParticles() {
   const meshRef = useRef<THREE.InstancedMesh>(null);
