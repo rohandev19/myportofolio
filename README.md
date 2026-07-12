@@ -1,36 +1,54 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Rohan - Full-Stack Developer Portfolio
 
-## Getting Started
+## Overview
 
-First, run the development server:
+A high-performance, interactive personal portfolio website designed to showcase engineering capabilities, projects, and professional experience. Built with a focus on modern web architecture, interactive 3D elements, and strict security standards.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Architecture & Technology Stack
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Framework:** Next.js 15 (App Router)
+- **Styling:** Tailwind CSS v4
+- **Animations:** GSAP (GreenSock) via @gsap/react
+- **3D Rendering:** React Three Fiber (Three.js)
+- **Language:** TypeScript
+- **Code Quality:** ESLint, Prettier, Husky (Pre-commit hooks)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Key Technical Features
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Server/Client Component Separation:** Optimized rendering strategy to minimize client-side JavaScript payloads.
+- **Memory Management:** Implemented strict GSAP context cleanup and on-demand 3D frame loops to prevent memory leaks and ensure 60fps performance across devices.
+- **Security Implementations:** Integrated strict HTTP security headers including Content-Security-Policy (CSP), Strict-Transport-Security (HSTS), X-Frame-Options, and X-Content-Type-Options.
+- **SEO & Accessibility:** Embedded JSON-LD structured data (Schema.org), semantic HTML tags, and comprehensive ARIA attributes.
+- **Responsive Design:** Fluid layouts engineered for consistent user experience across mobile, tablet, and desktop interfaces.
 
-## Learn More
+## Local Development Setup
 
-To learn more about Next.js, take a look at the following resources:
+### Prerequisites
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Node.js (v18.17 or newer)
+- npm, yarn, pnpm, or bun
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Installation
 
-## Deploy on Vercel
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/rohandev19/myportofolio.git
+   cd myportofolio
+   ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Start the development server:
+   ```bash
+   npm run dev
+   ```
+4. Access the application at http://localhost:3000.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Deployment
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project is configured for seamless deployment on Vercel or any standard Node.js hosting environment supporting Next.js builds.
+
+## License
+
+Copyright (c) 2026 Muhammad Rohan. All rights reserved.
