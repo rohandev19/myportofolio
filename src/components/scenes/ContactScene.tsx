@@ -4,6 +4,7 @@ import { useRef, useState } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { contactData } from "@/content/contact";
+import { InteractiveButton } from "../ui/InteractiveButton";
 
 export function ContactScene() {
   const containerRef = useRef<HTMLElement>(null);
@@ -172,12 +173,17 @@ export function ContactScene() {
                 />
               </div>
 
-              <button
+              <InteractiveButton
                 type="submit"
-                className="mt-4 w-full bg-[#38BDF8] text-[#070B14] font-bold text-lg py-4 rounded-lg hover:bg-[#818CF8] transition-colors focus:outline-none focus:ring-2 focus:ring-[#818CF8] focus:ring-offset-2 focus:ring-offset-[#070B14]"
+                disabled={formStatus === "submitting"}
+                className="mt-4 w-full bg-[#38BDF8] text-[#070B14] font-bold text-lg py-4 rounded-lg hover:bg-[#818CF8] focus:outline-none focus:ring-2 focus:ring-[#818CF8] focus:ring-offset-2 focus:ring-offset-[#070B14] disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {formStatus === "sent" ? "✓ Message Sent!" : "Send Message"}
-              </button>
+                {formStatus === "sent"
+                  ? "✓ Message Sent!"
+                  : formStatus === "submitting"
+                    ? "Sending..."
+                    : "Send Message"}
+              </InteractiveButton>
             </form>
           </div>
         </div>

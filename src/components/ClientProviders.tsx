@@ -25,8 +25,11 @@ interface ClientProvidersProps {
   children: ReactNode;
 }
 
+import { Preloader } from "./ui/Preloader";
+
 export function ClientProviders({ children }: ClientProvidersProps) {
   const [isReady, setIsReady] = useState(false);
+  const [showPreloader, setShowPreloader] = useState(true);
 
   useEffect(() => {
     // Initialize Lenis for smooth scrolling
@@ -56,7 +59,10 @@ export function ClientProviders({ children }: ClientProvidersProps) {
 
   return (
     <AppGlobalContext.Provider value={{ isReady, setIsReady }}>
-      <ErrorBoundary FallbackComponent={GlobalErrorFallback}>{children}</ErrorBoundary>
+      <ErrorBoundary FallbackComponent={GlobalErrorFallback}>
+        {showPreloader && <Preloader onComplete={() => setShowPreloader(false)} />}
+        {children}
+      </ErrorBoundary>
     </AppGlobalContext.Provider>
   );
 }

@@ -2,7 +2,9 @@
 
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 import { aboutData } from "@/content/about";
+import { InteractiveButton } from "../ui/InteractiveButton";
 
 export function AboutScene() {
   const containerRef = useRef<HTMLElement>(null);
@@ -59,11 +61,12 @@ export function AboutScene() {
           </ul>
 
           <div className="about-text mt-8">
-            <a
+            <InteractiveButton
+              as="a"
               href="/cv.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-[#1E293B] text-[#F8FAFC] font-medium rounded-lg hover:bg-[#38BDF8] hover:text-[#070B14] transition-all focus:outline-none focus:ring-2 focus:ring-[#38BDF8]"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-[#1E293B] text-[#F8FAFC] font-medium rounded-lg hover:bg-[#38BDF8] hover:text-[#070B14] transition-colors focus:outline-none focus:ring-2 focus:ring-[#38BDF8]"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -81,7 +84,7 @@ export function AboutScene() {
                 <line x1="12" x2="12" y1="15" y2="3" />
               </svg>
               Download CV
-            </a>
+            </InteractiveButton>
           </div>
         </div>
 
