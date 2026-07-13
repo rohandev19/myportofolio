@@ -1,17 +1,26 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { heroData } from "@/content/hero";
 import { SplitText } from "@/components/ui/SplitText";
 import { InteractiveButton } from "../ui/InteractiveButton";
 import { useAppGlobal } from "@/components/ClientProviders";
+import Lottie from "lottie-react";
 
 export function HeroScene() {
   const containerRef = useRef<HTMLElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const { isReady } = useAppGlobal();
+  const [animationData, setAnimationData] = useState<unknown>(null);
+
+  useEffect(() => {
+    fetch("/waving-baymax.json")
+      .then((res) => res.json())
+      .then((data) => setAnimationData(data))
+      .catch((err) => console.error("Error loading Baymax animation:", err));
+  }, []);
 
   useGSAP(
     () => {
@@ -86,11 +95,13 @@ export function HeroScene() {
       <div className="z-10 text-center max-w-4xl relative">
         {/* Robot Element */}
         <div className="absolute -top-16 -right-12 md:-top-24 md:-right-32 w-40 h-48 md:w-56 md:h-64 robot-container z-0 origin-top pointer-events-none">
-          <img
-            src="/BAYMAX.png"
-            alt="Baymax"
-            className="w-full h-full object-contain drop-shadow-[0_10px_20px_rgba(56,189,248,0.3)]"
-          />
+          {animationData && (
+            <Lottie
+              animationData={animationData}
+              loop={true}
+              className="w-full h-full drop-shadow-[0_10px_20px_rgba(56,189,248,0.3)]"
+            />
+          )}
         </div>
 
         <h1 className="text-5xl md:text-7xl lg:text-8xl font-black mb-4 tracking-tighter relative z-10">
