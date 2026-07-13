@@ -44,13 +44,25 @@ export function CustomCursor() {
     };
 
     const handleMouseEnter = () => {
-      gsap.to(cursor, { scale: 1.5, duration: 0.3 });
-      gsap.to(follower, { scale: 1.5, opacity: 0.2, duration: 0.3 });
+      gsap.to(cursor, { scale: 0, opacity: 0, duration: 0.2 });
+      gsap.to(follower, {
+        scale: 2.5,
+        backgroundColor: "rgba(56, 189, 248, 0.15)",
+        borderColor: "rgba(56, 189, 248, 0.8)",
+        duration: 0.3,
+        ease: "power2.out",
+      });
     };
 
     const handleMouseLeave = () => {
-      gsap.to(cursor, { scale: 1, duration: 0.3 });
-      gsap.to(follower, { scale: 1, opacity: 0.5, duration: 0.3 });
+      gsap.to(cursor, { scale: 1, opacity: 1, duration: 0.2 });
+      gsap.to(follower, {
+        scale: 1,
+        backgroundColor: "rgba(56, 189, 248, 0.1)",
+        borderColor: "rgba(56, 189, 248, 0.5)",
+        duration: 0.3,
+        ease: "power2.out",
+      });
     };
 
     window.addEventListener("mousemove", moveCursor);

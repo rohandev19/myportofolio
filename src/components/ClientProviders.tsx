@@ -27,6 +27,8 @@ interface ClientProvidersProps {
 
 import { Preloader } from "./ui/Preloader";
 
+import { CustomCursor } from "./ui/CustomCursor";
+
 export function ClientProviders({ children }: ClientProvidersProps) {
   const [isReady, setIsReady] = useState(false);
   const [showPreloader, setShowPreloader] = useState(true);
