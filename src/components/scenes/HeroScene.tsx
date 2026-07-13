@@ -68,21 +68,7 @@ export function HeroScene() {
           { y: 20, opacity: 0 },
           { y: 0, opacity: 1, duration: 0.6, stagger: 0.1, ease: "power2.out" },
           "-=0.8"
-        )
-        .add(() => {
-          // Continuous random floating animation
-          const floatBaymax = () => {
-            gsap.to(".robot-container", {
-              x: "random(-15, 15)",
-              y: "random(-15, 15)",
-              rotate: "random(-5, 5)",
-              duration: "random(2, 4)",
-              ease: "sine.inOut",
-              onComplete: floatBaymax,
-            });
-          };
-          floatBaymax();
-        });
+        );
     },
     { scope: containerRef, dependencies: [isReady] }
   );
