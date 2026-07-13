@@ -30,7 +30,7 @@ export const showcaseData: Project[] = [
       "QR Code & GPS attendance tracking",
     ],
     link: "https://operation.hamada-logistic.com",
-    slug: "ecommerce-platform",
+    slug: "hamada-logistic",
     techStack: ["Next.js", "React Native", "PostgreSQL", "Prisma"],
     featured: true,
   },

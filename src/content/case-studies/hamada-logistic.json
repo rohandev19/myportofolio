@@ -1,0 +1,84 @@
+{
+  "slug": "hamada-logistic",
+  "title": "Hamada Operations Platform",
+  "description": "A comprehensive logistics and operations dashboard for Hamada Logistic, featuring real-time tracking, offline-first mobile synchronization, and predictive vehicle maintenance.",
+  "category": "System",
+  "role": "Full-Stack Developer",
+  "client": "Hamada Logistic",
+  "publishedAt": "2026-06-15T10:00:00Z",
+  "coverImage": {
+    "src": "/images/case-studies/ecommerce-cover.jpg",
+    "alt": "Hamada Operations dashboard screenshot"
+  },
+  "sections": {
+    "problem": {
+      "title": "The Challenge",
+      "content": "Hamada Logistic was relying on a legacy system that struggled to handle real-time synchronization between their mobile fleet and the central dispatch. Poor internet connectivity in rural areas caused data loss, and the dispatchers lacked visibility into real-time vehicle status and predictive maintenance needs.\n\nKey technical debt included:\n- No offline support for drivers in remote areas\n- Manual, paper-based attendance and vehicle checks\n- A fragmented architecture that caused frequent downtime"
+    },
+    "solution": {
+      "title": "Our Approach",
+      "content": "We built a unified operations platform from the ground up, utilizing Next.js for the administrative dashboard and React Native for the driver app.\n\n### Key Architectural Decisions:\n1. **Offline-First Synchronization**: Implemented WatermelonDB on the mobile client to allow drivers to submit reports and attendance offline, syncing automatically when connectivity is restored.\n2. **Real-time Dispatching**: Used WebSockets to instantly update the admin dashboard when a vehicle's status changes.\n3. **Modern Tech Stack**: Transitioned to Next.js and Prisma with PostgreSQL for a robust, type-safe backend capable of handling high transactional volume.\n4. **QR Code Integration**: Integrated a QR-based system for instant vehicle check-ins and driver attendance."
+    },
+    "impact": {
+      "title": "Business Impact",
+      "content": "The new Hamada Operations Platform dramatically increased operational efficiency. Dispatchers now have 100% real-time visibility into fleet operations, and data loss from offline drivers has been completely eliminated."
+    },
+    "results": {
+      "title": "Key Results",
+      "content": "- **100% elimination** of data loss in rural areas\n- **30% reduction** in vehicle downtime through predictive maintenance tracking\n- **Automated** attendance and check-in for over 200 drivers daily\n- **Sub-second** dashboard load times for admin staff"
+    }
+  },
+  "techStack": [
+    {
+      "name": "Next.js",
+      "category": "Frontend",
+      "explanation": "Admin dashboard framework for fast, server-rendered views."
+    },
+    {
+      "name": "React Native",
+      "category": "Mobile",
+      "explanation": "Cross-platform mobile application for fleet drivers."
+    },
+    {
+      "name": "PostgreSQL",
+      "category": "Database",
+      "explanation": "Primary relational database for robust data integrity."
+    },
+    {
+      "name": "Prisma",
+      "category": "Backend",
+      "explanation": "Type-safe ORM for database interaction."
+    },
+    {
+      "name": "WebSockets",
+      "category": "Backend",
+      "explanation": "Real-time updates for dispatchers."
+    }
+  ],
+  "images": [
+    {
+      "src": "/images/case-studies/ecommerce-1.jpg",
+      "alt": "Operations dashboard showing real-time fleet status",
+      "caption": "The central dispatcher dashboard displaying real-time metrics"
+    },
+    {
+      "src": "/images/case-studies/ecommerce-2.jpg",
+      "alt": "Mobile app offline check-in interface",
+      "caption": "Driver mobile app with offline-first capabilities"
+    }
+  ],
+  "testimonials": [
+    {
+      "quote": "The new platform has completely transformed how we manage our fleet. The offline capabilities mean our drivers are never blocked, and dispatch is always informed.",
+      "name": "Operations Manager",
+      "role": "Head of Dispatch",
+      "company": "Hamada Logistic"
+    }
+  ],
+  "tags": ["Next.js", "React Native", "Logistics", "Offline-First"],
+  "links": {
+    "live": "https://operation.hamada-logistic.com/admin/login",
+    "github": "https://github.com/rohandev19/myportofolio"
+  },
+  "featured": true
+}
