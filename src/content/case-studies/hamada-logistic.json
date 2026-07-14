@@ -1,10 +1,10 @@
 {
   "slug": "hamada-logistic",
   "title": "Hamada Operations Platform",
-  "description": "A comprehensive logistics and operations dashboard for Hamada Logistic, featuring real-time tracking, offline-first mobile synchronization, and predictive vehicle maintenance.",
+  "description": "A web-based operations and logistics dashboard for PT Hamada Global Jaya, designed to manage fleet logistics, user administration, and operational tracking efficiently.",
   "category": "System",
   "role": "Full-Stack Developer",
-  "client": "Hamada Logistic",
+  "client": "PT Hamada Global Jaya",
   "publishedAt": "2026-06-15T10:00:00Z",
   "coverImage": {
     "src": "/images/case-studies/ecommerce-cover.jpg",
@@ -13,46 +13,46 @@
   "sections": {
     "problem": {
       "title": "The Challenge",
-      "content": "Hamada Logistic was relying on a legacy system that struggled to handle real-time synchronization between their mobile fleet and the central dispatch. Poor internet connectivity in rural areas caused data loss, and the dispatchers lacked visibility into real-time vehicle status and predictive maintenance needs.\n\nKey technical debt included:\n- No offline support for drivers in remote areas\n- Manual, paper-based attendance and vehicle checks\n- A fragmented architecture that caused frequent downtime"
+      "content": "PT Hamada Global Jaya required a robust administrative dashboard to manage complex logistics operations, track fleet activities, and monitor employee access. They needed a reliable solution hosted securely with high availability and quick loading times to ensure smooth day-to-day operations."
     },
     "solution": {
       "title": "Our Approach",
-      "content": "We built a unified operations platform from the ground up, utilizing Next.js for the administrative dashboard and React Native for the driver app.\n\n### Key Architectural Decisions:\n1. **Offline-First Synchronization**: Implemented WatermelonDB on the mobile client to allow drivers to submit reports and attendance offline, syncing automatically when connectivity is restored.\n2. **Real-time Dispatching**: Used WebSockets to instantly update the admin dashboard when a vehicle's status changes.\n3. **Modern Tech Stack**: Transitioned to Next.js and Prisma with PostgreSQL for a robust, type-safe backend capable of handling high transactional volume.\n4. **QR Code Integration**: Integrated a QR-based system for instant vehicle check-ins and driver attendance."
+      "content": "We built a customized administrative portal using a solid LAMP-stack approach optimized for performance and ease of use.\n\n### Key Architectural Decisions:\n1. **PHP 8.2 Foundation**: Utilized the latest stable version of PHP for fast, server-side processing and secure database interactions.\n2. **Responsive UI**: Integrated Bootstrap and Bootstrap Icons to ensure the dashboard is fully responsive, looking great on both desktop monitors in the dispatch center and mobile devices on the go.\n3. **Optimized Delivery**: Leveraged jsDelivr CDN for rapid asset loading globally.\n4. **LiteSpeed Web Server**: Deployed on Hostinger with LiteSpeed web servers to maximize TTFB (Time to First Byte) and handle concurrent administrative users effortlessly."
     },
     "impact": {
       "title": "Business Impact",
-      "content": "The new Hamada Operations Platform dramatically increased operational efficiency. Dispatchers now have 100% real-time visibility into fleet operations, and data loss from offline drivers has been completely eliminated."
+      "content": "The transition to the new administrative platform centralized their operations, reducing administrative overhead and providing real-time oversight over logistics."
     },
     "results": {
       "title": "Key Results",
-      "content": "- **100% elimination** of data loss in rural areas\n- **30% reduction** in vehicle downtime through predictive maintenance tracking\n- **Automated** attendance and check-in for over 200 drivers daily\n- **Sub-second** dashboard load times for admin staff"
+      "content": "- **Centralized Dashboard** for managing daily logistics\n- **High Performance** powered by LiteSpeed servers\n- **Responsive Design** accessible by administrative staff anywhere\n- **Secure Authentication** system for PT Hamada Global Jaya personnel"
     }
   },
   "techStack": [
     {
-      "name": "Next.js",
+      "name": "PHP 8.2",
+      "category": "Backend",
+      "explanation": "Core server-side logic and database communication."
+    },
+    {
+      "name": "Bootstrap",
       "category": "Frontend",
-      "explanation": "Admin dashboard framework for fast, server-rendered views."
+      "explanation": "Responsive UI framework for the administrative dashboard."
     },
     {
-      "name": "React Native",
-      "category": "Mobile",
-      "explanation": "Cross-platform mobile application for fleet drivers."
+      "name": "LiteSpeed",
+      "category": "DevOps",
+      "explanation": "High-performance web server software."
     },
     {
-      "name": "PostgreSQL",
-      "category": "Database",
-      "explanation": "Primary relational database for robust data integrity."
+      "name": "Hostinger",
+      "category": "DevOps",
+      "explanation": "Reliable web hosting provider."
     },
     {
-      "name": "Prisma",
-      "category": "Backend",
-      "explanation": "Type-safe ORM for database interaction."
-    },
-    {
-      "name": "WebSockets",
-      "category": "Backend",
-      "explanation": "Real-time updates for dispatchers."
+      "name": "jsDelivr",
+      "category": "Frontend",
+      "explanation": "Content Delivery Network (CDN) for fast asset loading."
     }
   ],
   "images": [
@@ -64,18 +64,18 @@
     {
       "src": "/images/case-studies/ecommerce-2.jpg",
       "alt": "Mobile app offline check-in interface",
-      "caption": "Driver mobile app with offline-first capabilities"
+      "caption": "Responsive interface accessible on mobile devices"
     }
   ],
   "testimonials": [
     {
-      "quote": "The new platform has completely transformed how we manage our fleet. The offline capabilities mean our drivers are never blocked, and dispatch is always informed.",
-      "name": "Operations Manager",
-      "role": "Head of Dispatch",
-      "company": "Hamada Logistic"
+      "quote": "The platform has provided our administrative team with the reliable tools we need to oversee logistics operations smoothly.",
+      "name": "Admin Team",
+      "role": "PT Hamada Global Jaya",
+      "company": "PT Hamada Global Jaya"
     }
   ],
-  "tags": ["Next.js", "React Native", "Logistics", "Offline-First"],
+  "tags": ["PHP", "Bootstrap", "Logistics", "Admin Dashboard", "Hostinger"],
   "links": {
     "live": "https://operation.hamada-logistic.com/admin/login",
     "github": "https://github.com/rohandev19/myportofolio"

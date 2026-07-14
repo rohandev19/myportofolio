@@ -31,7 +31,7 @@ export const showcaseData: Project[] = [
     ],
     link: "https://operation.hamada-logistic.com",
     slug: "hamada-logistic",
-    techStack: ["Next.js", "React Native", "PostgreSQL", "Prisma"],
+    techStack: ["PHP", "Bootstrap", "LiteSpeed", "Hostinger"],
     featured: true,
   },
   {
