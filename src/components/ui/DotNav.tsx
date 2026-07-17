@@ -39,7 +39,7 @@ export function DotNav() {
     });
 
     return () => observer.disconnect();
-  }, []);
+  }, [pathname]);
 
   const scrollTo = (id: string) => {
     const element = document.getElementById(id);
