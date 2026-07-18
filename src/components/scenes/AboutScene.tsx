@@ -100,14 +100,24 @@ export function AboutScene() {
           </div>
         </div>
 
-        {/* Right Col: Visual Blob */}
+        {/* Right Col: Visual Blob with Profile Image */}
         <div className="order-1 lg:order-2 flex items-center justify-center relative min-h-[300px] lg:min-h-[500px]">
+          {/* Glowing background blob */}
           <div
             ref={blobRef}
-            className="w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 bg-gradient-to-tr from-[#38BDF8] to-[#818CF8] opacity-80 mix-blend-screen filter blur-3xl absolute animate-morph"
+            className="w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 bg-gradient-to-tr from-[#38BDF8] to-[#818CF8] opacity-60 mix-blend-screen filter blur-3xl absolute animate-morph"
           />
-          <div className="w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 bg-gradient-to-bl from-[#0F172A] to-transparent border border-[#38BDF8]/30 absolute backdrop-blur-sm animate-morph">
-            {/* Optional inner content for the blob like a photo or geometric pattern */}
+          {/* Foreground morphing container for the image */}
+          <div className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 bg-gradient-to-bl from-[#0F172A] to-[#1E293B] border border-[#38BDF8]/50 absolute overflow-hidden shadow-[0_0_30px_rgba(56,189,248,0.3)] animate-morph group">
+            {/* Dark overlay to match theme (Duotone effect) */}
+            <div className="absolute inset-0 bg-[#070B14]/20 mix-blend-multiply z-10 group-hover:bg-transparent transition-colors duration-500" />
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#38BDF8]/20 mix-blend-overlay z-10" />
+            
+            <img
+              src="/images/profile.jpg"
+              alt="Profile"
+              className="w-full h-full object-cover object-top filter grayscale opacity-90 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500 scale-110 group-hover:scale-100"
+            />
           </div>
         </div>
       </div>
