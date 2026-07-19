@@ -69,7 +69,10 @@ export function HeroScene() {
     >
       <div className="z-10 text-center max-w-4xl relative">
         <h1 className="text-5xl md:text-7xl lg:text-8xl font-black mb-4 tracking-tighter relative z-10">
-          <SplitText className="hero-name text-[#F8FAFC]" charClassName="char">
+          <SplitText
+            className="hero-name bg-clip-text text-transparent bg-gradient-to-b from-white to-slate-400"
+            charClassName="char"
+          >
             {heroData.name}
           </SplitText>
         </h1>
@@ -87,7 +90,7 @@ export function HeroScene() {
           </div>
           <h2
             ref={titleRef}
-            className="text-2xl md:text-3xl lg:text-4xl font-bold mb-6 text-[#38BDF8] relative z-10 origin-left inline-block"
+            className="text-2xl md:text-3xl lg:text-4xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-indigo-500 relative z-10 origin-left inline-block"
           >
             <SplitText className="hero-title" charClassName="char">
               {heroData.title}
@@ -103,22 +106,31 @@ export function HeroScene() {
           <InteractiveButton
             as="a"
             href="#projects"
-            className="hero-cta opacity-0 px-8 py-3 bg-[#38BDF8] text-[#070B14] font-semibold rounded-lg hover:bg-[#818CF8] focus:outline-none focus:ring-2 focus:ring-[#818CF8]"
+            className="hero-cta opacity-0 px-8 py-3 bg-gradient-to-r from-[#38BDF8] to-[#2563EB] text-white font-semibold rounded-lg hover:shadow-[0_0_20px_rgba(56,189,248,0.4)] transition-shadow duration-300 focus:outline-none focus:ring-2 focus:ring-[#818CF8]"
           >
             {heroData.cta.primary}
           </InteractiveButton>
           <InteractiveButton
             as="a"
             href="#contact"
-            className="hero-cta opacity-0 px-8 py-3 bg-transparent border border-[#38BDF8] text-[#38BDF8] font-semibold rounded-lg hover:bg-[#0F172A] focus:outline-none focus:ring-2 focus:ring-[#818CF8]"
+            className="hero-cta opacity-0 px-8 py-3 bg-white/5 backdrop-blur-md border border-white/10 text-white font-semibold rounded-lg hover:bg-white/10 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-white/20"
           >
             {heroData.cta.secondary}
           </InteractiveButton>
         </div>
       </div>
 
-      {/* Background ambient element placeholder */}
-      <div className="absolute inset-0 z-0 bg-gradient-to-b from-transparent to-[#070B14] opacity-50" />
+      {/* Background ambient glows and grid */}
+      <div className="absolute inset-0 z-0 bg-gradient-to-b from-transparent to-[#070B14] opacity-80 pointer-events-none" />
+      <div
+        className="absolute inset-0 z-0 opacity-[0.03] pointer-events-none"
+        style={{
+          backgroundImage: "radial-gradient(#ffffff 1px, transparent 1px)",
+          backgroundSize: "32px 32px",
+        }}
+      />
+      <div className="absolute top-1/4 left-1/4 w-64 h-64 md:w-[500px] md:h-[500px] bg-cyan-500/20 rounded-full blur-[120px] pointer-events-none -z-10" />
+      <div className="absolute bottom-1/4 right-1/4 w-64 h-64 md:w-[600px] md:h-[600px] bg-indigo-500/10 rounded-full blur-[150px] pointer-events-none -z-10" />
     </section>
   );
 }
