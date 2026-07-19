@@ -32,7 +32,7 @@ export default function RootLayout({
   const schemas = [generatePersonSchema(), generateWebsiteSchema()];
 
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <head>
         {/* Anti-flash theme script - runs before first paint */}
         <script
