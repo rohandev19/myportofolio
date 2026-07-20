@@ -112,9 +112,9 @@ export function AboutScene() {
             {/* Dark overlay to match theme (Duotone effect) */}
             <div className="absolute inset-0 bg-[#070B14]/20 mix-blend-multiply z-10 group-hover:bg-transparent transition-colors duration-500" />
             <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#38BDF8]/20 mix-blend-overlay z-10" />
-            
+
             <img
-              src="/images/profile.jpg"
+              src="/images/profile.jpeg"
               alt="Profile"
               className="w-full h-full object-cover object-top filter grayscale opacity-90 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500 scale-110 group-hover:scale-100"
             />
