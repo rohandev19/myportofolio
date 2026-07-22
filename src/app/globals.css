@@ -21,9 +21,9 @@
   --color-text-primary: #f8fafc;
   --color-text-secondary: #94a3b8;
   --color-text-tertiary: #64748b;
-  --color-accent-blue: #38bdf8;
-  --color-accent-violet: #818cf8;
-  --color-accent-green: #34d399;
+  --color-accent-blue: #e2e8f0; /* Silver / Light Slate */
+  --color-accent-violet: #94a3b8; /* Darker Silver / Slate 400 */
+  --color-accent-green: #10b981;
   --color-accent-red: #f87171;
   --color-accent-yellow: #fbbf24;
   --color-border: #334155;
