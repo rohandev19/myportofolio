@@ -64,7 +64,7 @@ export function Loader() {
     >
       <div
         ref={textRef}
-        className="opacity-0 translate-y-4 font-mono text-xl md:text-2xl font-bold tracking-widest text-[#38BDF8]"
+        className="opacity-0 translate-y-4 font-mono text-xl md:text-2xl font-bold tracking-widest text-[#E2E8F0]"
       >
         Initializing...
       </div>

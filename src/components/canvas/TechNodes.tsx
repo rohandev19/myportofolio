@@ -103,7 +103,7 @@ function TechNode({ node }: { node: NodeData }) {
               className="object-contain filter drop-shadow-[0_0_10px_rgba(56,189,248,0.5)]"
             />
           ) : (
-            <div className="px-3 py-1.5 rounded-lg whitespace-nowrap select-none bg-[#070B14]/60 border border-[#818CF8]/50 text-[#94A3B8] text-sm backdrop-blur-sm">
+            <div className="px-3 py-1.5 rounded-lg whitespace-nowrap select-none bg-[#070B14]/60 border border-[#94A3B8]/50 text-[#94A3B8] text-sm backdrop-blur-sm">
               {node.text}
             </div>
           )}

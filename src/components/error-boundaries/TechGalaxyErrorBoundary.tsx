@@ -34,12 +34,12 @@ export class TechGalaxyErrorBoundary extends Component<Props, State> {
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl md:text-5xl font-bold text-[#F8FAFC] mb-12">Tech Stack</h2>
             <div className="mb-12">
-              <h3 className="text-[#38BDF8] text-xl font-bold mb-6">Primary</h3>
+              <h3 className="text-[#E2E8F0] text-xl font-bold mb-6">Primary</h3>
               <div className="flex flex-wrap justify-center gap-4">
                 {techStackData.primary.map((tech) => (
                   <span
                     key={tech}
-                    className="px-4 py-2 bg-[#0F172A] border border-[#38BDF8]/30 rounded-lg text-[#F8FAFC]"
+                    className="px-4 py-2 bg-[#0F172A] border border-[#E2E8F0]/30 rounded-lg text-[#F8FAFC]"
                   >
                     {tech}
                   </span>
@@ -47,12 +47,12 @@ export class TechGalaxyErrorBoundary extends Component<Props, State> {
               </div>
             </div>
             <div>
-              <h3 className="text-[#818CF8] text-xl font-bold mb-6">Secondary & Tools</h3>
+              <h3 className="text-[#94A3B8] text-xl font-bold mb-6">Secondary & Tools</h3>
               <div className="flex flex-wrap justify-center gap-3">
                 {techStackData.secondary.concat(techStackData.ambient).map((tech) => (
                   <span
                     key={tech}
-                    className="px-3 py-1.5 bg-[#0F172A]/50 border border-[#818CF8]/20 rounded-md text-[#94A3B8] text-sm"
+                    className="px-3 py-1.5 bg-[#0F172A]/50 border border-[#94A3B8]/20 rounded-md text-[#94A3B8] text-sm"
                   >
                     {tech}
                   </span>

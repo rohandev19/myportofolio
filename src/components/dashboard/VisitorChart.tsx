@@ -69,12 +69,12 @@ export function VisitorChart({ data }: VisitorChartProps) {
             <AreaChart data={chartData}>
               <defs>
                 <linearGradient id="viewsGrad" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="#38bdf8" stopOpacity={0.3} />
-                  <stop offset="95%" stopColor="#38bdf8" stopOpacity={0} />
+                  <stop offset="5%" stopColor="#E2E8F0" stopOpacity={0.3} />
+                  <stop offset="95%" stopColor="#E2E8F0" stopOpacity={0} />
                 </linearGradient>
                 <linearGradient id="visitorsGrad" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="#818cf8" stopOpacity={0.3} />
-                  <stop offset="95%" stopColor="#818cf8" stopOpacity={0} />
+                  <stop offset="5%" stopColor="#94A3B8" stopOpacity={0.3} />
+                  <stop offset="95%" stopColor="#94A3B8" stopOpacity={0} />
                 </linearGradient>
               </defs>
               <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" />
@@ -91,7 +91,7 @@ export function VisitorChart({ data }: VisitorChartProps) {
               <Area
                 type="monotone"
                 dataKey="views"
-                stroke="#38bdf8"
+                stroke="#E2E8F0"
                 fill="url(#viewsGrad)"
                 strokeWidth={2}
                 name="Page Views"
@@ -99,7 +99,7 @@ export function VisitorChart({ data }: VisitorChartProps) {
               <Area
                 type="monotone"
                 dataKey="visitors"
-                stroke="#818cf8"
+                stroke="#94A3B8"
                 fill="url(#visitorsGrad)"
                 strokeWidth={2}
                 name="Unique Visitors"

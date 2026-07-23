@@ -47,12 +47,12 @@ export function AmbientOrbs() {
       {/* Orb 1: Blue */}
       <div
         ref={orb1Ref}
-        className="absolute top-[10%] left-[5%] w-[40vw] h-[40vw] max-w-[500px] max-h-[500px] rounded-full bg-[#38BDF8] opacity-[0.04] blur-[100px] mix-blend-screen"
+        className="absolute top-[10%] left-[5%] w-[40vw] h-[40vw] max-w-[500px] max-h-[500px] rounded-full bg-[#E2E8F0] opacity-[0.04] blur-[100px] mix-blend-screen"
       />
       {/* Orb 2: Purple */}
       <div
         ref={orb2Ref}
-        className="absolute bottom-[10%] right-[5%] w-[45vw] h-[45vw] max-w-[600px] max-h-[600px] rounded-full bg-[#818CF8] opacity-[0.03] blur-[120px] mix-blend-screen"
+        className="absolute bottom-[10%] right-[5%] w-[45vw] h-[45vw] max-w-[600px] max-h-[600px] rounded-full bg-[#94A3B8] opacity-[0.03] blur-[120px] mix-blend-screen"
       />
       {/* Orb 3: Cyan */}
       <div
