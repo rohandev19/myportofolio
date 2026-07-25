@@ -6,8 +6,7 @@ import { TechGalaxyScene } from "@/components/scenes/TechGalaxyScene";
 import { PhilosophyScene } from "@/components/scenes/PhilosophyScene";
 import { ShowcaseScene } from "@/components/scenes/ShowcaseScene";
 import { ContactScene } from "@/components/scenes/ContactScene";
-import { GithubScene } from "@/components/scenes/GithubScene";
-import { PlaygroundScene } from "@/components/scenes/PlaygroundScene";
+import { InteractivePlaygroundScene } from "@/components/scenes/InteractivePlaygroundScene";
 
 export default function Home() {
   return (
@@ -19,8 +18,7 @@ export default function Home() {
       <Loader />
       <HeroScene />
       <AboutScene />
-      <GithubScene />
-      <PlaygroundScene />
+      <InteractivePlaygroundScene />
       <JourneyTimelineScene />
       <TechGalaxyScene />
       <PhilosophyScene />
