@@ -31,12 +31,12 @@ export function InteractivePlaygroundScene() {
 
         <div className="flex flex-col xl:flex-row gap-12 items-center xl:items-stretch justify-center">
           {/* GitHub Stats */}
-          <div className="w-full xl:w-auto flex justify-center">
+          <div className="w-full xl:w-[320px] flex-shrink-0 flex justify-center">
             <GitHubDashboard />
           </div>
 
           {/* Code Playground */}
-          <div className="w-full xl:flex-1 max-w-4xl">
+          <div className="w-full xl:flex-1">
             <CodePlayground />
           </div>
         </div>
