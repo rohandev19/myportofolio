@@ -106,9 +106,25 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
                 href={project.links.live}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-6 py-3 rounded-xl bg-gradient-to-r from-[var(--color-accent-cyan)] to-[var(--color-accent-violet)] text-white font-medium hover:shadow-lg hover:shadow-[var(--color-accent-cyan)]/20 transition-all hover:-translate-y-0.5"
+                className="group relative inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl bg-gradient-to-r from-[#E2E8F0] to-[#CBD5E1] text-[#070B14] font-bold shadow-[0_0_15px_rgba(226,232,240,0.3)] hover:shadow-[0_0_25px_rgba(226,232,240,0.6)] transition-all duration-300 hover:-translate-y-1 overflow-hidden"
               >
-                Visit Live Site
+                <div className="absolute inset-0 bg-white/40 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out"></div>
+                <span className="relative z-10 flex items-center gap-2">
+                  Visit Live Site
+                  <svg
+                    className="w-4 h-4 group-hover:translate-x-1 transition-transform"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2.5}
+                      d="M14 5l7 7m0 0l-7 7m7-7H3"
+                    />
+                  </svg>
+                </span>
               </a>
             )}
             {project.links.github && (
@@ -116,7 +132,7 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
                 href={project.links.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-6 py-3 rounded-xl border border-white/20 bg-white/5 text-white font-medium hover:bg-white/10 transition-colors"
+                className="group inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl border-2 border-[#1E293B] bg-[#070B14] text-[#E2E8F0] font-semibold hover:border-[#E2E8F0]/50 hover:bg-[#1E293B]/50 transition-all duration-300 hover:-translate-y-1"
               >
                 View Source
               </a>
