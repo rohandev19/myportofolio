@@ -44,7 +44,7 @@ export function AboutScene() {
         {/* Left Col: Text */}
         <div className="order-2 lg:order-1 flex flex-col gap-6">
           <h2 className="about-text text-4xl md:text-5xl font-bold text-[#F8FAFC]">About Me</h2>
-          <div className="flex flex-col gap-4 text-lg text-[#94A3B8] leading-relaxed">
+          <div className="flex flex-col gap-4 text-lg text-[#E2E8F0] font-medium leading-relaxed drop-shadow-sm">
             {aboutData.paragraphs.map((p, i) => (
               <p key={i} className="about-text">
                 {p}
@@ -67,7 +67,7 @@ export function AboutScene() {
               href="/cv.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-[#1E293B] text-[#F8FAFC] font-medium rounded-lg hover:bg-[var(--color-accent-blue)] hover:text-[#070B14] transition-colors focus:outline-none focus:ring-2 focus:ring-[var(--color-accent-blue)]"
+              className="group inline-flex items-center gap-2 px-8 py-3.5 bg-transparent text-[#E2E8F0] font-bold rounded-xl border-2 border-[#E2E8F0]/30 hover:border-[#E2E8F0] hover:bg-[#E2E8F0]/10 hover:shadow-[0_0_20px_rgba(226,232,240,0.3)] transition-all duration-300 hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-[#E2E8F0]"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
