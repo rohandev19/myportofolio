@@ -116,7 +116,6 @@ function ShowcaseContent() {
 
   return (
     <section
-      id="projects"
       ref={containerRef}
       className="w-full py-24 px-4 md:px-8 bg-[var(--color-bg-secondary)] relative"
     >
@@ -310,10 +309,12 @@ function ShowcaseContent() {
 
 export function ShowcaseScene() {
   return (
-    <Suspense
-      fallback={<div className="w-full h-screen bg-[var(--color-bg-secondary)] animate-pulse" />}
-    >
-      <ShowcaseContent />
-    </Suspense>
+    <div id="projects" className="w-full">
+      <Suspense
+        fallback={<div className="w-full h-screen bg-[var(--color-bg-secondary)] animate-pulse" />}
+      >
+        <ShowcaseContent />
+      </Suspense>
+    </div>
   );
 }

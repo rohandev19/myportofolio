@@ -31,7 +31,7 @@ export function DotNav() {
           }
         });
       },
-      { rootMargin: "-30% 0px -30% 0px", threshold: 0 }
+      { rootMargin: "-40% 0px -40% 0px", threshold: 0 }
     );
 
     SECTIONS.forEach((section) => {
