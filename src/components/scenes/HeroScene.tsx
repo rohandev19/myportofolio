@@ -138,7 +138,7 @@ export function HeroScene() {
       </div>
 
       {/* Background ambient glows and grid */}
-      <div className="absolute inset-0 z-0 bg-gradient-to-b from-transparent to-[#070B14] opacity-80 pointer-events-none" />
+      <div className="absolute inset-0 z-0 bg-gradient-to-b from-transparent to-[var(--color-bg-primary)] opacity-80 pointer-events-none" />
       <div
         className="absolute inset-0 z-0 opacity-[0.03] pointer-events-none"
         style={{

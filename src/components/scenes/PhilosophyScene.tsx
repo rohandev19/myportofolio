@@ -34,7 +34,7 @@ export function PhilosophyScene() {
       id="philosophy"
       ref={containerRef}
       aria-label="Engineering philosophy"
-      className="w-full py-24 px-4 md:px-8 bg-[#0F172A] relative"
+      className="w-full py-24 px-4 md:px-8 bg-[var(--color-bg-secondary)] relative"
     >
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
@@ -50,7 +50,7 @@ export function PhilosophyScene() {
           {principlesData.map((principle) => (
             <div
               key={principle.id}
-              className="principle-card bg-[#070B14] border border-[#1E293B] rounded-2xl p-8 hover:border-[#E2E8F0]/50 transition-colors group"
+              className="principle-card bg-[var(--color-bg-primary)] border border-[var(--color-bg-tertiary)] rounded-2xl p-8 hover:border-[var(--color-accent-blue)]/50 transition-colors group"
             >
               <div className="text-4xl mb-6 text-[#E2E8F0] group-hover:scale-110 transition-transform origin-left">
                 {principle.icon}
