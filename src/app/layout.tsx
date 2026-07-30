@@ -40,6 +40,27 @@ export default function RootLayout({
 
   return (
     <html lang="en" className="scroll-smooth">
+      <head>
+        {/* Anti-flash theme script - runs before first paint */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var stored = localStorage.getItem('theme-storage');
+                  var theme = stored ? JSON.parse(stored).state.theme : 'system';
+                  var resolved = theme === 'system' 
+                    ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+                    : theme;
+                  document.documentElement.setAttribute('data-theme', resolved);
+                } catch (e) {
+                  document.documentElement.setAttribute('data-theme', 'dark');
+                }
+              })();
+            `,
+          }}
+        />
+      </head>
       <body
         className={`${inter.variable} ${jetbrainsMono.variable} antialiased bg-[#070B14] text-[#F8FAFC]`}
       >

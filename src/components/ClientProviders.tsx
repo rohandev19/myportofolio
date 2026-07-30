@@ -4,6 +4,9 @@ import { useEffect, ReactNode, createContext, useContext, useState } from "react
 import Lenis from "lenis";
 import { ErrorBoundary } from "react-error-boundary";
 import { GlobalErrorFallback } from "./error-boundaries/GlobalErrorBoundary";
+import { ThemeProvider } from "./providers/ThemeProvider";
+import { Preloader } from "./ui/Preloader";
+import { ToastContainer } from "./ui/ToastContainer";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 
@@ -24,10 +27,6 @@ export const useAppGlobal = () => useContext(AppGlobalContext);
 interface ClientProvidersProps {
   children: ReactNode;
 }
-
-import { Preloader } from "./ui/Preloader";
-
-import { CustomCursor } from "./ui/CustomCursor";
 
 export function ClientProviders({ children }: ClientProvidersProps) {
   const [isReady, setIsReady] = useState(false);
@@ -62,8 +61,11 @@ export function ClientProviders({ children }: ClientProvidersProps) {
   return (
     <AppGlobalContext.Provider value={{ isReady, setIsReady }}>
       <ErrorBoundary FallbackComponent={GlobalErrorFallback}>
-        {showPreloader && <Preloader onComplete={() => setShowPreloader(false)} />}
-        {children}
+        <ThemeProvider>
+          <ToastContainer />
+          {showPreloader && <Preloader onComplete={() => setShowPreloader(false)} />}
+          {children}
+        </ThemeProvider>
       </ErrorBoundary>
     </AppGlobalContext.Provider>
   );
