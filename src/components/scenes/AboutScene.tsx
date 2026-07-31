@@ -49,7 +49,7 @@ export function AboutScene() {
       id="about"
       ref={containerRef}
       aria-label="About me"
-      className="min-h-screen w-full flex items-center justify-center py-20 px-6 lg:px-12 relative overflow-hidden"
+      className="min-h-screen w-full flex flex-col items-center justify-center py-20 px-6 lg:px-12 relative overflow-hidden"
     >
       <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center z-10">
         {/* Left Col: Text */}
