@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { aboutData } from "@/content/about";
 import { InteractiveButton } from "../ui/InteractiveButton";
@@ -20,6 +20,7 @@ const CodePlayground = dynamic(
 export function AboutScene() {
   const containerRef = useRef<HTMLElement>(null);
   const blobRef = useRef<HTMLDivElement>(null);
+  const [isActive, setIsActive] = useState(false);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -108,15 +109,22 @@ export function AboutScene() {
             className="w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 bg-gradient-to-tr from-[#38BDF8] to-[#818CF8] opacity-60 mix-blend-screen filter blur-3xl absolute animate-morph"
           />
           {/* Foreground morphing container for the image */}
-          <div className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 bg-gradient-to-bl from-[#0F172A] to-[#1E293B] border border-[#38BDF8]/50 absolute overflow-hidden shadow-[0_0_30px_rgba(56,189,248,0.3)] animate-morph group">
+          <div
+            className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 bg-gradient-to-bl from-[#0F172A] to-[#1E293B] border border-[#38BDF8]/50 absolute overflow-hidden shadow-[0_0_30px_rgba(56,189,248,0.3)] animate-morph group cursor-pointer"
+            onClick={() => setIsActive(!isActive)}
+          >
             {/* Dark overlay to match theme (Duotone effect) */}
-            <div className="absolute inset-0 bg-[#070B14]/20 mix-blend-multiply z-10 group-hover:bg-transparent transition-colors duration-500" />
+            <div
+              className={`absolute inset-0 bg-[#070B14]/20 mix-blend-multiply z-10 transition-colors duration-500 group-hover:bg-transparent ${isActive ? "bg-transparent" : ""}`}
+            />
             <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#38BDF8]/20 mix-blend-overlay z-10" />
 
             <img
               src="/images/profile.jpeg"
               alt="Profile"
-              className="w-full h-full object-cover object-top filter grayscale opacity-90 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500 scale-110 group-hover:scale-100"
+              className={`w-full h-full object-cover object-top filter transition-all duration-500 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-100 ${
+                isActive ? "grayscale-0 opacity-100 scale-100" : "grayscale opacity-90 scale-110"
+              }`}
             />
           </div>
         </div>
