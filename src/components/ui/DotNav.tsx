@@ -8,6 +8,8 @@ const SECTIONS = [
   { id: "hero", label: "Home" },
   { id: "about", label: "About" },
   { id: "timeline", label: "Journey" },
+  { id: "tech-galaxy", label: "Skills" },
+  { id: "philosophy", label: "Philosophy" },
   { id: "projects", label: "Projects" },
   { id: "contact", label: "Contact" },
 ];
@@ -16,7 +18,7 @@ export function DotNav() {
   const [activeSection, setActiveSection] = useState("hero");
 
   useEffect(() => {
-    // Simple intersection observer for now
+    // Intersection observer with a center trigger zone
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -25,7 +27,7 @@ export function DotNav() {
           }
         });
       },
-      { threshold: 0.5 }
+      { rootMargin: "-30% 0px -30% 0px", threshold: 0 }
     );
 
     SECTIONS.forEach((section) => {
