@@ -34,7 +34,7 @@ export function GitHubDashboard() {
     return (
       <div className="w-full max-w-3xl mx-auto p-6 bg-[var(--color-bg-secondary)] rounded-2xl border border-[var(--color-border)] animate-pulse flex flex-col gap-4">
         <div className="h-6 bg-[var(--color-bg-primary)] rounded w-1/4"></div>
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 gap-4">
           {[...Array(4)].map((_, i) => (
             <div key={i} className="h-20 bg-[var(--color-bg-primary)] rounded-lg"></div>
           ))}
@@ -76,7 +76,7 @@ export function GitHubDashboard() {
         <h3 className="text-xl font-bold text-[var(--color-text-primary)]">GitHub Open Source</h3>
       </div>
 
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 relative z-10">
+      <div className="grid grid-cols-2 gap-4 relative z-10">
         <div className="bg-[var(--color-bg-primary)] p-4 rounded-xl border border-[var(--color-border)] flex flex-col items-center justify-center">
           <span className="text-3xl font-black text-[var(--color-text-primary)] mb-1">
             {stats.totalStars}
