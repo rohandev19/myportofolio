@@ -1,5 +1,3 @@
-import { secureApiResponse } from "../utils/api-response";
-
 const GITHUB_USERNAME = "rohandev19";
 const GITHUB_API_URL = "https://api.github.com";
 

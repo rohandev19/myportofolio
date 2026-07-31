@@ -1,4 +1,3 @@
-import { NextResponse } from "next";
 import { fetchGitHubStats } from "@/lib/github/api";
 import { secureApiResponse } from "@/lib/utils/api-response";
 
