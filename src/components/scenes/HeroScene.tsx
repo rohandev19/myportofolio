@@ -116,7 +116,7 @@ export function HeroScene() {
           <InteractiveButton
             as="a"
             href="#projects"
-            className="hero-cta opacity-0 px-8 py-3 bg-gradient-to-r from-[#38BDF8] to-[#2563EB] text-white font-semibold rounded-lg hover:shadow-[0_0_20px_rgba(56,189,248,0.4)] transition-shadow duration-300 focus:outline-none focus:ring-2 focus:ring-[#818CF8]"
+            className="hero-cta opacity-0 px-8 py-3 bg-gradient-to-r from-[#E2E8F0] to-[#2563EB] text-white font-semibold rounded-lg hover:shadow-[0_0_20px_rgba(56,189,248,0.4)] transition-shadow duration-300 focus:outline-none focus:ring-2 focus:ring-[#94A3B8]"
           >
             {heroData.cta.primary}
           </InteractiveButton>

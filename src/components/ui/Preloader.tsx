@@ -91,18 +91,18 @@ export function Preloader({ onComplete }: { onComplete: () => void }) {
 
       {/* Counter */}
       <div ref={counterRef} className="relative z-10 flex flex-col items-center">
-        <div className="text-[#38BDF8] text-sm font-mono tracking-widest uppercase mb-4 opacity-80">
+        <div className="text-[#E2E8F0] text-sm font-mono tracking-widest uppercase mb-4 opacity-80">
           Initializing System
         </div>
         <div className="text-6xl md:text-8xl font-black text-[#F8FAFC] font-mono tracking-tighter">
           {progress.toString().padStart(3, "0")}
-          <span className="text-[#38BDF8] text-4xl md:text-6xl">%</span>
+          <span className="text-[#E2E8F0] text-4xl md:text-6xl">%</span>
         </div>
 
         {/* Loading Bar */}
         <div className="w-64 h-1 bg-[#1E293B] mt-8 overflow-hidden rounded-full relative">
           <div
-            className="absolute top-0 left-0 h-full bg-[#38BDF8] shadow-[0_0_10px_#38BDF8]"
+            className="absolute top-0 left-0 h-full bg-[#E2E8F0] shadow-[0_0_10px_#E2E8F0]"
             style={{ width: `${progress}%` }}
           />
         </div>

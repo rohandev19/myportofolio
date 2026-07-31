@@ -67,7 +67,7 @@ export function JourneyTimelineScene() {
           {/* Animated Highlight Line */}
           <div
             ref={lineRef}
-            className="absolute left-4 md:left-1/2 top-0 w-0.5 bg-gradient-to-b from-[#38BDF8] to-[#818CF8] -translate-x-1/2 origin-top"
+            className="absolute left-4 md:left-1/2 top-0 w-0.5 bg-gradient-to-b from-[#E2E8F0] to-[#94A3B8] -translate-x-1/2 origin-top"
           />
 
           <div className="flex flex-col gap-12">
@@ -79,19 +79,19 @@ export function JourneyTimelineScene() {
                 }`}
               >
                 {/* Timeline Node */}
-                <div className="absolute left-4 md:left-1/2 w-4 h-4 rounded-full bg-[#070B14] border-2 border-[#38BDF8] -translate-x-1/2 mt-1.5" />
+                <div className="absolute left-4 md:left-1/2 w-4 h-4 rounded-full bg-[#070B14] border-2 border-[#E2E8F0] -translate-x-1/2 mt-1.5" />
 
                 {/* Content Side */}
                 <div
                   className={`w-full md:w-1/2 pl-12 md:pl-0 ${idx % 2 === 0 ? "md:pr-12 md:text-right" : "md:pl-12"}`}
                 >
-                  <div className="text-[#38BDF8] font-mono text-sm font-bold mb-2">
+                  <div className="text-[#E2E8F0] font-mono text-sm font-bold mb-2">
                     {entry.year}
                   </div>
                   <h3 className="text-xl md:text-2xl font-bold text-[#F8FAFC] mb-1">
                     {entry.role}
                   </h3>
-                  <div className="text-[#818CF8] font-medium mb-3">{entry.company}</div>
+                  <div className="text-[#94A3B8] font-medium mb-3">{entry.company}</div>
                   <p className="text-[#94A3B8] leading-relaxed">{entry.description}</p>
                 </div>
 

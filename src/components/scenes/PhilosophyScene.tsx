@@ -50,9 +50,9 @@ export function PhilosophyScene() {
           {principlesData.map((principle) => (
             <div
               key={principle.id}
-              className="principle-card bg-[#070B14] border border-[#1E293B] rounded-2xl p-8 hover:border-[#38BDF8]/50 transition-colors group"
+              className="principle-card bg-[#070B14] border border-[#1E293B] rounded-2xl p-8 hover:border-[#E2E8F0]/50 transition-colors group"
             >
-              <div className="text-4xl mb-6 text-[#38BDF8] group-hover:scale-110 transition-transform origin-left">
+              <div className="text-4xl mb-6 text-[#E2E8F0] group-hover:scale-110 transition-transform origin-left">
                 {principle.icon}
               </div>
               <h3 className="text-xl font-bold text-[#F8FAFC] mb-4">{principle.title}</h3>
