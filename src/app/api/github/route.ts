@@ -1,12 +1,12 @@
 import { fetchGitHubStats } from "@/lib/github/api";
-import { secureApiResponse } from "@/lib/utils/api-response";
+import { secureApiResponse, successResponse, errorResponse } from "@/lib/utils/api-response";
 
 export async function GET() {
   try {
     const stats = await fetchGitHubStats();
-    return secureApiResponse(stats);
+    return successResponse(stats);
   } catch (error) {
     console.error("API Route Error:", error);
-    return secureApiResponse({ error: "Failed to fetch GitHub statistics" }, 500);
+    return errorResponse("Failed to fetch GitHub statistics", "INTERNAL_ERROR", 500);
   }
 }
