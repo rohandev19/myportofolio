@@ -12,6 +12,7 @@
  */
 
 import { useState, useEffect, useRef, useMemo, useCallback } from "react";
+import { useRouter } from "next/navigation";
 import { createPortal } from "react-dom";
 import { useUIStore } from "@/store/ui.store";
 import { useThemeStore } from "@/store/theme.store";
@@ -58,9 +59,16 @@ export function CommandPalette() {
   }, []);
 
   // Build command registry
+  const router = useRouter();
+
   const commands = useMemo(
-    () => createCommandRegistry({ scrollToSection, setTheme }),
-    [scrollToSection, setTheme]
+    () =>
+      createCommandRegistry({
+        scrollToSection,
+        setTheme,
+        navigateTo: (path) => router.push(path),
+      }),
+    [scrollToSection, setTheme, router]
   );
 
   // Filter commands based on query
