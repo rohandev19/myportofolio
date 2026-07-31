@@ -18,17 +18,12 @@ export interface Command {
 }
 
 export interface FuzzySearchOptions {
-  threshold: number; // Max Levenshtein distance (default: 2)
-  keys: string[]; // Fields to search
-  limit: number; // Max results
+  threshold?: number; // Max Levenshtein distance (default: 2)
+  maxResults?: number; // Max results (default: 50)
 }
 
 export interface FuzzyResult<T> {
   item: T;
-  score: number; // Lower is better
-  matches: {
-    key: string;
-    value: string;
-    indices: number[][];
-  }[];
+  score: number; // Higher is better (0-100)
+  matchedKey: string; // Which key produced the best match
 }
