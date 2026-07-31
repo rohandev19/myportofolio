@@ -101,7 +101,7 @@ export function HeroScene() {
           >
             <SplitText
               className="hero-title"
-              charClassName="char bg-clip-text text-transparent bg-gradient-to-br from-cyan-400 to-indigo-400"
+              charClassName="char bg-clip-text text-transparent bg-gradient-to-br from-[#FAFAFA] to-[#94A3B8]"
             >
               {heroData.title}
             </SplitText>
@@ -116,7 +116,7 @@ export function HeroScene() {
           <InteractiveButton
             as="a"
             href="#projects"
-            className="hero-cta opacity-0 px-8 py-3 bg-gradient-to-r from-[#E2E8F0] to-[#2563EB] text-white font-semibold rounded-lg hover:shadow-[0_0_20px_rgba(56,189,248,0.4)] transition-shadow duration-300 focus:outline-none focus:ring-2 focus:ring-[#94A3B8]"
+            className="hero-cta opacity-0 px-8 py-3 bg-[#E2E8F0] text-[#050505] font-bold rounded-lg hover:bg-white hover:shadow-[0_0_30px_rgba(226,232,240,0.3)] hover:-translate-y-1 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white"
           >
             {heroData.cta.primary}
           </InteractiveButton>
@@ -146,8 +146,8 @@ export function HeroScene() {
           backgroundSize: "32px 32px",
         }}
       />
-      <div className="absolute top-1/4 left-1/4 w-64 h-64 md:w-[500px] md:h-[500px] bg-cyan-500/20 rounded-full blur-[120px] pointer-events-none -z-10" />
-      <div className="absolute bottom-1/4 right-1/4 w-64 h-64 md:w-[600px] md:h-[600px] bg-indigo-500/10 rounded-full blur-[150px] pointer-events-none -z-10" />
+      <div className="absolute top-1/4 left-1/4 w-64 h-64 md:w-[500px] md:h-[500px] bg-[#E2E8F0]/5 rounded-full blur-[120px] pointer-events-none -z-10" />
+      <div className="absolute bottom-1/4 right-1/4 w-64 h-64 md:w-[600px] md:h-[600px] bg-[#94A3B8]/5 rounded-full blur-[150px] pointer-events-none -z-10" />
     </section>
   );
 }
