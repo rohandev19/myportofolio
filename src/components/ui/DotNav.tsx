@@ -8,8 +8,7 @@ import { usePathname } from "next/navigation";
 const SECTIONS = [
   { id: "hero", label: "Home" },
   { id: "about", label: "About" },
-  { id: "github", label: "GitHub" },
-  { id: "playground", label: "Playground" },
+  { id: "playground", label: "Code & Stats" },
   { id: "timeline", label: "Journey" },
   { id: "tech-galaxy", label: "Skills" },
   { id: "philosophy", label: "Philosophy" },
