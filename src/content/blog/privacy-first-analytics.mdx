@@ -1,0 +1,116 @@
+---
+title: "Privacy-First Analytics: Building Without Cookies"
+description: "How to build a comprehensive analytics system that respects user privacy, requires no consent banners, and still provides actionable insights."
+date: "2026-07-01"
+tags: ["Analytics", "Privacy", "TypeScript", "Web Development"]
+author: "Rohan"
+coverImage: "/images/blog/privacy-analytics.jpg"
+coverImageAlt: "Shield icon representing privacy-first data collection"
+category: "Engineering"
+featured: false
+draft: false
+---
+
+## Why Privacy-First Analytics?
+
+Traditional analytics tools like Google Analytics collect vast amounts of personal data — cookies, IP addresses, browsing history, and device fingerprints. This creates legal obligations (GDPR, CCPA) and erodes user trust.
+
+Privacy-first analytics flips this model: collect only what you need, store nothing personal, and still get the insights that matter.
+
+## Core Principles
+
+### What We Collect
+
+- **Page views** — which pages are visited, how often
+- **Referrers** — where visitors come from (domain only)
+- **User agent type** — browser category (Chrome, Firefox, Safari)
+- **Web Vitals** — LCP, FID, CLS, INP, TTFB performance metrics
+
+### What We Don't Collect
+
+- No cookies or tracking pixels
+- No IP addresses
+- No personal identifiers
+- No cross-site tracking
+- No third-party scripts
+
+## Implementation Architecture
+
+### Session Fingerprinting Without PII
+
+Instead of cookies, we generate a daily rotating hash:
+
+```typescript
+export function getSessionFingerprint(): string {
+  const today = new Date().toDateString();
+  const userAgent = navigator.userAgent;
+  const language = navigator.language;
+
+  // Create a non-reversible daily hash
+  const raw = `${today}-${userAgent}-${language}`;
+  return hashString(raw);
+}
+```
+
+This gives us unique visitor approximation without storing any personal data.
+
+### Event Collection
+
+Events are batched and sent periodically:
+
+```typescript
+interface AnalyticsEvent {
+  type: 'page_view' | 'web_vital';
+  timestamp: number;
+  path: string;
+  metadata: Record<string, string | number>;
+}
+```
+
+### Web Vitals Integration
+
+We report Core Web Vitals using the `web-vitals` library:
+
+```typescript
+import { onLCP, onFID, onCLS, onINP, onTTFB } from 'web-vitals';
+
+function reportVital(metric) {
+  trackEvent('web_vital', {
+    name: metric.name,
+    value: metric.value,
+    rating: metric.rating,
+  });
+}
+
+onLCP(reportVital);
+onCLS(reportVital);
+onINP(reportVital);
+```
+
+## Data Visualization
+
+### Dashboard Design
+
+The analytics dashboard displays:
+
+1. **Real-time Web Vitals** — color-coded cards showing current performance
+2. **Page Views Over Time** — line chart with date range filtering
+3. **Top Pages** — sorted table of most visited paths
+4. **Performance Timeline** — historical Web Vitals trends
+
+### Export Capabilities
+
+Data can be exported as CSV or JSON for external analysis, always respecting the current date range filter.
+
+## Results
+
+After implementing privacy-first analytics:
+
+- **Zero consent banners needed** — improves UX
+- **GDPR compliant by default** — no personal data stored
+- **Faster page loads** — no heavy third-party scripts
+- **Actionable insights** — still know what matters
+
+## Conclusion
+
+You don't need to sacrifice user privacy for analytics. By collecting only aggregated, non-personal metrics, you can build a comprehensive understanding of your site's performance and usage patterns while respecting every visitor's privacy.
