@@ -53,7 +53,10 @@ export const scrollPresets = {
         stagger: 0.15,
         ease: "power2.out",
         scrollTrigger: {
-          trigger: elements instanceof NodeList || Array.isArray(elements) ? elements[0] : elements,
+          trigger:
+            elements instanceof NodeList || Array.isArray(elements)
+              ? (elements[0] as Element)
+              : elements,
           start: "top 85%",
           ...options,
         },
