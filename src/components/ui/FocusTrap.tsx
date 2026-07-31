@@ -18,11 +18,11 @@ interface FocusTrapProps {
 }
 
 export function FocusTrap({ children, isActive = true, className }: FocusTrapProps) {
-  const containerRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLElement>(null);
   useFocusTrap(containerRef, isActive);
 
   return (
-    <div ref={containerRef} className={className}>
+    <div ref={containerRef as React.RefObject<HTMLDivElement>} className={className}>
       {children}
     </div>
   );
