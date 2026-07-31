@@ -13,7 +13,7 @@ export default function Home() {
     <main
       id="main-content"
       role="main"
-      className="relative min-h-screen bg-[#0F172A] text-slate-50 overflow-hidden"
+      className="relative min-h-screen bg-[var(--color-bg-primary)] text-[var(--color-text-primary)] overflow-hidden"
     >
       <Loader />
       <HeroScene />
