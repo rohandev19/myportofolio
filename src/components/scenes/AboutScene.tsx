@@ -67,7 +67,7 @@ export function AboutScene() {
           <ul className="mt-4 flex flex-col gap-3">
             {aboutData.highlights.map((highlight, i) => (
               <li key={i} className="about-text flex items-center gap-3">
-                <span className="w-2 h-2 min-w-[8px] rounded-full bg-[#38BDF8]" />
+                <span className="w-2 h-2 min-w-[8px] rounded-full bg-[var(--color-accent-blue)]" />
                 <span className="text-[#F8FAFC] font-medium">{highlight}</span>
               </li>
             ))}
@@ -79,7 +79,7 @@ export function AboutScene() {
               href="/cv.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-[#1E293B] text-[#F8FAFC] font-medium rounded-lg hover:bg-[#38BDF8] hover:text-[#070B14] transition-colors focus:outline-none focus:ring-2 focus:ring-[#38BDF8]"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-[#1E293B] text-[#F8FAFC] font-medium rounded-lg hover:bg-[var(--color-accent-blue)] hover:text-[#070B14] transition-colors focus:outline-none focus:ring-2 focus:ring-[var(--color-accent-blue)]"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -106,18 +106,18 @@ export function AboutScene() {
           {/* Glowing background blob */}
           <div
             ref={blobRef}
-            className="w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 bg-gradient-to-tr from-[#38BDF8] to-[#818CF8] opacity-60 mix-blend-screen filter blur-3xl absolute animate-morph"
+            className="w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 bg-gradient-to-tr from-[#E2E8F0] to-[#94A3B8] opacity-60 mix-blend-screen filter blur-3xl absolute animate-morph"
           />
           {/* Foreground morphing container for the image */}
           <div
-            className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 bg-gradient-to-bl from-[#0F172A] to-[#1E293B] border border-[#38BDF8]/50 absolute overflow-hidden shadow-[0_0_30px_rgba(56,189,248,0.3)] animate-morph group cursor-pointer"
+            className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 bg-gradient-to-bl from-[#0F172A] to-[#1E293B] border border-[#E2E8F0]/50 absolute overflow-hidden shadow-[0_0_30px_rgba(226,232,240,0.3)] animate-morph group cursor-pointer"
             onClick={() => setIsActive(!isActive)}
           >
             {/* Dark overlay to match theme (Duotone effect) */}
             <div
               className={`absolute inset-0 bg-[#070B14]/20 mix-blend-multiply z-10 transition-colors duration-500 group-hover:bg-transparent ${isActive ? "bg-transparent" : ""}`}
             />
-            <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#38BDF8]/20 mix-blend-overlay z-10" />
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#E2E8F0]/20 mix-blend-overlay z-10" />
 
             <img
               src="/images/profile.jpeg"
