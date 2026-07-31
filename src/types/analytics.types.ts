@@ -25,5 +25,5 @@ export interface Toast {
   id: string;
   message: string;
   type: ToastType;
-  duration: number; // milliseconds
+  duration?: number; // milliseconds (default: 3000)
 }
