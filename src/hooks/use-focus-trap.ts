@@ -16,8 +16,10 @@ const FOCUSABLE_SELECTORS = [
   '[tabindex]:not([tabindex="-1"])',
 ].join(", ");
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function useFocusTrap(containerRef: RefObject<any>, isActive: boolean = true) {
+export function useFocusTrap(
+  containerRef: RefObject<HTMLElement | null>,
+  isActive: boolean = true
+) {
   useEffect(() => {
     if (!isActive || !containerRef.current) return;
 
