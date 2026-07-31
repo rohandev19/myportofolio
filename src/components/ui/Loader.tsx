@@ -60,7 +60,7 @@ export function Loader() {
   return (
     <div
       ref={loaderRef}
-      className="fixed inset-0 z-[99999] flex items-center justify-center bg-[#070B14] text-[#F8FAFC]"
+      className="fixed inset-0 z-[99999] flex items-center justify-center bg-[var(--color-bg-primary)] text-[var(--color-text-primary)]"
     >
       <div
         ref={textRef}
