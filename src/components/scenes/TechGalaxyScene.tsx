@@ -7,6 +7,7 @@ export function TechGalaxyScene() {
   return (
     <section
       id="tech-galaxy"
+      aria-label="Technology stack galaxy"
       className="relative w-full min-h-screen bg-[#070B14] py-20 overflow-hidden"
     >
       <div className="absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#0F172A] via-[#070B14] to-[#070B14]" />

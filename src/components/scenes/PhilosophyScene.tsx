@@ -33,6 +33,7 @@ export function PhilosophyScene() {
     <section
       id="philosophy"
       ref={containerRef}
+      aria-label="Engineering philosophy"
       className="w-full py-24 px-4 md:px-8 bg-[#0F172A] relative"
     >
       <div className="max-w-6xl mx-auto">
