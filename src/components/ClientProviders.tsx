@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, ReactNode, createContext, useContext, useState } from "react";
+import { useEffect, useRef, ReactNode, createContext, useContext, useState } from "react";
 import Lenis from "lenis";
 import { ErrorBoundary } from "react-error-boundary";
 import { GlobalErrorFallback } from "./error-boundaries/GlobalErrorBoundary";
@@ -11,6 +11,7 @@ import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { CommandPalette } from "./features/command-palette";
 import { useCommandPalette } from "@/hooks/use-command-palette";
+import { usePathname } from "next/navigation";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -33,6 +34,8 @@ interface ClientProvidersProps {
 export function ClientProviders({ children }: ClientProvidersProps) {
   const [isReady, setIsReady] = useState(false);
   const [showPreloader, setShowPreloader] = useState(true);
+  const pathname = usePathname();
+  const lenisRef = useRef<Lenis | null>(null);
 
   // Initialize global keyboard shortcuts for command palette
   useCommandPalette();
@@ -46,6 +49,7 @@ export function ClientProviders({ children }: ClientProvidersProps) {
       gestureOrientation: "vertical",
       smoothWheel: true,
     });
+    lenisRef.current = lenis;
 
     // Synchronize Lenis with ScrollTrigger
     lenis.on("scroll", ScrollTrigger.update);
@@ -59,9 +63,23 @@ export function ClientProviders({ children }: ClientProvidersProps) {
     return () => {
       // Cleanup on unmount
       lenis.destroy();
+      lenisRef.current = null;
       gsap.ticker.remove(lenis.raf);
     };
   }, []);
+
+  // Handle route changes
+  useEffect(() => {
+    if (lenisRef.current) {
+      // Reset scroll position immediately on route change
+      lenisRef.current.scrollTo(0, { immediate: true });
+      
+      // Refresh ScrollTrigger after a short delay to allow DOM to update
+      setTimeout(() => {
+        ScrollTrigger.refresh();
+      }, 100);
+    }
+  }, [pathname]);
 
   return (
     <AppGlobalContext.Provider value={{ isReady, setIsReady }}>
