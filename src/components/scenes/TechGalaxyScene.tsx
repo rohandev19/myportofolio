@@ -8,9 +8,9 @@ export function TechGalaxyScene() {
     <section
       id="tech-galaxy"
       aria-label="Technology stack galaxy"
-      className="relative w-full min-h-screen bg-[#070B14] py-20 overflow-hidden"
+      className="relative w-full min-h-screen bg-[var(--color-bg-primary)] py-20 overflow-hidden"
     >
-      <div className="absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#0F172A] via-[#070B14] to-[#070B14]" />
+      <div className="absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[var(--color-bg-secondary)] via-[var(--color-bg-primary)] to-[var(--color-bg-primary)]" />
 
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4 md:px-8">
         <div className="text-center mb-12">

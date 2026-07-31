@@ -53,7 +53,7 @@ export function JourneyTimelineScene() {
       id="timeline"
       ref={containerRef}
       aria-label="Career journey timeline"
-      className="min-h-screen w-full py-24 px-4 md:px-8 bg-[#0F172A] relative"
+      className="min-h-screen w-full py-24 px-4 md:px-8 bg-[var(--color-bg-secondary)] relative"
     >
       <div className="max-w-4xl mx-auto">
         <h2 className="text-3xl md:text-5xl font-bold text-center text-[#F8FAFC] mb-20">
@@ -79,7 +79,7 @@ export function JourneyTimelineScene() {
                 }`}
               >
                 {/* Timeline Node */}
-                <div className="absolute left-4 md:left-1/2 w-4 h-4 rounded-full bg-[#070B14] border-2 border-[#E2E8F0] -translate-x-1/2 mt-1.5" />
+                <div className="absolute left-4 md:left-1/2 w-4 h-4 rounded-full bg-[var(--color-bg-primary)] border-2 border-[var(--color-accent-blue)] -translate-x-1/2 mt-1.5" />
 
                 {/* Content Side */}
                 <div

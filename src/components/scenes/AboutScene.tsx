@@ -98,12 +98,12 @@ export function AboutScene() {
           />
           {/* Foreground morphing container for the image */}
           <div
-            className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 bg-gradient-to-bl from-[#0F172A] to-[#1E293B] border border-[#E2E8F0]/50 absolute overflow-hidden shadow-[0_0_30px_rgba(226,232,240,0.3)] animate-morph group cursor-pointer"
+            className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 bg-gradient-to-bl from-[#050505] to-[#171717] border border-[#E2E8F0]/50 absolute overflow-hidden shadow-[0_0_30px_rgba(226,232,240,0.3)] animate-morph group cursor-pointer"
             onClick={() => setIsActive(!isActive)}
           >
             {/* Dark overlay to match theme (Duotone effect) */}
             <div
-              className={`absolute inset-0 bg-[#070B14]/20 mix-blend-multiply z-10 transition-colors duration-500 group-hover:bg-transparent ${isActive ? "bg-transparent" : ""}`}
+              className={`absolute inset-0 bg-[#050505]/40 mix-blend-multiply z-10 transition-colors duration-500 group-hover:bg-transparent ${isActive ? "bg-transparent" : ""}`}
             />
             <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#E2E8F0]/20 mix-blend-overlay z-10" />
 
