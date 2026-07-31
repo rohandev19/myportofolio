@@ -12,6 +12,8 @@ import { useRouter, useSearchParams } from "next/navigation";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { Flip } from "gsap/Flip";
+import Image from "next/image";
+import { rgbDataURL } from "@/lib/utils/image";
 import { showcaseData, showcaseCategories, type ProjectCategory } from "@/content/showcase";
 import { TiltCard } from "../ui/TiltCard";
 
@@ -160,11 +162,14 @@ function ShowcaseContent() {
                 {/* Image Container / Placeholder */}
                 <div className="relative h-56 w-full bg-gradient-to-tr from-[var(--color-bg-secondary)] to-[var(--color-bg-primary)] overflow-hidden">
                   {project.image ? (
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img
+                    <Image
                       src={project.image}
                       alt={project.title}
-                      className="w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
+                      fill
+                      placeholder="blur"
+                      blurDataURL={rgbDataURL(15, 23, 42)} // slate-900 approximation
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      className="object-cover opacity-60 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
                     />
                   ) : (
                     <div className="absolute inset-0 flex items-center justify-center opacity-30 group-hover:opacity-60 transition-opacity duration-500 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] mix-blend-overlay">

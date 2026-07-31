@@ -8,6 +8,7 @@ import { SplitText } from "@/components/ui/SplitText";
 import { InteractiveButton } from "../ui/InteractiveButton";
 import { useAppGlobal } from "@/components/ClientProviders";
 import Lottie from "lottie-react";
+import ReactDOM from "react-dom";
 
 export function HeroScene() {
   const containerRef = useRef<HTMLElement>(null);
@@ -15,6 +16,11 @@ export function HeroScene() {
   const { isReady } = useAppGlobal();
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [animationData, setAnimationData] = useState<any>(null);
+
+  // Preload critical asset
+  if (typeof window === "undefined") {
+    ReactDOM.preload("/waving-baymax.json", { as: "fetch", crossOrigin: "anonymous" });
+  }
 
   useEffect(() => {
     fetch("/waving-baymax.json")
