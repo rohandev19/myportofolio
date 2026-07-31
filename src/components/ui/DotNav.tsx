@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 
 // Initial simple dot navigation.
 // Will be expanded with ScrollTrigger logic in later phases.
@@ -15,9 +16,11 @@ const SECTIONS = [
 ];
 
 export function DotNav() {
+  const pathname = usePathname();
   const [activeSection, setActiveSection] = useState("hero");
 
   useEffect(() => {
+    if (pathname !== "/") return;
     // Intersection observer with a center trigger zone
     const observer = new IntersectionObserver(
       (entries) => {
@@ -44,6 +47,8 @@ export function DotNav() {
       element.scrollIntoView({ behavior: "smooth" });
     }
   };
+
+  if (pathname !== "/") return null;
 
   return (
     <nav

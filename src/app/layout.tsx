@@ -4,6 +4,7 @@ import "./globals.css";
 import { ClientProviders } from "@/components/ClientProviders";
 import { SkipToContent } from "@/components/ui/SkipToContent";
 import { DotNav } from "@/components/ui/DotNav";
+import { TopNav } from "@/components/ui/TopNav";
 import { CustomCursor } from "@/components/ui/CustomCursor";
 import { ScrollProgress } from "@/components/ui/ScrollProgress";
 import { AmbientOrbs } from "@/components/ui/AmbientOrbs";
@@ -65,6 +66,7 @@ export default function RootLayout({
           <ScrollProgress />
           <CustomCursor />
           <SkipToContent />
+          <TopNav />
           <DotNav />
           {children}
         </ClientProviders>
