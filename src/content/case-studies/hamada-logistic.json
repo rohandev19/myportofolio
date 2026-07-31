@@ -77,8 +77,7 @@
   ],
   "tags": ["PHP", "Bootstrap", "Logistics", "Admin Dashboard", "Hostinger"],
   "links": {
-    "live": "https://operation.hamada-logistic.com/admin/login",
-    "github": "https://github.com/rohandev19/Absen-Driver"
+    "live": "https://operation.hamada-logistic.com/admin/login"
   },
   "featured": true
 }
