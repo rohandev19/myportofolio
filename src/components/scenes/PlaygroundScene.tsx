@@ -6,7 +6,7 @@ const CodePlayground = dynamic(
   () => import("../features/playground/CodePlayground").then((mod) => mod.CodePlayground),
   {
     loading: () => (
-      <div className="h-[400px] w-full bg-[#0F172A] rounded-xl border border-[var(--color-border)] animate-pulse"></div>
+      <div className="h-[400px] w-full bg-[#181c24] rounded-xl border border-[var(--color-border)] animate-pulse"></div>
     ),
     ssr: false,
   }

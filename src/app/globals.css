@@ -1,12 +1,12 @@
 @import "tailwindcss";
 
 @theme {
-  --color-bg-primary: #050505;
-  --color-bg-secondary: #0a0a0a;
-  --color-accent-cyan: #e2e8f0;
-  --color-accent-violet: #94a3b8;
-  --color-text-primary: #fafafa;
-  --color-text-secondary: #a1a1aa;
+  --color-bg-primary: #141418;
+  --color-bg-secondary: #1a1a20;
+  --color-accent-cyan: #d4d8e0;
+  --color-accent-violet: #7b8794;
+  --color-text-primary: #f0f1f4;
+  --color-text-secondary: #7b8794;
 
   --font-sans: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
@@ -14,20 +14,22 @@
 
 /* Theme System with Advanced Transitions */
 :root {
-  /* Default Dark Theme Colors */
-  --color-bg-primary: #050505;
-  --color-bg-secondary: #0a0a0a;
-  --color-bg-tertiary: #171717;
-  --color-text-primary: #fafafa;
-  --color-text-secondary: #a1a1aa;
-  --color-text-tertiary: #71717a;
-  --color-accent-blue: #e2e8f0; /* Silver / Light Slate */
-  --color-accent-violet: #94a3b8; /* Darker Silver / Slate 400 */
-  --color-accent-green: #10b981;
+  /* Default Dark Theme Colors — 5-Color Palette */
+  --color-bg-primary: #141418;
+  --color-bg-secondary: #1a1a20;
+  --color-bg-tertiary: #222228;
+  --color-text-primary: #f0f1f4;
+  --color-text-secondary: #7b8794;
+  --color-text-tertiary: #5a6677;
+  --color-accent-blue: #d4d8e0; /* Light Silver */
+  --color-accent-violet: #7b8794; /* Steel Blue-Gray */
+  --color-accent-green: #1a4a4e; /* Dark Teal */
   --color-accent-red: #f87171;
   --color-accent-yellow: #fbbf24;
-  --color-border: #334155;
-  --color-shadow: rgba(0, 0, 0, 0.3);
+  --color-border: #2a2e38;
+  --color-shadow: rgba(0, 0, 0, 0.4);
+  --color-teal: #1a4a4e;
+  --color-teal-light: #23686e;
 
   /* Smooth transitions for theme changes */
   transition:

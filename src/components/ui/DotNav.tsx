@@ -64,8 +64,8 @@ export function DotNav() {
           title={section.label}
           className={`w-3 h-3 rounded-full transition-all duration-300 ${
             activeSection === section.id
-              ? "bg-[#E2E8F0] scale-125"
-              : "bg-[#94A3B8] hover:bg-[#F8FAFC]"
+              ? "bg-[#D4D8E0] scale-125"
+              : "bg-[#5A6677] hover:bg-[#f0f1f4]"
           }`}
         />
       ))}

@@ -47,17 +47,17 @@ export function AmbientOrbs() {
       {/* Orb 1: Blue */}
       <div
         ref={orb1Ref}
-        className="absolute top-[10%] left-[5%] w-[40vw] h-[40vw] max-w-[500px] max-h-[500px] rounded-full bg-[#E2E8F0] opacity-[0.04] blur-[100px] mix-blend-screen"
+        className="absolute top-[10%] left-[5%] w-[40vw] h-[40vw] max-w-[500px] max-h-[500px] rounded-full bg-[#1A4A4E] opacity-[0.06] blur-[100px] mix-blend-screen"
       />
       {/* Orb 2: Purple */}
       <div
         ref={orb2Ref}
-        className="absolute bottom-[10%] right-[5%] w-[45vw] h-[45vw] max-w-[600px] max-h-[600px] rounded-full bg-[#94A3B8] opacity-[0.03] blur-[120px] mix-blend-screen"
+        className="absolute bottom-[10%] right-[5%] w-[45vw] h-[45vw] max-w-[600px] max-h-[600px] rounded-full bg-[#7B8794] opacity-[0.04] blur-[120px] mix-blend-screen"
       />
       {/* Orb 3: Cyan */}
       <div
         ref={orb3Ref}
-        className="absolute top-[40%] right-[30%] w-[30vw] h-[30vw] max-w-[400px] max-h-[400px] rounded-full bg-[#22D3EE] opacity-[0.02] blur-[90px] mix-blend-screen"
+        className="absolute top-[40%] right-[30%] w-[30vw] h-[30vw] max-w-[400px] max-h-[400px] rounded-full bg-[#5A6677] opacity-[0.03] blur-[90px] mix-blend-screen"
       />
     </div>
   );

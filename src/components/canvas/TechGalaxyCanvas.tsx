@@ -23,7 +23,7 @@ export function TechGalaxyCanvas() {
         camera={{ position: [0, 0, 20], fov: 60 }}
         gl={{ powerPreference: "high-performance", antialias: false }}
       >
-        <color attach="background" args={["#070B14"]} />
+        <color attach="background" args={["#141418"]} />
         <ambientLight intensity={0.5} />
 
         {/* Particle background */}

@@ -47,8 +47,8 @@ export function CustomCursor() {
       gsap.to(cursor, { scale: 0, opacity: 0, duration: 0.2 });
       gsap.to(follower, {
         scale: 2.5,
-        backgroundColor: "rgba(56, 189, 248, 0.15)",
-        borderColor: "rgba(56, 189, 248, 0.8)",
+        backgroundColor: "rgba(26, 74, 78, 0.15)",
+        borderColor: "rgba(26, 74, 78, 0.8)",
         duration: 0.3,
         ease: "power2.out",
       });
@@ -58,8 +58,8 @@ export function CustomCursor() {
       gsap.to(cursor, { scale: 1, opacity: 1, duration: 0.2 });
       gsap.to(follower, {
         scale: 1,
-        backgroundColor: "rgba(56, 189, 248, 0.1)",
-        borderColor: "rgba(56, 189, 248, 0.5)",
+        backgroundColor: "rgba(26, 74, 78, 0.1)",
+        borderColor: "rgba(26, 74, 78, 0.5)",
         duration: 0.3,
         ease: "power2.out",
       });
@@ -89,11 +89,11 @@ export function CustomCursor() {
     <>
       <div
         ref={cursorRef}
-        className="fixed top-0 left-0 w-2 h-2 bg-[#E2E8F0] rounded-full pointer-events-none z-[100] hidden md:block"
+        className="fixed top-0 left-0 w-2 h-2 bg-[#D4D8E0] rounded-full pointer-events-none z-[100] hidden md:block"
       />
       <div
         ref={followerRef}
-        className="fixed top-0 left-0 w-8 h-8 border border-[#E2E8F0]/50 bg-[#E2E8F0]/10 rounded-full pointer-events-none z-[99] transition-opacity hidden md:block"
+        className="fixed top-0 left-0 w-8 h-8 border border-[#D4D8E0]/50 bg-[#D4D8E0]/10 rounded-full pointer-events-none z-[99] transition-opacity hidden md:block"
       />
     </>
   );

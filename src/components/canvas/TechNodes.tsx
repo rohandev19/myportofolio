@@ -100,16 +100,16 @@ function TechNode({ node }: { node: NodeData }) {
               alt={node.text}
               fill
               sizes="(max-width: 768px) 64px, 128px"
-              className="object-contain filter drop-shadow-[0_0_10px_rgba(56,189,248,0.5)]"
+              className="object-contain filter drop-shadow-[0_0_10px_rgba(26,74,78,0.5)]"
             />
           ) : (
-            <div className="px-3 py-1.5 rounded-lg whitespace-nowrap select-none bg-[#070B14]/60 border border-[#94A3B8]/50 text-[#94A3B8] text-sm backdrop-blur-sm">
+            <div className="px-3 py-1.5 rounded-lg whitespace-nowrap select-none bg-[#141418]/60 border border-[#7B8794]/50 text-[#7B8794] text-sm backdrop-blur-sm">
               {node.text}
             </div>
           )}
 
           {/* Tooltip on hover */}
-          <span className="absolute -bottom-8 opacity-0 group-hover:opacity-100 transition-opacity bg-[#0F172A] border border-[#1E293B] text-[#F8FAFC] text-xs px-2 py-1 rounded whitespace-nowrap pointer-events-none">
+          <span className="absolute -bottom-8 opacity-0 group-hover:opacity-100 transition-opacity bg-[#141418] border border-[#2a2e38] text-[#f0f1f4] text-xs px-2 py-1 rounded whitespace-nowrap pointer-events-none">
             {node.text}
           </span>
         </div>

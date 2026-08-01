@@ -28,7 +28,7 @@ export function ScrollProgress() {
   return (
     <div
       ref={progressRef}
-      className="fixed top-0 left-0 right-0 h-1 bg-[#E2E8F0] origin-left scale-x-0 z-[200] shadow-[0_0_15px_#E2E8F0]"
+      className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#1A4A4E] to-[#D4D8E0] origin-left scale-x-0 z-[200] shadow-[0_0_15px_rgba(26,74,78,0.6)]"
     />
   );
 }

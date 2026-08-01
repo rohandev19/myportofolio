@@ -43,8 +43,8 @@ export function AboutScene() {
       <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center z-10">
         {/* Left Col: Text */}
         <div className="order-2 lg:order-1 flex flex-col gap-6">
-          <h2 className="about-text text-4xl md:text-5xl font-bold text-[#F8FAFC]">About Me</h2>
-          <div className="flex flex-col gap-4 text-lg text-[#E2E8F0] font-medium leading-relaxed drop-shadow-sm">
+          <h2 className="about-text text-4xl md:text-5xl font-bold text-[#f0f1f4]">About Me</h2>
+          <div className="flex flex-col gap-4 text-lg text-[#D4D8E0] font-medium leading-relaxed drop-shadow-sm">
             {aboutData.paragraphs.map((p, i) => (
               <p key={i} className="about-text">
                 {p}
@@ -56,7 +56,7 @@ export function AboutScene() {
             {aboutData.highlights.map((highlight, i) => (
               <li key={i} className="about-text flex items-center gap-3">
                 <span className="w-2 h-2 min-w-[8px] rounded-full bg-[var(--color-accent-blue)]" />
-                <span className="text-[#F8FAFC] font-medium">{highlight}</span>
+                <span className="text-[#f0f1f4] font-medium">{highlight}</span>
               </li>
             ))}
           </ul>
@@ -67,7 +67,7 @@ export function AboutScene() {
               href="/cv.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center gap-2 px-8 py-3.5 bg-transparent text-[#E2E8F0] font-bold rounded-xl border-2 border-[#E2E8F0]/30 hover:border-[#E2E8F0] hover:bg-[#E2E8F0]/10 hover:shadow-[0_0_20px_rgba(226,232,240,0.3)] transition-all duration-300 hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-[#E2E8F0]"
+              className="group inline-flex items-center gap-2 px-8 py-3.5 bg-transparent text-[#D4D8E0] font-bold rounded-xl border-2 border-[#D4D8E0]/30 hover:border-[#D4D8E0] hover:bg-[#D4D8E0]/10 hover:shadow-[0_0_20px_rgba(212,216,224,0.3)] transition-all duration-300 hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-[#D4D8E0]"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -94,18 +94,18 @@ export function AboutScene() {
           {/* Glowing background blob */}
           <div
             ref={blobRef}
-            className="w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 bg-gradient-to-tr from-[#E2E8F0] to-[#94A3B8] opacity-60 mix-blend-screen filter blur-3xl absolute animate-morph"
+            className="w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 bg-gradient-to-tr from-[#1A4A4E] to-[#7B8794] opacity-60 mix-blend-screen filter blur-3xl absolute animate-morph"
           />
           {/* Foreground morphing container for the image */}
           <div
-            className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 bg-gradient-to-bl from-[#050505] to-[#171717] border border-[#E2E8F0]/50 absolute overflow-hidden shadow-[0_0_30px_rgba(226,232,240,0.3)] animate-morph group cursor-pointer"
+            className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 bg-gradient-to-bl from-[#141418] to-[#222228] border border-[#1A4A4E]/50 absolute overflow-hidden shadow-[0_0_30px_rgba(26,74,78,0.3)] animate-morph group cursor-pointer"
             onClick={() => setIsActive(!isActive)}
           >
             {/* Dark overlay to match theme (Duotone effect) */}
             <div
-              className={`absolute inset-0 bg-[#050505]/40 mix-blend-multiply z-10 transition-colors duration-500 group-hover:bg-transparent ${isActive ? "bg-transparent" : ""}`}
+              className={`absolute inset-0 bg-[#141418]/40 mix-blend-multiply z-10 transition-colors duration-500 group-hover:bg-transparent ${isActive ? "bg-transparent" : ""}`}
             />
-            <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#E2E8F0]/20 mix-blend-overlay z-10" />
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#1A4A4E]/20 mix-blend-overlay z-10" />
 
             <img
               src="/images/profile.jpeg"

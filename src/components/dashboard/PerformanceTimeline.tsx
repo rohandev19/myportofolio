@@ -26,8 +26,8 @@ interface PerformanceTimelineProps {
 }
 
 const METRIC_COLORS: Record<WebVitalName, string> = {
-  LCP: "#E2E8F0",
-  FID: "#94A3B8",
+  LCP: "#D4D8E0",
+  FID: "#7B8794",
   CLS: "#34d399",
   INP: "#fbbf24",
   TTFB: "#f87171",
