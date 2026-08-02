@@ -14,14 +14,14 @@ export function TechGalaxyScene() {
 
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4 md:px-8">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-5xl font-bold text-[#F8FAFC] mb-4">Tech Galaxy</h2>
-          <p className="text-[#94A3B8] max-w-2xl mx-auto">
+          <h2 className="text-3xl md:text-5xl font-bold text-[#f0f1f4] mb-4">Tech Galaxy</h2>
+          <p className="text-[#7B8794] max-w-2xl mx-auto">
             An interactive constellation of my primary and secondary technology stack. Drag to
             explore.
           </p>
         </div>
 
-        <div className="w-full rounded-2xl overflow-hidden border border-[#1E293B] shadow-2xl relative">
+        <div className="w-full rounded-2xl overflow-hidden border border-[#2a2e38] shadow-2xl relative">
           <TechGalaxyErrorBoundary>
             <TechGalaxyCanvas />
           </TechGalaxyErrorBoundary>

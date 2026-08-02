@@ -75,7 +75,7 @@ export function AmbientParticles() {
   return (
     <instancedMesh ref={meshRef} args={[undefined, undefined, count]}>
       <boxGeometry args={[0.2, 0.2, 0.2]} />
-      <meshBasicMaterial color="#0F172A" />
+      <meshBasicMaterial color="#1a1a20" />
     </instancedMesh>
   );
 }

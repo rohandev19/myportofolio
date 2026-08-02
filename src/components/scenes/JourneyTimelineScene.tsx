@@ -56,18 +56,18 @@ export function JourneyTimelineScene() {
       className="min-h-screen w-full py-24 px-4 md:px-8 bg-[var(--color-bg-secondary)] relative"
     >
       <div className="max-w-4xl mx-auto">
-        <h2 className="text-3xl md:text-5xl font-bold text-center text-[#F8FAFC] mb-20">
+        <h2 className="text-3xl md:text-5xl font-bold text-center text-[#f0f1f4] mb-20">
           Where I&apos;ve Been
         </h2>
 
         <div className="relative">
           {/* Central Line Background */}
-          <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-[#1E293B] -translate-x-1/2" />
+          <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-[#2a2e38] -translate-x-1/2" />
 
           {/* Animated Highlight Line */}
           <div
             ref={lineRef}
-            className="absolute left-4 md:left-1/2 top-0 w-0.5 bg-gradient-to-b from-[#E2E8F0] to-[#94A3B8] -translate-x-1/2 origin-top"
+            className="absolute left-4 md:left-1/2 top-0 w-0.5 bg-gradient-to-b from-[#D4D8E0] to-[#1A4A4E] -translate-x-1/2 origin-top"
           />
 
           <div className="flex flex-col gap-12">
@@ -85,14 +85,14 @@ export function JourneyTimelineScene() {
                 <div
                   className={`w-full md:w-1/2 pl-12 md:pl-0 ${idx % 2 === 0 ? "md:pr-12 md:text-right" : "md:pl-12"}`}
                 >
-                  <div className="text-[#E2E8F0] font-mono text-sm font-bold mb-2">
+                  <div className="text-[#D4D8E0] font-mono text-sm font-bold mb-2">
                     {entry.year}
                   </div>
-                  <h3 className="text-xl md:text-2xl font-bold text-[#F8FAFC] mb-1">
+                  <h3 className="text-xl md:text-2xl font-bold text-[#f0f1f4] mb-1">
                     {entry.role}
                   </h3>
-                  <div className="text-[#94A3B8] font-medium mb-3">{entry.company}</div>
-                  <p className="text-[#94A3B8] leading-relaxed">{entry.description}</p>
+                  <div className="text-[#7B8794] font-medium mb-3">{entry.company}</div>
+                  <p className="text-[#7B8794] leading-relaxed">{entry.description}</p>
                 </div>
 
                 {/* Empty Side for Spacing */}

@@ -68,7 +68,7 @@ export function CodePlayground() {
           </button>
           <button
             onClick={handleRun}
-            className="px-4 py-2 bg-[var(--color-accent-blue)] text-[#070B14] rounded-md font-medium text-sm hover:opacity-90 transition-opacity"
+            className="px-4 py-2 bg-[var(--color-accent-blue)] text-[#141418] rounded-md font-medium text-sm hover:opacity-90 transition-opacity"
           >
             Run Code
           </button>
@@ -77,7 +77,7 @@ export function CodePlayground() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 h-[400px]">
         {/* Editor */}
-        <div className="flex flex-col border border-[var(--color-border)] rounded-xl overflow-hidden bg-[#0F172A]">
+        <div className="flex flex-col border border-[var(--color-border)] rounded-xl overflow-hidden bg-[#181c24]">
           <div className="bg-[var(--color-bg-secondary)] px-4 py-2 border-b border-[var(--color-border)] text-xs font-mono text-[var(--color-text-secondary)]">
             index.js
           </div>

@@ -78,7 +78,7 @@ export function HeroScene() {
         <h1 className="text-5xl md:text-7xl lg:text-8xl font-black mb-4 tracking-tighter relative z-10">
           <SplitText
             className="hero-name"
-            charClassName="char bg-clip-text text-transparent bg-gradient-to-b from-white to-slate-400"
+            charClassName="char bg-clip-text text-transparent bg-gradient-to-b from-white to-[#7B8794]"
           >
             {heroData.name}
           </SplitText>
@@ -101,14 +101,14 @@ export function HeroScene() {
           >
             <SplitText
               className="hero-title"
-              charClassName="char bg-clip-text text-transparent bg-gradient-to-br from-[#FAFAFA] to-[#94A3B8]"
+              charClassName="char bg-clip-text text-transparent bg-gradient-to-br from-[#f0f1f4] to-[#7B8794]"
             >
               {heroData.title}
             </SplitText>
           </h2>
         </div>
 
-        <p className="hero-tagline text-lg md:text-xl text-[#94A3B8] mb-10 max-w-2xl mx-auto opacity-0">
+        <p className="hero-tagline text-lg md:text-xl text-[#7B8794] mb-10 max-w-2xl mx-auto opacity-0">
           {heroData.tagline}
         </p>
 
@@ -116,7 +116,7 @@ export function HeroScene() {
           <InteractiveButton
             as="a"
             href="#projects"
-            className="hero-cta opacity-0 px-8 py-3 bg-[#E2E8F0] text-[#050505] font-bold rounded-lg hover:bg-white hover:shadow-[0_0_30px_rgba(226,232,240,0.3)] hover:-translate-y-1 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white"
+            className="hero-cta opacity-0 px-8 py-3 bg-[#D4D8E0] text-[#141418] font-bold rounded-lg hover:bg-white hover:shadow-[0_0_30px_rgba(212,216,224,0.3)] hover:-translate-y-1 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white"
           >
             {heroData.cta.primary}
           </InteractiveButton>
@@ -146,8 +146,8 @@ export function HeroScene() {
           backgroundSize: "32px 32px",
         }}
       />
-      <div className="absolute top-1/4 left-1/4 w-64 h-64 md:w-[500px] md:h-[500px] bg-[#E2E8F0]/5 rounded-full blur-[120px] pointer-events-none -z-10" />
-      <div className="absolute bottom-1/4 right-1/4 w-64 h-64 md:w-[600px] md:h-[600px] bg-[#94A3B8]/5 rounded-full blur-[150px] pointer-events-none -z-10" />
+      <div className="absolute top-1/4 left-1/4 w-64 h-64 md:w-[500px] md:h-[500px] bg-[#1A4A4E]/10 rounded-full blur-[120px] pointer-events-none -z-10" />
+      <div className="absolute bottom-1/4 right-1/4 w-64 h-64 md:w-[600px] md:h-[600px] bg-[#7B8794]/8 rounded-full blur-[150px] pointer-events-none -z-10" />
     </section>
   );
 }

@@ -55,7 +55,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${plusJakarta.variable} ${jetbrainsMono.variable} font-sans antialiased bg-[#050505] text-[#FAFAFA]`}
+        className={`${plusJakarta.variable} ${jetbrainsMono.variable} font-sans antialiased bg-[#141418] text-[#f0f1f4]`}
       >
         <script
           type="application/ld+json"

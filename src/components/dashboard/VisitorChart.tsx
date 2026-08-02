@@ -69,12 +69,12 @@ export function VisitorChart({ data }: VisitorChartProps) {
             <AreaChart data={chartData}>
               <defs>
                 <linearGradient id="viewsGrad" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="#E2E8F0" stopOpacity={0.3} />
-                  <stop offset="95%" stopColor="#E2E8F0" stopOpacity={0} />
+                  <stop offset="5%" stopColor="#D4D8E0" stopOpacity={0.3} />
+                  <stop offset="95%" stopColor="#D4D8E0" stopOpacity={0} />
                 </linearGradient>
                 <linearGradient id="visitorsGrad" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="#94A3B8" stopOpacity={0.3} />
-                  <stop offset="95%" stopColor="#94A3B8" stopOpacity={0} />
+                  <stop offset="5%" stopColor="#7B8794" stopOpacity={0.3} />
+                  <stop offset="95%" stopColor="#7B8794" stopOpacity={0} />
                 </linearGradient>
               </defs>
               <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" />
@@ -82,16 +82,16 @@ export function VisitorChart({ data }: VisitorChartProps) {
               <YAxis stroke="#64748b" fontSize={12} tickLine={false} axisLine={false} />
               <Tooltip
                 contentStyle={{
-                  backgroundColor: "#0f172a",
+                  backgroundColor: "#1a1a20",
                   border: "1px solid rgba(255,255,255,0.1)",
                   borderRadius: "12px",
-                  color: "#f8fafc",
+                  color: "#f0f1f4",
                 }}
               />
               <Area
                 type="monotone"
                 dataKey="views"
-                stroke="#E2E8F0"
+                stroke="#D4D8E0"
                 fill="url(#viewsGrad)"
                 strokeWidth={2}
                 name="Page Views"
@@ -99,7 +99,7 @@ export function VisitorChart({ data }: VisitorChartProps) {
               <Area
                 type="monotone"
                 dataKey="visitors"
-                stroke="#94A3B8"
+                stroke="#7B8794"
                 fill="url(#visitorsGrad)"
                 strokeWidth={2}
                 name="Unique Visitors"
