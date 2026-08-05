@@ -78,7 +78,7 @@ export function HeroScene() {
         <h1 className="text-5xl md:text-7xl lg:text-8xl font-black mb-4 tracking-tighter relative z-10">
           <SplitText
             className="hero-name"
-            charClassName="char bg-clip-text text-transparent bg-gradient-to-b from-white to-[#7B8794]"
+            charClassName="char bg-clip-text text-transparent bg-gradient-to-b from-[var(--color-text-primary)] to-[var(--color-text-secondary)]"
           >
             {heroData.name}
           </SplitText>
@@ -101,14 +101,14 @@ export function HeroScene() {
           >
             <SplitText
               className="hero-title"
-              charClassName="char bg-clip-text text-transparent bg-gradient-to-br from-[#f0f1f4] to-[#7B8794]"
+              charClassName="char bg-clip-text text-transparent bg-gradient-to-br from-[var(--color-text-primary)] to-[var(--color-text-secondary)]"
             >
               {heroData.title}
             </SplitText>
           </h2>
         </div>
 
-        <p className="hero-tagline text-lg md:text-xl text-[#7B8794] mb-10 max-w-2xl mx-auto opacity-0">
+        <p className="hero-tagline text-lg md:text-xl text-[var(--color-text-secondary)] mb-10 max-w-2xl mx-auto opacity-0">
           {heroData.tagline}
         </p>
 
@@ -116,21 +116,21 @@ export function HeroScene() {
           <InteractiveButton
             as="a"
             href="#projects"
-            className="hero-cta opacity-0 px-8 py-3 bg-[#D4D8E0] text-[#141418] font-bold rounded-lg hover:bg-white hover:shadow-[0_0_30px_rgba(212,216,224,0.3)] hover:-translate-y-1 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white"
+            className="hero-cta opacity-0 px-8 py-3 bg-[var(--color-accent-blue)] text-[var(--color-bg-primary)] font-bold rounded-lg hover:opacity-90 hover:shadow-[0_0_30px_rgba(212,216,224,0.3)] hover:-translate-y-1 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[var(--color-accent-blue)]"
           >
             {heroData.cta.primary}
           </InteractiveButton>
           <InteractiveButton
             as="a"
             href="#contact"
-            className="hero-cta opacity-0 px-8 py-3 bg-white/5 backdrop-blur-md border border-white/10 text-white font-semibold rounded-lg hover:bg-white/10 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-white/20"
+            className="hero-cta opacity-0 px-8 py-3 bg-[var(--color-bg-secondary)]/50 backdrop-blur-md border border-[var(--color-border)] text-[var(--color-text-primary)] font-semibold rounded-lg hover:bg-[var(--color-bg-secondary)] transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-[var(--color-border)]"
           >
             {heroData.cta.secondary}
           </InteractiveButton>
           <InteractiveButton
             as="a"
             href="/blog"
-            className="hero-cta opacity-0 px-8 py-3 bg-white/5 backdrop-blur-md border border-[var(--color-accent-violet)]/40 text-[var(--color-accent-violet)] font-semibold rounded-lg hover:bg-[var(--color-accent-violet)]/10 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-[var(--color-accent-violet)]"
+            className="hero-cta opacity-0 px-8 py-3 bg-[var(--color-bg-secondary)]/50 backdrop-blur-md border border-[var(--color-accent-violet)]/40 text-[var(--color-accent-violet)] font-semibold rounded-lg hover:bg-[var(--color-accent-violet)]/10 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-[var(--color-accent-violet)]"
           >
             Read Blog
           </InteractiveButton>

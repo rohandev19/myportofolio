@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { ThemeToggle } from "./ThemeToggle";
 
 export function TopNav() {
   const pathname = usePathname();
@@ -10,7 +11,7 @@ export function TopNav() {
   if (pathname === "/") return null;
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-[#141418]/80 backdrop-blur-md border-b border-white/10">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-[var(--color-bg-primary)]/80 backdrop-blur-md border-b border-[var(--color-border)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
         <Link
           href="/"
@@ -19,21 +20,27 @@ export function TopNav() {
           Rohan.
         </Link>
         <nav className="flex items-center gap-6 text-sm font-medium">
-          <Link href="/" className="text-[#5A6677] hover:text-white transition-colors">
+          <Link
+            href="/"
+            className="text-[var(--color-text-tertiary)] hover:text-[var(--color-text-primary)] transition-colors"
+          >
             Portfolio
           </Link>
           <Link
             href="/blog"
-            className={`transition-colors ${pathname.startsWith("/blog") ? "text-[#D4D8E0]" : "text-[#5A6677] hover:text-white"}`}
+            className={`transition-colors ${pathname.startsWith("/blog") ? "text-[var(--color-accent-blue)]" : "text-[var(--color-text-tertiary)] hover:text-[var(--color-text-primary)]"}`}
           >
             Blog
           </Link>
           <Link
             href="/dashboard/analytics"
-            className={`transition-colors ${pathname.startsWith("/dashboard") ? "text-[#D4D8E0]" : "text-[#5A6677] hover:text-white"}`}
+            className={`transition-colors ${pathname.startsWith("/dashboard") ? "text-[var(--color-accent-blue)]" : "text-[var(--color-text-tertiary)] hover:text-[var(--color-text-primary)]"}`}
           >
             Dashboard
           </Link>
+          <div className="flex items-center gap-2 pl-2 border-l border-[var(--color-border)]">
+            <ThemeToggle />
+          </div>
         </nav>
       </div>
     </header>
