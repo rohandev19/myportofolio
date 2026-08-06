@@ -46,7 +46,7 @@ export function SearchBar({ allTags, onSearch }: SearchBarProps) {
       <div className="relative">
         <div className="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none">
           <svg
-            className="w-5 h-5 text-slate-400"
+            className="w-5 h-5 text-[var(--color-text-tertiary)]"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -65,14 +65,14 @@ export function SearchBar({ allTags, onSearch }: SearchBarProps) {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Search articles..."
-          className="w-full pl-12 pr-4 py-3 rounded-xl border border-white/10 bg-white/5 text-white placeholder-slate-500 focus:outline-none focus:border-[var(--color-accent-cyan)]/50 focus:ring-1 focus:ring-[var(--color-accent-cyan)]/30 transition-all"
+          className="w-full pl-12 pr-4 py-3 rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-secondary)] text-[var(--color-text-primary)] placeholder-[var(--color-text-tertiary)] focus:outline-none focus:border-[var(--color-accent-cyan)]/50 focus:ring-1 focus:ring-[var(--color-accent-cyan)]/30 transition-all"
           id="blog-search"
           aria-label="Search articles"
         />
         {hasFilters && (
           <button
             onClick={clearFilters}
-            className="absolute inset-y-0 right-0 flex items-center pr-4 text-slate-400 hover:text-white transition-colors"
+            className="absolute inset-y-0 right-0 flex items-center pr-4 text-[var(--color-text-tertiary)] hover:text-[var(--color-text-primary)] transition-colors"
             aria-label="Clear search"
           >
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -99,7 +99,7 @@ export function SearchBar({ allTags, onSearch }: SearchBarProps) {
                 className={`text-xs px-3 py-1.5 rounded-full border transition-all duration-200 ${
                   isSelected
                     ? "bg-[var(--color-accent-cyan)]/20 border-[var(--color-accent-cyan)]/50 text-[var(--color-accent-cyan)]"
-                    : "bg-white/5 border-white/10 text-slate-400 hover:border-white/20 hover:text-slate-200"
+                    : "bg-[var(--color-bg-secondary)] border-[var(--color-border)] text-[var(--color-text-secondary)] hover:border-[var(--color-accent-blue)]/30 hover:text-[var(--color-text-primary)]"
                 }`}
                 aria-pressed={isSelected}
               >

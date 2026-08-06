@@ -30,7 +30,9 @@ export async function CaseStudySection({ section, id, className = "" }: CaseStud
 
   return (
     <section id={id} className={`my-12 ${className}`}>
-      <h2 className="text-2xl md:text-3xl font-bold text-white mb-6">{section.title}</h2>
+      <h2 className="text-2xl md:text-3xl font-bold text-[var(--color-text-primary)] mb-6">
+        {section.title}
+      </h2>
       <div className="prose-custom">{mdxContent}</div>
     </section>
   );

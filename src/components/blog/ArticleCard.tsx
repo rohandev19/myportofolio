@@ -28,7 +28,7 @@ export function ArticleCard({ article, featured = false }: ArticleCardProps) {
   return (
     <Link
       href={`/blog/${article.slug}`}
-      className={`group block rounded-2xl border border-white/10 bg-white/[0.02] overflow-hidden transition-all duration-300 hover:border-[var(--color-accent-cyan)]/30 hover:bg-white/[0.04] hover:shadow-lg hover:shadow-[var(--color-accent-cyan)]/5 hover:-translate-y-1 ${
+      className={`group block rounded-2xl border border-[var(--color-border)] bg-[var(--color-bg-secondary)] overflow-hidden transition-all duration-300 hover:border-[var(--color-accent-cyan)]/30 hover:shadow-lg hover:shadow-[var(--color-accent-cyan)]/5 hover:-translate-y-1 ${
         featured ? "md:col-span-2" : ""
       }`}
     >
@@ -61,27 +61,31 @@ export function ArticleCard({ article, featured = false }: ArticleCardProps) {
               </span>
             ))}
             {article.tags.length > 3 && (
-              <span className="text-xs px-2.5 py-1 text-slate-400">+{article.tags.length - 3}</span>
+              <span className="text-xs px-2.5 py-1 text-[var(--color-text-tertiary)]">
+                +{article.tags.length - 3}
+              </span>
             )}
           </div>
         )}
 
         {/* Title */}
-        <h3 className="text-lg font-semibold text-white group-hover:text-[var(--color-accent-cyan)] transition-colors line-clamp-2 mb-2">
+        <h3 className="text-lg font-semibold text-[var(--color-text-primary)] group-hover:text-[var(--color-accent-cyan)] transition-colors line-clamp-2 mb-2">
           {article.title}
         </h3>
 
         {/* Description */}
-        <p className="text-sm text-slate-400 line-clamp-2 mb-4">{article.description}</p>
+        <p className="text-sm text-[var(--color-text-secondary)] line-clamp-2 mb-4">
+          {article.description}
+        </p>
 
         {/* Meta */}
-        <div className="flex items-center gap-3 text-xs text-slate-500">
+        <div className="flex items-center gap-3 text-xs text-[var(--color-text-tertiary)]">
           <time dateTime={article.date}>{formatDate(article.date)}</time>
-          <span className="w-1 h-1 rounded-full bg-slate-600" />
+          <span className="w-1 h-1 rounded-full bg-[var(--color-border)]" />
           <span>{article.readTime} min read</span>
           {article.category && (
             <>
-              <span className="w-1 h-1 rounded-full bg-slate-600" />
+              <span className="w-1 h-1 rounded-full bg-[var(--color-border)]" />
               <span>{article.category}</span>
             </>
           )}

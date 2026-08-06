@@ -71,29 +71,35 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
         <div className="inline-block px-3 py-1 mb-6 text-xs font-semibold tracking-wider text-[var(--color-accent-cyan)] uppercase bg-[var(--color-accent-cyan)]/10 rounded-full border border-[var(--color-accent-cyan)]/20">
           {project.category}
         </div>
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[var(--color-text-primary)] mb-6 leading-tight">
           {project.title}
         </h1>
-        <p className="text-xl text-slate-400 mb-10 max-w-2xl mx-auto leading-relaxed">
+        <p className="text-xl text-[var(--color-text-secondary)] mb-10 max-w-2xl mx-auto leading-relaxed">
           {project.description}
         </p>
 
         {/* Project Meta info */}
-        <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4 text-sm text-slate-300">
+        <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4 text-sm text-[var(--color-text-secondary)]">
           {project.role && (
             <div className="flex flex-col items-center">
-              <span className="text-slate-500 mb-1 text-xs uppercase tracking-wider">Role</span>
+              <span className="text-[var(--color-text-tertiary)] mb-1 text-xs uppercase tracking-wider">
+                Role
+              </span>
               <span className="font-medium">{project.role}</span>
             </div>
           )}
           {project.client && (
             <div className="flex flex-col items-center">
-              <span className="text-slate-500 mb-1 text-xs uppercase tracking-wider">Client</span>
+              <span className="text-[var(--color-text-tertiary)] mb-1 text-xs uppercase tracking-wider">
+                Client
+              </span>
               <span className="font-medium">{project.client}</span>
             </div>
           )}
           <div className="flex flex-col items-center">
-            <span className="text-slate-500 mb-1 text-xs uppercase tracking-wider">Year</span>
+            <span className="text-[var(--color-text-tertiary)] mb-1 text-xs uppercase tracking-wider">
+              Year
+            </span>
             <span className="font-medium">{new Date(project.publishedAt).getFullYear()}</span>
           </div>
         </div>
@@ -106,7 +112,7 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
                 href={project.links.live}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl bg-gradient-to-r from-[#D4D8E0] to-[#7B8794] text-[#141418] font-bold shadow-[0_0_15px_rgba(212,216,224,0.3)] hover:shadow-[0_0_25px_rgba(212,216,224,0.6)] transition-all duration-300 hover:-translate-y-1 overflow-hidden"
+                className="group relative inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl bg-gradient-to-r from-[var(--color-accent-blue)] to-[var(--color-accent-violet)] text-[var(--color-bg-primary)] font-bold shadow-[0_0_15px_rgba(212,216,224,0.3)] hover:shadow-[0_0_25px_rgba(212,216,224,0.6)] transition-all duration-300 hover:-translate-y-1 overflow-hidden"
               >
                 <div className="absolute inset-0 bg-white/40 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out"></div>
                 <span className="relative z-10 flex items-center gap-2">
@@ -132,7 +138,7 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
                 href={project.links.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl border-2 border-[#2a2e38] bg-[#141418] text-[#D4D8E0] font-semibold hover:border-[#D4D8E0]/50 hover:bg-[#2a2e38]/50 transition-all duration-300 hover:-translate-y-1"
+                className="group inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl border-2 border-[var(--color-border)] bg-[var(--color-bg-primary)] text-[var(--color-accent-blue)] font-semibold hover:border-[var(--color-accent-blue)]/50 hover:bg-[var(--color-border)]/50 transition-all duration-300 hover:-translate-y-1"
               >
                 View Source
               </a>
@@ -150,7 +156,7 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
 
       {/* Hero Cover Image */}
       {project.coverImage && (
-        <div className="relative aspect-video w-full rounded-2xl overflow-hidden border border-white/10 mb-20 shadow-2xl">
+        <div className="relative aspect-video w-full rounded-2xl overflow-hidden border border-[var(--color-border)] mb-20 shadow-2xl">
           <Image
             src={project.coverImage.src}
             alt={project.coverImage.alt}

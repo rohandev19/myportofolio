@@ -54,14 +54,14 @@ export function ImageGallery({ images }: ImageGalleryProps) {
 
   return (
     <section className="my-16" aria-label="Project images gallery">
-      <h2 className="text-2xl font-bold text-white mb-8">Gallery</h2>
+      <h2 className="text-2xl font-bold text-[var(--color-text-primary)] mb-8">Gallery</h2>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {images.map((image, index) => (
           <button
             key={image.src + index}
             onClick={() => openLightbox(index)}
-            className="group relative aspect-video overflow-hidden rounded-xl bg-white/5 border border-white/10 text-left"
+            className="group relative aspect-video overflow-hidden rounded-xl bg-[var(--color-bg-secondary)] border border-[var(--color-border)] text-left"
             aria-label={`View full image: ${image.alt}`}
           >
             <Image

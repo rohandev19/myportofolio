@@ -20,7 +20,7 @@ export async function GitHubStatsCard({ githubUrl }: GitHubStatsCardProps) {
 
   return (
     <div className="flex flex-wrap gap-4 mt-6">
-      <div className="flex items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-4 py-2">
+      <div className="flex items-center gap-2 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-secondary)] px-4 py-2">
         <svg
           className="w-5 h-5 text-yellow-400"
           fill="currentColor"
@@ -30,16 +30,18 @@ export async function GitHubStatsCard({ githubUrl }: GitHubStatsCardProps) {
           <path d="M12 .587l3.668 7.431 8.2 1.192-5.934 5.787 1.401 8.168L12 18.896l-7.335 3.858 1.401-8.168-5.934-5.787 8.2-1.192L12 .587z" />
         </svg>
         <div className="flex flex-col">
-          <span className="text-sm font-bold text-white leading-tight">
+          <span className="text-sm font-bold text-[var(--color-text-primary)] leading-tight">
             {stats.stars.toLocaleString()}
           </span>
-          <span className="text-[10px] text-slate-400 uppercase tracking-wider">Stars</span>
+          <span className="text-[10px] text-[var(--color-text-secondary)] uppercase tracking-wider">
+            Stars
+          </span>
         </div>
       </div>
 
-      <div className="flex items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-4 py-2">
+      <div className="flex items-center gap-2 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-secondary)] px-4 py-2">
         <svg
-          className="w-5 h-5 text-slate-300"
+          className="w-5 h-5 text-[var(--color-text-secondary)]"
           fill="currentColor"
           viewBox="0 0 24 24"
           aria-hidden="true"
@@ -47,14 +49,16 @@ export async function GitHubStatsCard({ githubUrl }: GitHubStatsCardProps) {
           <path d="M12 7a2 2 0 10-.001-3.999A2 2 0 0012 7zm-1 2v4a3 3 0 003 3h2v-2h-2a1 1 0 01-1-1v-4h-1zm5 4a2 2 0 10-.001 3.999A2 2 0 0016 13zm-8 4a2 2 0 10-.001-3.999A2 2 0 008 17z" />
         </svg>
         <div className="flex flex-col">
-          <span className="text-sm font-bold text-white leading-tight">
+          <span className="text-sm font-bold text-[var(--color-text-primary)] leading-tight">
             {stats.forks.toLocaleString()}
           </span>
-          <span className="text-[10px] text-slate-400 uppercase tracking-wider">Forks</span>
+          <span className="text-[10px] text-[var(--color-text-secondary)] uppercase tracking-wider">
+            Forks
+          </span>
         </div>
       </div>
 
-      <div className="flex items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-4 py-2">
+      <div className="flex items-center gap-2 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-secondary)] px-4 py-2">
         <svg
           className="w-5 h-5 text-green-400"
           fill="none"
@@ -70,10 +74,12 @@ export async function GitHubStatsCard({ githubUrl }: GitHubStatsCardProps) {
           />
         </svg>
         <div className="flex flex-col">
-          <span className="text-sm font-bold text-white leading-tight">
+          <span className="text-sm font-bold text-[var(--color-text-primary)] leading-tight">
             {stats.openIssues.toLocaleString()}
           </span>
-          <span className="text-[10px] text-slate-400 uppercase tracking-wider">Issues</span>
+          <span className="text-[10px] text-[var(--color-text-secondary)] uppercase tracking-wider">
+            Issues
+          </span>
         </div>
       </div>
     </div>
