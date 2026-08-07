@@ -9,7 +9,7 @@ export default function ProjectNotFound() {
       </p>
       <Link
         href="/projects"
-        className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[var(--color-accent-cyan)]/10 text-[var(--color-accent-cyan)] border border-[var(--color-accent-cyan)]/20 hover:bg-[var(--color-accent-cyan)]/20 transition-colors"
+        className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[var(--color-accent-blue)]/10 text-[var(--color-accent-blue)] border border-[var(--color-accent-blue)]/20 hover:bg-[var(--color-accent-blue)]/20 transition-colors"
       >
         ← View All Projects
       </Link>

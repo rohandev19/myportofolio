@@ -42,7 +42,7 @@ export function TechStackBreakdown({ techStack }: TechStackBreakdownProps) {
             key={category}
             className="rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-secondary)] p-5"
           >
-            <h3 className="text-sm font-semibold text-[var(--color-accent-cyan)] uppercase tracking-wider mb-4 border-b border-[var(--color-border)] pb-2">
+            <h3 className="text-sm font-semibold text-[var(--color-accent-blue)] uppercase tracking-wider mb-4 border-b border-[var(--color-border)] pb-2">
               {category}
             </h3>
             <ul className="space-y-4">

@@ -29,7 +29,7 @@ export function RelatedProjects({ projects }: RelatedProjectsProps) {
           <Link
             key={project.slug}
             href={`/projects/${project.slug}`}
-            className="group block rounded-2xl border border-[var(--color-border)] bg-[var(--color-bg-secondary)] overflow-hidden transition-all duration-300 hover:border-[var(--color-accent-cyan)]/30 hover:bg-white/[0.04] hover:-translate-y-1"
+            className="group block rounded-2xl border border-[var(--color-border)] bg-[var(--color-bg-secondary)] overflow-hidden transition-all duration-300 hover:border-[var(--color-accent-blue)]/30 hover:bg-[var(--color-text-primary)]/[0.04] hover:-translate-y-1"
           >
             {project.coverImage ? (
               <div className="relative aspect-[4/3] overflow-hidden">
@@ -42,16 +42,16 @@ export function RelatedProjects({ projects }: RelatedProjectsProps) {
                 />
               </div>
             ) : (
-              <div className="aspect-[4/3] bg-gradient-to-br from-slate-800 to-slate-900 flex items-center justify-center">
+              <div className="aspect-[4/3] bg-gradient-to-br from-[var(--color-bg-tertiary)] to-[var(--color-border)] flex items-center justify-center">
                 <span className="text-[var(--color-text-tertiary)]">No Image</span>
               </div>
             )}
 
             <div className="p-6">
-              <span className="text-xs font-semibold text-[var(--color-accent-cyan)] uppercase tracking-wider mb-2 block">
+              <span className="text-xs font-semibold text-[var(--color-accent-blue)] uppercase tracking-wider mb-2 block">
                 {project.category}
               </span>
-              <h3 className="text-lg font-bold text-[var(--color-text-primary)] mb-2 group-hover:text-[var(--color-accent-cyan)] transition-colors">
+              <h3 className="text-lg font-bold text-[var(--color-text-primary)] mb-2 group-hover:text-[var(--color-accent-blue)] transition-colors">
                 {project.title}
               </h3>
               <p className="text-sm text-[var(--color-text-secondary)] line-clamp-2">

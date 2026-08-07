@@ -68,7 +68,7 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
     <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-12 md:pt-32 md:pb-20">
       {/* Header */}
       <header className="mb-16 text-center">
-        <div className="inline-block px-3 py-1 mb-6 text-xs font-semibold tracking-wider text-[var(--color-accent-cyan)] uppercase bg-[var(--color-accent-cyan)]/10 rounded-full border border-[var(--color-accent-cyan)]/20">
+        <div className="inline-block px-3 py-1 mb-6 text-xs font-semibold tracking-wider text-[var(--color-accent-blue)] uppercase bg-[var(--color-accent-blue)]/10 rounded-full border border-[var(--color-accent-blue)]/20">
           {project.category}
         </div>
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[var(--color-text-primary)] mb-6 leading-tight">
