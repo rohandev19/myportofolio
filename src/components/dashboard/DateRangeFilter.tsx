@@ -30,8 +30,8 @@ export function DateRangeFilter({ current, onChange }: DateRangeFilterProps) {
           onClick={() => onChange({ type: preset.value })}
           className={`px-4 py-2 text-sm rounded-lg border transition-all duration-200 ${
             current.type === preset.value
-              ? "bg-[var(--color-accent-cyan)]/20 border-[var(--color-accent-cyan)]/50 text-[var(--color-accent-cyan)]"
-              : "bg-white/5 border-white/10 text-slate-400 hover:border-white/20 hover:text-white"
+              ? "bg-[var(--color-accent-blue)]/20 border-[var(--color-accent-blue)]/50 text-[var(--color-accent-blue)]"
+              : "bg-[var(--color-bg-secondary)] border-[var(--color-border)] text-[var(--color-text-secondary)] hover:border-[var(--color-accent-blue)]/50 hover:text-[var(--color-text-primary)]"
           }`}
           aria-pressed={current.type === preset.value}
         >
@@ -51,10 +51,10 @@ export function DateRangeFilter({ current, onChange }: DateRangeFilterProps) {
               endDate: current.endDate || new Date().toISOString().split("T")[0],
             })
           }
-          className="px-3 py-2 text-sm rounded-lg border border-white/10 bg-white/5 text-slate-300 focus:outline-none focus:border-[var(--color-accent-cyan)]/50"
+          className="px-3 py-2 text-sm rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-secondary)] text-[var(--color-text-primary)] focus:outline-none focus:border-[var(--color-accent-blue)]/50"
           aria-label="Start date"
         />
-        <span className="text-slate-500 text-sm">–</span>
+        <span className="text-[var(--color-text-tertiary)] text-sm">–</span>
         <input
           type="date"
           value={current.type === "custom" ? current.endDate || "" : ""}
@@ -67,7 +67,7 @@ export function DateRangeFilter({ current, onChange }: DateRangeFilterProps) {
               endDate: e.target.value,
             })
           }
-          className="px-3 py-2 text-sm rounded-lg border border-white/10 bg-white/5 text-slate-300 focus:outline-none focus:border-[var(--color-accent-cyan)]/50"
+          className="px-3 py-2 text-sm rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-secondary)] text-[var(--color-text-primary)] focus:outline-none focus:border-[var(--color-accent-blue)]/50"
           aria-label="End date"
         />
       </div>

@@ -43,11 +43,13 @@ export function WebVitalsCard({ metric }: WebVitalsCardProps) {
       {/* Header */}
       <div className="flex items-center justify-between mb-3">
         <div>
-          <h3 className="text-sm font-semibold text-white">{metric.name}</h3>
-          <p className="text-xs text-slate-400">{METRIC_DESCRIPTIONS[metric.name]}</p>
+          <h3 className="text-sm font-semibold text-[var(--color-text-primary)]">{metric.name}</h3>
+          <p className="text-xs text-[var(--color-text-secondary)]">
+            {METRIC_DESCRIPTIONS[metric.name]}
+          </p>
         </div>
         <span
-          className={`text-xs px-2.5 py-1 rounded-full font-medium capitalize ${getRatingColor(metric.rating)} bg-white/5`}
+          className={`text-xs px-2.5 py-1 rounded-full font-medium capitalize ${getRatingColor(metric.rating)} bg-[var(--color-text-primary)]/5`}
         >
           {metric.rating.replace("-", " ")}
         </span>
@@ -59,20 +61,20 @@ export function WebVitalsCard({ metric }: WebVitalsCardProps) {
       </p>
 
       {/* Gauge bar */}
-      <div className="relative h-2 bg-white/10 rounded-full overflow-hidden">
+      <div className="relative h-2 bg-[var(--color-border)] rounded-full overflow-hidden">
         <div
           className={`absolute inset-y-0 left-0 rounded-full transition-all duration-700 ease-out ${
             metric.rating === "good"
-              ? "bg-green-400"
+              ? "bg-green-500"
               : metric.rating === "needs-improvement"
-                ? "bg-yellow-400"
-                : "bg-red-400"
+                ? "bg-yellow-500"
+                : "bg-red-500"
           }`}
           style={{ width: `${gaugePercent}%` }}
         />
         {/* Good threshold marker */}
         <div
-          className="absolute inset-y-0 w-0.5 bg-white/30"
+          className="absolute inset-y-0 w-0.5 bg-[var(--color-text-primary)]/30"
           style={{
             left: `${(threshold.good / threshold.poor) * 100}%`,
           }}
@@ -80,7 +82,7 @@ export function WebVitalsCard({ metric }: WebVitalsCardProps) {
       </div>
 
       {/* Threshold labels */}
-      <div className="flex justify-between mt-1.5 text-[10px] text-slate-500">
+      <div className="flex justify-between mt-1.5 text-[10px] text-[var(--color-text-tertiary)]">
         <span>0</span>
         <span>
           Good: &lt; {metric.name === "CLS" ? threshold.good : `${threshold.good}${threshold.unit}`}

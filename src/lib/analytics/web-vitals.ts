@@ -78,11 +78,11 @@ export function formatMetricValue(name: WebVitalName, value: number): string {
 export function getRatingColor(rating: MetricRating): string {
   switch (rating) {
     case "good":
-      return "text-green-400";
+      return "text-green-500";
     case "needs-improvement":
-      return "text-yellow-400";
+      return "text-yellow-500";
     case "poor":
-      return "text-red-400";
+      return "text-red-500";
   }
 }
 

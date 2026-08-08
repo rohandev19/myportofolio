@@ -35,7 +35,7 @@ export function ExportButton() {
     <div className="relative">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-2 px-4 py-2 text-sm rounded-lg border border-white/10 bg-white/5 text-slate-300 hover:bg-white/10 hover:text-white transition-all"
+        className="flex items-center gap-2 px-4 py-2 text-sm rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-secondary)] text-[var(--color-text-secondary)] hover:bg-[var(--color-text-primary)]/10 hover:text-[var(--color-text-primary)] transition-all"
         aria-label="Export analytics data"
         aria-expanded={isOpen}
       >
@@ -61,16 +61,16 @@ export function ExportButton() {
           {/* Backdrop */}
           <div className="fixed inset-0 z-10" onClick={() => setIsOpen(false)} />
           {/* Dropdown */}
-          <div className="absolute right-0 mt-2 w-40 rounded-xl border border-white/10 bg-[#0f172a] shadow-xl z-20 overflow-hidden">
+          <div className="absolute right-0 mt-2 w-40 rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-secondary)] shadow-xl z-20 overflow-hidden">
             <button
               onClick={() => handleExport("csv")}
-              className="w-full px-4 py-2.5 text-left text-sm text-slate-300 hover:bg-white/10 hover:text-white transition-colors"
+              className="w-full px-4 py-2.5 text-left text-sm text-[var(--color-text-secondary)] hover:bg-[var(--color-text-primary)]/10 hover:text-[var(--color-text-primary)] transition-colors"
             >
               📄 Export as CSV
             </button>
             <button
               onClick={() => handleExport("json")}
-              className="w-full px-4 py-2.5 text-left text-sm text-slate-300 hover:bg-white/10 hover:text-white transition-colors"
+              className="w-full px-4 py-2.5 text-left text-sm text-[var(--color-text-secondary)] hover:bg-[var(--color-text-primary)]/10 hover:text-[var(--color-text-primary)] transition-colors"
             >
               📋 Export as JSON
             </button>

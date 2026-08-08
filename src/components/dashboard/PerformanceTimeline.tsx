@@ -36,9 +36,11 @@ const METRIC_COLORS: Record<WebVitalName, string> = {
 export function PerformanceTimeline({ data }: PerformanceTimelineProps) {
   if (data.length === 0) {
     return (
-      <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-6">
-        <h3 className="text-lg font-semibold text-white mb-4">Performance Timeline</h3>
-        <div className="flex items-center justify-center h-48 text-slate-400">
+      <div className="rounded-2xl border border-[var(--color-border)] bg-[var(--color-bg-secondary)] p-6">
+        <h3 className="text-lg font-semibold text-[var(--color-text-primary)] mb-4">
+          Performance Timeline
+        </h3>
+        <div className="flex items-center justify-center h-48 text-[var(--color-text-secondary)]">
           Insufficient data to display performance timeline
         </div>
       </div>
@@ -62,25 +64,37 @@ export function PerformanceTimeline({ data }: PerformanceTimelineProps) {
   }
 
   return (
-    <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-6">
-      <h3 className="text-lg font-semibold text-white mb-6">Performance Timeline</h3>
+    <div className="rounded-2xl border border-[var(--color-border)] bg-[var(--color-bg-secondary)] p-6">
+      <h3 className="text-lg font-semibold text-[var(--color-text-primary)] mb-6">
+        Performance Timeline
+      </h3>
       <div className="h-72">
         <ResponsiveContainer width="100%" height="100%">
           <LineChart data={chartData}>
-            <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" />
-            <XAxis dataKey="time" stroke="#64748b" fontSize={11} tickLine={false} />
-            <YAxis stroke="#64748b" fontSize={11} tickLine={false} axisLine={false} />
+            <CartesianGrid strokeDasharray="3 3" stroke="var(--color-border)" />
+            <XAxis
+              dataKey="time"
+              stroke="var(--color-text-secondary)"
+              fontSize={11}
+              tickLine={false}
+            />
+            <YAxis
+              stroke="var(--color-text-secondary)"
+              fontSize={11}
+              tickLine={false}
+              axisLine={false}
+            />
             <Tooltip
               contentStyle={{
-                backgroundColor: "#0f172a",
-                border: "1px solid rgba(255,255,255,0.1)",
+                backgroundColor: "var(--color-bg-tertiary)",
+                border: "1px solid var(--color-border)",
                 borderRadius: "12px",
-                color: "#f8fafc",
+                color: "var(--color-text-primary)",
                 fontSize: "12px",
               }}
-              labelStyle={{ color: "#94a3b8" }}
+              labelStyle={{ color: "var(--color-text-secondary)" }}
             />
-            <Legend wrapperStyle={{ fontSize: "12px", color: "#94a3b8" }} />
+            <Legend wrapperStyle={{ fontSize: "12px", color: "var(--color-text-secondary)" }} />
             {Array.from(availableMetrics).map((metric) => (
               <Line
                 key={metric}
