@@ -134,6 +134,15 @@ export function HeroScene() {
           >
             Read Blog
           </InteractiveButton>
+          <InteractiveButton
+            as="a"
+            href="/CV/CV_Muhammad_Rohan_Sayyid_FullstackDeveloper_EN.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hero-cta opacity-0 px-8 py-3 bg-[var(--color-bg-secondary)]/50 backdrop-blur-md border border-[var(--color-accent-cyan)]/40 text-[var(--color-accent-blue)] font-semibold rounded-lg hover:bg-[var(--color-accent-blue)]/10 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-[var(--color-accent-blue)]"
+          >
+            Download CV
+          </InteractiveButton>
         </div>
       </div>
 
