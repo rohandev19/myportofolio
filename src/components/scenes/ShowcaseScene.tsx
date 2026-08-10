@@ -186,6 +186,15 @@ function ShowcaseContent() {
                     </span>
                   </div>
 
+                  {/* Concept Badge (no verifiable live/source link yet) */}
+                  {!project.link && !project.github && (
+                    <div className="absolute bottom-4 left-4 z-10">
+                      <span className="px-3 py-1 bg-[var(--color-bg-primary)]/80 backdrop-blur-md border border-[var(--color-text-tertiary)]/30 rounded-full text-xs font-bold text-[var(--color-text-tertiary)] uppercase tracking-wider">
+                        Concept
+                      </span>
+                    </div>
+                  )}
+
                   {/* Featured Badge */}
                   {project.featured && (
                     <div className="absolute top-4 right-4 z-10">

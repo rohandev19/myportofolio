@@ -11,6 +11,7 @@ const SECTIONS = [
   { id: "playground", label: "Code & Stats" },
   { id: "timeline", label: "Journey" },
   { id: "tech-galaxy", label: "Skills" },
+  { id: "github", label: "GitHub" },
   { id: "philosophy", label: "Philosophy" },
   { id: "projects", label: "Projects" },
   { id: "contact", label: "Contact" },

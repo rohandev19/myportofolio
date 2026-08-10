@@ -3,6 +3,7 @@ import { HeroScene } from "@/components/scenes/HeroScene";
 import { AboutScene } from "@/components/scenes/AboutScene";
 import { JourneyTimelineScene } from "@/components/scenes/JourneyTimelineScene";
 import { TechGalaxyScene } from "@/components/scenes/TechGalaxyScene";
+import { GithubScene } from "@/components/scenes/GithubScene";
 import { PhilosophyScene } from "@/components/scenes/PhilosophyScene";
 import { ShowcaseScene } from "@/components/scenes/ShowcaseScene";
 import { ContactScene } from "@/components/scenes/ContactScene";
@@ -21,6 +22,7 @@ export default function Home() {
       <InteractivePlaygroundScene />
       <JourneyTimelineScene />
       <TechGalaxyScene />
+      <GithubScene />
       <PhilosophyScene />
       <ShowcaseScene />
       <ContactScene />

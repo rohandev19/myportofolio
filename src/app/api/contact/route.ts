@@ -92,20 +92,35 @@ export async function POST(request: Request) {
         from_name: "Portfolio Contact Form",
       };
 
-      const emailResponse = await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formPayload),
-      });
+      try {
+        const controller = new AbortController();
+        const timeout = setTimeout(() => controller.abort(), 8000);
 
-      const emailResult = await emailResponse.json();
+        const emailResponse = await fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formPayload),
+          signal: controller.signal,
+        });
 
-      if (!emailResult.success) {
-        console.error("Email send failed:", emailResult);
+        clearTimeout(timeout);
+
+        const emailResult = await emailResponse.json();
+
+        if (!emailResult.success) {
+          console.error("Email send failed:", emailResult);
+          return errorResponse(
+            "Failed to send message. Please try again.",
+            ErrorCodes.INTERNAL_ERROR,
+            500
+          );
+        }
+      } catch (emailError) {
+        console.error("Email service unreachable or timed out:", emailError);
         return errorResponse(
-          "Failed to send message. Please try again.",
+          "Failed to send message. Please try again later.",
           ErrorCodes.INTERNAL_ERROR,
-          500
+          502
         );
       }
     } else {

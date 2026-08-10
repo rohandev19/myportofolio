@@ -11,6 +11,13 @@ export function Preloader({ onComplete }: { onComplete: () => void }) {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (prefersReducedMotion) {
+      onComplete();
+      return;
+    }
+
     // Prevent scrolling during preloader
     document.body.style.overflow = "hidden";
 
@@ -76,6 +83,7 @@ export function Preloader({ onComplete }: { onComplete: () => void }) {
   return (
     <div
       ref={containerRef}
+      data-testid="preloader"
       className="fixed inset-0 z-[9999] flex items-center justify-center overflow-hidden"
     >
       {/* Left Door */}
