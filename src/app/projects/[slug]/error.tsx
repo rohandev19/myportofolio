@@ -20,13 +20,13 @@ export default function ProjectError({
       <div className="flex items-center justify-center gap-4">
         <button
           onClick={reset}
-          className="px-6 py-3 rounded-xl bg-[var(--color-accent-cyan)]/10 text-[var(--color-accent-cyan)] border border-[var(--color-accent-cyan)]/20 hover:bg-[var(--color-accent-cyan)]/20 transition-colors"
+          className="px-6 py-3 rounded-xl bg-[var(--color-accent-blue)]/10 text-[var(--color-accent-blue)] border border-[var(--color-accent-blue)]/20 hover:bg-[var(--color-accent-blue)]/20 transition-colors"
         >
           Try Again
         </button>
         <Link
           href="/projects"
-          className="px-6 py-3 rounded-xl bg-[var(--color-bg-secondary)] text-[var(--color-text-secondary)] border border-[var(--color-border)] hover:bg-white/10 transition-colors"
+          className="px-6 py-3 rounded-xl bg-[var(--color-bg-secondary)] text-[var(--color-text-secondary)] border border-[var(--color-border)] hover:bg-[var(--color-text-primary)]/10 transition-colors"
         >
           All Projects
         </Link>

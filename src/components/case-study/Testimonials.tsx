@@ -29,7 +29,7 @@ export function Testimonials({ testimonials }: TestimonialsProps) {
         {testimonials.map((testimonial, i) => (
           <div
             key={i}
-            className="rounded-2xl border border-[var(--color-accent-violet)]/30 bg-gradient-to-br from-white/5 to-[var(--color-accent-violet)]/5 p-8 relative"
+            className="rounded-2xl border border-[var(--color-accent-violet)]/30 bg-gradient-to-br from-[var(--color-text-primary)]/5 to-[var(--color-accent-violet)]/5 p-8 relative"
           >
             {/* Quote Icon */}
             <div className="absolute top-6 right-6 text-[var(--color-accent-violet)]/20">
@@ -46,7 +46,7 @@ export function Testimonials({ testimonials }: TestimonialsProps) {
 
             <div className="flex items-center gap-4">
               {testimonial.photo ? (
-                <div className="w-12 h-12 rounded-full overflow-hidden border border-white/20 relative shrink-0">
+                <div className="w-12 h-12 rounded-full overflow-hidden border border-[var(--color-border)] relative shrink-0">
                   <Image
                     src={testimonial.photo}
                     alt={testimonial.name}
@@ -56,7 +56,7 @@ export function Testimonials({ testimonials }: TestimonialsProps) {
                   />
                 </div>
               ) : (
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[var(--color-accent-cyan)] to-[var(--color-accent-violet)] flex items-center justify-center text-white font-bold shrink-0">
+                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[var(--color-accent-blue)] to-[var(--color-accent-violet)] flex items-center justify-center text-[var(--color-bg-primary)] font-bold shrink-0">
                   {testimonial.name.charAt(0)}
                 </div>
               )}
