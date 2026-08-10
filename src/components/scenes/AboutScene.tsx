@@ -43,8 +43,10 @@ export function AboutScene() {
       <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center z-10">
         {/* Left Col: Text */}
         <div className="order-2 lg:order-1 flex flex-col gap-6">
-          <h2 className="about-text text-4xl md:text-5xl font-bold text-[#f0f1f4]">About Me</h2>
-          <div className="flex flex-col gap-4 text-lg text-[#D4D8E0] font-medium leading-relaxed drop-shadow-sm">
+          <h2 className="about-text text-4xl md:text-5xl font-bold text-[var(--color-text-primary)]">
+            About Me
+          </h2>
+          <div className="flex flex-col gap-4 text-lg text-[var(--color-accent-blue)] font-medium leading-relaxed drop-shadow-sm">
             {aboutData.paragraphs.map((p, i) => (
               <p key={i} className="about-text">
                 {p}
@@ -56,7 +58,7 @@ export function AboutScene() {
             {aboutData.highlights.map((highlight, i) => (
               <li key={i} className="about-text flex items-center gap-3">
                 <span className="w-2 h-2 min-w-[8px] rounded-full bg-[var(--color-accent-blue)]" />
-                <span className="text-[#f0f1f4] font-medium">{highlight}</span>
+                <span className="text-[var(--color-text-primary)] font-medium">{highlight}</span>
               </li>
             ))}
           </ul>
@@ -67,7 +69,7 @@ export function AboutScene() {
               href="/cv.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center gap-2 px-8 py-3.5 bg-transparent text-[#D4D8E0] font-bold rounded-xl border-2 border-[#D4D8E0]/30 hover:border-[#D4D8E0] hover:bg-[#D4D8E0]/10 hover:shadow-[0_0_20px_rgba(212,216,224,0.3)] transition-all duration-300 hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-[#D4D8E0]"
+              className="group inline-flex items-center gap-2 px-8 py-3.5 bg-transparent text-[var(--color-accent-blue)] font-bold rounded-xl border-2 border-[var(--color-accent-blue)]/30 hover:border-[var(--color-accent-blue)] hover:bg-[var(--color-accent-blue)]/10 hover:shadow-[0_0_20px_rgba(212,216,224,0.3)] transition-all duration-300 hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-[var(--color-accent-blue)]"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"

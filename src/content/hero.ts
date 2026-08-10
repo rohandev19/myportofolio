@@ -4,6 +4,6 @@ export const heroData = {
   tagline: "Building resilient digital experiences.",
   cta: {
     primary: "View Projects",
-    secondary: "Contact Me"
-  }
+    secondary: "Contact Me",
+  },
 };

@@ -8,6 +8,7 @@ import { TopNav } from "@/components/ui/TopNav";
 import { CustomCursor } from "@/components/ui/CustomCursor";
 import { ScrollProgress } from "@/components/ui/ScrollProgress";
 import { AmbientOrbs } from "@/components/ui/AmbientOrbs";
+import { SiteControls } from "@/components/ui/SiteControls";
 
 import { constructMetadata } from "@/lib/seo/metadata";
 import { generatePersonSchema, generateWebsiteSchema } from "@/lib/seo/schema";
@@ -54,9 +55,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body
-        className={`${plusJakarta.variable} ${jetbrainsMono.variable} font-sans antialiased bg-[#141418] text-[#f0f1f4]`}
-      >
+      <body className={`${plusJakarta.variable} ${jetbrainsMono.variable} font-sans antialiased`}>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas) }}
@@ -68,6 +67,7 @@ export default function RootLayout({
           <SkipToContent />
           <TopNav />
           <DotNav />
+          <SiteControls />
           {children}
         </ClientProviders>
       </body>
