@@ -57,11 +57,6 @@
   --color-teal-light: #23686e;
 }
 
-/* Dark Theme Explicit */
-:root[data-theme="dark"] {
-  /* Uses default values defined above */
-}
-
 /* Base resets or globals if needed */
 html,
 body {
