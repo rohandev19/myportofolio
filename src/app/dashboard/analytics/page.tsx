@@ -106,8 +106,10 @@ export default function AnalyticsDashboardPage() {
       {/* Page Header */}
       <header className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-10">
         <div>
-          <h1 className="text-3xl md:text-4xl font-bold text-white mb-2">Analytics Dashboard</h1>
-          <p className="text-slate-400">
+          <h1 className="text-3xl md:text-4xl font-bold text-[var(--color-text-primary)] mb-2">
+            Analytics Dashboard
+          </h1>
+          <p className="text-[var(--color-text-secondary)]">
             Privacy-first performance monitoring and visitor insights
           </p>
         </div>
@@ -123,13 +125,15 @@ export default function AnalyticsDashboardPage() {
 
       {/* Web Vitals Grid */}
       <section className="mb-10" aria-label="Core Web Vitals">
-        <h2 className="text-lg font-semibold text-white mb-4">Core Web Vitals</h2>
+        <h2 className="text-lg font-semibold text-[var(--color-text-primary)] mb-4">
+          Core Web Vitals
+        </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
           {webVitals.map((metric) => (
             <WebVitalsCard key={metric.name} metric={metric} />
           ))}
           {webVitals.length === 0 && (
-            <div className="col-span-full text-center py-12 text-slate-400 rounded-2xl border border-white/10 bg-white/[0.02]">
+            <div className="col-span-full text-center py-12 text-[var(--color-text-secondary)] rounded-2xl border border-[var(--color-border)] bg-[var(--color-bg-secondary)]">
               No Web Vitals data available yet
             </div>
           )}
@@ -138,11 +142,13 @@ export default function AnalyticsDashboardPage() {
 
       {/* Visitor Insights */}
       <section className="mb-10" aria-label="Visitor insights">
-        <h2 className="text-lg font-semibold text-white mb-4">Visitor Insights</h2>
+        <h2 className="text-lg font-semibold text-[var(--color-text-primary)] mb-4">
+          Visitor Insights
+        </h2>
         {visitorInsights ? (
           <VisitorChart data={visitorInsights} />
         ) : (
-          <div className="text-center py-12 text-slate-400 rounded-2xl border border-white/10 bg-white/[0.02]">
+          <div className="text-center py-12 text-[var(--color-text-secondary)] rounded-2xl border border-[var(--color-border)] bg-[var(--color-bg-secondary)]">
             No visitor data available
           </div>
         )}
@@ -150,7 +156,9 @@ export default function AnalyticsDashboardPage() {
 
       {/* Performance Timeline */}
       <section aria-label="Performance timeline">
-        <h2 className="text-lg font-semibold text-white mb-4">Performance Timeline</h2>
+        <h2 className="text-lg font-semibold text-[var(--color-text-primary)] mb-4">
+          Performance Timeline
+        </h2>
         <PerformanceTimeline data={performanceTimeline} />
       </section>
     </div>
