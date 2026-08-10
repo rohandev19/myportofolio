@@ -38,6 +38,14 @@ export function TopNav() {
           >
             Dashboard
           </Link>
+          <Link
+            href="/CV/CV_Muhammad_Rohan_Sayyid_FullstackDeveloper_EN.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[var(--color-text-tertiary)] hover:text-[var(--color-text-primary)] transition-colors"
+          >
+            Resume
+          </Link>
           <div className="flex items-center gap-2 pl-2 border-l border-[var(--color-border)]">
             <ThemeToggle />
           </div>
