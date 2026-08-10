@@ -47,14 +47,14 @@ export function SocialShare({ title }: SocialShareProps) {
   if (!url) return null;
 
   return (
-    <div className="flex items-center gap-3 mt-8 pt-8 border-t border-white/10">
-      <span className="text-sm font-medium text-slate-400">Share:</span>
+    <div className="flex items-center gap-3 mt-8 pt-8 border-t border-[var(--color-border)]">
+      <span className="text-sm font-medium text-[var(--color-text-secondary)]">Share:</span>
 
       <a
         href={shareLinks.twitter}
         target="_blank"
         rel="noopener noreferrer"
-        className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-slate-300 hover:bg-white/10 hover:text-white transition-colors"
+        className="w-10 h-10 rounded-full border border-[var(--color-border)] flex items-center justify-center text-[var(--color-text-secondary)] hover:bg-white/10 hover:text-[var(--color-text-primary)] transition-colors"
         aria-label="Share on X (Twitter)"
       >
         <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
@@ -66,7 +66,7 @@ export function SocialShare({ title }: SocialShareProps) {
         href={shareLinks.linkedin}
         target="_blank"
         rel="noopener noreferrer"
-        className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-slate-300 hover:bg-white/10 hover:text-white transition-colors"
+        className="w-10 h-10 rounded-full border border-[var(--color-border)] flex items-center justify-center text-[var(--color-text-secondary)] hover:bg-white/10 hover:text-[var(--color-text-primary)] transition-colors"
         aria-label="Share on LinkedIn"
       >
         <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
@@ -76,7 +76,7 @@ export function SocialShare({ title }: SocialShareProps) {
 
       <button
         onClick={handleCopy}
-        className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-slate-300 hover:bg-white/10 hover:text-white transition-colors ml-auto"
+        className="w-10 h-10 rounded-full border border-[var(--color-border)] flex items-center justify-center text-[var(--color-text-secondary)] hover:bg-white/10 hover:text-[var(--color-text-primary)] transition-colors ml-auto"
         aria-label="Copy link to clipboard"
       >
         {copied ? (

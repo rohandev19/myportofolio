@@ -55,7 +55,7 @@ export function BlogListClient({ articles, allTags }: BlogListClientProps) {
       </section>
 
       {/* Results count */}
-      <p className="text-sm text-slate-400 mb-6">
+      <p className="text-sm text-[var(--color-text-secondary)] mb-6">
         {filtered.length} article{filtered.length !== 1 ? "s" : ""} found
       </p>
 
@@ -72,8 +72,10 @@ export function BlogListClient({ articles, allTags }: BlogListClientProps) {
         </div>
       ) : (
         <div className="text-center py-20">
-          <p className="text-lg text-slate-400 mb-2">No articles found</p>
-          <p className="text-sm text-slate-500">Try adjusting your search or filter criteria</p>
+          <p className="text-lg text-[var(--color-text-secondary)] mb-2">No articles found</p>
+          <p className="text-sm text-[var(--color-text-tertiary)]">
+            Try adjusting your search or filter criteria
+          </p>
         </div>
       )}
     </>

@@ -18,7 +18,10 @@ export function Testimonials({ testimonials }: TestimonialsProps) {
 
   return (
     <section className="my-16" aria-labelledby="testimonials-heading">
-      <h2 id="testimonials-heading" className="text-2xl font-bold text-white mb-8">
+      <h2
+        id="testimonials-heading"
+        className="text-2xl font-bold text-[var(--color-text-primary)] mb-8"
+      >
         Client Feedback
       </h2>
 
@@ -36,7 +39,7 @@ export function Testimonials({ testimonials }: TestimonialsProps) {
             </div>
 
             <blockquote className="relative z-10 mb-6">
-              <p className="text-lg text-slate-300 italic leading-relaxed">
+              <p className="text-lg text-[var(--color-text-secondary)] italic leading-relaxed">
                 &quot;{testimonial.quote}&quot;
               </p>
             </blockquote>
@@ -58,10 +61,10 @@ export function Testimonials({ testimonials }: TestimonialsProps) {
                 </div>
               )}
               <div>
-                <cite className="not-italic font-semibold text-white block">
+                <cite className="not-italic font-semibold text-[var(--color-text-primary)] block">
                   {testimonial.name}
                 </cite>
-                <span className="text-sm text-slate-400 block">
+                <span className="text-sm text-[var(--color-text-secondary)] block">
                   {testimonial.role} at {testimonial.company}
                 </span>
               </div>

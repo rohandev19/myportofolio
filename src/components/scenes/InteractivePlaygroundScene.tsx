@@ -22,8 +22,10 @@ export function InteractivePlaygroundScene() {
     >
       <div className="max-w-7xl mx-auto w-full flex flex-col gap-12 z-10">
         <div className="text-center mb-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#f0f1f4]">Open Source & Code</h2>
-          <p className="text-[#7B8794] mt-4 max-w-2xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-[var(--color-text-primary)]">
+            Open Source & Code
+          </h2>
+          <p className="text-[var(--color-text-secondary)] mt-4 max-w-2xl mx-auto">
             Explore my open source contributions and test out some JavaScript directly in the
             browser.
           </p>

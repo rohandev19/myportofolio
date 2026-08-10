@@ -29,22 +29,30 @@ export function TechStackBreakdown({ techStack }: TechStackBreakdownProps) {
 
   return (
     <section className="my-16" aria-labelledby="tech-stack-heading">
-      <h2 id="tech-stack-heading" className="text-2xl font-bold text-white mb-8">
+      <h2
+        id="tech-stack-heading"
+        className="text-2xl font-bold text-[var(--color-text-primary)] mb-8"
+      >
         Technology Stack
       </h2>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {Object.entries(grouped).map(([category, items]) => (
-          <div key={category} className="rounded-xl border border-white/10 bg-white/[0.02] p-5">
-            <h3 className="text-sm font-semibold text-[var(--color-accent-cyan)] uppercase tracking-wider mb-4 border-b border-white/10 pb-2">
+          <div
+            key={category}
+            className="rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-secondary)] p-5"
+          >
+            <h3 className="text-sm font-semibold text-[var(--color-accent-cyan)] uppercase tracking-wider mb-4 border-b border-[var(--color-border)] pb-2">
               {category}
             </h3>
             <ul className="space-y-4">
               {items.map((item) => (
                 <li key={item.name} className="flex flex-col">
-                  <span className="font-medium text-white mb-1">{item.name}</span>
+                  <span className="font-medium text-[var(--color-text-primary)] mb-1">
+                    {item.name}
+                  </span>
                   {item.explanation && (
-                    <span className="text-sm text-slate-400 leading-relaxed">
+                    <span className="text-sm text-[var(--color-text-secondary)] leading-relaxed">
                       {item.explanation}
                     </span>
                   )}

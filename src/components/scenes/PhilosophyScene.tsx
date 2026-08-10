@@ -38,10 +38,10 @@ export function PhilosophyScene() {
     >
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold text-[#f0f1f4] mb-4">
+          <h2 className="text-3xl md:text-5xl font-bold text-[var(--color-text-primary)] mb-4">
             Engineering Philosophy
           </h2>
-          <p className="text-[#7B8794] max-w-2xl mx-auto text-lg">
+          <p className="text-[var(--color-text-secondary)] max-w-2xl mx-auto text-lg">
             Core principles that guide my approach to software engineering and problem-solving.
           </p>
         </div>
@@ -52,11 +52,15 @@ export function PhilosophyScene() {
               key={principle.id}
               className="principle-card bg-[var(--color-bg-primary)] border border-[var(--color-bg-tertiary)] rounded-2xl p-8 hover:border-[var(--color-accent-blue)]/50 transition-colors group"
             >
-              <div className="text-4xl mb-6 text-[#D4D8E0] group-hover:scale-110 transition-transform origin-left">
+              <div className="text-4xl mb-6 text-[var(--color-accent-blue)] group-hover:scale-110 transition-transform origin-left">
                 {principle.icon}
               </div>
-              <h3 className="text-xl font-bold text-[#f0f1f4] mb-4">{principle.title}</h3>
-              <p className="text-[#7B8794] leading-relaxed">{principle.description}</p>
+              <h3 className="text-xl font-bold text-[var(--color-text-primary)] mb-4">
+                {principle.title}
+              </h3>
+              <p className="text-[var(--color-text-secondary)] leading-relaxed">
+                {principle.description}
+              </p>
             </div>
           ))}
         </div>

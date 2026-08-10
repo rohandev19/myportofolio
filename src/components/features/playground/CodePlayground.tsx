@@ -68,7 +68,7 @@ export function CodePlayground() {
           </button>
           <button
             onClick={handleRun}
-            className="px-4 py-2 bg-[var(--color-accent-blue)] text-[#141418] rounded-md font-medium text-sm hover:opacity-90 transition-opacity"
+            className="px-4 py-2 bg-[var(--color-accent-blue)] text-[var(--color-bg-primary)] rounded-md font-medium text-sm hover:opacity-90 transition-opacity"
           >
             Run Code
           </button>
@@ -76,22 +76,22 @@ export function CodePlayground() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 h-[400px]">
-        {/* Editor */}
+        {/* Editor — intentionally always dark, like a code editor, regardless of site theme */}
         <div className="flex flex-col border border-[var(--color-border)] rounded-xl overflow-hidden bg-[#181c24]">
-          <div className="bg-[var(--color-bg-secondary)] px-4 py-2 border-b border-[var(--color-border)] text-xs font-mono text-[var(--color-text-secondary)]">
+          <div className="bg-[#12151b] px-4 py-2 border-b border-white/10 text-xs font-mono text-slate-400">
             index.js
           </div>
           <textarea
             value={code}
             onChange={handleCodeChange}
-            className="flex-1 w-full p-4 bg-transparent text-[var(--color-text-primary)] font-mono text-sm resize-none focus:outline-none focus:ring-1 focus:ring-[var(--color-accent-blue)]/50"
+            className="flex-1 w-full p-4 bg-transparent text-slate-100 font-mono text-sm resize-none focus:outline-none focus:ring-1 focus:ring-[var(--color-accent-blue)]/50"
             spellCheck={false}
           />
         </div>
 
-        {/* Output */}
-        <div className="flex flex-col border border-[var(--color-border)] rounded-xl overflow-hidden bg-black/50">
-          <div className="bg-[var(--color-bg-secondary)] px-4 py-2 border-b border-[var(--color-border)] text-xs font-mono text-[var(--color-text-secondary)]">
+        {/* Output — intentionally always dark, matching the editor panel */}
+        <div className="flex flex-col border border-[var(--color-border)] rounded-xl overflow-hidden bg-[#181c24]">
+          <div className="bg-[#12151b] px-4 py-2 border-b border-white/10 text-xs font-mono text-slate-400">
             Console Output
           </div>
           <div className="flex-1 w-full p-4 font-mono text-sm overflow-auto whitespace-pre-wrap">
@@ -100,7 +100,7 @@ export function CodePlayground() {
             ) : output ? (
               <span className="text-green-400">{output}</span>
             ) : (
-              <span className="text-[var(--color-text-tertiary)] italic">
+              <span className="text-slate-500 italic">
                 Click &quot;Run Code&quot; to see output...
               </span>
             )}
