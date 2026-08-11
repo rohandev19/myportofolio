@@ -66,7 +66,7 @@ export function TableOfContents({ items }: TableOfContentsProps) {
       className="sticky top-24 max-h-[calc(100vh-8rem)] overflow-y-auto"
       aria-label="Table of contents"
     >
-      <p className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-4">
+      <p className="text-xs font-semibold uppercase tracking-wider text-[var(--color-text-secondary)] mb-4">
         On this page
       </p>
       <ul className="space-y-1">
@@ -99,7 +99,7 @@ function TOCItemComponent({
         className={`block py-1.5 text-sm transition-all duration-200 border-l-2 ${
           isActive
             ? "border-[var(--color-accent-cyan)] text-[var(--color-accent-cyan)] font-medium"
-            : "border-transparent text-slate-400 hover:text-slate-200 hover:border-slate-500"
+            : "border-transparent text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] hover:border-[var(--color-text-tertiary)]"
         }`}
         style={{ paddingLeft: `${(depth + 1) * 12}px` }}
         aria-current={isActive ? "location" : undefined}

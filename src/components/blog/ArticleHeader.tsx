@@ -40,38 +40,42 @@ export function ArticleHeader({ metadata }: ArticleHeaderProps) {
       )}
 
       {/* Title */}
-      <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mb-6">
+      <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[var(--color-text-primary)] leading-tight mb-6">
         {metadata.title}
       </h1>
 
       {/* Description */}
-      <p className="text-lg text-slate-400 mb-6 max-w-2xl">{metadata.description}</p>
+      <p className="text-lg text-[var(--color-text-secondary)] mb-6 max-w-2xl">
+        {metadata.description}
+      </p>
 
       {/* Meta info */}
-      <div className="flex flex-wrap items-center gap-4 text-sm text-slate-400 mb-8">
+      <div className="flex flex-wrap items-center gap-4 text-sm text-[var(--color-text-secondary)] mb-8">
         <div className="flex items-center gap-2">
           <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[var(--color-accent-cyan)] to-[var(--color-accent-violet)] flex items-center justify-center text-white text-xs font-bold">
             {metadata.author.charAt(0).toUpperCase()}
           </div>
-          <span className="font-medium text-slate-200">{metadata.author}</span>
+          <span className="font-medium text-[var(--color-text-primary)]">{metadata.author}</span>
         </div>
 
-        <span className="w-1 h-1 rounded-full bg-slate-600" />
+        <span className="w-1 h-1 rounded-full bg-[var(--color-border)]" />
 
         <time dateTime={metadata.date}>{formatDate(metadata.date)}</time>
 
-        <span className="w-1 h-1 rounded-full bg-slate-600" />
+        <span className="w-1 h-1 rounded-full bg-[var(--color-border)]" />
 
         <span>{metadata.readTime} min read</span>
 
-        <span className="w-1 h-1 rounded-full bg-slate-600" />
+        <span className="w-1 h-1 rounded-full bg-[var(--color-border)]" />
 
         <span>{metadata.wordCount.toLocaleString()} words</span>
 
         {metadata.updatedAt && (
           <>
-            <span className="w-1 h-1 rounded-full bg-slate-600" />
-            <span className="text-slate-500">Last updated: {formatDate(metadata.updatedAt)}</span>
+            <span className="w-1 h-1 rounded-full bg-[var(--color-border)]" />
+            <span className="text-[var(--color-text-tertiary)]">
+              Last updated: {formatDate(metadata.updatedAt)}
+            </span>
           </>
         )}
       </div>
