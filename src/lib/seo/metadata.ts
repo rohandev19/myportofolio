@@ -1,8 +1,8 @@
 import { Metadata } from "next";
 
 export function constructMetadata({
-  title = "Rohan - Senior Full-Stack Engineer",
-  description = "Portfolio of Rohan, a Senior Full-Stack Engineer specializing in scalable systems, mobile apps, and interactive web experiences.",
+  title = "Rohan - Portofolio",
+  description = "Portfolio of Rohan, a Junior Full-Stack Engineer specializing in scalable systems, mobile apps, and interactive web experiences.",
   image = "/og-image.png",
   icons = "/favicon.ico",
   noIndex = false,
