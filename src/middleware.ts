@@ -8,7 +8,7 @@ import { NextResponse, type NextRequest } from "next/server";
  * is blocked entirely (fail-safe closed) instead of falling back to
  * a default/hardcoded password.
  */
-export function proxy(request: NextRequest) {
+export function middleware(request: NextRequest) {
   const validUser = process.env.DASHBOARD_USER;
   const validPassword = process.env.DASHBOARD_PASSWORD;
 

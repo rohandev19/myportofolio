@@ -14,7 +14,8 @@ export const principlesData: Principle[] = [
   },
   {
     id: "principle-3",
-    title: "Robust Architecture",
-    description: "Scalable, maintainable systems built on solid engineering principles.",
+    title: "Coding as a Puzzle",
+    description:
+      "I approach full-stack development as an intricate puzzle—finding the perfect fit for each piece of logic to create a seamless and elegant solution.",
   },
 ];
