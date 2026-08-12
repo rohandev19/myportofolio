@@ -32,12 +32,12 @@ export function TopNav() {
           >
             Blog
           </Link>
-          <Link
+          <a
             href="/dashboard/analytics"
             className={`transition-colors ${pathname.startsWith("/dashboard") ? "text-[var(--color-accent-blue)]" : "text-[var(--color-text-tertiary)] hover:text-[var(--color-text-primary)]"}`}
           >
             Dashboard
-          </Link>
+          </a>
           <Link
             href="/CV/CV_Muhammad_Rohan_Sayyid_FullstackDeveloper_EN.pdf"
             target="_blank"
