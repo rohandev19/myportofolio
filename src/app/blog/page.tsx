@@ -20,7 +20,7 @@ export default function BlogPage() {
     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16 md:pt-32 md:pb-24">
       {/* Page Header */}
       <header className="mb-12">
-        <h1 className="text-4xl md:text-5xl font-bold text-[var(--color-text-primary)] mb-4">
+        <h1 className="text-4xl md:text-5xl font-serif font-normal text-[var(--color-text-primary)] mb-4">
           Blog
         </h1>
         <p className="text-lg text-[var(--color-text-secondary)] max-w-2xl">

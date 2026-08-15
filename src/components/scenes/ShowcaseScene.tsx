@@ -121,7 +121,7 @@ function ShowcaseContent() {
     >
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-5xl font-bold text-[var(--color-text-primary)] mb-4">
+          <h2 className="text-3xl md:text-5xl font-serif font-normal text-[var(--color-text-primary)] mb-4">
             Showcase
           </h2>
           <p className="text-[var(--color-text-secondary)] max-w-2xl mx-auto text-lg">
@@ -290,21 +290,29 @@ function ShowcaseContent() {
                       )}
                     </div>
 
-                    <div className="w-8 h-8 rounded-full bg-[var(--color-bg-secondary)] flex items-center justify-center group-hover:bg-[var(--color-accent-blue)] transition-colors text-[var(--color-text-secondary)] group-hover:text-[var(--color-bg-primary)]">
-                      <svg
-                        className="w-4 h-4"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M9 5l7 7-7 7"
-                        />
-                      </svg>
-                    </div>
+                    {(() => {
+                      const content = (
+                        <div className="w-8 h-8 rounded-full bg-[var(--color-bg-secondary)] flex items-center justify-center group-hover:bg-[var(--color-accent-blue)] transition-colors text-[var(--color-text-secondary)] group-hover:text-[var(--color-bg-primary)] cursor-pointer">
+                          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                          </svg>
+                        </div>
+                      );
+
+                      if (project.slug) {
+                        return <Link href={`/projects/${project.slug}`} aria-label={`View ${project.title}`}>{content}</Link>;
+                      } else if (project.link || project.github) {
+                        return <a href={project.link || project.github} target="_blank" rel="noopener noreferrer" aria-label={`View ${project.title}`}>{content}</a>;
+                      }
+                      
+                      return (
+                        <div className="w-8 h-8 rounded-full bg-[var(--color-bg-secondary)] flex items-center justify-center group-hover:bg-[var(--color-accent-blue)] transition-colors text-[var(--color-text-secondary)] group-hover:text-[var(--color-bg-primary)]">
+                          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                          </svg>
+                        </div>
+                      );
+                    })()}
                   </div>
                 </div>
               </TiltCard>
