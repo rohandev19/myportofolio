@@ -19,7 +19,7 @@ export function TopNav() {
         >
           Rohan.
         </Link>
-        <nav className="flex items-center gap-6 text-sm font-medium">
+        <nav className="flex items-center gap-3 sm:gap-6 text-xs sm:text-sm font-medium overflow-x-auto whitespace-nowrap [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden pl-2 py-2">
           <Link
             href="/"
             className="text-[var(--color-text-tertiary)] hover:text-[var(--color-text-primary)] transition-colors"
