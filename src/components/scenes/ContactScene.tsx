@@ -147,7 +147,7 @@ export function ContactScene() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-20">
           {/* Left Col: Info */}
           <div className="flex flex-col">
-            <h2 className="contact-reveal text-4xl md:text-6xl font-black text-[var(--color-text-primary)] mb-6">
+            <h2 className="contact-reveal text-4xl md:text-6xl font-serif font-normal text-[var(--color-text-primary)] mb-6">
               Let&apos;s Build Something
             </h2>
             <p className="contact-reveal text-xl text-[var(--color-text-secondary)] mb-12 max-w-lg leading-relaxed">

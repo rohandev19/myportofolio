@@ -15,7 +15,7 @@ export function TopNav() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
         <Link
           href="/"
-          className="text-xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#D4D8E0] to-[#1A4A4E]"
+          className="text-xl font-serif font-normal text-[var(--color-text-primary)]"
         >
           Rohan.
         </Link>

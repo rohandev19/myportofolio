@@ -38,7 +38,7 @@ export function PhilosophyScene() {
     >
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold text-[var(--color-text-primary)] mb-4">
+          <h2 className="text-3xl md:text-5xl font-serif font-normal text-[var(--color-text-primary)] mb-4">
             Engineering Philosophy
           </h2>
           <p className="text-[var(--color-text-secondary)] max-w-2xl mx-auto text-lg">

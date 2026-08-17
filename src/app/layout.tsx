@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
+import { Inter, Instrument_Serif, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { ClientProviders } from "@/components/ClientProviders";
 import { SkipToContent } from "@/components/ui/SkipToContent";
@@ -13,9 +13,15 @@ import { SiteControls } from "@/components/ui/SiteControls";
 import { constructMetadata } from "@/lib/seo/metadata";
 import { generatePersonSchema, generateWebsiteSchema } from "@/lib/seo/schema";
 
-const plusJakarta = Plus_Jakarta_Sans({
+const inter = Inter({
   variable: "--font-sans",
   subsets: ["latin"],
+});
+
+const instrumentSerif = Instrument_Serif({
+  variable: "--font-serif",
+  subsets: ["latin"],
+  weight: "400",
 });
 
 const jetbrainsMono = JetBrains_Mono({
@@ -55,7 +61,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${plusJakarta.variable} ${jetbrainsMono.variable} font-sans antialiased`}>
+      <body className={`${inter.variable} ${instrumentSerif.variable} ${jetbrainsMono.variable} font-sans antialiased`}>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas) }}

@@ -14,7 +14,7 @@ export function TechGalaxyScene() {
 
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4 md:px-8">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-5xl font-bold text-[var(--color-text-primary)] mb-4">
+          <h2 className="text-3xl md:text-5xl font-serif font-normal text-[var(--color-text-primary)] mb-4">
             Tech Galaxy
           </h2>
           <p className="text-[var(--color-text-secondary)] max-w-2xl mx-auto">

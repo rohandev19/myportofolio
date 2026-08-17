@@ -43,7 +43,7 @@ export function AboutScene() {
       <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center z-10">
         {/* Left Col: Text */}
         <div className="order-2 lg:order-1 flex flex-col gap-6">
-          <h2 className="about-text text-4xl md:text-5xl font-bold text-[var(--color-text-primary)]">
+          <h2 className="about-text text-4xl md:text-5xl font-serif font-normal text-[var(--color-text-primary)]">
             About Me
           </h2>
           <div className="flex flex-col gap-4 text-lg text-[var(--color-accent-blue)] font-medium leading-relaxed drop-shadow-sm">

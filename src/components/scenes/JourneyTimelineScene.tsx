@@ -56,7 +56,7 @@ export function JourneyTimelineScene() {
       className="min-h-screen w-full py-24 px-4 md:px-8 bg-[var(--color-bg-secondary)] relative"
     >
       <div className="max-w-4xl mx-auto">
-        <h2 className="text-3xl md:text-5xl font-bold text-center text-[var(--color-text-primary)] mb-20">
+        <h2 className="text-3xl md:text-5xl font-serif font-normal text-center text-[var(--color-text-primary)] mb-20">
           Where I&apos;ve Been
         </h2>
 

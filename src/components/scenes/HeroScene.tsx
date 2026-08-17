@@ -75,10 +75,10 @@ export function HeroScene() {
       className="relative min-h-screen w-full flex flex-col items-center justify-center px-4 overflow-hidden"
     >
       <div className="z-10 text-center max-w-4xl relative">
-        <h1 className="text-5xl md:text-7xl lg:text-8xl font-black mb-4 tracking-tighter relative z-10">
+        <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif font-normal mb-4 tracking-tight relative z-10">
           <SplitText
             className="hero-name"
-            charClassName="char bg-clip-text text-transparent bg-gradient-to-b from-[var(--color-text-primary)] to-[var(--color-text-secondary)]"
+            charClassName="char text-[var(--color-text-primary)]"
           >
             {heroData.name}
           </SplitText>
@@ -97,11 +97,11 @@ export function HeroScene() {
           </div>
           <h2
             ref={titleRef}
-            className="text-2xl md:text-3xl lg:text-4xl font-bold mb-6 relative z-10 origin-left inline-block"
+            className="text-2xl md:text-3xl lg:text-4xl font-serif font-normal mb-6 relative z-10 origin-left inline-block"
           >
             <SplitText
               className="hero-title"
-              charClassName="char bg-clip-text text-transparent bg-gradient-to-br from-[var(--color-text-primary)] to-[var(--color-text-secondary)]"
+              charClassName="char text-[var(--color-text-secondary)]"
             >
               {heroData.title}
             </SplitText>
