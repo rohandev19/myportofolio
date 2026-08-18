@@ -20,7 +20,7 @@ export function SplitText({
       {words.map((word, wordIndex) => (
         <span
           key={wordIndex}
-          className={`inline-block overflow-hidden ${wordClassName}`}
+          className={`inline-block overflow-hidden pb-[0.2em] -mb-[0.2em] ${wordClassName}`}
           style={{ whiteSpace: "pre" }}
         >
           {word.split("").map((char, charIndex) => (
