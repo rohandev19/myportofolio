@@ -105,11 +105,11 @@ export function GitHubDashboard() {
         </div>
 
         <div className="bg-[var(--color-bg-primary)] p-4 rounded-xl border border-[var(--color-border)] flex flex-col items-center justify-center">
-          <div className="flex gap-2 items-end justify-center mb-2">
+          <div className="flex flex-wrap gap-x-2 gap-y-1 items-baseline justify-center mb-2 text-center w-full">
             {topLangs.map(([lang], idx) => (
               <span
                 key={lang}
-                className={`text-xs font-bold ${idx === 0 ? "text-[var(--color-accent-blue)] text-lg" : "text-[var(--color-text-tertiary)]"}`}
+                className={`font-bold ${idx === 0 ? "text-[var(--color-accent-blue)] text-sm md:text-base" : "text-[var(--color-text-tertiary)] text-xs"}`}
               >
                 {lang}
               </span>
