@@ -1,0 +1,32 @@
+---
+title: "Building an Offline-First Mobile App with Flutter and Sembast"
+description: "A practical guide to syncing field attendance data automatically using local caching and background jobs in Flutter."
+date: "2026-07-22"
+tags: ["Flutter", "Mobile", "Offline-First", "Dart"]
+author: "Rohan"
+coverImage: "/images/blog/flutter-offline.jpg"
+coverImageAlt: "Mobile syncing illustration"
+category: "Mobile Development"
+featured: true
+draft: false
+---
+
+## The Problem
+
+For the Hamada Operations Platform, drivers often operate in remote areas with poor or zero internet connectivity. However, they still need to scan QR codes and log their GPS locations for attendance and delivery proofs.
+
+## The Offline-First Strategy
+
+Instead of relying solely on network requests, we implemented an offline-first architecture. 
+
+1. **Local Storage**: We used `Sembast`, a NoSQL persistent store for Dart, to save all attendance logs locally on the device first.
+2. **State Management**: The UI reads directly from the local database, ensuring zero-latency interactions for the drivers.
+3. **Background Synchronization**: We built a sync manager that listens for connectivity changes. Once the device is back online, it batches the unsynced records and pushes them to our Laravel backend securely using Sanctum tokens.
+
+## Handling Conflicts
+
+Since drivers could theoretically use multiple devices, we implemented a server-side timestamp conflict resolution. The server always holds the source of truth, and devices sync their local cache based on the latest server timestamp.
+
+## Result
+
+Data loss incidents dropped to 0%, and driver satisfaction increased significantly since they no longer had to wait for loading spinners in the middle of a delivery route.

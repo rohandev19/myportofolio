@@ -1,0 +1,32 @@
+---
+title: "Implementing Clean Architecture in NestJS for Enterprise Platforms"
+description: "How we structured our enterprise digital platform using NestJS, Clean Architecture, and Redis to achieve high scalability and maintainability."
+date: "2026-08-10"
+tags: ["NestJS", "Architecture", "Backend", "TypeScript"]
+author: "Rohan"
+coverImage: "/images/blog/nestjs-clean.jpg"
+coverImageAlt: "Clean Architecture diagram"
+category: "Backend Development"
+featured: true
+draft: false
+---
+
+## The Challenge
+
+When building the Multi Kreasi Printing Enterprise Digital Platform, we knew that a monolithic spaghetti codebase would eventually slow down development. The business requirements included handling complex print orders, integrating with external logistics APIs, and supporting asynchronous processing for heavy PDF rendering tasks.
+
+## Adopting Clean Architecture
+
+We adopted **Clean Architecture** to separate our concerns into multiple layers:
+1. **Domain Layer**: Contains our core business entities (e.g., `Order`, `Invoice`).
+2. **Use Case Layer**: Application-specific business rules.
+3. **Infrastructure Layer**: PostgreSQL adapters, Redis caching, and BullMQ integrations.
+4. **Presentation Layer**: Our NestJS Controllers serving REST APIs.
+
+## Asynchronous Processing with BullMQ
+
+One of the biggest bottlenecks was generating PDF invoices and preparing massive files for the printing queues. We integrated **BullMQ** with **Redis** to offload these tasks to background workers, keeping our main API thread responsive.
+
+## Conclusion
+
+Using Clean Architecture with NestJS added initial boilerplate, but it paid off immediately when we needed to swap our storage providers and add new features without breaking existing flows.
