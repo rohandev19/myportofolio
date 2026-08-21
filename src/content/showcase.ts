@@ -27,7 +27,7 @@ export const showcaseData: Project[] = [
     impact: [
       "Designed robust backend with NestJS and PostgreSQL",
       "Implemented async processing using Redis and BullMQ",
-      "Built scalable frontend with React.js and TypeScript"
+      "Built scalable frontend with React.js and TypeScript",
     ],
     slug: "multi-kreasi-printing",
     techStack: ["React", "NestJS", "TypeScript", "PostgreSQL", "Redis", "Docker"],
