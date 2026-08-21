@@ -1,0 +1,71 @@
+{
+  "slug": "transporter-cost-analytics",
+  "title": "Transporter Cost Analytics",
+  "description": "An interactive frontend dashboard built with React and Recharts to visualize and analyze complex transportation cost data.",
+  "category": "Web",
+  "role": "Frontend Developer",
+  "client": "Internal Analytics Tool",
+  "publishedAt": "2026-04-10T10:00:00Z",
+  "coverImage": {
+    "src": "/images/case-studies/ecommerce-cover.jpg",
+    "alt": "Data analytics dashboard"
+  },
+  "sections": {
+    "problem": {
+      "title": "The Challenge",
+      "content": "Business analysts were spending hours manually exporting and parsing Excel sheets to calculate transportation efficiencies. They needed a unified dashboard that could visualize this data in real-time."
+    },
+    "solution": {
+      "title": "Our Approach",
+      "content": "We built a modern, responsive web application focused heavily on Data Visualization and User Experience.\n\n### Key Architectural Decisions:\n1. **React.js & TypeScript**: Provided a strong foundation for a maintainable and scalable frontend codebase.\n2. **Recharts Integration**: Implemented interactive charts (bar, line, and pie) to visualize cost distributions and trends.\n3. **Zustand State Management**: Used Zustand to efficiently manage complex filter states across multiple dashboard widgets.\n4. **React-Table**: Implemented highly customizable, sortable, and filterable data tables for deep dives into specific cost records."
+    },
+    "impact": {
+      "title": "Business Impact",
+      "content": "The dashboard empowered analysts to identify cost inefficiencies instantly, saving hours of manual labor and leading to better resource allocation."
+    },
+    "results": {
+      "title": "Key Results",
+      "content": "- **Real-time Visualization** of complex financial data\n- **Seamless Filtering** using optimized state management\n- **Accessible Reporting** via responsive data tables"
+    }
+  },
+  "techStack": [
+    {
+      "name": "React.js",
+      "category": "Frontend",
+      "explanation": "Core library used for building the user interface."
+    },
+    {
+      "name": "TypeScript",
+      "category": "Language",
+      "explanation": "Ensured type safety and predictable data structures."
+    },
+    {
+      "name": "Recharts",
+      "category": "Frontend",
+      "explanation": "Data visualization library for rendering complex graphs."
+    },
+    {
+      "name": "Zustand",
+      "category": "Frontend",
+      "explanation": "Lightweight and fast state management solution."
+    },
+    {
+      "name": "React-Table",
+      "category": "Frontend",
+      "explanation": "Headless UI for building powerful tables and datagrids."
+    }
+  ],
+  "images": [
+    {
+      "src": "/images/case-studies/ecommerce-1.jpg",
+      "alt": "Cost analytics graphs and tables",
+      "caption": "The main analytics dashboard with Recharts"
+    }
+  ],
+  "testimonials": [],
+  "tags": ["React", "TypeScript", "Analytics", "Data Visualization", "Zustand"],
+  "links": {
+    "github": "https://github.com/rohandev19/transporter-cost-analytics"
+  },
+  "featured": false
+}

@@ -1,58 +1,58 @@
 {
   "slug": "hamada-logistic",
   "title": "Hamada Operations Platform",
-  "description": "A web-based operations and logistics dashboard for PT Hamada Global Jaya, designed to manage fleet logistics, user administration, and operational tracking efficiently.",
-  "category": "System",
+  "description": "An end-to-end fleet attendance and logistics management system for PT Hamada Global Jaya, featuring a robust Laravel REST API backend and an offline-first Flutter mobile application.",
+  "category": "Mobile",
   "role": "Full-Stack Developer",
   "client": "PT Hamada Global Jaya",
   "publishedAt": "2026-06-15T10:00:00Z",
   "coverImage": {
     "src": "/images/case-studies/ecommerce-cover.jpg",
-    "alt": "Hamada Operations dashboard screenshot"
+    "alt": "Hamada Operations dashboard and mobile app"
   },
   "sections": {
     "problem": {
       "title": "The Challenge",
-      "content": "PT Hamada Global Jaya required a robust administrative dashboard to manage complex logistics operations, track fleet activities, and monitor employee access. They needed a reliable solution hosted securely with high availability and quick loading times to ensure smooth day-to-day operations."
+      "content": "PT Hamada Global Jaya required a system to manage complex logistics operations, track fleet activities, and monitor field employee attendance. Field drivers often operate in remote areas with zero connectivity, leading to data loss and inaccurate tracking with their legacy systems."
     },
     "solution": {
       "title": "Our Approach",
-      "content": "We built a customized administrative portal using a solid LAMP-stack approach optimized for performance and ease of use.\n\n### Key Architectural Decisions:\n1. **PHP 8.2 Foundation**: Utilized the latest stable version of PHP for fast, server-side processing and secure database interactions.\n2. **Responsive UI**: Integrated Bootstrap and Bootstrap Icons to ensure the dashboard is fully responsive, looking great on both desktop monitors in the dispatch center and mobile devices on the go.\n3. **Optimized Delivery**: Leveraged jsDelivr CDN for rapid asset loading globally.\n4. **LiteSpeed Web Server**: Deployed on Hostinger with LiteSpeed web servers to maximize TTFB (Time to First Byte) and handle concurrent administrative users effortlessly."
+      "content": "We built a two-part solution: a secure administrative portal and an offline-first mobile application.\n\n### Key Architectural Decisions:\n1. **Laravel Backend**: Utilized Laravel Sanctum for cross-platform JWT authentication and built RESTful APIs with an indexed, cached MySQL database.\n2. **Flutter Mobile App**: Developed a cross-platform mobile app featuring QR code validation and GPS-based location tracking.\n3. **Offline-First Synchronization**: Implemented Sembast local database in Flutter. The app caches data offline and automatically synchronizes with the server in the background once connectivity is restored.\n4. **Automated Workflows**: Implemented Firebase Cloud Messaging (FCM) to trigger real-time push notifications for preventive vehicle maintenance approvals."
     },
     "impact": {
       "title": "Business Impact",
-      "content": "The transition to the new administrative platform centralized their operations, reducing administrative overhead and providing real-time oversight over logistics."
+      "content": "The new system eliminated data loss during field deliveries and provided a centralized dashboard for real-time logistics oversight."
     },
     "results": {
       "title": "Key Results",
-      "content": "- **Centralized Dashboard** for managing daily logistics\n- **High Performance** powered by LiteSpeed servers\n- **Responsive Design** accessible by administrative staff anywhere\n- **Secure Authentication** system for PT Hamada Global Jaya personnel"
+      "content": "- **Zero Data Loss** via offline-first syncing\n- **Automated Tracking** using QR and GPS integration\n- **Responsive Admin Portal** built with modern web technologies\n- **Seamless Authentication** across mobile and web platforms"
     }
   },
   "techStack": [
     {
-      "name": "PHP 8.2",
+      "name": "Laravel",
       "category": "Backend",
-      "explanation": "Core server-side logic and database communication."
+      "explanation": "Core server-side logic, API endpoints, and authentication."
     },
     {
-      "name": "Bootstrap",
-      "category": "Frontend",
-      "explanation": "Responsive UI framework for the administrative dashboard."
+      "name": "Flutter",
+      "category": "Mobile",
+      "explanation": "Cross-platform mobile framework used by field drivers."
     },
     {
-      "name": "LiteSpeed",
+      "name": "MySQL",
+      "category": "Database",
+      "explanation": "Primary relational database for all administrative data."
+    },
+    {
+      "name": "Sembast",
+      "category": "Database",
+      "explanation": "NoSQL persistent store for local offline caching in Flutter."
+    },
+    {
+      "name": "Firebase",
       "category": "DevOps",
-      "explanation": "High-performance web server software."
-    },
-    {
-      "name": "Hostinger",
-      "category": "DevOps",
-      "explanation": "Reliable web hosting provider."
-    },
-    {
-      "name": "jsDelivr",
-      "category": "Frontend",
-      "explanation": "Content Delivery Network (CDN) for fast asset loading."
+      "explanation": "Used for push notifications (FCM) and real-time updates."
     }
   ],
   "images": [
@@ -64,20 +64,20 @@
     {
       "src": "/images/case-studies/ecommerce-2.jpg",
       "alt": "Mobile app offline check-in interface",
-      "caption": "Responsive interface accessible on mobile devices"
+      "caption": "Mobile check-in interface supporting offline mode"
     }
   ],
   "testimonials": [
     {
-      "quote": "The platform has provided our administrative team with the reliable tools we need to oversee logistics operations smoothly.",
-      "name": "Admin Team",
+      "quote": "The offline capabilities of the mobile app have completely transformed how our drivers log their activities in remote areas.",
+      "name": "Operations Manager",
       "role": "PT Hamada Global Jaya",
       "company": "PT Hamada Global Jaya"
     }
   ],
-  "tags": ["PHP", "Bootstrap", "Logistics", "Admin Dashboard", "Hostinger"],
+  "tags": ["Laravel", "Flutter", "Logistics", "Offline-First", "Mobile"],
   "links": {
-    "live": "https://operation.hamada-logistic.com/admin/login"
+    "live": "https://operation.hamada-logistic.com"
   },
   "featured": true
 }

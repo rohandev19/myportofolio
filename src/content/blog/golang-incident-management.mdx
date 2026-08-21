@@ -1,0 +1,32 @@
+---
+title: "Why Go Was the Perfect Choice for Our SLA Incident Manager"
+description: "Exploring the performance and concurrency benefits of Go (Golang) when building an enterprise incident management system."
+date: "2026-06-15"
+tags: ["Golang", "Backend", "Performance", "System Design"]
+author: "Rohan"
+coverImage: "/images/blog/golang-backend.jpg"
+coverImageAlt: "Golang mascot with gears"
+category: "Backend Development"
+featured: false
+draft: false
+---
+
+## Introduction
+
+Managing Vendor Service Level Agreements (SLA) requires processing thousands of status events daily. When building the Vendor SLA & Incident Management system, we decided to use Go instead of our usual Node.js stack.
+
+## The Need for Speed and Concurrency
+
+Go's goroutines allowed us to process incoming webhooks from 23 different logistics fleets concurrently without blocking the main thread or consuming massive amounts of memory.
+
+## Simple Routing with Chi
+
+We chose `go-chi` as our router. It's incredibly lightweight, 100% compatible with the standard `net/http` library, and doesn't introduce unnecessary abstractions.
+
+## Server-Side Rendering (SSR) with Templ
+
+Instead of building a heavy Single Page Application (SPA) for a simple internal dashboard, we used `Templ` to render HTML on the server. This resulted in near-instant load times and reduced the complexity of our deployment pipeline.
+
+## Conclusion
+
+Go proved to be exceptionally reliable. The strong typing, built-in concurrency, and fast execution made our incident management system incredibly robust.

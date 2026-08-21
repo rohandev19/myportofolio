@@ -1,0 +1,78 @@
+{
+  "slug": "multi-kreasi-printing",
+  "title": "Enterprise Digital Platform",
+  "description": "A highly scalable digital platform for Multi Kreasi Printing, leveraging Clean Architecture, NestJS, and React to handle high-volume processing and complex order management.",
+  "category": "System",
+  "role": "Lead / Full-Stack Developer",
+  "client": "Multi Kreasi Printing",
+  "publishedAt": "2026-08-10T10:00:00Z",
+  "coverImage": {
+    "src": "/images/case-studies/ecommerce-cover.jpg",
+    "alt": "Enterprise digital platform architecture"
+  },
+  "sections": {
+    "problem": {
+      "title": "The Challenge",
+      "content": "Multi Kreasi Printing required a modernization of their core business systems. The old monolithic architecture struggled with scaling during peak printing order hours and failed to process complex file rendering tasks efficiently, causing bottlenecks in their supply chain."
+    },
+    "solution": {
+      "title": "Our Approach",
+      "content": "We re-architected the entire system from the ground up using modern enterprise patterns.\n\n### Key Architectural Decisions:\n1. **Clean Architecture**: Decoupled the domain logic from the infrastructure, ensuring the system is highly testable and maintainable.\n2. **NestJS Backend**: Utilized NestJS with TypeScript to build a strict, modular backend ecosystem.\n3. **Asynchronous Processing**: Integrated BullMQ and Redis to offload heavy PDF processing and email dispatching to background workers, keeping the main API thread fast.\n4. **Scalable Frontend**: Built a responsive, interactive web application using React.js and Vite."
+    },
+    "impact": {
+      "title": "Business Impact",
+      "content": "The adoption of Clean Architecture and background processing resulted in a highly resilient system that scales automatically and handles peak loads without downtime."
+    },
+    "results": {
+      "title": "Key Results",
+      "content": "- **Zero Downtime** during peak order hours\n- **Faster Processing** of heavy rendering tasks\n- **High Maintainability** through Clean Architecture\n- **Containerized Deployment** using Docker and CI/CD pipelines"
+    }
+  },
+  "techStack": [
+    {
+      "name": "NestJS",
+      "category": "Backend",
+      "explanation": "Enterprise-grade Node.js framework providing the application structure."
+    },
+    {
+      "name": "React.js",
+      "category": "Frontend",
+      "explanation": "Used for building the complex, interactive user interface."
+    },
+    {
+      "name": "PostgreSQL",
+      "category": "Database",
+      "explanation": "Robust relational database handling all transactional data."
+    },
+    {
+      "name": "Redis & BullMQ",
+      "category": "Backend",
+      "explanation": "Message queue system for background processing and caching."
+    },
+    {
+      "name": "Docker",
+      "category": "DevOps",
+      "explanation": "Containerization for consistent deployment environments."
+    }
+  ],
+  "images": [
+    {
+      "src": "/images/case-studies/ecommerce-1.jpg",
+      "alt": "Clean architecture diagram and dashboard",
+      "caption": "The main enterprise dashboard interface"
+    }
+  ],
+  "testimonials": [
+    {
+      "quote": "The new architecture has drastically improved our order processing speeds and system stability.",
+      "name": "Management Team",
+      "role": "Multi Kreasi Printing",
+      "company": "Multi Kreasi Printing"
+    }
+  ],
+  "tags": ["NestJS", "React", "Clean Architecture", "PostgreSQL", "Enterprise"],
+  "links": {
+    "github": "https://github.com/rohandev19/multi-kreasi-printing"
+  },
+  "featured": true
+}

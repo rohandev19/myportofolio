@@ -1,0 +1,66 @@
+{
+  "slug": "vendor-sla-incident",
+  "title": "Vendor SLA & Incident Management",
+  "description": "A high-performance backend microservice built with Go (Golang) to track Service Level Agreements (SLA) and manage operational incidents for supply chain logistics.",
+  "category": "System",
+  "role": "Backend Developer",
+  "client": "Internal Enterprise Tool",
+  "publishedAt": "2026-05-20T10:00:00Z",
+  "coverImage": {
+    "src": "/images/case-studies/ecommerce-cover.jpg",
+    "alt": "Incident management system overview"
+  },
+  "sections": {
+    "problem": {
+      "title": "The Challenge",
+      "content": "Managing Service Level Agreements (SLA) across multiple logistics vendors required processing thousands of status update events daily. The previous system struggled with concurrency and memory bloat."
+    },
+    "solution": {
+      "title": "Our Approach",
+      "content": "We developed a lightweight, highly concurrent backend service using Go.\n\n### Key Architectural Decisions:\n1. **Golang Concurrency**: Leveraged goroutines and channels to process incoming webhook events concurrently without blocking.\n2. **Chi Router**: Implemented `go-chi` for fast, idiomatic HTTP routing.\n3. **PostgreSQL**: Designed an optimized schema to store incident logs and SLA metrics.\n4. **Templ SSR**: Used Templ to render fast, lightweight server-side HTML dashboards instead of a heavy SPA."
+    },
+    "impact": {
+      "title": "Business Impact",
+      "content": "The Go-based service dramatically reduced server resource consumption while processing 10x the amount of concurrent events compared to the legacy system."
+    },
+    "results": {
+      "title": "Key Results",
+      "content": "- **High Concurrency** capabilities using Go\n- **Reduced Memory Footprint** by 80%\n- **Fast Rendering** with Server-Side Rendering (Templ)\n- **Reliable SLA Tracking** across all logistics partners"
+    }
+  },
+  "techStack": [
+    {
+      "name": "Go (Golang)",
+      "category": "Backend",
+      "explanation": "Primary language chosen for its performance and concurrency."
+    },
+    {
+      "name": "PostgreSQL",
+      "category": "Database",
+      "explanation": "Relational database used for structured logging."
+    },
+    {
+      "name": "Chi Router",
+      "category": "Backend",
+      "explanation": "Lightweight HTTP router for Go."
+    },
+    {
+      "name": "Templ",
+      "category": "Frontend",
+      "explanation": "HTML templating language for Go (Server-Side Rendering)."
+    }
+  ],
+  "images": [
+    {
+      "src": "/images/case-studies/ecommerce-1.jpg",
+      "alt": "SLA Tracking Dashboard",
+      "caption": "SLA tracking and incident resolution dashboard"
+    }
+  ],
+  "testimonials": [],
+  "tags": ["Go", "Golang", "Microservice", "SLA", "PostgreSQL"],
+  "links": {
+    "github": "https://github.com/rohandev19/vendor-sla-incident"
+  },
+  "featured": false
+}
