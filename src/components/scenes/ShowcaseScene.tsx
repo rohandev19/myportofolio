@@ -186,15 +186,6 @@ function ShowcaseContent() {
                     </span>
                   </div>
 
-                  {/* Concept Badge (no verifiable live/source link yet) */}
-                  {!project.link && !project.github && (
-                    <div className="absolute bottom-4 left-4 z-10">
-                      <span className="px-3 py-1 bg-[var(--color-bg-primary)]/80 backdrop-blur-md border border-[var(--color-text-tertiary)]/30 rounded-full text-xs font-bold text-[var(--color-text-tertiary)] uppercase tracking-wider">
-                        Concept
-                      </span>
-                    </div>
-                  )}
-
                   {/* Featured Badge */}
                   {project.featured && (
                     <div className="absolute top-4 right-4 z-10">
@@ -293,22 +284,58 @@ function ShowcaseContent() {
                     {(() => {
                       const content = (
                         <div className="w-8 h-8 rounded-full bg-[var(--color-bg-secondary)] flex items-center justify-center group-hover:bg-[var(--color-accent-blue)] transition-colors text-[var(--color-text-secondary)] group-hover:text-[var(--color-bg-primary)] cursor-pointer">
-                          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                          <svg
+                            className="w-4 h-4"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M9 5l7 7-7 7"
+                            />
                           </svg>
                         </div>
                       );
 
                       if (project.slug) {
-                        return <Link href={`/projects/${project.slug}`} aria-label={`View ${project.title}`}>{content}</Link>;
+                        return (
+                          <Link
+                            href={`/projects/${project.slug}`}
+                            aria-label={`View ${project.title}`}
+                          >
+                            {content}
+                          </Link>
+                        );
                       } else if (project.link || project.github) {
-                        return <a href={project.link || project.github} target="_blank" rel="noopener noreferrer" aria-label={`View ${project.title}`}>{content}</a>;
+                        return (
+                          <a
+                            href={project.link || project.github}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label={`View ${project.title}`}
+                          >
+                            {content}
+                          </a>
+                        );
                       }
-                      
+
                       return (
                         <div className="w-8 h-8 rounded-full bg-[var(--color-bg-secondary)] flex items-center justify-center group-hover:bg-[var(--color-accent-blue)] transition-colors text-[var(--color-text-secondary)] group-hover:text-[var(--color-bg-primary)]">
-                          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                          <svg
+                            className="w-4 h-4"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M9 5l7 7-7 7"
+                            />
                           </svg>
                         </div>
                       );
