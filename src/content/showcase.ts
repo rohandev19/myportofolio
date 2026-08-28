@@ -20,6 +20,21 @@ export interface Project {
 
 export const showcaseData: Project[] = [
   {
+    id: "ai-standup",
+    title: "AI Standup & Sync Platform",
+    category: "System",
+    role: "Full-Stack Developer",
+    impact: [
+      "Built a highly scalable Turborepo monorepo",
+      "Integrated real-time WebSockets with NestJS",
+      "Automated standup summaries using Anthropic Claude AI",
+    ],
+    image: "/images/projects/ai-standup.png",
+    slug: "ai-standup",
+    techStack: ["Next.js", "NestJS", "TypeScript", "Anthropic AI", "Socket.io", "Turborepo"],
+    featured: true,
+  },
+  {
     id: "project-1",
     title: "Enterprise Digital Platform (Multi Kreasi Printing)",
     category: "System",

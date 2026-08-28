@@ -12,6 +12,8 @@ export const techStackData: TechStackTier = {
     "Prisma",
     "Git",
     "BullMQ",
+    "Anthropic AI",
+    "Stripe",
   ],
-  ambient: ["Docker", "Tailwind CSS", "Three.js"], // Used for visual particles
+  ambient: ["Docker", "Tailwind CSS", "Three.js", "Socket.io", "Turborepo"], // Used for visual particles
 };
