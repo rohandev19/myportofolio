@@ -1,34 +1,65 @@
 {
-  "id": "ai-standup",
+  "slug": "ai-standup",
   "title": "AI Standup & Sync Platform",
-  "client": "Internal Project",
-  "timeline": "2026",
+  "description": "A modern, AI-powered daily standup and meeting synchronization platform utilizing Anthropic's Claude AI for automated summaries and blockers tracking.",
+  "category": "System",
   "role": "Full-Stack Developer",
-  "website": "https://github.com/rohandev19/ai-standup",
-  "overview": "A modern, AI-powered daily standup and meeting synchronization platform. Designed to eliminate the friction of daily updates, this tool uses Anthropic's Claude AI to automatically summarize blockers, track team progress, and send weekly digests. Built as a scalable monorepo using Turborepo, it features real-time WebSocket syncing and a sleek glassmorphism UI.",
-  "challenges": [
-    "Building a reliable real-time syncing mechanism using WebSockets across a scalable Next.js and NestJS architecture.",
-    "Integrating Anthropic's Claude AI for accurate and context-aware summarization of team chat and standup updates.",
-    "Managing a complex monorepo structure with shared TypeScript packages."
+  "client": "Internal Project",
+  "publishedAt": "2026-08-28T10:00:00Z",
+  "coverImage": {
+    "src": "/images/projects/ai-standup.png",
+    "alt": "AI Standup Dashboard"
+  },
+  "sections": {
+    "problem": {
+      "title": "The Challenge",
+      "content": "Building a reliable real-time syncing mechanism using WebSockets across a scalable Next.js and NestJS architecture, while integrating Anthropic's Claude AI for accurate and context-aware summarization of team chat and standup updates."
+    },
+    "solution": {
+      "title": "Our Approach",
+      "content": "Separated the architecture into a Next.js 16 frontend (App Router) and a dedicated NestJS backend to handle WebSocket connections efficiently. Utilized the Anthropic SDK to process natural language standups and generate structured summaries and blocker highlights. Leveraged Turborepo for lightning-fast builds and pnpm workspaces for managing dependencies across the apps/web, apps/api, and packages/shared directories."
+    },
+    "impact": {
+      "title": "Business Impact",
+      "content": "Automated the tedious task of reading daily updates, saving an estimated 2 hours per week for engineering managers, while establishing a highly scalable and maintainable codebase ready for enterprise adoption."
+    },
+    "results": {
+      "title": "Key Results",
+      "content": "- **Real-time Collaboration** via WebSocket architecture\n- **AI-Powered Summaries** using Anthropic's Claude AI\n- **Fast Builds** leveraging Turborepo monorepo structure\n- **Scalable Monorepo** managing shared TypeScript packages seamlessly"
+    }
+  },
+  "techStack": [
+    {
+      "name": "Next.js",
+      "category": "Frontend",
+      "explanation": "App Router used for server and client components."
+    },
+    {
+      "name": "NestJS",
+      "category": "Backend",
+      "explanation": "Node.js framework handling WebSockets and scheduled jobs."
+    },
+    {
+      "name": "Anthropic AI",
+      "category": "AI",
+      "explanation": "Claude AI model used for intelligent standup summarization."
+    },
+    {
+      "name": "Turborepo",
+      "category": "DevOps",
+      "explanation": "High-performance build system for the monorepo workspace."
+    }
   ],
-  "solutions": [
-    "Separated the architecture into a Next.js 16 frontend (App Router) and a dedicated NestJS backend to handle WebSocket connections efficiently.",
-    "Utilized the Anthropic SDK to process natural language standups and generate structured summaries and blocker highlights.",
-    "Leveraged Turborepo for lightning-fast builds and pnpm workspaces for managing dependencies across the apps/web, apps/api, and packages/shared directories."
+  "images": [
+    {
+      "src": "/images/projects/ai-standup.png",
+      "alt": "AI Standup Interface",
+      "caption": "The main dashboard showing AI meeting syncs."
+    }
   ],
-  "results": [
-    "Created a seamless, real-time team collaboration experience.",
-    "Automated the tedious task of reading daily updates, saving an estimated 2 hours per week for engineering managers.",
-    "Established a highly scalable and maintainable codebase ready for enterprise adoption."
-  ],
-  "technologies": [
-    "Next.js",
-    "NestJS",
-    "TypeScript",
-    "Anthropic AI",
-    "Socket.io",
-    "Stripe",
-    "Turborepo"
-  ],
-  "gallery": ["/images/projects/ai-standup.png"]
+  "tags": ["Next.js", "NestJS", "Anthropic AI", "Monorepo"],
+  "links": {
+    "github": "https://github.com/rohandev19/ai-standup"
+  },
+  "featured": true
 }
