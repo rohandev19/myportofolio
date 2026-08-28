@@ -34,8 +34,17 @@ function ShowcaseContent() {
   const initialFilter = showcaseCategories.includes(urlFilter as ProjectCategory)
     ? (urlFilter as ProjectCategory)
     : "All";
+  const urlTechFilter = searchParams.get("tech");
 
   const [activeFilter, setActiveFilter] = useState<ProjectCategory>(initialFilter);
+  const [activeTechFilter, setActiveTechFilter] = useState<string | null>(urlTechFilter);
+
+  // Extract all unique tech stacks
+  const allTechStacks = useMemo(() => {
+    const stacks = new Set<string>();
+    showcaseData.forEach((p) => p.techStack.forEach((t) => stacks.add(t)));
+    return Array.from(stacks).sort();
+  }, []);
 
   // Sync URL when filter changes
   useEffect(() => {
@@ -46,15 +55,27 @@ function ShowcaseContent() {
       params.set("filter", activeFilter);
     }
 
+    if (activeTechFilter) {
+      params.set("tech", activeTechFilter);
+    } else {
+      params.delete("tech");
+    }
+
     const newUrl = params.toString() ? `?${params.toString()}` : window.location.pathname;
     router.replace(newUrl, { scroll: false });
-  }, [activeFilter, router, searchParams]);
+  }, [activeFilter, activeTechFilter, router, searchParams]);
 
   // Filter projects
   const filteredProjects = useMemo(() => {
-    if (activeFilter === "All") return showcaseData;
-    return showcaseData.filter((p) => p.category === activeFilter);
-  }, [activeFilter]);
+    let filtered = showcaseData;
+    if (activeFilter !== "All") {
+      filtered = filtered.filter((p) => p.category === activeFilter);
+    }
+    if (activeTechFilter) {
+      filtered = filtered.filter((p) => p.techStack.includes(activeTechFilter));
+    }
+    return filtered;
+  }, [activeFilter, activeTechFilter]);
 
   // Initial reveal animation
   useGSAP(
@@ -111,7 +132,7 @@ function ShowcaseContent() {
         },
       });
     },
-    { dependencies: [activeFilter], scope: containerRef }
+    { dependencies: [activeFilter, activeTechFilter], scope: containerRef }
   );
 
   return (
@@ -131,20 +152,46 @@ function ShowcaseContent() {
         </div>
 
         {/* Filter Bar */}
-        <div className="flex flex-wrap items-center justify-center gap-3 mb-12">
-          {showcaseCategories.map((category) => (
-            <button
-              key={category}
-              onClick={() => setActiveFilter(category)}
-              className={`px-5 py-2 rounded-full text-sm font-semibold transition-all duration-300 border focus:outline-none focus:ring-2 focus:ring-[var(--color-accent-blue)] focus:ring-offset-2 focus:ring-offset-[var(--color-bg-secondary)] ${
-                activeFilter === category
-                  ? "bg-[var(--color-accent-blue)] text-[var(--color-bg-primary)] border-[var(--color-accent-blue)] shadow-[0_0_15px_rgba(56,189,248,0.4)]"
-                  : "bg-[var(--color-bg-primary)] text-[var(--color-text-secondary)] border-[var(--color-border)] hover:border-[var(--color-accent-blue)]/50 hover:text-[var(--color-text-primary)]"
-              }`}
-            >
-              {category}
-            </button>
-          ))}
+        <div className="flex flex-col gap-4 mb-12">
+          {/* Main Categories */}
+          <div className="flex flex-wrap items-center justify-center gap-3">
+            {showcaseCategories.map((category) => (
+              <button
+                key={category}
+                onClick={() => {
+                  setActiveFilter(category);
+                  setActiveTechFilter(null);
+                }}
+                className={`px-5 py-2 rounded-full text-sm font-semibold transition-all duration-300 border focus:outline-none focus:ring-2 focus:ring-[var(--color-accent-blue)] focus:ring-offset-2 focus:ring-offset-[var(--color-bg-secondary)] ${
+                  activeFilter === category && !activeTechFilter
+                    ? "bg-[var(--color-accent-blue)] text-[var(--color-bg-primary)] border-[var(--color-accent-blue)] shadow-[0_0_15px_rgba(56,189,248,0.4)]"
+                    : "bg-[var(--color-bg-primary)] text-[var(--color-text-secondary)] border-[var(--color-border)] hover:border-[var(--color-accent-blue)]/50 hover:text-[var(--color-text-primary)]"
+                }`}
+              >
+                {category}
+              </button>
+            ))}
+          </div>
+
+          {/* Tech Stack Filters */}
+          <div className="flex flex-wrap items-center justify-center gap-2 max-w-4xl mx-auto">
+            {allTechStacks.map((tech) => (
+              <button
+                key={tech}
+                onClick={() => {
+                  setActiveTechFilter(activeTechFilter === tech ? null : tech);
+                  setActiveFilter("All");
+                }}
+                className={`px-3 py-1 rounded-md text-xs font-medium transition-all duration-300 border focus:outline-none focus:ring-1 focus:ring-[var(--color-accent-violet)] ${
+                  activeTechFilter === tech
+                    ? "bg-[var(--color-accent-violet)] text-[var(--color-bg-primary)] border-[var(--color-accent-violet)]"
+                    : "bg-[var(--color-bg-primary)] text-[var(--color-text-tertiary)] border-[var(--color-border)] hover:border-[var(--color-accent-violet)]/50 hover:text-[var(--color-text-secondary)]"
+                }`}
+              >
+                {tech}
+              </button>
+            ))}
+          </div>
         </div>
 
         {/* Projects Grid */}

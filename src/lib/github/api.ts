@@ -8,6 +8,13 @@ export interface GitHubStats {
   topLanguages: { [key: string]: number };
 }
 
+const FALLBACK_STATS: GitHubStats = {
+  totalStars: 2,
+  totalRepos: 5,
+  followers: 41,
+  topLanguages: { PHP: 5, TypeScript: 4, HTML: 3 },
+};
+
 export async function fetchGitHubStats(): Promise<GitHubStats> {
   const headers = new Headers({
     Accept: "application/vnd.github.v3+json",
@@ -30,7 +37,8 @@ export async function fetchGitHubStats(): Promise<GitHubStats> {
     ]);
 
     if (!userRes.ok || !reposRes.ok) {
-      throw new Error("Failed to fetch GitHub data");
+      console.warn("GitHub API rate limit hit or failed. Using fallback data.");
+      return FALLBACK_STATS;
     }
 
     const userData = await userRes.json();
@@ -54,7 +62,7 @@ export async function fetchGitHubStats(): Promise<GitHubStats> {
 
     return stats;
   } catch (error) {
-    console.error("GitHub fetch error:", error);
-    throw error;
+    console.warn("GitHub fetch error, using fallback data:", error);
+    return FALLBACK_STATS;
   }
 }

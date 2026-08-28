@@ -3,38 +3,78 @@ export interface ExecutionResult {
   error: string | null;
 }
 
-export async function executeJavaScript(code: string): Promise<ExecutionResult> {
-  return new Promise((resolve) => {
-    try {
-      // Capture console logs
-      const logs: string[] = [];
-      const originalLog = console.log;
-      console.log = (...args) => {
-        logs.push(
-          args.map((a) => (typeof a === "object" ? JSON.stringify(a) : String(a))).join(" ")
-        );
-      };
+export async function executeCode(code: string, language: string): Promise<ExecutionResult> {
+  if (language === "javascript") {
+    return new Promise((resolve) => {
+      try {
+        const logs: string[] = [];
+        const originalLog = console.log;
+        console.log = (...args) => {
+          logs.push(
+            args.map((a) => (typeof a === "object" ? JSON.stringify(a) : String(a))).join(" ")
+          );
+        };
 
-      // Safely evaluate code in an isolated scope using a new Function
-      // Note: In a production app, use an iframe or Web Worker for true isolation.
-      const run = new Function(code);
-      const result = run();
+        const run = new Function(code);
+        const result = run();
 
-      if (result !== undefined) {
-        logs.push(String(result));
+        if (result !== undefined) {
+          logs.push(String(result));
+        }
+
+        console.log = originalLog;
+
+        resolve({
+          output: logs.join("\n"),
+          error: null,
+        });
+      } catch (error) {
+        resolve({
+          output: "",
+          error: error instanceof Error ? error.message : String(error),
+        });
       }
+    });
+  }
 
-      console.log = originalLog;
+  // External execution for Go and PHP using Piston API
+  try {
+    let version = "*";
+    if (language === "go") version = "1.16.2";
+    if (language === "php") version = "8.2.3";
 
-      resolve({
-        output: logs.join("\n"),
-        error: null,
-      });
-    } catch (error) {
-      resolve({
+    const response = await fetch("https://emkc.org/api/v2/piston/execute", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        language,
+        version,
+        files: [{ content: code }],
+      }),
+    });
+
+    if (!response.ok) {
+      return {
         output: "",
-        error: error instanceof Error ? error.message : String(error),
-      });
+        error: `Remote execution failed with status: ${response.status}. Please try again later.`,
+      };
     }
-  });
+
+    const data = await response.json();
+
+    if (data.compile && data.compile.code !== 0) {
+      return { output: "", error: data.compile.output };
+    }
+
+    if (data.run) {
+      if (data.run.code !== 0 && data.run.stderr) {
+        return { output: data.run.stdout, error: data.run.stderr };
+      }
+      return { output: data.run.output, error: null };
+    }
+
+    return { output: "", error: "Unknown execution error from Piston API" };
+  } catch (error) {
+    return { output: "", error: "Failed to connect to remote execution engine" };
+  }
 }
