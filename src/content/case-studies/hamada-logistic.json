@@ -7,8 +7,8 @@
   "client": "PT Hamada Global Jaya",
   "publishedAt": "2026-06-15T10:00:00Z",
   "coverImage": {
-    "src": "/images/case-studies/ecommerce-cover.jpg",
-    "alt": "Hamada Operations dashboard and mobile app"
+    "src": "/images/DashboardAdminHamada.png",
+    "alt": "Hamada Operations Admin Dashboard"
   },
   "sections": {
     "problem": {
@@ -57,14 +57,14 @@
   ],
   "images": [
     {
-      "src": "/images/case-studies/ecommerce-1.jpg",
-      "alt": "Operations dashboard showing real-time fleet status",
-      "caption": "The central dispatcher dashboard displaying real-time metrics"
+      "src": "/images/HalamanLoginHamada.png",
+      "alt": "Login page for Hamada Operations Platform",
+      "caption": "Secure portal login for administrative access"
     },
     {
-      "src": "/images/case-studies/ecommerce-2.jpg",
-      "alt": "Mobile app offline check-in interface",
-      "caption": "Mobile check-in interface supporting offline mode"
+      "src": "/images/Halaman Monitoring Kendaraan.png",
+      "alt": "Vehicle Monitoring and Fleet Tracking",
+      "caption": "Real-time fleet tracking and vehicle monitoring"
     }
   ],
   "testimonials": [

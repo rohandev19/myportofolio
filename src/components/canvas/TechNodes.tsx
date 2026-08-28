@@ -67,6 +67,12 @@ const iconMap: Record<string, string> = {
   MySQL: "mysql",
   Redis: "redis",
   Git: "git",
+  Golang: "golang",
+  PostgreSQL: "postgres",
+  "Next.js": "nextjs",
+  "Node.js": "nodejs",
+  NestJS: "nestjs",
+  Prisma: "prisma",
 };
 
 function TechNode({ node }: { node: NodeData }) {

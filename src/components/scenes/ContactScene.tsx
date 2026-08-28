@@ -202,7 +202,7 @@ export function ContactScene() {
                   type="text"
                   id="contact-name"
                   autoComplete="name"
-                  placeholder="John Doe"
+                  placeholder="Budi Santoso"
                   aria-invalid={!!errors.name}
                   aria-describedby={errors.name ? "name-error" : undefined}
                   className={`w-full bg-[var(--color-bg-secondary)] border rounded-lg px-4 py-3 text-[var(--color-text-primary)] placeholder:text-[var(--color-text-tertiary)] focus:outline-none focus:ring-1 transition-all ${
@@ -237,7 +237,7 @@ export function ContactScene() {
                   type="email"
                   id="contact-email"
                   autoComplete="email"
-                  placeholder="john@example.com"
+                  placeholder="budi@example.com"
                   aria-invalid={!!errors.email}
                   aria-describedby={errors.email ? "email-error" : undefined}
                   className={`w-full bg-[var(--color-bg-secondary)] border rounded-lg px-4 py-3 text-[var(--color-text-primary)] placeholder:text-[var(--color-text-tertiary)] focus:outline-none focus:ring-1 transition-all ${

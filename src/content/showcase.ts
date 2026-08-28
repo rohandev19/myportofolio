@@ -43,6 +43,7 @@ export const showcaseData: Project[] = [
       "Predictive vehicle maintenance scheduling",
       "QR Code & GPS attendance tracking",
     ],
+    image: "/images/DashboardAdminHamada.png",
     link: "https://operation.hamada-logistic.com",
     slug: "hamada-logistic",
     techStack: ["Laravel", "Flutter", "MySQL", "Firebase", "Sanctum"],
