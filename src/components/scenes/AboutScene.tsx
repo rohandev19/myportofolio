@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { aboutData } from "@/content/about";
 import { InteractiveButton } from "../ui/InteractiveButton";
@@ -8,7 +8,6 @@ import { InteractiveButton } from "../ui/InteractiveButton";
 export function AboutScene() {
   const containerRef = useRef<HTMLElement>(null);
   const blobRef = useRef<HTMLDivElement>(null);
-  const [isActive, setIsActive] = useState(false);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -96,25 +95,16 @@ export function AboutScene() {
           {/* Glowing background blob */}
           <div
             ref={blobRef}
-            className="w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 bg-gradient-to-tr from-[#1A4A4E] to-[#7B8794] opacity-60 mix-blend-screen filter blur-3xl absolute animate-morph"
+            className="w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 bg-gradient-to-tr from-[#1A4A4E] to-[#7B8794] opacity-60 mix-blend-screen filter blur-3xl absolute rounded-full"
           />
-          {/* Foreground morphing container for the image */}
-          <div
-            className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 bg-gradient-to-bl from-[#141418] to-[#222228] border border-[#1A4A4E]/50 absolute overflow-hidden shadow-[0_0_30px_rgba(26,74,78,0.3)] animate-morph group cursor-pointer"
-            onClick={() => setIsActive(!isActive)}
-          >
-            {/* Dark overlay to match theme (Duotone effect) */}
-            <div
-              className={`absolute inset-0 bg-[#141418]/40 mix-blend-multiply z-10 transition-colors duration-500 group-hover:bg-transparent ${isActive ? "bg-transparent" : ""}`}
-            />
+          {/* Foreground container for the image */}
+          <div className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 bg-gradient-to-bl from-[#141418] to-[#222228] border border-[#1A4A4E]/50 absolute overflow-hidden shadow-[0_0_30px_rgba(26,74,78,0.3)] rounded-full group">
             <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#1A4A4E]/20 mix-blend-overlay z-10" />
 
             <img
               src="/images/profile.jpeg"
               alt="Profile"
-              className={`w-full h-full object-cover object-top filter transition-all duration-500 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-100 ${
-                isActive ? "grayscale-0 opacity-100 scale-100" : "grayscale opacity-90 scale-110"
-              }`}
+              className="w-full h-full object-cover object-top"
             />
           </div>
         </div>
