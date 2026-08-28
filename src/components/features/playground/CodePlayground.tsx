@@ -12,24 +12,6 @@ console.log(greeting);
 // Math operations
 const add = (a, b) => a + b;
 console.log("2 + 3 =", add(2, 3));`,
-  go: `package main
-
-import "fmt"
-
-func main() {
-    fmt.Println("Hello from Go!")
-    
-    add := func(a, b int) int {
-        return a + b
-    }
-    fmt.Printf("2 + 3 = %d\\n", add(2, 3))
-}`,
-  php: `<?php
-echo "Hello from PHP!\\n";
-
-$add = fn($a, $b) => $a + $b;
-echo "2 + 3 = " . $add(2, 3) . "\\n";
-`,
   html: `<!DOCTYPE html>
 <html>
 <head>
@@ -142,12 +124,6 @@ export function CodePlayground() {
             >
               <option value="javascript" className="bg-[#181c24]">
                 main.js (JS)
-              </option>
-              <option value="go" className="bg-[#181c24]">
-                main.go (Go)
-              </option>
-              <option value="php" className="bg-[#181c24]">
-                main.php (PHP)
               </option>
               <option value="html" className="bg-[#181c24]">
                 index.html (HTML)
