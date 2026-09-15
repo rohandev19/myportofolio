@@ -73,6 +73,12 @@ const iconMap: Record<string, string> = {
   "Node.js": "nodejs",
   NestJS: "nestjs",
   Prisma: "prisma",
+  Docker: "docker",
+  "Tailwind CSS": "tailwind",
+  "Three.js": "threejs",
+  Turborepo: "turborepo",
+  Stripe: "stripe",
+  // Note: BullMQ, Socket.io, and Anthropic AI will use text fallback (no icons in skillicons.dev)
 };
 
 function TechNode({ node }: { node: NodeData }) {
