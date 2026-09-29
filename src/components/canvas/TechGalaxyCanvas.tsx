@@ -20,6 +20,7 @@ export function TechGalaxyCanvas() {
     <div className="w-full h-[60vh] md:h-[80vh] cursor-grab active:cursor-grabbing">
       <Canvas
         frameloop="always"
+        dpr={[1, 1.5]}
         camera={{ position: [0, 0, 20], fov: 60 }}
         gl={{ powerPreference: "high-performance", antialias: false }}
       >

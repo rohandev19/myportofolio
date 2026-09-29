@@ -13,7 +13,7 @@ export interface ContactRequestBody {
   email: string;
   subject?: string;
   message: string;
-  honeypot: string; // Must be empty
+  honeypot: string;
 }
 
 export interface ContactResponse {

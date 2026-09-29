@@ -30,11 +30,11 @@ export function TechNodes() {
     });
   });
 
-  useFrame(() => {
+  useFrame((state, delta) => {
     if (groupRef.current) {
-      // Slow rotation of the entire group
-      groupRef.current.rotation.y += 0.001;
-      groupRef.current.rotation.x += 0.0005;
+      // Slow rotation of the entire group (framerate independent)
+      groupRef.current.rotation.y += 0.06 * delta;
+      groupRef.current.rotation.x += 0.03 * delta;
     }
   });
 
@@ -84,12 +84,12 @@ const iconMap: Record<string, string> = {
 function TechNode({ node }: { node: NodeData }) {
   const meshRef = useRef<THREE.Mesh>(null);
 
-  useFrame(() => {
+  useFrame((state) => {
     if (meshRef.current) {
-      // Calculate absolute position rather than adding delta to prevent drifting
+      // Calculate absolute position using state.clock.elapsedTime rather than Date.now() for smoother animation
       meshRef.current.position.y =
         node.position.y +
-        Math.sin(Date.now() * 0.001 * Math.abs(node.speed) * 10 + node.timeOffset) * 0.5;
+        Math.sin(state.clock.elapsedTime * Math.abs(node.speed) * 10 + node.timeOffset) * 0.5;
     }
   });
 

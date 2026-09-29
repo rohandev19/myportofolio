@@ -8,7 +8,7 @@
 export interface ArticleFrontmatter {
   title: string;
   description: string;
-  date: string; // ISO 8601
+  date: string;
   updatedAt?: string;
   tags: string[];
   author: string;
@@ -21,7 +21,7 @@ export interface ArticleFrontmatter {
 
 export interface ArticleMetadata extends ArticleFrontmatter {
   slug: string;
-  readTime: number; // minutes
+  readTime: number;
   wordCount: number;
 }
 

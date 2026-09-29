@@ -27,7 +27,6 @@ export function SplitText({
             <span
               key={charIndex}
               className={`inline-block ${charClassName}`}
-              style={{ willChange: "transform" }}
             >
               {char}
             </span>

@@ -7,7 +7,7 @@
   "client": "Multi Kreasi Printing",
   "publishedAt": "2026-08-10T10:00:00Z",
   "coverImage": {
-    "src": "/images/case-studies/ecommerce-cover.jpg",
+    "src": "/images/projects/mkprinting.png",
     "alt": "Enterprise digital platform architecture"
   },
   "sections": {
@@ -57,7 +57,7 @@
   ],
   "images": [
     {
-      "src": "/images/case-studies/ecommerce-1.jpg",
+      "src": "/images/projects/mkprinting.png",
       "alt": "Clean architecture diagram and dashboard",
       "caption": "The main enterprise dashboard interface"
     }

@@ -83,14 +83,14 @@ export function createCommandRegistry(actions: {
       keywords: ["blog", "articles", "writing", "posts", "read"],
       action: () => actions.navigateTo?.("/blog"),
     },
-    {
+    ...(process.env.NODE_ENV !== "production" ? [{
       id: "nav-analytics",
       label: "Go to Analytics",
       description: "View website performance metrics",
       category: "navigation",
       keywords: ["analytics", "metrics", "dashboard", "stats", "performance"],
       action: () => actions.navigateTo?.("/dashboard/analytics"),
-    },
+    } as Command] : []),
 
     // --- Settings Commands ---
     {

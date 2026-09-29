@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, ReactNode, createContext, useContext, useState } from "react";
+import { useEffect, useRef, ReactNode, createContext, useContext, useState, useCallback } from "react";
 import Lenis from "lenis";
 import { ErrorBoundary } from "react-error-boundary";
 import { GlobalErrorFallback } from "./error-boundaries/GlobalErrorBoundary";
@@ -36,6 +36,10 @@ export function ClientProviders({ children }: ClientProvidersProps) {
   const [showPreloader, setShowPreloader] = useState(true);
   const pathname = usePathname();
   const lenisRef = useRef<Lenis | null>(null);
+
+  const handlePreloaderComplete = useCallback(() => {
+    setShowPreloader(false);
+  }, []);
 
   // Initialize global keyboard shortcuts for command palette
   useCommandPalette();
@@ -87,7 +91,7 @@ export function ClientProviders({ children }: ClientProvidersProps) {
         <ThemeProvider>
           <ToastContainer />
           <CommandPalette />
-          {showPreloader && <Preloader onComplete={() => setShowPreloader(false)} />}
+          {showPreloader && <Preloader onComplete={handlePreloaderComplete} />}
           {children}
         </ThemeProvider>
       </ErrorBoundary>

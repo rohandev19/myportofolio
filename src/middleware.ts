@@ -12,6 +12,10 @@ export function middleware(request: NextRequest) {
   const validUser = process.env.DASHBOARD_USER;
   const validPassword = process.env.DASHBOARD_PASSWORD;
 
+  if (process.env.NODE_ENV === "production") {
+    return new NextResponse("Not Found", { status: 404 });
+  }
+
   if (!validUser || !validPassword) {
     return new NextResponse("Dashboard is not configured.", { status: 503 });
   }

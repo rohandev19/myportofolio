@@ -21,62 +21,64 @@ export function Preloader({ onComplete }: { onComplete: () => void }) {
     // Prevent scrolling during preloader
     document.body.style.overflow = "hidden";
 
-    const tl = gsap.timeline({
-      onComplete: () => {
-        document.body.style.overflow = "auto";
-        onComplete();
-      },
-    });
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({
+        onComplete: () => {
+          document.body.style.overflow = "auto";
+          onComplete();
+        },
+      });
 
-    // Animate counter from 0 to 100
-    const counterObject = { value: 0 };
-    tl.to(counterObject, {
-      value: 100,
-      duration: 2.5, // 2.5 seconds loading
-      ease: "power2.inOut",
-      onUpdate: () => {
-        setProgress(Math.round(counterObject.value));
-      },
-    });
+      // Animate counter from 0 to 100
+      const counterObject = { value: 0 };
+      tl.to(counterObject, {
+        value: 100,
+        duration: 2.5, // 2.5 seconds loading
+        ease: "power2.inOut",
+        onUpdate: () => {
+          setProgress(Math.round(counterObject.value));
+        },
+      });
 
-    // Add a slight pause at 100%
-    tl.to({}, { duration: 0.3 });
+      // Add a slight pause at 100%
+      tl.to({}, { duration: 0.3 });
 
-    // Hide counter
-    tl.to(counterRef.current, {
-      opacity: 0,
-      duration: 0.3,
-    });
+      // Hide counter
+      tl.to(counterRef.current, {
+        opacity: 0,
+        duration: 0.3,
+      });
 
-    // Split doors
-    tl.to(
-      leftDoorRef.current,
-      {
-        xPercent: -100,
-        duration: 1.2,
-        ease: "power4.inOut",
-      },
-      "split"
-    );
-    tl.to(
-      rightDoorRef.current,
-      {
-        xPercent: 100,
-        duration: 1.2,
-        ease: "power4.inOut",
-      },
-      "split"
-    );
+      // Split doors
+      tl.to(
+        leftDoorRef.current,
+        {
+          xPercent: -100,
+          duration: 1.2,
+          ease: "power4.inOut",
+        },
+        "split"
+      );
+      tl.to(
+        rightDoorRef.current,
+        {
+          xPercent: 100,
+          duration: 1.2,
+          ease: "power4.inOut",
+        },
+        "split"
+      );
 
-    // Hide container completely after doors open
-    tl.to(containerRef.current, {
-      display: "none",
-      duration: 0,
-    });
+      // Hide container completely after doors open
+      tl.to(containerRef.current, {
+        display: "none",
+        duration: 0,
+      });
+    }, containerRef);
 
     return () => {
       document.body.style.overflow = "auto";
-      tl.kill();
+      ctx.revert();
     };
   }, [onComplete]);
 

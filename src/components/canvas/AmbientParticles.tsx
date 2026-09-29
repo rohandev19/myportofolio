@@ -34,14 +34,15 @@ export function AmbientParticles() {
     };
   }, []);
 
-  useFrame(() => {
+  useFrame((state, delta) => {
     if (!meshRef.current) return;
 
     // We animate positions only if frameloop runs (which is on demand / scroll / hover)
     particles.forEach((particle, i) => {
       const { factor, speed, xFactor, yFactor, zFactor } = particle;
+      // Make animation frame-rate independent
       let { t } = particle;
-      t = particle.t += speed / 2;
+      t = particle.t += speed * delta * 60;
       const a = Math.cos(t) + Math.sin(t * 1) / 10;
       const b = Math.sin(t) + Math.cos(t * 2) / 10;
       const s = Math.cos(t);

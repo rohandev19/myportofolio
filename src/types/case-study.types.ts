@@ -35,13 +35,13 @@ export interface GitHubStats {
   stars: number;
   forks: number;
   openIssues: number;
-  lastCommitDate: string; // ISO 8601
+  lastCommitDate: string;
   watchers?: number;
 }
 
 export interface CaseStudySection {
   title: string;
-  content: string; // Markdown content
+  content: string;
 }
 
 export interface CaseStudy {
@@ -51,7 +51,7 @@ export interface CaseStudy {
   category: string;
   role: string;
   client?: string;
-  publishedAt: string; // ISO 8601
+  publishedAt: string;
   updatedAt?: string;
   coverImage?: CaseStudyImage;
   sections: {
