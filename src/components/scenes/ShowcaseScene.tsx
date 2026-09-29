@@ -205,7 +205,18 @@ function ShowcaseContent() {
               className="showcase-card-wrapper h-full"
               data-flip-id={project.id}
             >
-              <TiltCard className="showcase-card group bg-[var(--color-bg-primary)] rounded-2xl border border-[var(--color-border)] hover:border-[var(--color-accent-blue)]/50 flex flex-col h-full overflow-hidden focus-within:ring-2 focus-within:ring-[var(--color-accent-blue)]">
+              <TiltCard
+                className="showcase-card group bg-[var(--color-bg-primary)] rounded-2xl border border-[var(--color-border)] hover:border-[var(--color-accent-blue)]/50 flex flex-col h-full overflow-hidden focus-within:ring-2 focus-within:ring-[var(--color-accent-blue)] cursor-pointer"
+                onClick={() => {
+                  if (project.slug) {
+                    router.push(`/projects/${project.slug}`);
+                  } else if (project.link) {
+                    window.open(project.link, "_blank");
+                  } else if (project.github) {
+                    window.open(project.github, "_blank");
+                  }
+                }}
+              >
                 {/* Image Container / Placeholder */}
                 <div className="relative h-56 w-full bg-gradient-to-tr from-[var(--color-bg-secondary)] to-[var(--color-bg-primary)] overflow-hidden">
                   {project.image ? (
@@ -295,6 +306,7 @@ function ShowcaseContent() {
                         <Link
                           href={`/projects/${project.slug}`}
                           className="text-[var(--color-accent-blue)] font-semibold hover:text-[var(--color-text-primary)] transition-colors flex items-center gap-1 focus:outline-none"
+                          onClick={(e) => e.stopPropagation()}
                         >
                           Case Study <span>↗</span>
                         </Link>
@@ -305,6 +317,7 @@ function ShowcaseContent() {
                           target="_blank"
                           rel="noopener noreferrer"
                           className={`${project.slug ? "text-[var(--color-text-secondary)]" : "text-[var(--color-accent-blue)]"} font-semibold hover:text-[var(--color-text-primary)] transition-colors flex items-center gap-1 focus:outline-none`}
+                          onClick={(e) => e.stopPropagation()}
                         >
                           View Site <span>↗</span>
                         </a>
@@ -316,6 +329,7 @@ function ShowcaseContent() {
                           rel="noopener noreferrer"
                           className="text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors flex items-center gap-1 focus:outline-none"
                           aria-label="View source on GitHub"
+                          onClick={(e) => e.stopPropagation()}
                         >
                           <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                             <path
@@ -352,6 +366,7 @@ function ShowcaseContent() {
                           <Link
                             href={`/projects/${project.slug}`}
                             aria-label={`View ${project.title}`}
+                            onClick={(e) => e.stopPropagation()}
                           >
                             {content}
                           </Link>
@@ -363,6 +378,7 @@ function ShowcaseContent() {
                             target="_blank"
                             rel="noopener noreferrer"
                             aria-label={`View ${project.title}`}
+                            onClick={(e) => e.stopPropagation()}
                           >
                             {content}
                           </a>

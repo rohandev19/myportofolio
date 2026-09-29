@@ -3,12 +3,12 @@
 import { useRef, useState, ReactNode } from "react";
 import gsap from "gsap";
 
-interface TiltCardProps {
+interface TiltCardProps extends React.HTMLAttributes<HTMLDivElement> {
   children: ReactNode;
   className?: string;
 }
 
-export function TiltCard({ children, className = "" }: TiltCardProps) {
+export function TiltCard({ children, className = "", ...props }: TiltCardProps) {
   const cardRef = useRef<HTMLDivElement>(null);
   const glareRef = useRef<HTMLDivElement>(null);
   const [isHovered, setIsHovered] = useState(false);
@@ -73,6 +73,7 @@ export function TiltCard({ children, className = "" }: TiltCardProps) {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       style={{ transformStyle: "preserve-3d" }}
+      {...props}
     >
       {/* Glare effect */}
       <div
