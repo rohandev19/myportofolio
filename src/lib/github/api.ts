@@ -10,9 +10,9 @@ export interface GitHubStats {
 
 const FALLBACK_STATS: GitHubStats = {
   totalStars: 2,
-  totalRepos: 5,
-  followers: 41,
-  topLanguages: { PHP: 5, TypeScript: 4, HTML: 3 },
+  totalRepos: 7,
+  followers: 60,
+  topLanguages: { TypeScript: 4, PHP: 2, HTML: 1 },
 };
 
 export async function fetchGitHubStats(): Promise<GitHubStats> {
