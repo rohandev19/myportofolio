@@ -39,6 +39,17 @@ function ShowcaseContent() {
   const [activeFilter, setActiveFilter] = useState<ProjectCategory>(initialFilter);
   const [activeTechFilter, setActiveTechFilter] = useState<string | null>(urlTechFilter);
 
+  // Store the Flip state before layout changes
+  const flipStateRef = useRef<Flip.FlipState | null>(null);
+
+  const handleFilterChange = (filter: ProjectCategory, tech: string | null) => {
+    if (gridRef.current) {
+      flipStateRef.current = Flip.getState(".showcase-card-wrapper, .showcase-grid");
+    }
+    setActiveFilter(filter);
+    setActiveTechFilter(tech);
+  };
+
   // Extract all unique tech stacks
   const allTechStacks = useMemo(() => {
     const stacks = new Set<string>();
@@ -61,9 +72,14 @@ function ShowcaseContent() {
       params.delete("tech");
     }
 
-    const newUrl = params.toString() ? `?${params.toString()}` : window.location.pathname;
-    router.replace(newUrl, { scroll: false });
-  }, [activeFilter, activeTechFilter, router, searchParams]);
+    const hash = window.location.hash;
+    const newUrl = params.toString()
+      ? `?${params.toString()}${hash}`
+      : `${window.location.pathname}${hash}`;
+
+    // Use window.history to prevent Next.js router from scrolling to top on query change
+    window.history.replaceState(null, "", newUrl);
+  }, [activeFilter, activeTechFilter, searchParams]);
 
   // Filter projects
   const filteredProjects = useMemo(() => {
@@ -102,13 +118,10 @@ function ShowcaseContent() {
   // Layout transition when filter changes
   useGSAP(
     () => {
-      if (!gridRef.current) return;
+      if (!gridRef.current || !flipStateRef.current) return;
 
-      // Get state before layout change
-      const state = Flip.getState(".showcase-card-wrapper");
+      const state = flipStateRef.current;
 
-      // We use a microtask to let React render the DOM changes first
-      // Since GSAP's useGSAP hook runs synchronously after render, we can just call Flip.from
       Flip.from(state, {
         duration: 0.5,
         ease: "power3.inOut",
@@ -131,6 +144,8 @@ function ShowcaseContent() {
           });
         },
       });
+
+      flipStateRef.current = null;
     },
     { dependencies: [activeFilter, activeTechFilter], scope: containerRef }
   );
@@ -158,9 +173,9 @@ function ShowcaseContent() {
             {showcaseCategories.map((category) => (
               <button
                 key={category}
+                type="button"
                 onClick={() => {
-                  setActiveFilter(category);
-                  setActiveTechFilter(null);
+                  handleFilterChange(category, null);
                 }}
                 className={`px-5 py-2 rounded-full text-sm font-semibold transition-all duration-300 border focus:outline-none focus:ring-2 focus:ring-[var(--color-accent-blue)] focus:ring-offset-2 focus:ring-offset-[var(--color-bg-secondary)] ${
                   activeFilter === category && !activeTechFilter
@@ -178,9 +193,9 @@ function ShowcaseContent() {
             {allTechStacks.map((tech) => (
               <button
                 key={tech}
+                type="button"
                 onClick={() => {
-                  setActiveTechFilter(activeTechFilter === tech ? null : tech);
-                  setActiveFilter("All");
+                  handleFilterChange("All", activeTechFilter === tech ? null : tech);
                 }}
                 className={`px-3 py-1 rounded-md text-xs font-medium transition-all duration-300 border focus:outline-none focus:ring-1 focus:ring-[var(--color-accent-violet)] ${
                   activeTechFilter === tech
@@ -197,7 +212,7 @@ function ShowcaseContent() {
         {/* Projects Grid */}
         <div
           ref={gridRef}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 min-h-[500px]"
+          className="showcase-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 min-h-[500px]"
         >
           {filteredProjects.map((project, idx) => (
             <div
