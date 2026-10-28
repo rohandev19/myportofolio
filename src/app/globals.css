@@ -32,9 +32,9 @@
   --color-teal-light: #23686e;
 
   /* Unified Button Tokens */
-  --btn-bg: #d4d8e0;
+  --btn-bg: #ffffff;
   --btn-text: #141418;
-  --btn-border: #d4d8e0;
+  --btn-border: #ffffff;
 
   /* Smooth transitions for theme changes */
   transition:
@@ -51,7 +51,7 @@
   --color-text-primary: #000000;
   --color-text-secondary: #4b5563;
   --color-text-tertiary: #6b7280;
-  --color-accent-blue: #0f3d40; /* Deep Teal (was Light Silver on dark) */
+  --color-accent-blue: #0f3d40; /* Deep Teal */
   --color-accent-violet: #52606d; /* Slate Gray */
   --color-accent-green: #1a4a4e; /* Dark Teal */
   --color-accent-red: #dc2626;
@@ -60,6 +60,11 @@
   --color-shadow: rgba(15, 23, 42, 0.08);
   --color-teal: #1a4a4e;
   --color-teal-light: #23686e;
+
+  /* Unified Button Tokens (Light Mode) */
+  --btn-bg: #0f3d40;
+  --btn-text: #ffffff;
+  --btn-border: #0f3d40;
 }
 
 /* Base resets or globals if needed */
@@ -248,12 +253,24 @@ button,
 
 /* Universal Unified Button Styling */
 .btn-unified {
-  background-color: var(--color-accent-blue) !important;
-  color: var(--color-bg-primary) !important;
-  border: 1px solid var(--color-accent-blue) !important;
+  background-color: #ffffff !important;
+  color: #141418 !important;
+  border: 1px solid #ffffff !important;
+}
+
+.btn-unified svg,
+.btn-unified span {
+  color: inherit !important;
 }
 
 :root[data-theme="light"] .btn-unified {
+  background-color: var(--color-accent-blue) !important;
+  color: #ffffff !important;
+  border: 1px solid var(--color-accent-blue) !important;
+}
+
+:root[data-theme="light"] .btn-unified svg,
+:root[data-theme="light"] .btn-unified span {
   color: #ffffff !important;
 }
 
