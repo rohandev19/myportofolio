@@ -15,7 +15,6 @@ import { getRelatedProjects } from "@/lib/case-study/related";
 import { CaseStudySection } from "@/components/case-study/CaseStudySection";
 import { ImageGallery } from "@/components/case-study/ImageGallery";
 import { TechStackBreakdown } from "@/components/case-study/TechStackBreakdown";
-import { Testimonials } from "@/components/case-study/Testimonials";
 import { GitHubStatsCard } from "@/components/case-study/GitHubStatsCard";
 import { SocialShare } from "@/components/case-study/SocialShare";
 import { RelatedProjects } from "@/components/case-study/RelatedProjects";
@@ -179,8 +178,6 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
         <CaseStudySection section={project.sections.results} id="results" />
 
         <ImageGallery images={project.images} />
-
-        <Testimonials testimonials={project.testimonials} />
       </div>
 
       <SocialShare title={project.title} />
