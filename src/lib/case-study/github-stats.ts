@@ -54,7 +54,7 @@ export async function fetchGitHubStats(url: string): Promise<GitHubStats | null>
     });
 
     if (!response.ok) {
-      console.error(`GitHub API error: ${response.status} ${response.statusText}`);
+      console.warn(`GitHub API rate limit or error: ${response.status} ${response.statusText}`);
       return null;
     }
 

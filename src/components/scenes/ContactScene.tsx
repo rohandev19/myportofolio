@@ -5,16 +5,16 @@
  *
  * Enhanced contact form with react-hook-form, Zod validation,
  * real-time field validation, character count, honeypot bot detection,
- * and sessionStorage persistence.
+ * sessionStorage persistence, and Framer Motion repeated scroll animations.
  */
 
 import { useRef, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
+import { motion } from "framer-motion";
 import { contactData } from "@/content/contact";
 import { contactFormSchema, type ContactFormData } from "@/lib/validation/contact.schema";
+import { viewportConfig, cardFadeUp, slideInLeft, slideInRight } from "@/lib/animations/motion";
 import { InteractiveButton } from "../ui/InteractiveButton";
 import { useUIStore } from "@/store/ui.store";
 
@@ -63,43 +63,27 @@ export function ContactScene() {
     }
   }, [setValue]);
 
-  // Save form to sessionStorage on change (debounced via watch)
-  const allFields = watch();
+  // Save form to sessionStorage on change (debounced via watch subscription)
   useEffect(() => {
-    const timeout = setTimeout(() => {
-      try {
-        const { honeypot, ...saveable } = allFields;
-        void honeypot;
-        sessionStorage.setItem(SESSION_STORAGE_KEY, JSON.stringify(saveable));
-      } catch {
-        // Ignore storage errors
-      }
-    }, 500);
-
-    return () => clearTimeout(timeout);
-  }, [allFields]);
-
-  // GSAP scroll animation
-  useGSAP(
-    () => {
-      gsap.fromTo(
-        ".contact-reveal",
-        { y: 50, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.8,
-          stagger: 0.15,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: containerRef.current,
-            start: "top 80%",
-          },
+    let timeout: ReturnType<typeof setTimeout>;
+    const subscription = watch((value) => {
+      clearTimeout(timeout);
+      timeout = setTimeout(() => {
+        try {
+          const { honeypot, ...saveable } = value;
+          void honeypot;
+          sessionStorage.setItem(SESSION_STORAGE_KEY, JSON.stringify(saveable));
+        } catch {
+          // Ignore storage errors
         }
-      );
-    },
-    { scope: containerRef }
-  );
+      }, 500);
+    });
+
+    return () => {
+      clearTimeout(timeout);
+      subscription.unsubscribe();
+    };
+  }, [watch]);
 
   const onSubmit = async (data: ContactFormData) => {
     try {
@@ -146,15 +130,21 @@ export function ContactScene() {
       <div className="max-w-6xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-20">
           {/* Left Col: Info */}
-          <div className="flex flex-col">
-            <h2 className="contact-reveal text-4xl md:text-6xl font-serif font-normal text-[var(--color-text-primary)] mb-6">
+          <motion.div
+            className="flex flex-col"
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportConfig}
+            variants={slideInLeft}
+          >
+            <h2 className="text-4xl md:text-6xl font-serif font-normal text-[var(--color-text-primary)] mb-6">
               Let&apos;s Build Something
             </h2>
-            <p className="contact-reveal text-xl text-[var(--color-text-secondary)] mb-12 max-w-lg leading-relaxed">
+            <p className="text-xl text-[var(--color-text-secondary)] mb-12 max-w-lg leading-relaxed">
               {contactData.callToAction}
             </p>
 
-            <div className="contact-reveal flex flex-col gap-6 mb-12">
+            <div className="flex flex-col gap-6 mb-12">
               <a
                 href={`mailto:${contactData.email}`}
                 className="text-2xl md:text-3xl font-bold text-[var(--color-accent-blue)] hover:text-[var(--color-accent-violet)] transition-colors self-start"
@@ -164,24 +154,30 @@ export function ContactScene() {
               </a>
             </div>
 
-            <div className="contact-reveal flex gap-6 mt-auto">
+            <div className="flex gap-6 mt-auto">
               {contactData.socials.map((social) => (
                 <a
                   key={social.platform}
                   href={social.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-6 py-3 bg-[var(--color-bg-primary)] border border-[var(--color-border)] rounded-lg text-[var(--color-text-primary)] font-medium hover:border-[var(--color-accent-blue)]/50 hover:text-[var(--color-accent-blue)] transition-all hover:-translate-y-1"
+                  className="px-6 py-3 btn-unified font-semibold rounded-lg hover:opacity-90 transition-all hover:-translate-y-0.5"
                   aria-label={`Visit ${social.platform} profile`}
                 >
                   {social.platform}
                 </a>
               ))}
             </div>
-          </div>
+          </motion.div>
 
           {/* Right Col: Form */}
-          <div className="contact-reveal bg-[var(--color-bg-primary)] p-8 md:p-10 rounded-2xl border border-[var(--color-border)] shadow-2xl relative">
+          <motion.div
+            className="bg-[var(--color-bg-primary)] p-8 md:p-10 rounded-2xl border border-[var(--color-border)] shadow-2xl relative"
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportConfig}
+            variants={slideInRight}
+          >
             <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-[var(--color-accent-blue)] to-transparent opacity-10 rounded-tr-2xl" />
 
             <form
@@ -348,19 +344,25 @@ export function ContactScene() {
               <InteractiveButton
                 type="submit"
                 disabled={isSubmitting || !isValid}
-                className="mt-4 w-full bg-[var(--color-accent-blue)] text-[var(--color-bg-primary)] font-bold text-lg py-4 rounded-lg hover:bg-[var(--color-accent-violet)] focus:outline-none focus:ring-2 focus:ring-[var(--color-accent-violet)] focus:ring-offset-2 focus:ring-offset-[var(--color-bg-primary)] disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+                className="mt-4 w-full py-3.5 btn-unified font-semibold text-base rounded-lg hover:opacity-90 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-[var(--color-accent-blue)]"
               >
                 {isSubmitting ? "Sending..." : "Send Message"}
               </InteractiveButton>
             </form>
-          </div>
+          </motion.div>
         </div>
 
         {/* Footer */}
-        <div className="contact-reveal pt-8 border-t border-[var(--color-border)] flex flex-col md:flex-row justify-between items-center gap-4 text-[var(--color-text-tertiary)] text-sm">
+        <motion.div
+          className="pt-8 border-t border-[var(--color-border)] flex flex-col md:flex-row justify-between items-center gap-4 text-[var(--color-text-tertiary)] text-sm"
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportConfig}
+          variants={cardFadeUp}
+        >
           <p>© {new Date().getFullYear()} Rohan. All rights reserved.</p>
           <p className="text-[var(--color-border)]">Crafted with precision &amp; passion.</p>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

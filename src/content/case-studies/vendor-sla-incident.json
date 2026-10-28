@@ -1,7 +1,7 @@
 {
   "slug": "vendor-sla-incident",
   "title": "Vendor SLA & Incident Management",
-  "description": "A high-performance backend microservice built with Go (Golang) to track Service Level Agreements (SLA) and manage operational incidents for supply chain logistics.",
+  "description": "A high performance backend microservice built with Go (Golang) to track Service Level Agreements (SLA) and manage operational incidents for supply chain logistics.",
   "category": "System",
   "role": "Backend Developer",
   "client": "Internal Enterprise Tool",
@@ -17,7 +17,7 @@
     },
     "solution": {
       "title": "Our Approach",
-      "content": "We developed a lightweight, highly concurrent backend service using Go.\n\n### Key Architectural Decisions:\n1. **Golang Concurrency**: Leveraged goroutines and channels to process incoming webhook events concurrently without blocking.\n2. **Chi Router**: Implemented `go-chi` for fast, idiomatic HTTP routing.\n3. **PostgreSQL**: Designed an optimized schema to store incident logs and SLA metrics.\n4. **Templ SSR**: Used Templ to render fast, lightweight server-side HTML dashboards instead of a heavy SPA."
+      "content": "We developed a lightweight, highly concurrent backend service using Go.\n\n### Key Architectural Decisions:\n1. **Golang Concurrency**: Leveraged goroutines and channels to process incoming webhook events concurrently without blocking.\n2. **Chi Router**: Implemented `go-chi` for fast, idiomatic HTTP routing.\n3. **PostgreSQL**: Designed an optimized schema to store incident logs and SLA metrics.\n4. **Templ SSR**: Used Templ to render fast, lightweight server side HTML dashboards instead of a heavy SPA."
     },
     "impact": {
       "title": "Business Impact",
@@ -25,7 +25,7 @@
     },
     "results": {
       "title": "Key Results",
-      "content": "- **High Concurrency** capabilities using Go\n- **Reduced Memory Footprint** by 80%\n- **Fast Rendering** with Server-Side Rendering (Templ)\n- **Reliable SLA Tracking** across all logistics partners"
+      "content": "- **High Concurrency** capabilities using Go\n- **Reduced Memory Footprint** by 80%\n- **Fast Rendering** with Server Side Rendering (Templ)\n- **Reliable SLA Tracking** across all logistics partners"
     }
   },
   "techStack": [
@@ -47,7 +47,7 @@
     {
       "name": "Templ",
       "category": "Frontend",
-      "explanation": "HTML templating language for Go (Server-Side Rendering)."
+      "explanation": "HTML templating language for Go (Server Side Rendering)."
     }
   ],
   "images": [

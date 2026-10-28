@@ -1,74 +1,58 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
+import { motion } from "framer-motion";
 import { aboutData } from "@/content/about";
 import { InteractiveButton } from "../ui/InteractiveButton";
+import { viewportConfig, staggerContainer, cardFadeUp, scaleFadeIn } from "@/lib/animations/motion";
 
 export function AboutScene() {
-  const containerRef = useRef<HTMLElement>(null);
-  const blobRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      // Reveal animation for text content
-      gsap.fromTo(
-        ".about-text",
-        { y: 50, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.8,
-          stagger: 0.2,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: containerRef.current,
-            start: "top 70%",
-          },
-        }
-      );
-    }, containerRef);
-
-    return () => ctx.revert();
-  }, []);
-
   return (
     <section
       id="about"
-      ref={containerRef}
       aria-label="About me"
       className="min-h-screen w-full flex flex-col items-center justify-center py-20 px-6 lg:px-12 relative overflow-hidden"
     >
       <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center z-10">
         {/* Left Col: Text */}
-        <div className="order-2 lg:order-1 flex flex-col gap-6">
-          <h2 className="about-text text-4xl md:text-5xl font-serif font-normal text-[var(--color-text-primary)]">
+        <motion.div
+          className="order-2 lg:order-1 flex flex-col gap-6"
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportConfig}
+          variants={staggerContainer}
+        >
+          <motion.h2
+            variants={cardFadeUp}
+            className="text-4xl md:text-5xl font-serif font-normal text-[var(--color-text-primary)]"
+          >
             About Me
-          </h2>
-          <div className="flex flex-col gap-4 text-lg text-[var(--color-accent-blue)] font-medium leading-relaxed drop-shadow-sm">
-            {aboutData.paragraphs.map((p, i) => (
-              <p key={i} className="about-text">
-                {p}
-              </p>
-            ))}
-          </div>
+          </motion.h2>
 
-          <ul className="mt-4 flex flex-col gap-3">
+          <motion.div
+            variants={cardFadeUp}
+            className="flex flex-col gap-4 text-lg text-[var(--color-accent-blue)] font-medium leading-relaxed drop-shadow-sm"
+          >
+            {aboutData.paragraphs.map((p, i) => (
+              <p key={i}>{p}</p>
+            ))}
+          </motion.div>
+
+          <motion.ul variants={cardFadeUp} className="mt-4 flex flex-col gap-3">
             {aboutData.highlights.map((highlight, i) => (
-              <li key={i} className="about-text flex items-center gap-3">
+              <motion.li variants={cardFadeUp} key={i} className="flex items-center gap-3">
                 <span className="w-2 h-2 min-w-[8px] rounded-full bg-[var(--color-accent-blue)]" />
                 <span className="text-[var(--color-text-primary)] font-medium">{highlight}</span>
-              </li>
+              </motion.li>
             ))}
-          </ul>
+          </motion.ul>
 
-          <div className="about-text mt-8">
+          <motion.div variants={cardFadeUp} className="mt-8">
             <InteractiveButton
               as="a"
-              href="/cv.pdf"
+              href="/CV/CV_Muhammad_Rohan_Sayyid_FullstackDeveloper_EN.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center gap-2 px-8 py-3.5 bg-transparent text-[var(--color-accent-blue)] font-bold rounded-xl border-2 border-[var(--color-accent-blue)]/30 hover:border-[var(--color-accent-blue)] hover:bg-[var(--color-accent-blue)]/10 hover:shadow-[0_0_20px_rgba(212,216,224,0.3)] transition-all duration-300 hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-[var(--color-accent-blue)]"
+              className="group inline-flex items-center gap-2 px-7 py-3 btn-unified font-semibold rounded-lg hover:opacity-90 transition-all duration-300 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-[var(--color-accent-blue)]"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -87,16 +71,19 @@ export function AboutScene() {
               </svg>
               Download CV
             </InteractiveButton>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
         {/* Right Col: Visual Blob with Profile Image */}
-        <div className="order-1 lg:order-2 flex items-center justify-center relative min-h-[300px] lg:min-h-[500px]">
+        <motion.div
+          className="order-1 lg:order-2 flex items-center justify-center relative min-h-[300px] lg:min-h-[500px]"
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportConfig}
+          variants={scaleFadeIn}
+        >
           {/* Glowing background blob */}
-          <div
-            ref={blobRef}
-            className="w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 bg-gradient-to-tr from-[#1A4A4E] to-[#7B8794] opacity-60 mix-blend-screen filter blur-3xl absolute rounded-full"
-          />
+          <div className="w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 bg-gradient-to-tr from-[#1A4A4E] to-[#7B8794] opacity-60 mix-blend-screen filter blur-3xl absolute rounded-full" />
           {/* Foreground container for the image */}
           <div className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 bg-gradient-to-bl from-[#141418] to-[#222228] border border-[#1A4A4E]/50 absolute overflow-hidden shadow-[0_0_30px_rgba(26,74,78,0.3)] rounded-full group">
             <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#1A4A4E]/20 mix-blend-overlay z-10" />
@@ -107,7 +94,7 @@ export function AboutScene() {
               className="w-full h-full object-cover object-top"
             />
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

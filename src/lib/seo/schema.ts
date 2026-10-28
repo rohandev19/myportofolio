@@ -4,11 +4,11 @@ export function generatePersonSchema() {
     "@type": "Person",
     name: "Rohan",
     url: "https://rohandev19.github.io",
-    jobTitle: " Full-Stack Engineer",
+    jobTitle: " Full Stack Engineer",
     sameAs: ["https://github.com/rohandev19", "https://linkedin.com/in/rohandev19"],
     knowsAbout: [
       "Software Engineering",
-      "Full-Stack Development",
+      "Full Stack Development",
       "React",
       "Next.js",
       "React Native",
@@ -24,6 +24,6 @@ export function generateWebsiteSchema() {
     "@type": "WebSite",
     name: "Rohan's Portfolio",
     url: "https://rohandev19.github.io",
-    description: "Portfolio of a Junior Full-Stack Engineer.",
+    description: "Portfolio of a Junior Full Stack Engineer.",
   };
 }

@@ -1,6 +1,14 @@
 "use client";
 
-import { useEffect, useRef, ReactNode, createContext, useContext, useState, useCallback } from "react";
+import {
+  useEffect,
+  useRef,
+  ReactNode,
+  createContext,
+  useContext,
+  useState,
+  useCallback,
+} from "react";
 import Lenis from "lenis";
 import { ErrorBoundary } from "react-error-boundary";
 import { GlobalErrorFallback } from "./error-boundaries/GlobalErrorBoundary";
@@ -39,10 +47,20 @@ export function ClientProviders({ children }: ClientProvidersProps) {
 
   const handlePreloaderComplete = useCallback(() => {
     setShowPreloader(false);
+    setIsReady(true);
   }, []);
 
   // Initialize global keyboard shortcuts for command palette
   useCommandPalette();
+
+  useEffect(() => {
+    // Check if already visited in this session
+    if (typeof window !== "undefined" && sessionStorage.getItem("visited") === "true") {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setShowPreloader(false);
+      setIsReady(true);
+    }
+  }, []);
 
   useEffect(() => {
     // Initialize Lenis for smooth scrolling
@@ -58,17 +76,19 @@ export function ClientProviders({ children }: ClientProvidersProps) {
     // Synchronize Lenis with ScrollTrigger
     lenis.on("scroll", ScrollTrigger.update);
 
-    gsap.ticker.add((time) => {
+    const update = (time: number) => {
       lenis.raf(time * 1000);
-    });
+    };
 
-    gsap.ticker.lagSmoothing(0);
+    gsap.ticker.add(update);
+
+    gsap.ticker.lagSmoothing(500, 33);
 
     return () => {
       // Cleanup on unmount
+      gsap.ticker.remove(update);
       lenis.destroy();
       lenisRef.current = null;
-      gsap.ticker.remove(lenis.raf);
     };
   }, []);
 
@@ -77,7 +97,7 @@ export function ClientProviders({ children }: ClientProvidersProps) {
     if (lenisRef.current) {
       // Reset scroll position immediately on route change
       lenisRef.current.scrollTo(0, { immediate: true });
-      
+
       // Refresh ScrollTrigger after a short delay to allow DOM to update
       setTimeout(() => {
         ScrollTrigger.refresh();

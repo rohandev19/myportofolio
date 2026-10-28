@@ -112,7 +112,7 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
                 href={project.links.live}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl bg-gradient-to-r from-[var(--color-accent-blue)] to-[var(--color-accent-violet)] text-[var(--color-bg-primary)] font-bold shadow-[0_0_15px_rgba(212,216,224,0.3)] hover:shadow-[0_0_25px_rgba(212,216,224,0.6)] transition-all duration-300 hover:-translate-y-1 overflow-hidden"
+                className="group relative overflow-hidden inline-flex items-center justify-center gap-2 px-7 py-3 btn-unified font-semibold rounded-lg hover:opacity-90 transition-all duration-300 hover:-translate-y-0.5"
               >
                 <div className="absolute inset-0 bg-white/40 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out"></div>
                 <span className="relative z-10 flex items-center gap-2">
@@ -138,7 +138,7 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
                 href={project.links.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl border-2 border-[var(--color-border)] bg-[var(--color-bg-primary)] text-[var(--color-accent-blue)] font-semibold hover:border-[var(--color-accent-blue)]/50 hover:bg-[var(--color-border)]/50 transition-all duration-300 hover:-translate-y-1"
+                className="group inline-flex items-center justify-center gap-2 px-7 py-3 btn-unified font-semibold rounded-lg hover:opacity-90 transition-all duration-300 hover:-translate-y-0.5"
               >
                 View Source
               </a>

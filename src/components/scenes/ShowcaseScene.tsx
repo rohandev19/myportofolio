@@ -4,11 +4,13 @@
  * Showcase Scene
  *
  * Project portfolio with category filtering, URL state sync,
- * and GSAP flip/stagger animations for smooth layout transitions.
+ * Framer Motion scroll-reveal animations (supports repeat on scroll),
+ * and GSAP Flip for smooth layout transitions when filtering.
  */
 
 import { useRef, useState, useEffect, useMemo, Suspense } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
+import { motion } from "framer-motion";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { Flip } from "gsap/Flip";
@@ -16,6 +18,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { rgbDataURL } from "@/lib/utils/image";
 import { showcaseData, showcaseCategories, type ProjectCategory } from "@/content/showcase";
+import { viewportConfig, cardFadeUp } from "@/lib/animations/motion";
 import { TiltCard } from "../ui/TiltCard";
 
 // Register Flip plugin for layout transitions
@@ -26,7 +29,6 @@ if (typeof window !== "undefined") {
 function ShowcaseContent() {
   const containerRef = useRef<HTMLElement>(null);
   const gridRef = useRef<HTMLDivElement>(null);
-  const router = useRouter();
   const searchParams = useSearchParams();
 
   // Initialize filter from URL, default to "All"
@@ -59,27 +61,34 @@ function ShowcaseContent() {
 
   // Sync URL when filter changes
   useEffect(() => {
-    const params = new URLSearchParams(searchParams.toString());
+    const currentParams = new URLSearchParams(window.location.search);
+    const nextParams = new URLSearchParams(window.location.search);
+
     if (activeFilter === "All") {
-      params.delete("filter");
+      nextParams.delete("filter");
     } else {
-      params.set("filter", activeFilter);
+      nextParams.set("filter", activeFilter);
     }
 
     if (activeTechFilter) {
-      params.set("tech", activeTechFilter);
+      nextParams.set("tech", activeTechFilter);
     } else {
-      params.delete("tech");
+      nextParams.delete("tech");
+    }
+
+    if (nextParams.toString() === currentParams.toString()) {
+      return;
     }
 
     const hash = window.location.hash;
-    const newUrl = params.toString()
-      ? `?${params.toString()}${hash}`
+    const query = nextParams.toString();
+    const newUrl = query
+      ? `${window.location.pathname}?${query}${hash}`
       : `${window.location.pathname}${hash}`;
 
     // Use window.history to prevent Next.js router from scrolling to top on query change
     window.history.replaceState(null, "", newUrl);
-  }, [activeFilter, activeTechFilter, searchParams]);
+  }, [activeFilter, activeTechFilter]);
 
   // Filter projects
   const filteredProjects = useMemo(() => {
@@ -92,28 +101,6 @@ function ShowcaseContent() {
     }
     return filtered;
   }, [activeFilter, activeTechFilter]);
-
-  // Initial reveal animation
-  useGSAP(
-    () => {
-      gsap.fromTo(
-        ".showcase-card",
-        { y: 100, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.8,
-          stagger: 0.1,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: containerRef.current,
-            start: "top 70%",
-          },
-        }
-      );
-    },
-    { scope: containerRef }
-  );
 
   // Layout transition when filter changes
   useGSAP(
@@ -156,7 +143,13 @@ function ShowcaseContent() {
       className="w-full py-24 px-4 md:px-8 bg-[var(--color-bg-secondary)] relative"
     >
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-12">
+        <motion.div
+          className="text-center mb-12"
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportConfig}
+          variants={cardFadeUp}
+        >
           <h2 className="text-3xl md:text-5xl font-serif font-normal text-[var(--color-text-primary)] mb-4">
             Showcase
           </h2>
@@ -164,10 +157,16 @@ function ShowcaseContent() {
             Selected projects demonstrating my engineering capabilities and focus on user
             experience.
           </p>
-        </div>
+        </motion.div>
 
         {/* Filter Bar */}
-        <div className="flex flex-col gap-4 mb-12">
+        <motion.div
+          className="flex flex-col gap-4 mb-12"
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportConfig}
+          variants={cardFadeUp}
+        >
           {/* Main Categories */}
           <div className="flex flex-wrap items-center justify-center gap-3">
             {showcaseCategories.map((category) => (
@@ -179,8 +178,8 @@ function ShowcaseContent() {
                 }}
                 className={`px-5 py-2 rounded-full text-sm font-semibold transition-all duration-300 border focus:outline-none focus:ring-2 focus:ring-[var(--color-accent-blue)] focus:ring-offset-2 focus:ring-offset-[var(--color-bg-secondary)] ${
                   activeFilter === category && !activeTechFilter
-                    ? "bg-[var(--color-accent-blue)] text-[var(--color-bg-primary)] border-[var(--color-accent-blue)] shadow-[0_0_15px_rgba(56,189,248,0.4)]"
-                    : "bg-[var(--color-bg-primary)] text-[var(--color-text-secondary)] border-[var(--color-border)] hover:border-[var(--color-accent-blue)]/50 hover:text-[var(--color-text-primary)]"
+                    ? "btn-unified font-semibold shadow-md"
+                    : "bg-[var(--color-bg-primary)] text-[var(--color-text-secondary)] border-[var(--color-border)] hover:border-[var(--color-accent-blue)] hover:text-[var(--color-text-primary)]"
                 }`}
               >
                 {category}
@@ -188,18 +187,27 @@ function ShowcaseContent() {
             ))}
           </div>
 
-          {/* Tech Stack Filters */}
-          <div className="flex flex-wrap items-center justify-center gap-2 max-w-4xl mx-auto">
+          {/* Sub-filters (Tech stack) */}
+          <div className="flex flex-wrap items-center justify-center gap-2 pt-2">
+            <button
+              type="button"
+              onClick={() => handleFilterChange(activeFilter, null)}
+              className={`px-3 py-1 rounded-md text-xs font-medium transition-colors border ${
+                activeTechFilter === null
+                  ? "btn-unified"
+                  : "bg-[var(--color-bg-primary)] text-[var(--color-text-tertiary)] border-[var(--color-border)] hover:border-[var(--color-text-secondary)]"
+              }`}
+            >
+              All Tech
+            </button>
             {allTechStacks.map((tech) => (
               <button
                 key={tech}
                 type="button"
-                onClick={() => {
-                  handleFilterChange("All", activeTechFilter === tech ? null : tech);
-                }}
-                className={`px-3 py-1 rounded-md text-xs font-medium transition-all duration-300 border focus:outline-none focus:ring-1 focus:ring-[var(--color-accent-violet)] ${
+                onClick={() => handleFilterChange(activeFilter, tech)}
+                className={`px-3 py-1 rounded-md text-xs font-medium transition-colors border focus:outline-none focus:ring-1 focus:ring-[var(--color-accent-violet)] ${
                   activeTechFilter === tech
-                    ? "bg-[var(--color-accent-violet)] text-[var(--color-bg-primary)] border-[var(--color-accent-violet)]"
+                    ? "btn-unified"
                     : "bg-[var(--color-bg-primary)] text-[var(--color-text-tertiary)] border-[var(--color-border)] hover:border-[var(--color-accent-violet)]/50 hover:text-[var(--color-text-secondary)]"
                 }`}
               >
@@ -207,7 +215,7 @@ function ShowcaseContent() {
               </button>
             ))}
           </div>
-        </div>
+        </motion.div>
 
         {/* Projects Grid */}
         <div
@@ -215,10 +223,14 @@ function ShowcaseContent() {
           className="showcase-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 min-h-[500px]"
         >
           {filteredProjects.map((project, idx) => (
-            <div
+            <motion.div
               key={project.id}
               className="showcase-card-wrapper h-full"
               data-flip-id={project.id}
+              initial={{ opacity: 0, y: 35 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={viewportConfig}
+              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: (idx % 3) * 0.1 }}
             >
               <TiltCard
                 className="showcase-card group bg-[var(--color-bg-primary)] rounded-2xl border border-[var(--color-border)] hover:border-[var(--color-accent-blue)]/50 flex flex-col h-full overflow-hidden focus-within:ring-2 focus-within:ring-[var(--color-accent-blue)] cursor-pointer"
@@ -233,16 +245,16 @@ function ShowcaseContent() {
                 }}
               >
                 {/* Image Container / Placeholder */}
-                <div className="relative h-56 w-full bg-gradient-to-tr from-[var(--color-bg-secondary)] to-[var(--color-bg-primary)] overflow-hidden">
+                <div className="relative aspect-[16/10] w-full bg-gradient-to-tr from-[var(--color-bg-secondary)] to-[var(--color-bg-primary)] overflow-hidden">
                   {project.image ? (
                     <Image
                       src={project.image}
                       alt={project.title}
                       fill
                       placeholder="blur"
-                      blurDataURL={rgbDataURL(15, 23, 42)} // slate-900 approximation
+                      blurDataURL={rgbDataURL(15, 23, 42)}
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                      className="object-cover opacity-60 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
+                      className="object-cover object-top opacity-95 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700"
                     />
                   ) : (
                     <div className="absolute inset-0 flex items-center justify-center opacity-30 group-hover:opacity-60 transition-opacity duration-500 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] mix-blend-overlay">
@@ -296,7 +308,7 @@ function ShowcaseContent() {
                           key={i}
                           className="text-[var(--color-text-secondary)] text-sm flex items-start gap-2"
                         >
-                          <span className="text-[var(--color-accent-blue)] mt-1">▹</span>
+                          <span className="text-[var(--color-accent-blue)] mt-1">▸</span>
                           <span className="leading-relaxed">{item}</span>
                         </li>
                       ))}
@@ -320,10 +332,10 @@ function ShowcaseContent() {
                       {project.slug && (
                         <Link
                           href={`/projects/${project.slug}`}
-                          className="text-[var(--color-accent-blue)] font-semibold hover:text-[var(--color-text-primary)] transition-colors flex items-center gap-1 focus:outline-none"
+                          className="px-3.5 py-1.5 btn-unified text-xs font-semibold rounded-md hover:opacity-90 transition-all flex items-center gap-1 focus:outline-none"
                           onClick={(e) => e.stopPropagation()}
                         >
-                          Case Study <span>↗</span>
+                          Case Study <span>→</span>
                         </Link>
                       )}
                       {project.link && (
@@ -331,7 +343,7 @@ function ShowcaseContent() {
                           href={project.link}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className={`${project.slug ? "text-[var(--color-text-secondary)]" : "text-[var(--color-accent-blue)]"} font-semibold hover:text-[var(--color-text-primary)] transition-colors flex items-center gap-1 focus:outline-none`}
+                          className={`px-3.5 py-1.5 btn-unified text-xs font-semibold rounded-md hover:opacity-90 transition-all flex items-center gap-1 focus:outline-none`}
                           onClick={(e) => e.stopPropagation()}
                         >
                           View Site <span>↗</span>
@@ -359,7 +371,7 @@ function ShowcaseContent() {
 
                     {(() => {
                       const content = (
-                        <div className="w-8 h-8 rounded-full bg-[var(--color-bg-secondary)] flex items-center justify-center group-hover:bg-[var(--color-accent-blue)] transition-colors text-[var(--color-text-secondary)] group-hover:text-[var(--color-bg-primary)] cursor-pointer">
+                        <div className="w-8 h-8 rounded-full btn-unified flex items-center justify-center transition-all cursor-pointer hover:opacity-90">
                           <svg
                             className="w-4 h-4"
                             fill="none"
@@ -421,7 +433,7 @@ function ShowcaseContent() {
                   </div>
                 </div>
               </TiltCard>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

@@ -1,78 +1,93 @@
 {
   "slug": "multi-kreasi-printing",
-  "title": "Enterprise Digital Platform",
-  "description": "A highly scalable digital platform for Multi Kreasi Printing, leveraging Clean Architecture, NestJS, and React to handle high-volume processing and complex order management.",
+  "title": "Enterprise Digital Platform (Multi Kreasi Printing)",
+  "description": "An enterprise grade commercial B2B digital printing and procurement management platform for PT Multi Kreasi Printing with automated Job Ticket estimation, official PPN 11% invoicing, and live production tracking.",
   "category": "System",
-  "role": "Lead / Full-Stack Developer",
-  "client": "Multi Kreasi Printing",
+  "role": "Lead / Full Stack Developer",
+  "client": "PT Multi Kreasi Printing",
   "publishedAt": "2026-08-10T10:00:00Z",
   "coverImage": {
-    "src": "/images/projects/mkprinting.png",
-    "alt": "Enterprise digital platform architecture"
+    "src": "/images/projects/mkprinting-v2.png",
+    "alt": "Multi Kreasi Printing Commercial B2B Platform"
   },
   "sections": {
     "problem": {
       "title": "The Challenge",
-      "content": "Multi Kreasi Printing required a modernization of their core business systems. The old monolithic architecture struggled with scaling during peak printing order hours and failed to process complex file rendering tasks efficiently, causing bottlenecks in their supply chain."
+      "content": "PT Multi Kreasi Printing required a complete modernization of their commercial print procurement operations. The legacy workflow relied on manual quotation calculations, chaotic WhatsApp/email order coordination, and disconnected workshop scheduling, which resulted in significant quoting delays, order bottlenecks during peak hours, and tracking opacity for corporate procurement teams."
     },
     "solution": {
       "title": "Our Approach",
-      "content": "We re-architected the entire system from the ground up using modern enterprise patterns.\n\n### Key Architectural Decisions:\n1. **Clean Architecture**: Decoupled the domain logic from the infrastructure, ensuring the system is highly testable and maintainable.\n2. **NestJS Backend**: Utilized NestJS with TypeScript to build a strict, modular backend ecosystem.\n3. **Asynchronous Processing**: Integrated BullMQ and Redis to offload heavy PDF processing and email dispatching to background workers, keeping the main API thread fast.\n4. **Scalable Frontend**: Built a responsive, interactive web application using React.js and Vite."
+      "content": "We re-architected and built an end to end commercial printing portal and operations engine using Domain-Driven Design (Clean Architecture).\n\n### Key Architectural Decisions:\n1. **Clean Architecture with NestJS**: Structured the backend into discrete Domain, Use-Case, and Infrastructure layers, ensuring maximum testability and zero framework coupling for core business logic.\n2. **Automated B2B Job Ticket Estimator**: Built an intelligent pricing engine that calculates material costs, paper grammage, machine run-times (Heidelberg Speedmaster & Digital Press), finishing techniques (Spot UV, Foil Emas, Hardbox), and wholesale volume discounts instantly.\n3. **Asynchronous Processing with BullMQ & Redis**: Offloaded heavy PDF invoice rendering, proofing approvals, and notification dispatches to background worker queues, ensuring responsive sub-100ms API response times.\n4. **Corporate Financial Compliance**: Integrated automated tax calculation with official e-Faktur PPN 11% generation and B2B Terms of Payment (TOP) credit facility workflows.\n5. **Interactive Procurement Frontend**: Developed a high-performance, accessible frontend with React 19, TypeScript, and TailwindCSS featuring real-time order status tracking and digital RFQ submissions."
     },
     "impact": {
       "title": "Business Impact",
-      "content": "The adoption of Clean Architecture and background processing resulted in a highly resilient system that scales automatically and handles peak loads without downtime."
+      "content": "Transformed manual procurement into a seamless self-service and enterprise tracking platform, drastically speeding up quotation turnaround times from hours to seconds and providing 100% realtime tracking visibility across the entire production workshop."
     },
     "results": {
       "title": "Key Results",
-      "content": "- **Zero Downtime** during peak order hours\n- **Faster Processing** of heavy rendering tasks\n- **High Maintainability** through Clean Architecture\n- **Containerized Deployment** using Docker and CI/CD pipelines"
+      "content": "- **Instant Quotations** via automated Job Ticket Estimator\n- **Zero Downtime** during high volume corporate order spikes\n- **Realtime Tracking** for print jobs from Pre-Press to Dispatch\n- **Automated Tax Compliance** with official official PPN 11% invoicing\n- **Clean Architecture** ensuring high maintainability and test coverage"
     }
   },
   "techStack": [
     {
       "name": "NestJS",
       "category": "Backend",
-      "explanation": "Enterprise-grade Node.js framework providing the application structure."
+      "explanation": "Enterprise Node.js framework implementing Clean Architecture and modular domain services."
     },
     {
-      "name": "React.js",
+      "name": "React",
       "category": "Frontend",
-      "explanation": "Used for building the complex, interactive user interface."
+      "explanation": "Interactive B2B portal for product catalog, live estimators, and customer order dashboards."
     },
     {
-      "name": "PostgreSQL",
+      "name": "PostgreSQL & Prisma",
       "category": "Database",
-      "explanation": "Robust relational database handling all transactional data."
+      "explanation": "Relational transactional database with schema migrations and strict indexing."
     },
     {
       "name": "Redis & BullMQ",
-      "category": "Backend",
-      "explanation": "Message queue system for background processing and caching."
+      "category": "Cache & Queue",
+      "explanation": "High throughput asynchronous job queue for PDF rendering, notifications, and caching."
     },
     {
       "name": "Docker",
       "category": "DevOps",
-      "explanation": "Containerization for consistent deployment environments."
+      "explanation": "Containerized microservice architecture enabling zero downtime production deployments."
+    },
+    {
+      "name": "TailwindCSS",
+      "category": "Frontend",
+      "explanation": "Utility first CSS framework delivering a clean, corporate design system."
     }
   ],
   "images": [
     {
-      "src": "/images/projects/mkprinting.png",
-      "alt": "Clean architecture diagram and dashboard",
-      "caption": "The main enterprise dashboard interface"
+      "src": "/images/projects/mkprinting-v2.png",
+      "alt": "Multi Kreasi Printing Platform Homepage and Workshop",
+      "caption": "The main B2B commercial printing platform interface"
     }
   ],
   "testimonials": [
     {
-      "quote": "The new architecture has drastically improved our order processing speeds and system stability.",
+      "quote": "The new architecture has drastically improved our order processing speeds, eliminated quotation delays, and streamlined our workshop operations.",
       "name": "Management Team",
-      "role": "Multi Kreasi Printing",
-      "company": "Multi Kreasi Printing"
+      "role": "PT Multi Kreasi Printing",
+      "company": "PT Multi Kreasi Printing"
     }
   ],
-  "tags": ["NestJS", "React", "Clean Architecture", "PostgreSQL", "Enterprise"],
+  "tags": [
+    "NestJS",
+    "React",
+    "Clean Architecture",
+    "PostgreSQL",
+    "Prisma",
+    "Redis",
+    "BullMQ",
+    "Enterprise"
+  ],
   "links": {
-    "github": "https://github.com/rohandev19/multi-kreasi-printing"
+    "github": "https://github.com/rohandev19/multi-kreasi-printing",
+    "live": "https://www.mkprinting.my.id"
   },
   "featured": true
 }

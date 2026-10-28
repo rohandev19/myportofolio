@@ -99,14 +99,14 @@ export function CodePlayground() {
         <div className="flex gap-3">
           <button
             onClick={handleShare}
-            className="px-4 py-2 bg-[var(--color-bg-secondary)] hover:bg-[var(--color-bg-tertiary)] border border-[var(--color-border)] rounded-md text-sm transition-colors"
+            className="px-4 py-2 btn-unified rounded-lg font-semibold text-sm hover:opacity-90 transition-all"
           >
             Share Link
           </button>
           <button
             onClick={handleRun}
             disabled={isExecuting}
-            className="px-4 py-2 bg-[var(--color-accent-blue)] text-[var(--color-bg-primary)] rounded-md font-medium text-sm hover:opacity-90 transition-opacity disabled:opacity-50"
+            className="px-4 py-2 btn-unified rounded-lg font-semibold text-sm hover:opacity-90 transition-all disabled:opacity-50"
           >
             {isExecuting ? "Running..." : "Run Code"}
           </button>

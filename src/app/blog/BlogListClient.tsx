@@ -3,14 +3,16 @@
 /**
  * Blog Listing Page
  *
- * Displays all published articles with search and tag filtering.
- * Client component for interactive search/filter functionality.
+ * Displays all published articles with search, tag filtering,
+ * and Framer Motion repeated scroll-reveal animations.
  */
 
 import { useState, useCallback, useMemo } from "react";
+import { motion } from "framer-motion";
 import type { ArticleMetadata } from "@/types";
 import { ArticleCard } from "@/components/blog/ArticleCard";
 import { SearchBar } from "@/components/blog/SearchBar";
+import { viewportConfig, cardFadeUp } from "@/lib/animations/motion";
 
 interface BlogListClientProps {
   articles: ArticleMetadata[];
@@ -49,26 +51,66 @@ export function BlogListClient({ articles, allTags }: BlogListClientProps) {
 
   return (
     <>
+      {/* Page Header */}
+      <motion.header
+        className="mb-12"
+        initial="hidden"
+        whileInView="visible"
+        viewport={viewportConfig}
+        variants={cardFadeUp}
+      >
+        <h1 className="text-4xl md:text-5xl font-serif font-normal text-[var(--color-text-primary)] mb-4">
+          Blog
+        </h1>
+        <p className="text-lg text-[var(--color-text-secondary)] max-w-2xl">
+          Articles about web development, TypeScript, React, and software engineering best
+          practices.
+        </p>
+      </motion.header>
+
       {/* Search & Filter */}
-      <section className="mb-12">
+      <motion.section
+        className="mb-12"
+        initial="hidden"
+        whileInView="visible"
+        viewport={viewportConfig}
+        variants={cardFadeUp}
+      >
         <SearchBar allTags={allTags} onSearch={handleSearch} />
-      </section>
+      </motion.section>
 
       {/* Results count */}
-      <p className="text-sm text-[var(--color-text-secondary)] mb-6">
+      <motion.p
+        className="text-sm text-[var(--color-text-secondary)] mb-6"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.3 }}
+      >
         {filtered.length} article{filtered.length !== 1 ? "s" : ""} found
-      </p>
+      </motion.p>
 
       {/* Article Grid */}
       {filtered.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filtered.map((article, index) => (
-            <ArticleCard
-              key={article.slug}
-              article={article}
-              featured={index === 0 && !article.draft}
-            />
-          ))}
+          {filtered.map((article, index) => {
+            const isFeatured = index === 0 && !article.draft;
+            return (
+              <motion.div
+                key={article.slug}
+                className={`h-full ${isFeatured ? "md:col-span-2" : ""}`}
+                initial={{ opacity: 0, y: 35 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={viewportConfig}
+                transition={{
+                  duration: 0.5,
+                  ease: [0.16, 1, 0.3, 1],
+                  delay: (index % 3) * 0.1,
+                }}
+              >
+                <ArticleCard article={article} featured={isFeatured} />
+              </motion.div>
+            );
+          })}
         </div>
       ) : (
         <div className="text-center py-20">

@@ -1,38 +1,38 @@
 {
   "slug": "ai-standup",
   "title": "AI Standup & Sync Platform",
-  "description": "Enterprise-grade multi-tenant async standup platform with AI-powered summarization using Claude Haiku, real-time WebSocket synchronization, and comprehensive team analytics dashboard.",
+  "description": "Enterprise grade multi tenant async standup platform with AI powered summarization using Claude Haiku, real time WebSocket synchronization, and comprehensive team analytics dashboard.",
   "category": "System",
-  "role": "Full-Stack Developer & System Architect",
-  "client": "Portfolio Project (Production-Ready)",
+  "role": "Full Stack Developer & System Architect",
+  "client": "Portfolio Project (Production Ready)",
   "publishedAt": "2026-08-28T10:00:00Z",
   "coverImage": {
-    "src": "/images/projects/ai-standup.png",
-    "alt": "AI Standup Dashboard with Real-time Presence"
+    "src": "/images/projects/ai-standup-v2.png",
+    "alt": "AI Standup Dashboard with Realtime Presence"
   },
   "sections": {
     "problem": {
       "title": "The Challenge",
-      "content": "Remote teams across different timezones struggle with synchronous daily standups, leading to lost visibility on project progress and delayed blocker detection. Existing solutions like Geekbot cost $2.50-3.00 per user/month, adding up quickly for growing teams. The challenge was building a production-ready alternative with multi-tenancy, real-time features, AI integration, proper security, and graceful degradation—all while managing costs through intelligent API usage and queueing."
+      "content": "Remote teams across different timezones struggle with synchronous daily standups, leading to lost visibility on project progress and delayed blocker detection. Existing solutions like Geekbot cost $2.50 to $3.00 per user per month, adding up quickly for growing teams. The challenge was building a production ready alternative with multi tenancy, real time features, AI integration, proper security, and graceful degradation, while managing costs through intelligent API usage and queueing."
     },
     "solution": {
       "title": "Our Approach",
-      "content": "Built a fully separated architecture with Next.js 16 (App Router) frontend and dedicated NestJS backend for persistent WebSocket connections and scheduled jobs. Implemented strict multi-tenant isolation at the database level using Prisma with workspace-scoped queries. Integrated BullMQ job queues backed by Redis for reliable async processing of AI summaries and email notifications with automatic retries. Used Socket.io with Redis adapter for horizontal scalability and room-based broadcasting. Applied Claude Haiku model for cost-effective AI summarization and blocker detection. Configured timezone-aware cron jobs that poll every 5 minutes to close standup windows per workspace. All critical operations protected by WorkspaceMembershipGuard to prevent tenant boundary violations."
+      "content": "Built a fully separated architecture with Next.js 16 (App Router) frontend and dedicated NestJS backend for persistent WebSocket connections and scheduled jobs. Implemented strict multi tenant isolation at the database level using Prisma with workspace-scoped queries. Integrated BullMQ job queues backed by Redis for reliable async processing of AI summaries and email notifications with automatic retries. Used Socket.io with Redis adapter for horizontal scalability and room-based broadcasting. Applied Claude Haiku model for cost-effective AI summarization and blocker detection. Configured timezone aware cron jobs that poll every 5 minutes to close standup windows per workspace. All critical operations protected by WorkspaceMembershipGuard to prevent tenant boundary violations."
     },
     "impact": {
       "title": "Business Impact",
-      "content": "Automates the entire daily standup workflow: async submission, real-time presence tracking, AI-powered summaries, blocker detection with severity classification, weekly digest generation, and team analytics dashboard. Managers save 2+ hours per week by getting AI-generated summaries instead of reading 10+ individual updates. High-severity blockers are immediately flagged in real-time. The system provides visibility into team health metrics: submission rates, participation trends, and recurring blocker patterns. Production-ready architecture supports multiple isolated workspaces on a single deployment with proper audit trails and GDPR-compliant data handling."
+      "content": "Automates the entire daily standup workflow: async submission, real time presence tracking, AI powered summaries, blocker detection with severity classification, weekly digest generation, and team analytics dashboard. Managers save 2+ hours per week by getting AI-generated summaries instead of reading 10+ individual updates. High-severity blockers are immediately flagged in real time. The system provides visibility into team health metrics: submission rates, participation trends, and recurring blocker patterns. Production ready architecture supports multiple isolated workspaces on a single deployment with proper audit trails and GDPR compliant data handling."
     },
     "results": {
       "title": "Key Results",
-      "content": "- **Multi-tenant Architecture** with strict workspace isolation and role-based access control (Owner/Admin/Member)\n- **Real-time Presence Dashboard** via Socket.io with automatic reconnection and stale data prevention\n- **AI-Powered Summaries** using Claude Haiku 4.5 with batched API calls for cost optimization\n- **Async Job Processing** using BullMQ with retry logic, dead-letter queues, and observability via Bull Board\n- **Timezone-aware Scheduling** supporting per-workspace working days and submission windows\n- **Team Analytics Dashboard** with submission rate charts, blocker frequency tracking, and health scoring\n- **Security-first Design** with JWT refresh tokens, rate limiting, brute-force protection, and audit logging\n- **Graceful Degradation** ensuring standup submissions work even when AI or email services are down\n- **Scalable Monorepo** using Turborepo and pnpm workspaces for fast builds and shared packages"
+      "content": "- **Multi tenant Architecture** with strict workspace isolation and role-based access control (Owner/Admin/Member)\n- **Realtime Presence Dashboard** via Socket.io with automatic reconnection and stale data prevention\n- **AI Powered Summaries** using Claude Haiku 4.5 with batched API calls for cost optimization\n- **Async Job Processing** using BullMQ with retry logic, dead-letter queues, and observability via Bull Board\n- **Timezone aware Scheduling** supporting per-workspace working days and submission windows\n- **Team Analytics Dashboard** with submission rate charts, blocker frequency tracking, and health scoring\n- **Security first Design** with JWT refresh tokens, rate limiting, brute force protection, and audit logging\n- **Graceful Degradation** ensuring standup submissions work even when AI or email services are down\n- **Scalable Monorepo** using Turborepo and pnpm workspaces for fast builds and shared packages"
     }
   },
   "techStack": [
     {
       "name": "Next.js 16",
       "category": "Frontend",
-      "explanation": "App Router with Server Components for initial state and Client Components for real-time features, standalone build for production deployment."
+      "explanation": "App Router with Server Components for initial state and Client Components for real time features, standalone build for production deployment."
     },
     {
       "name": "NestJS",
@@ -42,17 +42,17 @@
     {
       "name": "PostgreSQL + Prisma",
       "category": "Database",
-      "explanation": "Relational database with Prisma ORM. Schema enforces multi-tenancy with workspace-scoped unique constraints and soft-delete patterns."
+      "explanation": "Relational database with Prisma ORM. Schema enforces multi tenancy with workspace-scoped unique constraints and soft-delete patterns."
     },
     {
       "name": "Redis",
       "category": "Cache & Queue",
-      "explanation": "Powers Socket.io adapter for multi-instance pub/sub, BullMQ job queue backend, rate limiting, token blocklist, and circuit breaker state."
+      "explanation": "Powers Socket.io adapter for multi instance pub/sub, BullMQ job queue backend, rate limiting, token blocklist, and circuit breaker state."
     },
     {
       "name": "BullMQ",
       "category": "Job Queue",
-      "explanation": "Handles async processing with automatic retries, exponential backoff, dead-letter queues, and rate limiting per queue."
+      "explanation": "Handles async processing with automatic retries, exponential backoff, dead letter queues, and rate limiting per queue."
     },
     {
       "name": "Socket.io",
@@ -60,31 +60,34 @@
       "explanation": "WebSocket library with rooms for workspace isolation, Redis adapter for horizontal scaling, automatic reconnection, and fallback transport."
     },
     {
-      "name": "Claude Haiku 4.5",
-      "category": "AI",
-      "explanation": "Anthropic's cost-efficient model for standup summarization, blocker severity classification, and weekly digest generation with batched API calls."
+      "name": "Claude AI",
+      "category": "AI / ML",
+      "explanation": "Anthropic Claude API for summarizing standups, extracting action items, and classifying blockers by severity."
     },
     {
       "name": "Turborepo",
       "category": "DevOps",
-      "explanation": "High-performance monorepo build system with intelligent caching, parallel task execution, and workspace dependency management."
+      "explanation": "Monorepo build system orchestrating builds, lints, and tests across web, api, and shared packages with remote caching support."
     },
     {
-      "name": "Luxon",
-      "category": "Utilities",
-      "explanation": "Timezone-aware date/time library for per-workspace standup window calculations and working day detection."
-    },
-    {
-      "name": "Pino",
-      "category": "Observability",
-      "explanation": "Structured JSON logging for production debugging, security event tracking, and tenant boundary violation alerts."
+      "name": "TypeScript",
+      "category": "Language",
+      "explanation": "End to end type safety with shared types package consumed by both frontend and backend."
     }
   ],
   "images": [
     {
-      "src": "/images/projects/ai-standup.png",
-      "alt": "AI Standup Real-time Dashboard",
-      "caption": "Real-time presence dashboard showing submission status, AI-generated summaries, and active blocker alerts."
+      "src": "/images/projects/ai-standup-v2.png",
+      "alt": "AI Standup Hero and Dashboard Preview",
+      "caption": "Live presence dashboard with active blocker alerts"
+    }
+  ],
+  "testimonials": [
+    {
+      "quote": "The automated daily digests and real-time blocker alerts save our engineering leads hours of meeting fatigue every single week.",
+      "name": "Engineering Lead",
+      "role": "Platform Engineering",
+      "company": "TechScale Inc."
     }
   ],
   "tags": [
@@ -101,7 +104,8 @@
     "TypeScript"
   ],
   "links": {
-    "github": "https://github.com/rohandev19/ai-standup"
+    "github": "https://github.com/rohandev19/ai-standup",
+    "live": "https://www.aistandup.app"
   },
   "featured": true
 }

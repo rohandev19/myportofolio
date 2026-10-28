@@ -9,7 +9,7 @@ export default function BlogNotFound() {
       </p>
       <Link
         href="/blog"
-        className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[var(--color-accent-cyan)]/10 text-[var(--color-accent-cyan)] border border-[var(--color-accent-cyan)]/20 hover:bg-[var(--color-accent-cyan)]/20 transition-colors"
+        className="px-6 py-2.5 btn-unified font-semibold rounded-lg hover:opacity-90 transition-all"
       >
         ← Back to Blog
       </Link>

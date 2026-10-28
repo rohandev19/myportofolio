@@ -28,7 +28,7 @@ export function ArticleCard({ article, featured = false }: ArticleCardProps) {
   return (
     <Link
       href={`/blog/${article.slug}`}
-      className={`group block rounded-2xl border border-[var(--color-border)] bg-[var(--color-bg-secondary)] overflow-hidden transition-all duration-300 hover:border-[var(--color-accent-cyan)]/30 hover:shadow-lg hover:shadow-[var(--color-accent-cyan)]/5 hover:-translate-y-1 ${
+      className={`group flex flex-col h-full rounded-2xl border border-[var(--color-border)] bg-[var(--color-bg-secondary)] overflow-hidden transition-all duration-300 hover:border-[var(--color-accent-blue)]/50 hover:shadow-lg hover:shadow-[var(--color-accent-blue)]/5 hover:-translate-y-1 ${
         featured ? "md:col-span-2" : ""
       }`}
     >
@@ -43,19 +43,19 @@ export function ArticleCard({ article, featured = false }: ArticleCardProps) {
             loading="lazy"
             sizes={featured ? "(max-width: 768px) 100vw, 66vw" : "(max-width: 768px) 100vw, 33vw"}
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-bg-primary)] via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-bg-primary)] via-transparent to-transparent opacity-60" />
         </div>
       )}
 
       {/* Content */}
-      <div className="p-6">
+      <div className="p-6 flex flex-col flex-grow">
         {/* Tags */}
         {article.tags.length > 0 && (
           <div className="flex flex-wrap gap-2 mb-3">
             {article.tags.slice(0, 3).map((tag) => (
               <span
                 key={tag}
-                className="text-xs px-2.5 py-1 rounded-full bg-[var(--color-accent-cyan)]/10 text-[var(--color-accent-cyan)] border border-[var(--color-accent-cyan)]/20"
+                className="text-xs px-2.5 py-1 rounded-full bg-[var(--color-accent-blue)]/10 text-[var(--color-accent-blue)] border border-[var(--color-accent-blue)]/20 font-medium"
               >
                 {tag}
               </span>
@@ -69,17 +69,17 @@ export function ArticleCard({ article, featured = false }: ArticleCardProps) {
         )}
 
         {/* Title */}
-        <h3 className="text-lg font-semibold text-[var(--color-text-primary)] group-hover:text-[var(--color-accent-cyan)] transition-colors line-clamp-2 mb-2">
+        <h3 className="text-lg md:text-xl font-bold text-[var(--color-text-primary)] group-hover:text-[var(--color-accent-blue)] transition-colors line-clamp-2 mb-2">
           {article.title}
         </h3>
 
         {/* Description */}
-        <p className="text-sm text-[var(--color-text-secondary)] line-clamp-2 mb-4">
+        <p className="text-sm text-[var(--color-text-secondary)] line-clamp-2 mb-4 leading-relaxed">
           {article.description}
         </p>
 
         {/* Meta */}
-        <div className="flex items-center gap-3 text-xs text-[var(--color-text-tertiary)]">
+        <div className="flex items-center gap-3 text-xs text-[var(--color-text-tertiary)] mt-auto pt-2 border-t border-[var(--color-border)]/50">
           <time dateTime={article.date}>{formatDate(article.date)}</time>
           <span className="w-1 h-1 rounded-full bg-[var(--color-border)]" />
           <span>{article.readTime} min read</span>

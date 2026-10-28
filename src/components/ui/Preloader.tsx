@@ -11,11 +11,19 @@ export function Preloader({ onComplete }: { onComplete: () => void }) {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
+    const hasVisited = typeof window !== "undefined" && sessionStorage.getItem("visited");
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    if (prefersReducedMotion) {
+    if (hasVisited || prefersReducedMotion) {
+      if (typeof window !== "undefined") {
+        sessionStorage.setItem("visited", "true");
+      }
       onComplete();
       return;
+    }
+
+    if (typeof window !== "undefined") {
+      sessionStorage.setItem("visited", "true");
     }
 
     // Prevent scrolling during preloader
@@ -33,7 +41,7 @@ export function Preloader({ onComplete }: { onComplete: () => void }) {
       const counterObject = { value: 0 };
       tl.to(counterObject, {
         value: 100,
-        duration: 2.5, // 2.5 seconds loading
+        duration: 1.0, // 1.0 second snappy loading
         ease: "power2.inOut",
         onUpdate: () => {
           setProgress(Math.round(counterObject.value));
@@ -41,12 +49,12 @@ export function Preloader({ onComplete }: { onComplete: () => void }) {
       });
 
       // Add a slight pause at 100%
-      tl.to({}, { duration: 0.3 });
+      tl.to({}, { duration: 0.15 });
 
       // Hide counter
       tl.to(counterRef.current, {
         opacity: 0,
-        duration: 0.3,
+        duration: 0.2,
       });
 
       // Split doors
@@ -54,7 +62,7 @@ export function Preloader({ onComplete }: { onComplete: () => void }) {
         leftDoorRef.current,
         {
           xPercent: -100,
-          duration: 1.2,
+          duration: 0.6,
           ease: "power4.inOut",
         },
         "split"
@@ -63,7 +71,7 @@ export function Preloader({ onComplete }: { onComplete: () => void }) {
         rightDoorRef.current,
         {
           xPercent: 100,
-          duration: 1.2,
+          duration: 0.6,
           ease: "power4.inOut",
         },
         "split"

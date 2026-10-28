@@ -76,10 +76,7 @@ export function HeroScene() {
     >
       <div className="z-10 text-center max-w-4xl relative">
         <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif font-normal mb-4 tracking-tight relative z-10">
-          <SplitText
-            className="hero-name"
-            charClassName="char text-[var(--color-text-primary)]"
-          >
+          <SplitText className="hero-name" charClassName="char text-[var(--color-text-primary)]">
             {heroData.name}
           </SplitText>
         </h1>
@@ -116,21 +113,21 @@ export function HeroScene() {
           <InteractiveButton
             as="a"
             href="#projects"
-            className="hero-cta opacity-0 px-8 py-3 bg-[var(--color-accent-blue)] text-[var(--color-bg-primary)] font-bold rounded-lg hover:opacity-90 hover:shadow-[0_0_30px_rgba(212,216,224,0.3)] hover:-translate-y-1 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[var(--color-accent-blue)]"
+            className="hero-cta opacity-0 px-7 py-3 btn-unified font-semibold rounded-lg hover:opacity-90 transition-all duration-300 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-[var(--color-accent-blue)]"
           >
             {heroData.cta.primary}
           </InteractiveButton>
           <InteractiveButton
             as="a"
             href="#contact"
-            className="hero-cta opacity-0 px-8 py-3 bg-[var(--color-bg-secondary)]/50 backdrop-blur-md border border-[var(--color-border)] text-[var(--color-text-primary)] font-semibold rounded-lg hover:bg-[var(--color-bg-secondary)] transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-[var(--color-border)]"
+            className="hero-cta opacity-0 px-7 py-3 btn-unified font-semibold rounded-lg hover:opacity-90 transition-all duration-300 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-[var(--color-accent-blue)]"
           >
             {heroData.cta.secondary}
           </InteractiveButton>
           <InteractiveButton
             as="a"
             href="/blog"
-            className="hero-cta opacity-0 px-8 py-3 bg-[var(--color-bg-secondary)]/50 backdrop-blur-md border border-[var(--color-accent-violet)]/40 text-[var(--color-accent-violet)] font-semibold rounded-lg hover:bg-[var(--color-accent-violet)]/10 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-[var(--color-accent-violet)]"
+            className="hero-cta opacity-0 px-7 py-3 btn-unified font-semibold rounded-lg hover:opacity-90 transition-all duration-300 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-[var(--color-accent-blue)]"
           >
             Read Blog
           </InteractiveButton>
@@ -139,7 +136,7 @@ export function HeroScene() {
             href="/CV/CV_Muhammad_Rohan_Sayyid_FullstackDeveloper_EN.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="hero-cta opacity-0 px-8 py-3 bg-[var(--color-bg-secondary)]/50 backdrop-blur-md border border-[var(--color-accent-cyan)]/40 text-[var(--color-accent-blue)] font-semibold rounded-lg hover:bg-[var(--color-accent-blue)]/10 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-[var(--color-accent-blue)]"
+            className="hero-cta opacity-0 px-7 py-3 btn-unified font-semibold rounded-lg hover:opacity-90 transition-all duration-300 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-[var(--color-accent-blue)]"
           >
             Download CV
           </InteractiveButton>

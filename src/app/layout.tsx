@@ -3,7 +3,6 @@ import { Inter, Instrument_Serif, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { ClientProviders } from "@/components/ClientProviders";
 import { SkipToContent } from "@/components/ui/SkipToContent";
-import { DotNav } from "@/components/ui/DotNav";
 import { TopNav } from "@/components/ui/TopNav";
 import { CustomCursor } from "@/components/ui/CustomCursor";
 import { ScrollProgress } from "@/components/ui/ScrollProgress";
@@ -61,7 +60,9 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${inter.variable} ${instrumentSerif.variable} ${jetbrainsMono.variable} font-sans antialiased`}>
+      <body
+        className={`${inter.variable} ${instrumentSerif.variable} ${jetbrainsMono.variable} font-sans antialiased`}
+      >
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas) }}
@@ -72,7 +73,6 @@ export default function RootLayout({
           <CustomCursor />
           <SkipToContent />
           <TopNav />
-          <DotNav />
           <SiteControls />
           {children}
         </ClientProviders>

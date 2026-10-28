@@ -1,9 +1,9 @@
 {
   "slug": "hamada-logistic",
   "title": "Hamada Operations Platform",
-  "description": "An end-to-end fleet attendance and logistics management system for PT Hamada Global Jaya, featuring a robust Laravel REST API backend and an offline-first Flutter mobile application.",
+  "description": "An end to end fleet attendance and logistics management system for PT Hamada Global Jaya, featuring offline first mobile sync and predictive vehicle maintenance.",
   "category": "Mobile",
-  "role": "Full-Stack Developer",
+  "role": "Full Stack Developer",
   "client": "PT Hamada Global Jaya",
   "publishedAt": "2026-06-15T10:00:00Z",
   "coverImage": {
@@ -17,7 +17,7 @@
     },
     "solution": {
       "title": "Our Approach",
-      "content": "We built a two-part solution: a secure administrative portal and an offline-first mobile application.\n\n### Key Architectural Decisions:\n1. **Laravel Backend**: Utilized Laravel Sanctum for cross-platform JWT authentication and built RESTful APIs with an indexed, cached MySQL database.\n2. **Flutter Mobile App**: Developed a cross-platform mobile app featuring QR code validation and GPS-based location tracking.\n3. **Offline-First Synchronization**: Implemented Sembast local database in Flutter. The app caches data offline and automatically synchronizes with the server in the background once connectivity is restored.\n4. **Automated Workflows**: Implemented Firebase Cloud Messaging (FCM) to trigger real-time push notifications for preventive vehicle maintenance approvals."
+      "content": "We built a two-part solution: a secure administrative portal and an offline first mobile application.\n\n### Key Architectural Decisions:\n1. **Laravel Backend**: Utilized Laravel Sanctum for cross-platform JWT authentication and built RESTful APIs with an indexed, cached MySQL database.\n2. **Flutter Mobile App**: Developed a cross-platform mobile app featuring QR code validation and GPS-based location tracking.\n3. **Offline-First Synchronization**: Implemented Sembast local database in Flutter. The app caches data offline and automatically synchronizes with the server in the background once connectivity is restored.\n4. **Automated Workflows**: Implemented Firebase Cloud Messaging (FCM) to trigger real-time push notifications for preventive vehicle maintenance approvals."
     },
     "impact": {
       "title": "Business Impact",
@@ -25,19 +25,19 @@
     },
     "results": {
       "title": "Key Results",
-      "content": "- **Zero Data Loss** via offline-first syncing\n- **Automated Tracking** using QR and GPS integration\n- **Responsive Admin Portal** built with modern web technologies\n- **Seamless Authentication** across mobile and web platforms"
+      "content": "- **Zero Data Loss** via offline first syncing\n- **Automated Tracking** using QR and GPS integration\n- **Responsive Admin Portal** built with modern web technologies\n- **Seamless Authentication** across mobile and web platforms"
     }
   },
   "techStack": [
     {
       "name": "Laravel",
       "category": "Backend",
-      "explanation": "Core server-side logic, API endpoints, and authentication."
+      "explanation": "Core server side logic, API endpoints, and authentication."
     },
     {
       "name": "Flutter",
       "category": "Mobile",
-      "explanation": "Cross-platform mobile framework used by field drivers."
+      "explanation": "Cross platform mobile framework used by field drivers."
     },
     {
       "name": "MySQL",
@@ -52,7 +52,7 @@
     {
       "name": "Firebase",
       "category": "DevOps",
-      "explanation": "Used for push notifications (FCM) and real-time updates."
+      "explanation": "Used for push notifications (FCM) and realtime updates."
     }
   ],
   "images": [
@@ -64,7 +64,7 @@
     {
       "src": "/images/Halaman Monitoring Kendaraan.png",
       "alt": "Vehicle Monitoring and Fleet Tracking",
-      "caption": "Real-time fleet tracking and vehicle monitoring"
+      "caption": "Realtime fleet tracking and vehicle monitoring"
     }
   ],
   "testimonials": [
@@ -75,9 +75,7 @@
       "company": "PT Hamada Global Jaya"
     }
   ],
-  "tags": ["Laravel", "Flutter", "Logistics", "Offline-First", "Mobile"],
-  "links": {
-    "live": "https://operation.hamada-logistic.com"
-  },
+  "tags": ["Laravel", "Flutter", "Logistics", "Offline First", "Mobile"],
+  "links": {},
   "featured": true
 }

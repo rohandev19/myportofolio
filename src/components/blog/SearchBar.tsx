@@ -98,7 +98,7 @@ export function SearchBar({ allTags, onSearch }: SearchBarProps) {
                 onClick={() => toggleTag(tag)}
                 className={`text-xs px-3 py-1.5 rounded-full border transition-all duration-200 ${
                   isSelected
-                    ? "bg-[var(--color-accent-cyan)]/20 border-[var(--color-accent-cyan)]/50 text-[var(--color-accent-cyan)]"
+                    ? "btn-unified font-semibold"
                     : "bg-[var(--color-bg-secondary)] border-[var(--color-border)] text-[var(--color-text-secondary)] hover:border-[var(--color-accent-blue)]/30 hover:text-[var(--color-text-primary)]"
                 }`}
                 aria-pressed={isSelected}

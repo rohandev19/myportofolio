@@ -111,6 +111,7 @@ function TechNode({ node }: { node: NodeData }) {
               src={`https://skillicons.dev/icons?i=${iconName}`}
               alt={node.text}
               fill
+              unoptimized
               sizes="(max-width: 768px) 64px, 128px"
               className="object-contain filter drop-shadow-[0_0_10px_rgba(26,74,78,0.5)]"
             />

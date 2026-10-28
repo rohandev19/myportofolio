@@ -20,7 +20,7 @@ export default function ProjectError({
       <div className="flex items-center justify-center gap-4">
         <button
           onClick={reset}
-          className="px-6 py-3 rounded-xl bg-[var(--color-accent-blue)]/10 text-[var(--color-accent-blue)] border border-[var(--color-accent-blue)]/20 hover:bg-[var(--color-accent-blue)]/20 transition-colors"
+          className="px-6 py-2.5 btn-unified font-semibold rounded-lg hover:opacity-90 transition-all"
         >
           Try Again
         </button>

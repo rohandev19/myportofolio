@@ -3,7 +3,7 @@ import { Principle } from "@/types";
 export const principlesData: Principle[] = [
   {
     id: "principle-1",
-    title: "User-Centric Design",
+    title: "User Centric Design",
     description: "Every architectural decision should ultimately serve the user experience.",
   },
   {
@@ -16,6 +16,6 @@ export const principlesData: Principle[] = [
     id: "principle-3",
     title: "Coding as a Puzzle",
     description:
-      "I approach full-stack development as an intricate puzzle—finding the perfect fit for each piece of logic to create a seamless and elegant solution.",
+      "I approach full stack development like solving a puzzle to find the perfect fit for each piece of logic to create a seamless and elegant solution.",
   },
 ];
