@@ -54,9 +54,15 @@ export function HeroScene() {
 
   useGSAP(
     () => {
-      if (!isReady) return;
+      if (!isReady) {
+        gsap.set([".hero-greeting", ".hero-name", ".hero-subtitle"], {
+          opacity: 0,
+          y: 24,
+        });
+        return;
+      }
 
-      const tl = gsap.timeline({ delay: 0.1 });
+      const tl = gsap.timeline({ delay: 0.08 });
 
       tl.fromTo(
         ".hero-greeting",

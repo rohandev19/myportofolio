@@ -45,22 +45,17 @@ export function ClientProviders({ children }: ClientProvidersProps) {
   const pathname = usePathname();
   const lenisRef = useRef<Lenis | null>(null);
 
-  const handlePreloaderComplete = useCallback(() => {
-    setShowPreloader(false);
+  const handlePreloaderReady = useCallback(() => {
     setIsReady(true);
+  }, []);
+
+  const handlePreloaderComplete = useCallback(() => {
+    setIsReady(true);
+    setShowPreloader(false);
   }, []);
 
   // Initialize global keyboard shortcuts for command palette
   useCommandPalette();
-
-  useEffect(() => {
-    // Check if already visited in this session
-    if (typeof window !== "undefined" && sessionStorage.getItem("visited") === "true") {
-      // eslint-disable-next-line react-hooks/set-state-in-effect
-      setShowPreloader(false);
-      setIsReady(true);
-    }
-  }, []);
 
   useEffect(() => {
     // Initialize Lenis for smooth scrolling
@@ -111,7 +106,9 @@ export function ClientProviders({ children }: ClientProvidersProps) {
         <ThemeProvider>
           <ToastContainer />
           <CommandPalette />
-          {showPreloader && <Preloader onComplete={handlePreloaderComplete} />}
+          {showPreloader && (
+            <Preloader onReady={handlePreloaderReady} onComplete={handlePreloaderComplete} />
+          )}
           {children}
         </ThemeProvider>
       </ErrorBoundary>
