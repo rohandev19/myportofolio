@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState, ReactNode } from "react";
+import { useRef, ReactNode } from "react";
 import gsap from "gsap";
 
 interface TiltCardProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -11,7 +11,6 @@ interface TiltCardProps extends React.HTMLAttributes<HTMLDivElement> {
 export function TiltCard({ children, className = "", ...props }: TiltCardProps) {
   const cardRef = useRef<HTMLDivElement>(null);
   const glareRef = useRef<HTMLDivElement>(null);
-  const [isHovered, setIsHovered] = useState(false);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!cardRef.current || !glareRef.current) return;
@@ -41,12 +40,7 @@ export function TiltCard({ children, className = "", ...props }: TiltCardProps) 
     });
   };
 
-  const handleMouseEnter = () => {
-    setIsHovered(true);
-  };
-
   const handleMouseLeave = () => {
-    setIsHovered(false);
     if (!cardRef.current || !glareRef.current) return;
 
     // Reset tilt
@@ -70,7 +64,6 @@ export function TiltCard({ children, className = "", ...props }: TiltCardProps) 
       ref={cardRef}
       className={`relative overflow-hidden transition-all duration-300 ease-out ${className}`}
       onMouseMove={handleMouseMove}
-      onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       style={{ transformStyle: "preserve-3d" }}
       {...props}

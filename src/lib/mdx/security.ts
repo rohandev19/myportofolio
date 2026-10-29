@@ -51,7 +51,7 @@ export function sanitizeMDXContent(content: string): string {
 export function addRelNoopener(html: string): string {
   return html.replace(
     /<a\s+([^>]*href\s*=\s*["'](https?:\/\/[^"']+)["'][^>]*)>/gi,
-    (match, attrs, _href) => {
+    (match, attrs) => {
       // Skip if rel already present
       if (/rel\s*=/i.test(attrs)) {
         return match;

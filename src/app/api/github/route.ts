@@ -1,5 +1,5 @@
 import { fetchGitHubStats } from "@/lib/github/api";
-import { secureApiResponse, successResponse, errorResponse } from "@/lib/utils/api-response";
+import { successResponse, errorResponse } from "@/lib/utils/api-response";
 
 export async function GET() {
   try {
