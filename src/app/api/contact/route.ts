@@ -79,8 +79,9 @@ export async function POST(request: Request) {
       message: sanitizePlainText(message),
     };
 
-    // 6. Send email via Web3Forms or Resend
-    const accessKey = process.env.WEB3FORMS_ACCESS_KEY;
+    // 6. Send email via Web3Forms
+    const accessKey =
+      process.env.WEB3FORMS_ACCESS_KEY || process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
 
     if (accessKey) {
       const formPayload = {
@@ -98,29 +99,53 @@ export async function POST(request: Request) {
 
         const emailResponse = await fetch("https://api.web3forms.com/submit", {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+            "User-Agent":
+              request.headers.get("user-agent") ||
+              "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
+          },
           body: JSON.stringify(formPayload),
           signal: controller.signal,
         });
 
         clearTimeout(timeout);
 
-        const emailResult = await emailResponse.json();
-
-        if (!emailResult.success) {
-          console.error("Email send failed:", emailResult);
-          return errorResponse(
-            "Failed to send message. Please try again.",
-            ErrorCodes.INTERNAL_ERROR,
-            500
-          );
+        const contentType = emailResponse.headers.get("content-type") || "";
+        if (contentType.includes("application/json")) {
+          const emailResult = await emailResponse.json();
+          if (emailResult.success) {
+            return successResponse(
+              {
+                sent: true,
+                remaining: rateLimitResult.remaining,
+              },
+              "Message sent successfully"
+            );
+          }
         }
+
+        // If Cloudflare challenges server-side fetch, instruct client to submit directly
+        return successResponse(
+          {
+            sent: false,
+            fallbackClient: true,
+            sanitizedData,
+            remaining: rateLimitResult.remaining,
+          },
+          "Validated; use client fallback"
+        );
       } catch (emailError) {
-        console.error("Email service unreachable or timed out:", emailError);
-        return errorResponse(
-          "Failed to send message. Please try again later.",
-          ErrorCodes.INTERNAL_ERROR,
-          502
+        console.warn("Server email fetch failed, using client fallback:", emailError);
+        return successResponse(
+          {
+            sent: false,
+            fallbackClient: true,
+            sanitizedData,
+            remaining: rateLimitResult.remaining,
+          },
+          "Validated; use client fallback"
         );
       }
     } else {

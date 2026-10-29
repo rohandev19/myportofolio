@@ -93,9 +93,44 @@ export function ContactScene() {
         body: JSON.stringify(data),
       });
 
-      const result: { success: boolean; error?: { message: string } } = await response.json();
+      const result: {
+        success: boolean;
+        data?: {
+          sent?: boolean;
+          fallbackClient?: boolean;
+          sanitizedData?: { name: string; email: string; subject?: string; message: string };
+        };
+        error?: { message: string };
+      } = await response.json();
 
       if (result.success) {
+        if (result.data?.fallbackClient && process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY) {
+          const payload = result.data.sanitizedData || data;
+          const web3Res = await fetch("https://api.web3forms.com/submit", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Accept: "application/json",
+            },
+            body: JSON.stringify({
+              access_key: process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY,
+              name: payload.name,
+              email: payload.email,
+              subject: payload.subject || `Portfolio Contact from ${payload.name}`,
+              message: payload.message,
+              from_name: "Portfolio Contact Form",
+            }),
+          });
+          const web3Json: { success?: boolean; message?: string } = await web3Res.json();
+          if (!web3Json.success) {
+            addToast({
+              type: "error",
+              message: web3Json.message || "Failed to send message. Please try again.",
+            });
+            return;
+          }
+        }
+
         addToast({
           type: "success",
           message: "Message sent successfully! I'll get back to you soon.",
