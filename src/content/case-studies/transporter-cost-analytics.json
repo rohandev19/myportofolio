@@ -7,7 +7,7 @@
   "client": "Internal Analytics Tool",
   "publishedAt": "2026-04-10T10:00:00Z",
   "coverImage": {
-    "src": "/images/projects/transporter_analytics.jpg",
+    "src": "/images/projects/transporter-analytics-v2.png",
     "alt": "Data analytics dashboard"
   },
   "sections": {
@@ -57,7 +57,7 @@
   ],
   "images": [
     {
-      "src": "/images/projects/transporter_analytics.jpg",
+      "src": "/images/projects/transporter-analytics-v2.png",
       "alt": "Cost analytics graphs and tables",
       "caption": "The main analytics dashboard with Recharts"
     }

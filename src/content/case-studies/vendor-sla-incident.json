@@ -7,7 +7,7 @@
   "client": "Internal Enterprise Tool",
   "publishedAt": "2026-05-20T10:00:00Z",
   "coverImage": {
-    "src": "/images/projects/vendor_sla.jpg",
+    "src": "/images/projects/vendor-sla-v2.png",
     "alt": "Incident management system overview"
   },
   "sections": {
@@ -52,7 +52,7 @@
   ],
   "images": [
     {
-      "src": "/images/projects/vendor_sla.jpg",
+      "src": "/images/projects/vendor-sla-v2.png",
       "alt": "SLA Tracking Dashboard",
       "caption": "SLA tracking and incident resolution dashboard"
     }
