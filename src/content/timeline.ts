@@ -11,7 +11,7 @@ export const timelineData: TimelineEntry[] = [
   },
   {
     id: "exp-4",
-    year: "Oct 2025 to Present",
+    year: "Oct 2025 to Sep 2026",
     role: "Full Stack Developer",
     company: "PT Hamada Global Jaya",
     description:
