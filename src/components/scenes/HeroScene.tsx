@@ -108,23 +108,23 @@ export function HeroScene() {
       </div>
 
       {/* Centered Hero Typography */}
-      <div className="z-10 text-center max-w-5xl mx-auto relative px-4 mt-6">
-        <p className="hero-greeting font-sans font-extralight text-3xl sm:text-5xl md:text-[56px] text-white/95 tracking-normal leading-tight mb-1 md:mb-2 drop-shadow-[0_2px_10px_rgba(0,0,0,0.35)]">
+      <div className="z-10 text-center max-w-5xl mx-auto relative px-2 sm:px-4 mt-6 w-full">
+        <p className="hero-greeting font-sans font-extralight text-2xl sm:text-5xl md:text-[56px] text-white/95 tracking-normal leading-tight mb-1 md:mb-2 drop-shadow-[0_2px_10px_rgba(0,0,0,0.35)]">
           {heroData.greeting}
         </p>
 
         <h1
           aria-label={heroData.name}
-          className="hero-name min-h-[1.15em] flex items-center justify-center font-sans font-black text-4xl sm:text-6xl md:text-7xl lg:text-[76px] text-white tracking-tight leading-[1.08] drop-shadow-[0_4px_24px_rgba(0,0,0,0.45)]"
+          className="hero-name min-h-[1.2em] flex items-center justify-center font-sans font-black text-[22px] sm:text-5xl md:text-7xl lg:text-[76px] text-white tracking-tight leading-[1.08] whitespace-nowrap drop-shadow-[0_4px_24px_rgba(0,0,0,0.45)]"
         >
           <span>{displayText}</span>
           <span
             aria-hidden="true"
-            className="inline-block w-[3px] sm:w-[4px] h-[0.82em] bg-white/90 ml-1.5 sm:ml-2 animate-pulse"
+            className="inline-block w-[2.5px] sm:w-[4px] h-[0.82em] bg-white/90 ml-1 sm:ml-2 animate-pulse"
           />
         </h1>
 
-        <p className="hero-subtitle font-sans font-normal text-xs sm:text-sm md:text-[15px] uppercase tracking-[0.28em] text-white/80 mt-4 md:mt-6 drop-shadow-[0_2px_8px_rgba(0,0,0,0.4)]">
+        <p className="hero-subtitle font-sans font-normal text-[10px] sm:text-sm md:text-[15px] uppercase tracking-[0.22em] sm:tracking-[0.28em] text-white/80 mt-3 sm:mt-4 md:mt-6 drop-shadow-[0_2px_8px_rgba(0,0,0,0.4)]">
           {heroData.subtitle}
         </p>
       </div>

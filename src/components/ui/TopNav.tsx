@@ -34,10 +34,10 @@ export function TopNav() {
   const showSolidBar = isScrolled || pathname !== "/";
 
   const headerStyle = !showSolidBar
-    ? "bg-transparent border-transparent py-7 sm:py-8"
+    ? "bg-transparent border-transparent py-5 sm:py-8"
     : isDark
-      ? "bg-[#141418]/95 backdrop-blur-md border-b border-white/10 shadow-md py-4 sm:py-5"
-      : "bg-white/95 backdrop-blur-md border-b border-black/10 shadow-sm py-4 sm:py-5";
+      ? "bg-[#141418]/95 backdrop-blur-md border-b border-white/10 shadow-md py-3.5 sm:py-5"
+      : "bg-white/95 backdrop-blur-md border-b border-black/10 shadow-sm py-3.5 sm:py-5";
 
   const linkColor = !showSolidBar
     ? "text-white/90 hover:text-white"
@@ -53,12 +53,12 @@ export function TopNav() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 px-4 sm:px-8 transition-all duration-300 ${headerStyle}`}
+      className={`fixed top-0 left-0 right-0 z-50 px-3 sm:px-8 transition-all duration-300 ${headerStyle}`}
     >
-      <div className="max-w-6xl mx-auto relative flex items-center justify-center">
+      <div className="max-w-6xl mx-auto relative flex items-center justify-between sm:justify-center gap-1.5">
         <nav
           aria-label="Primary Navigation"
-          className="flex items-center gap-4 sm:gap-8 md:gap-10 text-[11px] sm:text-xs font-sans font-normal tracking-[0.22em] uppercase overflow-x-auto whitespace-nowrap [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden pr-10 sm:pr-0"
+          className="flex flex-1 sm:flex-initial items-center justify-between sm:justify-center gap-1.5 sm:gap-8 md:gap-10 text-[9.5px] sm:text-xs font-sans font-normal tracking-[0.07em] sm:tracking-[0.22em] uppercase whitespace-nowrap"
         >
           {NAV_LINKS.map((item) => (
             <Link
@@ -71,13 +71,13 @@ export function TopNav() {
           ))}
         </nav>
 
-        {/* Enlarged Theme Toggle Button on Right */}
+        {/* Theme Toggle Button */}
         <button
           type="button"
           onClick={() => setTheme(isDark ? "light" : "dark")}
           aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
           title={isDark ? "Switch to light mode" : "Switch to dark mode"}
-          className={`absolute right-0 sm:right-4 md:right-8 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-11 sm:h-11 rounded-full flex items-center justify-center transition-all duration-200 focus:outline-none ${toggleBtnColor}`}
+          className={`shrink-0 sm:absolute sm:right-2 md:right-8 sm:top-1/2 sm:-translate-y-1/2 w-8 h-8 sm:w-11 sm:h-11 rounded-full flex items-center justify-center transition-all duration-200 focus:outline-none ${toggleBtnColor}`}
         >
           {isDark ? (
             <svg
@@ -90,7 +90,7 @@ export function TopNav() {
               strokeWidth="2"
               strokeLinecap="round"
               strokeLinejoin="round"
-              className="w-5 h-5 sm:w-6 sm:h-6"
+              className="w-4 h-4 sm:w-6 sm:h-6"
               aria-hidden="true"
             >
               <circle cx="12" cy="12" r="4" />
@@ -107,7 +107,7 @@ export function TopNav() {
               strokeWidth="2"
               strokeLinecap="round"
               strokeLinejoin="round"
-              className="w-5 h-5 sm:w-6 sm:h-6"
+              className="w-4 h-4 sm:w-6 sm:h-6"
               aria-hidden="true"
             >
               <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
