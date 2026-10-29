@@ -1,8 +1,5 @@
 "use client";
 
-import { usePathname } from "next/navigation";
-import { ThemeToggle } from "./ThemeToggle";
-
 /**
  * SiteControls
  *
@@ -11,13 +8,5 @@ import { ThemeToggle } from "./ThemeToggle";
  * homepage for an immersive hero section.
  */
 export function SiteControls() {
-  const pathname = usePathname();
-
-  if (pathname !== "/") return null;
-
-  return (
-    <div className="fixed top-4 right-4 z-[60] flex items-center gap-2">
-      <ThemeToggle />
-    </div>
-  );
+  return null;
 }
