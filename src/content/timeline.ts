@@ -18,14 +18,6 @@ export const timelineData: TimelineEntry[] = [
       "Developed an end to end fleet and attendance management system. Built RESTful APIs with Laravel, a TailwindCSS web admin dashboard, and a Flutter mobile app with offline first synchronization. Implemented predictive maintenance, JWT authentication, and MySQL optimization.",
   },
   {
-    id: "exp-3",
-    year: "Apr 2021 to Oct 2025",
-    role: "Finance & Operations Specialist",
-    company: "PT Multi Kreasi Printing",
-    description:
-      "Managed the complete monthly tax compliance cycle (PPh 21, PPN) by digitizing financial records and streamlining data entry processes. Utilized spreadsheet automation and data validation techniques to calculate tax liabilities accurately before processing through the DJP Online portal. Maintained a secure digital archive of financial documents and generated ID Billing codes, improving the efficiency of the company's financial operations.",
-  },
-  {
     id: "exp-2",
     year: "Nov 2023 to Jan 2024",
     role: "Mitra Statistik",
