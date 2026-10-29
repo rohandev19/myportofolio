@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
@@ -10,6 +10,47 @@ import { useAppGlobal } from "@/components/ClientProviders";
 export function HeroScene() {
   const containerRef = useRef<HTMLElement>(null);
   const { isReady } = useAppGlobal();
+
+  const phrases = heroData.typedPhrases;
+  const [phraseIndex, setPhraseIndex] = useState(0);
+  const [displayText, setDisplayText] = useState(phrases[0]);
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  // Looping typewriter animation when idle
+  useEffect(() => {
+    if (!isReady) return;
+
+    const currentPhrase = phrases[phraseIndex];
+    let timeoutDuration = isDeleting ? 45 : 85;
+
+    if (!isDeleting && displayText === currentPhrase) {
+      // Hold full text before starting backspace (longer hold on main name)
+      timeoutDuration = phraseIndex === 0 ? 3200 : 2400;
+      const holdTimer = setTimeout(() => {
+        setIsDeleting(true);
+      }, timeoutDuration);
+      return () => clearTimeout(holdTimer);
+    }
+
+    if (isDeleting && displayText === "") {
+      // Finished deleting, switch to next phrase after brief pause
+      const nextTimer = setTimeout(() => {
+        setIsDeleting(false);
+        setPhraseIndex((prev) => (prev + 1) % phrases.length);
+      }, 300);
+      return () => clearTimeout(nextTimer);
+    }
+
+    const typeTimer = setTimeout(() => {
+      setDisplayText((prev) =>
+        isDeleting
+          ? currentPhrase.slice(0, prev.length - 1)
+          : currentPhrase.slice(0, prev.length + 1)
+      );
+    }, timeoutDuration);
+
+    return () => clearTimeout(typeTimer);
+  }, [displayText, isDeleting, phraseIndex, phrases, isReady]);
 
   useGSAP(
     () => {
@@ -72,8 +113,15 @@ export function HeroScene() {
           {heroData.greeting}
         </p>
 
-        <h1 className="hero-name font-sans font-black text-4xl sm:text-6xl md:text-7xl lg:text-[76px] text-white tracking-tight leading-[1.08] drop-shadow-[0_4px_24px_rgba(0,0,0,0.45)]">
-          {heroData.name}
+        <h1
+          aria-label={heroData.name}
+          className="hero-name min-h-[1.15em] flex items-center justify-center font-sans font-black text-4xl sm:text-6xl md:text-7xl lg:text-[76px] text-white tracking-tight leading-[1.08] drop-shadow-[0_4px_24px_rgba(0,0,0,0.45)]"
+        >
+          <span>{displayText}</span>
+          <span
+            aria-hidden="true"
+            className="inline-block w-[3px] sm:w-[4px] h-[0.82em] bg-white/90 ml-1.5 sm:ml-2 animate-pulse"
+          />
         </h1>
 
         <p className="hero-subtitle font-sans font-normal text-xs sm:text-sm md:text-[15px] uppercase tracking-[0.28em] text-white/80 mt-4 md:mt-6 drop-shadow-[0_2px_8px_rgba(0,0,0,0.4)]">
