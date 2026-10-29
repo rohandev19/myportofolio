@@ -8,7 +8,7 @@
  */
 
 import { useState, useCallback, useMemo } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import type { ArticleMetadata } from "@/types";
 import { ArticleCard } from "@/components/blog/ArticleCard";
 import { SearchBar } from "@/components/blog/SearchBar";
@@ -92,25 +92,29 @@ export function BlogListClient({ articles, allTags }: BlogListClientProps) {
       {/* Article Grid */}
       {filtered.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filtered.map((article, index) => {
-            const isFeatured = index === 0 && !article.draft;
-            return (
-              <motion.div
-                key={article.slug}
-                className={`h-full ${isFeatured ? "md:col-span-2" : ""}`}
-                initial={{ opacity: 0, y: 35 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={viewportConfig}
-                transition={{
-                  duration: 0.5,
-                  ease: [0.16, 1, 0.3, 1],
-                  delay: (index % 3) * 0.1,
-                }}
-              >
-                <ArticleCard article={article} featured={isFeatured} />
-              </motion.div>
-            );
-          })}
+          <AnimatePresence mode="popLayout" initial={false}>
+            {filtered.map((article, index) => {
+              const isFeatured = index === 0 && !article.draft;
+              return (
+                <motion.div
+                  key={article.slug}
+                  layout="position"
+                  className={`h-full will-change-transform ${isFeatured ? "md:col-span-2" : ""}`}
+                  initial={{ opacity: 0, y: 18, scale: 0.96 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.95, transition: { duration: 0.16, ease: "easeOut" } }}
+                  transition={{
+                    duration: 0.32,
+                    ease: [0.22, 1, 0.36, 1],
+                    delay: Math.min(index * 0.04, 0.16),
+                    layout: { duration: 0.32, ease: [0.22, 1, 0.36, 1] },
+                  }}
+                >
+                  <ArticleCard article={article} featured={isFeatured} />
+                </motion.div>
+              );
+            })}
+          </AnimatePresence>
         </div>
       ) : (
         <div className="text-center py-20">

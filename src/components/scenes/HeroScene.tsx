@@ -53,17 +53,17 @@ export function HeroScene() {
           fill
           priority
           sizes="100vw"
-          className="object-cover object-[center_20%] scale-115 sm:scale-125 origin-[center_22%] grayscale contrast-[1.08] brightness-[0.58]"
+          className="object-cover object-[center_20%] scale-115 sm:scale-125 origin-[center_22%] grayscale contrast-[1.06] brightness-[0.68]"
         />
         {/* Studio vignette & contrast overlays */}
         <div
           className="absolute inset-0"
           style={{
             background:
-              "radial-gradient(circle at center, rgba(0,0,0,0.12) 0%, rgba(0,0,0,0.52) 100%)",
+              "radial-gradient(circle at center, rgba(0,0,0,0.06) 0%, rgba(0,0,0,0.42) 100%)",
           }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/35 via-transparent to-black/50" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/25 via-transparent to-black/40" />
       </div>
 
       {/* Centered Hero Typography */}

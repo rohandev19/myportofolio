@@ -9,11 +9,8 @@
  */
 
 import { useRef, useState, useEffect, useMemo, Suspense } from "react";
-import { useSearchParams } from "next/navigation";
-import { motion } from "framer-motion";
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
-import { Flip } from "gsap/Flip";
+import { useSearchParams, useRouter } from "next/navigation";
+import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { rgbDataURL } from "@/lib/utils/image";
@@ -21,15 +18,11 @@ import { showcaseData, showcaseCategories, type ProjectCategory } from "@/conten
 import { viewportConfig, cardFadeUp } from "@/lib/animations/motion";
 import { TiltCard } from "../ui/TiltCard";
 
-// Register Flip plugin for layout transitions
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(Flip);
-}
-
 function ShowcaseContent() {
   const containerRef = useRef<HTMLElement>(null);
   const gridRef = useRef<HTMLDivElement>(null);
   const searchParams = useSearchParams();
+  const router = useRouter();
 
   // Initialize filter from URL, default to "All"
   const urlFilter = searchParams.get("filter") as ProjectCategory | null;
@@ -41,13 +34,7 @@ function ShowcaseContent() {
   const [activeFilter, setActiveFilter] = useState<ProjectCategory>(initialFilter);
   const [activeTechFilter, setActiveTechFilter] = useState<string | null>(urlTechFilter);
 
-  // Store the Flip state before layout changes
-  const flipStateRef = useRef<Flip.FlipState | null>(null);
-
   const handleFilterChange = (filter: ProjectCategory, tech: string | null) => {
-    if (gridRef.current) {
-      flipStateRef.current = Flip.getState(".showcase-card-wrapper, .showcase-grid");
-    }
     setActiveFilter(filter);
     setActiveTechFilter(tech);
   };
@@ -101,41 +88,6 @@ function ShowcaseContent() {
     }
     return filtered;
   }, [activeFilter, activeTechFilter]);
-
-  // Layout transition when filter changes
-  useGSAP(
-    () => {
-      if (!gridRef.current || !flipStateRef.current) return;
-
-      const state = flipStateRef.current;
-
-      Flip.from(state, {
-        duration: 0.5,
-        ease: "power3.inOut",
-        scale: true,
-        absolute: true, // Prevents layout jumping during animation
-        stagger: 0.05,
-        onEnter: (elements) => {
-          return gsap.fromTo(
-            elements,
-            { opacity: 0, scale: 0.8 },
-            { opacity: 1, scale: 1, duration: 0.4, ease: "power2.out" }
-          );
-        },
-        onLeave: (elements) => {
-          return gsap.to(elements, {
-            opacity: 0,
-            scale: 0.8,
-            duration: 0.3,
-            ease: "power2.in",
-          });
-        },
-      });
-
-      flipStateRef.current = null;
-    },
-    { dependencies: [activeFilter, activeTechFilter], scope: containerRef }
-  );
 
   return (
     <section
@@ -222,17 +174,23 @@ function ShowcaseContent() {
           ref={gridRef}
           className="showcase-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 min-h-[500px]"
         >
-          {filteredProjects.map((project, idx) => (
-            <motion.div
-              key={project.id}
-              className="showcase-card-wrapper h-full"
-              data-flip-id={project.id}
-              initial={{ opacity: 0, y: 35 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={viewportConfig}
-              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: (idx % 3) * 0.1 }}
-            >
-              <TiltCard
+          <AnimatePresence mode="popLayout" initial={false}>
+            {filteredProjects.map((project, idx) => (
+              <motion.div
+                key={project.id}
+                layout="position"
+                className="showcase-card-wrapper h-full will-change-transform"
+                initial={{ opacity: 0, y: 18, scale: 0.96 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.95, transition: { duration: 0.16, ease: "easeOut" } }}
+                transition={{
+                  duration: 0.32,
+                  ease: [0.22, 1, 0.36, 1],
+                  delay: Math.min(idx * 0.04, 0.16),
+                  layout: { duration: 0.32, ease: [0.22, 1, 0.36, 1] },
+                }}
+              >
+                <TiltCard
                 className="showcase-card group bg-[var(--color-bg-primary)] rounded-2xl border border-[var(--color-border)] hover:border-[var(--color-accent-blue)]/50 flex flex-col h-full overflow-hidden focus-within:ring-2 focus-within:ring-[var(--color-accent-blue)] cursor-pointer"
                 onClick={() => {
                   if (project.slug) {
@@ -433,8 +391,9 @@ function ShowcaseContent() {
                   </div>
                 </div>
               </TiltCard>
-            </motion.div>
-          ))}
+              </motion.div>
+            ))}
+          </AnimatePresence>
         </div>
       </div>
     </section>
