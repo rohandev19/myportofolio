@@ -5,6 +5,7 @@ import { JourneyTimelineScene } from "@/components/scenes/JourneyTimelineScene";
 import { TechGalaxyScene } from "@/components/scenes/TechGalaxyScene";
 import { PhilosophyScene } from "@/components/scenes/PhilosophyScene";
 import { InteractivePlaygroundScene } from "@/components/scenes/InteractivePlaygroundScene";
+import { BlogScene } from "@/components/scenes/BlogScene";
 import { ContactScene } from "@/components/scenes/ContactScene";
 
 export default function Home() {
@@ -21,6 +22,7 @@ export default function Home() {
       <TechGalaxyScene />
       <PhilosophyScene />
       <InteractivePlaygroundScene />
+      <BlogScene />
       <ContactScene />
     </main>
   );
