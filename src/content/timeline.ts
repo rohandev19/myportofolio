@@ -2,20 +2,12 @@ import { TimelineEntry } from "@/types";
 
 export const timelineData: TimelineEntry[] = [
   {
-    id: "exp-5",
-    year: "Jun 2026 to Jul 2026",
-    role: "Operations Administrator",
-    company: "PT Hamada Global Jaya",
-    description:
-      "Audited operational data for 23 logistics fleets and analyzed over 6,000 monthly delivery points to optimize transportation cost efficiency. Also provided creative support by designing graphic assets for HR campaigns.",
-  },
-  {
     id: "exp-4",
     year: "Oct 2025 to Sep 2026",
-    role: "Full Stack Developer",
+    role: "Full-Stack Developer (Internship)",
     company: "PT Hamada Global Jaya",
     description:
-      "Developed an end to end fleet and attendance management system. Built RESTful APIs with Laravel, a TailwindCSS web admin dashboard, and a Flutter mobile app with offline first synchronization. Implemented predictive maintenance, JWT authentication, and MySQL optimization.",
+      "Built an attendance and fleet management system (Laravel API, indexed MySQL) validated by QR code and GPS, giving operations verified real time driver check in records. Kept field reporting running in low signal areas with an offline first Flutter app (local Sembast database, automatic sync). Moved fleet upkeep from reactive to planned with automated maintenance scheduling, vehicle health scoring, and FCM push alerts. Streamlined service report approval with a tiered workflow for admin service and customer roles. Secured web and mobile authentication with Laravel Sanctum and added Sentry error tracking for proactive issue resolution.",
   },
   {
     id: "exp-3",
@@ -31,14 +23,14 @@ export const timelineData: TimelineEntry[] = [
     role: "Mitra Statistik",
     company: "Badan Pusat Statistik",
     description:
-      "Conducted field data collection and digitized demographic/economic data using BPS's official Computer Assisted Personal Interviewing (CAPI) mobile applications. Performed large volume data entry, initial data validation, and data cleaning using Microsoft Excel to ensure the integrity and accuracy of the statistical database. Collaborated with the primary data team to identify and resolve data discrepancies prior to national statistical analysis.",
+      "Executed high volume data processing and digitization of Population Census records into the centralized statistical database system at Badan Pusat Statistik Kota Depok. Performed rigorous data verification, cross variable logic validation, and data cleaning on demographic questionnaires to prevent duplicate entries and anomalies. Collaborated with the data supervision team to resolve document discrepancies and achieve daily processing quotas with high accuracy prior to national statistical aggregation.",
   },
   {
     id: "exp-1",
     year: "Jan 2019 to Jun 2019",
-    role: "Student Intern",
-    company: "Balaikota Depok",
+    role: "Document Digitization & Data Intern",
+    company: "Pemerintah Kota Depok (Balai Kota Depok)",
     description:
-      "Provided Level 1 IT Support for municipal office staff, including troubleshooting hardware/software issues and maintaining local network (LAN) connectivity. Assisted in the digital transformation of physical documents into digital government archives. Managed basic data entry and routine maintenance for internal administrative databases.",
+      "Digitized high volumes of physical civil registration records, including birth certificates (Akta) and family cards (Kartu Keluarga), from master registry books into the municipal computer archive system. Organized, renamed, and indexed scanned digital files systematically based on registration numbers and document years to accelerate file retrieval for municipal office staff. Verified document clarity and data completeness across digitized government archives while maintaining strict confidentiality of citizen records.",
   },
 ];
