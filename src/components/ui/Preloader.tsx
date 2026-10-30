@@ -11,10 +11,7 @@ interface PreloaderProps {
 export function Preloader({ onComplete, onReady }: PreloaderProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const hudRef = useRef<HTMLDivElement>(null);
-  const topBarRef = useRef<HTMLDivElement>(null);
-  const bottomBarRef = useRef<HTMLDivElement>(null);
   const numberRef = useRef<HTMLSpanElement>(null);
-  const statusRef = useRef<HTMLSpanElement>(null);
   const progressFillRef = useRef<HTMLDivElement>(null);
   const leftDoorRef = useRef<HTMLDivElement>(null);
   const rightDoorRef = useRef<HTMLDivElement>(null);
@@ -34,13 +31,6 @@ export function Preloader({ onComplete, onReady }: PreloaderProps) {
     const prevOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
 
-    const getStageLabel = (val: number) => {
-      if (val < 30) return "Initializing Environment";
-      if (val < 70) return "Loading Visual Assets";
-      if (val < 100) return "Preparing Interface";
-      return "Experience Ready";
-    };
-
     const ctx = gsap.context(() => {
       const counter = { value: 0 };
 
@@ -51,9 +41,6 @@ export function Preloader({ onComplete, onReady }: PreloaderProps) {
         }
         if (progressFillRef.current) {
           progressFillRef.current.style.width = `${clamped}%`;
-        }
-        if (statusRef.current) {
-          statusRef.current.textContent = getStageLabel(clamped);
         }
       };
 
@@ -69,14 +56,6 @@ export function Preloader({ onComplete, onReady }: PreloaderProps) {
           onCompleteRef.current();
         },
       });
-
-      // Subtle entrance of HUD elements
-      tl.fromTo(
-        [topBarRef.current, bottomBarRef.current],
-        { opacity: 0, y: 8 },
-        { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" },
-        0
-      );
 
       tl.fromTo(
         hudRef.current,
@@ -117,9 +96,9 @@ export function Preloader({ onComplete, onReady }: PreloaderProps) {
         onReadyRef.current?.();
       });
 
-      // Smoothly lift and fade out the HUD & metadata bars
+      // Smoothly lift and fade out the HUD
       tl.to(
-        [hudRef.current, topBarRef.current, bottomBarRef.current],
+        hudRef.current,
         {
           opacity: 0,
           y: -24,
@@ -173,7 +152,7 @@ export function Preloader({ onComplete, onReady }: PreloaderProps) {
       ref={containerRef}
       data-testid="preloader"
       aria-label="Loading portfolio"
-      className="fixed inset-0 z-[9999] flex flex-col justify-between overflow-hidden select-none pointer-events-auto"
+      className="fixed inset-0 z-[9999] flex items-center justify-center overflow-hidden select-none pointer-events-auto"
     >
       {/* Left Architectural Curtain */}
       <div
@@ -209,35 +188,8 @@ export function Preloader({ onComplete, onReady }: PreloaderProps) {
         }}
       />
 
-      {/* Top Editorial Frame */}
-      <div
-        ref={topBarRef}
-        className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-10 pt-6 sm:pt-8 flex items-center justify-between text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.25em] text-white/50"
-      >
-        <span>Muhammad Rohan Sayyid</span>
-        <span className="flex items-center gap-2">
-          <span className="inline-block w-1.5 h-1.5 rounded-full bg-white/80 animate-pulse" />
-          Portfolio
-        </span>
-      </div>
-
       {/* Center Counter & Progress HUD */}
-      <div
-        ref={hudRef}
-        className="relative z-10 flex flex-col items-center justify-center px-6 my-auto"
-      >
-        {/* Dynamic Stage Label */}
-        <div className="flex items-center gap-2.5 mb-5 sm:mb-6">
-          <span className="w-4 h-px bg-white/25" />
-          <span
-            ref={statusRef}
-            className="text-[10px] sm:text-xs font-mono uppercase tracking-[0.28em] text-white/65"
-          >
-            Initializing Environment
-          </span>
-          <span className="w-4 h-px bg-white/25" />
-        </div>
-
+      <div ref={hudRef} className="relative z-10 flex flex-col items-center justify-center px-6">
         {/* Monumental Tabular Counter */}
         <div className="flex items-start justify-center leading-none">
           <span
@@ -260,21 +212,7 @@ export function Preloader({ onComplete, onReady }: PreloaderProps) {
               style={{ width: "0%" }}
             />
           </div>
-          <div className="flex items-center justify-between mt-2.5 text-[9px] sm:text-[10px] font-mono tracking-[0.2em] text-white/35 uppercase">
-            <span>00</span>
-            <span>Full Stack Developer</span>
-            <span>100</span>
-          </div>
         </div>
-      </div>
-
-      {/* Bottom Editorial Frame */}
-      <div
-        ref={bottomBarRef}
-        className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-10 pb-6 sm:pb-8 flex items-center justify-between text-[10px] font-mono uppercase tracking-[0.22em] text-white/35"
-      >
-        <span>Jakarta, ID</span>
-        <span>Edition 2026</span>
       </div>
     </div>
   );
