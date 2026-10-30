@@ -18,6 +18,14 @@ export const timelineData: TimelineEntry[] = [
       "Developed an end to end fleet and attendance management system. Built RESTful APIs with Laravel, a TailwindCSS web admin dashboard, and a Flutter mobile app with offline first synchronization. Implemented predictive maintenance, JWT authentication, and MySQL optimization.",
   },
   {
+    id: "exp-3",
+    year: "May 2024 to Aug 2025",
+    role: "Web Developer (Freelance)",
+    company: "PT Multi Kreasi Printing",
+    description:
+      "Built custom mobile responsive digital invitation websites for clients using WordPress, HTML, CSS, and JavaScript featuring RSVP forms, countdown timers, and dynamic galleries. Designed promotional print banners for customers and analyzed manual shop workflows as a real world case study to architect a full scale printing ERP prototype (www.mkprinting.my.id).",
+  },
+  {
     id: "exp-2",
     year: "Nov 2023 to Jan 2024",
     role: "Mitra Statistik",
