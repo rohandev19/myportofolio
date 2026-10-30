@@ -34,37 +34,37 @@ export function TopNav() {
   const showSolidBar = isScrolled || pathname !== "/";
 
   const headerStyle = !showSolidBar
-    ? "bg-transparent border-transparent py-5 sm:py-8"
+    ? "bg-transparent border-transparent py-3.5 sm:py-7"
     : isDark
-      ? "bg-[#141418]/95 backdrop-blur-md border-b border-white/10 shadow-md py-3.5 sm:py-5"
-      : "bg-white/95 backdrop-blur-md border-b border-black/10 shadow-sm py-3.5 sm:py-5";
+      ? "bg-[#141418]/95 backdrop-blur-md border-b border-white/10 shadow-md py-2.5 sm:py-4"
+      : "bg-white/95 backdrop-blur-md border-b border-black/10 shadow-sm py-2.5 sm:py-4";
 
   const linkColor = !showSolidBar
     ? "text-white/90 hover:text-white"
     : isDark
-      ? "text-[#f0f1f4]/85 hover:text-white"
+      ? "text-[#f0f1f4]/90 hover:text-white"
       : "text-neutral-700 hover:text-black";
 
   const toggleBtnColor = !showSolidBar
-    ? "text-white/90 hover:text-white hover:bg-white/10"
+    ? "text-white/90 hover:text-white bg-white/10 sm:bg-transparent hover:bg-white/20"
     : isDark
-      ? "text-[#f0f1f4] hover:text-white hover:bg-white/10"
-      : "text-neutral-800 hover:text-black hover:bg-black/5";
+      ? "text-[#f0f1f4] hover:text-white bg-white/5 sm:bg-transparent hover:bg-white/15"
+      : "text-neutral-800 hover:text-black bg-black/5 sm:bg-transparent hover:bg-black/10";
 
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 px-3 sm:px-8 transition-all duration-300 ${headerStyle}`}
     >
-      <div className="max-w-6xl mx-auto relative flex items-center justify-between sm:justify-center gap-1.5">
+      <div className="max-w-6xl mx-auto relative flex items-center justify-between sm:justify-center w-full gap-2">
         <nav
           aria-label="Primary Navigation"
-          className="flex flex-1 sm:flex-initial items-center justify-between sm:justify-center gap-1.5 sm:gap-8 md:gap-10 text-[9.5px] sm:text-xs font-sans font-normal tracking-[0.07em] sm:tracking-[0.22em] uppercase whitespace-nowrap"
+          className="flex flex-1 sm:flex-initial items-center justify-between sm:justify-center gap-1 sm:gap-7 md:gap-10 text-[9.5px] sm:text-xs font-sans font-medium sm:font-normal tracking-[0.05em] sm:tracking-[0.2em] uppercase whitespace-nowrap min-w-0"
         >
           {NAV_LINKS.map((item) => (
             <Link
               key={item.label}
               href={item.href}
-              className={`transition-colors duration-200 ${linkColor}`}
+              className={`!min-w-0 !min-h-0 inline-flex items-center justify-center py-1.5 px-0.5 leading-none transition-colors duration-200 ${linkColor}`}
             >
               {item.label}
             </Link>
@@ -77,20 +77,20 @@ export function TopNav() {
           onClick={() => setTheme(isDark ? "light" : "dark")}
           aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
           title={isDark ? "Switch to light mode" : "Switch to dark mode"}
-          className={`shrink-0 sm:absolute sm:right-2 md:right-8 sm:top-1/2 sm:-translate-y-1/2 w-8 h-8 sm:w-11 sm:h-11 rounded-full flex items-center justify-center transition-all duration-200 focus:outline-none ${toggleBtnColor}`}
+          className={`!min-w-0 !min-h-0 shrink-0 sm:absolute sm:right-0 md:right-4 sm:top-1/2 sm:-translate-y-1/2 w-7 h-7 sm:w-10 sm:h-10 rounded-full inline-flex items-center justify-center transition-all duration-200 focus:outline-none ${toggleBtnColor}`}
         >
           {isDark ? (
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
+              width="20"
+              height="20"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
               strokeWidth="2"
               strokeLinecap="round"
               strokeLinejoin="round"
-              className="w-4 h-4 sm:w-6 sm:h-6"
+              className="w-3.5 h-3.5 sm:w-5 sm:h-5"
               aria-hidden="true"
             >
               <circle cx="12" cy="12" r="4" />
@@ -99,15 +99,15 @@ export function TopNav() {
           ) : (
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
+              width="20"
+              height="20"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
               strokeWidth="2"
               strokeLinecap="round"
               strokeLinejoin="round"
-              className="w-4 h-4 sm:w-6 sm:h-6"
+              className="w-3.5 h-3.5 sm:w-5 sm:h-5"
               aria-hidden="true"
             >
               <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
