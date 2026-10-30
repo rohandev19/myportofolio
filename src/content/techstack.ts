@@ -1,19 +1,31 @@
 import { TechStackTier } from "@/types";
 
 export const techStackData: TechStackTier = {
-  primary: ["React", "Next.js", "Node.js", "NestJS", "Golang", "TypeScript", "Flutter", "Laravel"],
-  secondary: [
-    "HTML5",
-    "JavaScript",
+  primary: [
+    "TypeScript",
+    "Next.js",
+    "React",
+    "NestJS",
+    "Laravel",
+    "Flutter",
+    "Tailwind CSS",
     "PHP",
-    "MySQL",
-    "PostgreSQL",
-    "Redis",
-    "Prisma",
-    "Git",
-    "BullMQ",
-    "Anthropic AI",
-    "Stripe",
+    "JavaScript",
+    "Dart",
   ],
-  ambient: ["Docker", "Tailwind CSS", "Three.js", "Socket.io", "Turborepo"], // Used for visual particles
+  secondary: [
+    "PostgreSQL",
+    "MySQL",
+    "Prisma",
+    "Redis",
+    "BullMQ",
+    "Turborepo",
+    "Firebase",
+    "WebSocket",
+    "GitHub Actions",
+    "PM2",
+    "Sentry",
+    "Git",
+  ],
+  ambient: ["REST API", "Docker", "PgBouncer", "Laravel Sanctum"],
 };
