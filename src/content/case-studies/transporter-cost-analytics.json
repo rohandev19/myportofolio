@@ -64,8 +64,6 @@
   ],
   "testimonials": [],
   "tags": ["React", "TypeScript", "Analytics", "Data Visualization", "Zustand"],
-  "links": {
-    "github": "https://github.com/rohandev19/transporter-cost-analytics"
-  },
+  "links": {},
   "featured": false
 }
